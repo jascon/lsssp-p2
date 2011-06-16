@@ -1,0 +1,17 @@
+<h1>Manage Users</h1>
+<%if @users.blank? %>
+<div class="empty">
+	There are no users yet..!
+</div>
+<%else %>
+<table  width="100%" border="0" cellspacing="0" cellpadding="0" class="maintable tablesorter">
+	<tr>
+
+		<th>Email</th>
+		<th>&nbsp;</th>
+	</tr>
+	<%= render :partial=>'user',:collection=>@users%>
+</table>
+<% end %>
+<div align="right"><%=link_to 'Create User',new_admin_user_path %></div>
+

@@ -1,0 +1,11 @@
+<div id="flash_messages">
+	<% flash.each do |name, msg| %>
+	<%= content_tag :div, :id => "flash_#{name}",:class =>"flash_#{name}"  do %>
+	<%= msg %>
+	<%= content_tag :span, :style => "float: right;" do %>
+	<%= link_to_function 'close',:title=>'Close',
+	:onclick => "document.getElementById('flash_#{name}').style.display='none'" %>
+	<% end %>
+	<% end %>
+	<% end %>
+</div>

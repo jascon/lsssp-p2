@@ -1,0 +1,16 @@
+<h2>Register User</h2>
+ 
+<%= form_for([:admin,@user]) do |f| %>
+  <%= f.error_messages %> 
+  <%#= render :partial => 'user_fields', :locals => { :f => f } %> 
+  <p><%= f.label :email %></p>
+  <p><%= f.email_field :email %></p>
+  <p><%= f.label :password %></p>
+  <p><%= f.password_field :password %></p> 
+  <p><%= f.label :password_confirmation %></p>
+  <p><%= f.password_field :password_confirmation %></p> 
+  <p>Role</p>  
+  <p><%= f.collection_select :role, User::ROLES, :to_s, :humanize %></p>
+
+  <p><%= f.submit "Register" %></p>
+<% end %>

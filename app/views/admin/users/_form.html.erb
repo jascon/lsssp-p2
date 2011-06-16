@@ -1,0 +1,52 @@
+<%= form_for([:admin,@user]) do |form| %>
+<div class="divider"></div>
+<div class="item">
+<%= form.error_messages %> <br />
+<label>Name<span style="color:red;">*</span></label>
+<%= form.text_field :name, :class => 'textfield' %>
+</div>
+<div class="item">
+<label>E-mail<span style="color:red;">*</span></label>
+<%= form.text_field :email, :class => 'textfield' %>
+</div>
+<div class="item">
+<label>Password<span style="color:red;">*</span></label>
+<%= form.password_field :password, :class => 'textfield' %>
+</div>
+<div class="item">
+<label>Password Confirmation<span style="color:red;">*</span></label>
+<%= form.password_field :password_confirmation, :class => 'textfield' %>
+</div>
+<div class="item">
+<label>Time Zone<span style="color:red;">*</span></label>
+<%= form.time_zone_select('time_zone',  ActiveSupport::TimeZone.us_zones, :default => "Pacific Time (US & Canada)")   %>
+</div>
+<div class="item">
+<label>Roles</label>
+<% for role in Role.all %>
+<%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role),:style=>'float:none;' %> <%=h role.name %>
+<% end %>
+</div>
+<div class="item">
+<label>Sms Enabled</label>
+<%= form.check_box :sms_enabled %>
+</div>
+<div class="item">
+<label>Mobile Number<span style="color:red;">*</span></label>
+<%= form.text_field :mobile_number, :class => 'textfield' %>
+</div>
+<div class="item">
+<label>Mobile Service Provider<span style="color:red;">*</span></label>
+<%= form.text_field :mobile_service_provider, :class => 'textfield' %>
+</div>
+<div class="submit">
+<% if params[:action].eql?('new') || params[:action].eql?('create')  %>
+<%= image_submit_tag("create.jpg") %>
+<% else %>
+<%= image_submit_tag("update.jpg") %>
+<% end %>
+</div>
+<div class="item"><span style="color:red; font-size:12px;">Note: Required fields are marked with an asterisk (*)</span></div>
+<% end %>
+
+
