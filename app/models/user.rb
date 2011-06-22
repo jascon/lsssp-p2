@@ -1,13 +1,14 @@
 class User < ActiveRecord::Base
+  belongs_to :role
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me,:role
+  attr_accessible :email, :password, :password_confirmation, :remember_me,:role_id
   
-  ROLES = %w[admin super_admin student service_provider student]
+  
 
   
 end

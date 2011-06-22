@@ -1,0 +1,39 @@
+<% title "Lsssp : Manage Groups" %>
+<% content_for :sub_heading do %>
+  <%= sub_heading('Groups','Manage Groups') %>
+<% end %>
+<% content_for :left_panel do  %>
+<td valign="top" width="279">
+  <%= render 'common/search' %>
+  <%=render 'recent' %> 
+</td>
+<% end %>
+<div class="help_text">
+  Information comes here!
+</div>
+<table class="tablesorter">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Description</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<% for role in @roles %>
+	<tbody>
+		<tr class="<%= cycle("even", "odd") -%>">
+			<td><%= role.name %></td>
+			<td><%= role.description %></td>
+			<td>
+            <%=link_to 'Permissons',permissions_super_admin_role_path(role),:class=>'usuallink bold_text'%>
+            <%= link_to "Show", [:super_admin, role],:class=>'usuallink bold_text' %>
+			<%= link_to "Edit", edit_super_admin_role_path(role) ,:class=>'usuallink bold_text'%>
+			<%= link_to "Destroy", [:super_admin, role], :confirm => 'Are you sure?', :method => :delete,:class=>'usuallink bold_text' %>
+            </td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+<p>
+	<%= link_to "New Group", new_super_admin_role_path ,:class=>'usuallink bold_text'%>
+</p>

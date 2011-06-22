@@ -1,9 +1,17 @@
 LssspP2::Application.routes.draw do
   devise_for :users, :path_names => { :sign_up => "register" }
-  namespace :admin do
+  namespace :super_admin do
     resources :users
+    resources :roles do
+      get 'permissions' ,:on=>:member
+      put 'assign_permissions',:on=>:member
+    end
   end
-  resources :projects
+  namespace :catalog do
+    resources :topics do
+      get 'update_status' ,:on=>:member
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -16,8 +16,9 @@
   <%= f.password_field :current_password %></p>
  
    <p>Role<br />
-  <%= f.collection_select :role, User::ROLES, :to_s, :humanize %>
+   <%= collection_select(:user,:role_id,Role.order('name'),:id,:name,:prompt=>"Select a Role") %> 
  </p>
+
 
   <p><%= f.submit "Update" %></p>
 <% end %>

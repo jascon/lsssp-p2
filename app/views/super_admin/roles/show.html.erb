@@ -1,0 +1,15 @@
+<% title "Group : #{@role.name}" %>
+
+<p>
+	<strong>Name:</strong>
+	<%= @role.name %>
+</p>
+<p>
+	<strong>Description:</strong>
+	<%= @role.description %>
+</p>
+<p>
+	<%= link_to "Edit", edit_super_admin_role_path(@role) %> |
+	<%= link_to "Destroy", [:super_admin, @role], :confirm => 'Are you sure?', :method => :delete %> |
+	<%= link_to "View All", super_admin_roles_path %>
+</p>

@@ -1,0 +1,12 @@
+<%=form_for @role,:url=>{:action=>'assign_permissions'} ,:validate=>true do |f| %>
+<%= f.error_messages %>
+  <%= f.fields_for :authorizations do |a| %>
+    Model : <%=a.text_field :name%>
+     <%=a.fields_for :permissions do |p| %>
+      Permissions :  <%=p.text_field :name%>
+     <% end %>
+    <br/>
+  <% end %>
+<%=f.submit 'Save'%>
+<% end %>
+

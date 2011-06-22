@@ -1,0 +1,16 @@
+<div id="page_top">
+	<a href="/"><h1>LSSSP</h1></a>
+	<div id="top_menu">
+		<div id="top_m">
+			<ul class="top_menu">
+				<% if user_signed_in? %>
+				 <li>Welcome <%= current_user.email %> !</li>
+				 <li><%= link_to "Sign out", destroy_user_session_path %></li>
+				 <li><a href="#">Profile</a></li>
+                <% else %><!--<%= link_to "Sign up", new_user_registration_path %> or-->
+                  <li><%= link_to "Sign in", new_user_session_path %></li>
+				<% end %>
+			</ul>
+		</div>
+	</div>
+</div>

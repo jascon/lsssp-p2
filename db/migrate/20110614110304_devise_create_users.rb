@@ -1,6 +1,7 @@
 class DeviseCreateUsers < ActiveRecord::Migration
   def self.up
     create_table(:users) do |t|
+      t.integer :role_id,:null=>false
       t.database_authenticatable :null => false
       t.recoverable
       t.rememberable

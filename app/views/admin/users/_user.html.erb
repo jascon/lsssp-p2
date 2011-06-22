@@ -1,9 +1,0 @@
-<%content_tag_for(:tr,user,:class=>cycle('even', 'odd')) do -%>
-
-<td><%= highlight(user.email,params[:search]) %></td>
-
-<td align="right"><%= link_to 'edit', edit_admin_user_path(user) %>
-<%= link_to 'delete', [:admin,user], :confirm => 'Are you sure?', :method => :delete %>
-<%= link_to 'show', [:admin,user] %></td>
-<% end %>
-

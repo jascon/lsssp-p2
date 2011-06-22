@@ -1,0 +1,29 @@
+<div class="recent_items">
+	<div class="margin">
+		<h3>Recently Created Groups</h3>
+        <% if @recent.blank? %>
+          No Groups Added Yet...
+        <% else %>
+         <% for role in @recent %>
+		<div id="margin">
+			<div class="left">&nbsp;</div>
+			<div class="right">&nbsp;</div>
+			<div class="left-to-right">
+				<div class="pen">&nbsp;</div>
+				<div class="text">
+                     <%=link_to role.name ,edit_super_admin_role_path(role),:class=>'usuallink'%>
+					<div style="margin: 8px 0px;">&nbsp;</div>
+				</div>
+				<div class="date">02.22.2008</div>
+			</div>
+		</div>
+         <% end %>
+       <% end %>
+		<div class="see_all">
+			<a href="/super_admin/roles">
+			 View all Groups
+			<img hspace="2" border="0" alt="" src="/images/blue^.gif">
+			</a>
+		</div>
+	</div>
+</div>

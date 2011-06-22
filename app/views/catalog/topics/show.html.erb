@@ -1,0 +1,20 @@
+<% title "Catalog/Topic" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @topic.name %>
+</p>
+<p>
+  <strong>Description:</strong>
+  <%= @topic.description %>
+</p>
+<p>
+  <strong>Active:</strong>
+  <%= @topic.active %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_catalog_topic_path(@topic) %> |
+  <%= link_to "Destroy", [:catalog, @topic], :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", catalog_topics_path %>
+</p>

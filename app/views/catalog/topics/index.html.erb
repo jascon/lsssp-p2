@@ -1,0 +1,22 @@
+<% title "Catalog/Topics" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Active</th>
+  </tr>
+  <% for topic in @topics %>
+    <tr>
+      <td><%= topic.name %></td>
+      <td><%= topic.description %></td>
+      <td><%= topic.active %></td>
+      <td><%= link_to "Show", [:catalog, topic] %></td>
+      <td><%= link_to "Edit", edit_catalog_topic_path(topic) %></td>
+      <td><%= link_to "Destroy", [:catalog, topic], :confirm => 'Are you sure?', :method => :delete %></td>
+      <td><%=link_to topic.active? ? 'Deactivate' : 'Activate', update_status_catalog_topic_path(topic) %>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Catalog/Topic", new_catalog_topic_path %></p>
