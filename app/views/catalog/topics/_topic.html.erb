@@ -1,0 +1,11 @@
+<%= content_tag_for(:tr,topic,:class=>cycle('even', 'odd')) do -%>
+      <td><%= highlight(topic.name,params[:search])%></td>
+      <td><%= topic.description %></td>
+      <td><%= topic.active %></td>
+      <td>
+        <%= link_to "Show", [:catalog, topic],:class=>'usuallink bold_text' %>
+        <%= link_to "Edit", edit_catalog_topic_path(topic),:class=>'usuallink bold_text' %>
+        <%= link_to "Destroy", [:catalog, topic], :confirm => 'Are you sure?', :method => :delete,:class=>'usuallink bold_text' %>
+        <%=link_to topic.active? ? 'Deactivate' : 'Activate', update_status_catalog_topic_path(topic) ,:class=>'usuallink bold_text'%>
+     </td>
+<% end %>

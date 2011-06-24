@@ -8,9 +8,15 @@
   <%=render 'recent' %> 
 </td>
 <% end %>
-<div class="help_text">
-  Information comes here!
+<div>
+<%= link_to "Add New Group", "#",:class=>'usuallink bold_text',:id=>'add_new' %>
 </div>
+<div id="new_form">
+<%=render 'form' %>
+</div>
+<% if @roles.blank? %>
+  <div class="error_msg">Sorry No Groups Found..!</div>
+<% else %>
 <table class="tablesorter">
 	<thead>
 		<tr>
@@ -19,21 +25,12 @@
 			<th>Actions</th>
 		</tr>
 	</thead>
-	<% for role in @roles %>
+	
 	<tbody>
-		<tr class="<%= cycle("even", "odd") -%>">
-			<td><%= role.name %></td>
-			<td><%= role.description %></td>
-			<td>
-            <%=link_to 'Permissons',permissions_super_admin_role_path(role),:class=>'usuallink bold_text'%>
-            <%= link_to "Show", [:super_admin, role],:class=>'usuallink bold_text' %>
-			<%= link_to "Edit", edit_super_admin_role_path(role) ,:class=>'usuallink bold_text'%>
-			<%= link_to "Destroy", [:super_admin, role], :confirm => 'Are you sure?', :method => :delete,:class=>'usuallink bold_text' %>
-            </td>
-		</tr>
-		<% end %>
+		<%=render @roles %>
 	</tbody>
 </table>
+<% end %>
 <p>
 	<%= link_to "New Group", new_super_admin_role_path ,:class=>'usuallink bold_text'%>
 </p>

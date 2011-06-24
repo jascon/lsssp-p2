@@ -1,12 +1,6 @@
-<%= form_for [:super_admin, @role],:validate=>true do |f| %>
+<%= simple_form_for [:super_admin, @role],:validate=>true do |f| %>
   <%= f.error_messages %>
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </p> 
-  <p><%= f.submit %></p>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.submit 'Submit',:disable_with=>'Please wait...' %>
 <% end %>

@@ -15,6 +15,8 @@ module ApplicationHelper
  def sub_heading(main,sub)
    "<h3>#{main}<span>&nbsp;|&nbsp;#{sub}</span></h3>".html_safe
  end 
+ 
+  
 ## alias for submit_tag ########
 =begin
   def button_for(name, options={})

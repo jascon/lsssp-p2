@@ -1,0 +1,9 @@
+<%= simple_form_for([:super_admin,@user], :validate => true) do |f| %>
+  <%= f.error_messages %> 
+  <%#= render :partial => 'user_fields', :locals => { :f => f } %> 
+  <%= f.input :email %>
+  <%= f.input :password %>
+  <%= f.input :password_confirmation %>
+  <%= f.association :role %>
+  <p><%= f.submit "Create" %></p>
+<% end %>

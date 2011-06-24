@@ -1,17 +1,34 @@
-<h1>Manage Users</h1>
-<%if @users.blank? %>
-<div class="empty">
-	There are no users yet..!
+<% title "Lsssp : Manage Users" %>
+<% content_for :sub_heading do %>
+  <%= sub_heading('LSSSP Service',params[:id].blank? ? 'Users' : "Users under Group #{Role.find(params[:id]).name}") %>
+<% end %>
+<% content_for :left_panel do  %>
+<td valign="top" width="279">
+  <%= render 'common/search' %>
+</td>
+<% end %>
+<div>
+	<%= link_to "Add New User", '#' ,:class=>'usuallink bold_text',:id=>'add_new'%>
 </div>
-<%else %>
-<table  width="100%" border="0" cellspacing="0" cellpadding="0" class="maintable tablesorter">
-	<tr>
-
-		<th>Email</th>
-		<th>&nbsp;</th>
-	</tr>
-	<%= render :partial=>'user',:collection=>@users%>
+<div id="new_form">
+<%=render 'new' %>
+</div>
+<% if @users.blank? %>
+   <div class="error_msg">Sorry No Users Found..! </div>
+<% else %>
+<table class="tablesorter">
+	<thead>
+		<tr>
+			<th>Email</th>
+            <th>Group</th>
+			<th>Registration Date</th>
+			<th>Login count</th>
+            <th>Confirmed?</th>
+            <th>&nbsp;</th>
+		</tr>
+	</thead>
+	<tbody>
+       <%=render @users %>		
+	</tbody>
 </table>
 <% end %>
-<div align="right"><%=link_to 'Create User',new_super_admin_user_path %></div>
-

@@ -1,4 +1,8 @@
-<% title "Catalog/Topic" %>
+<% title "LSSSP | Topic :  #{@topic.name}" %>
+<% content_for :sub_heading do %>
+  <%= sub_heading('CMS >> Topics',"#{@topic.name}") %>
+<% end %>
+
 
 <p>
   <strong>Name:</strong>
@@ -13,8 +17,9 @@
   <%= @topic.active %>
 </p>
 
-<p>
-  <%= link_to "Edit", edit_catalog_topic_path(@topic) %> |
-  <%= link_to "Destroy", [:catalog, @topic], :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", catalog_topics_path %>
-</p>
+<div class="link_buttons">
+   <%=link_to_edit(edit_catalog_topic_path(@topic)) %>
+   <%=link_to_delete([:catalog, @topic]) %>
+   <%=link_to_all(catalog_topics_path)%>
+   <%=link_to_back %>
+</div>

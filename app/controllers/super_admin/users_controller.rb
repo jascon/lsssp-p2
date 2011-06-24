@@ -8,7 +8,9 @@ class SuperAdmin::UsersController < ApplicationController
   # GET /users.json                                       HTML and AJAX
   #-----------------------------------------------------------------------
   def index
-    @users = User.accessible_by(current_ability, :index).limit(20)
+    #@users = 
+     @users = params[:id].blank? ? User.search(params[:search]) : User.search(params[:search]).where(:role_id=>params[:id])
+     @user = User.new(:role_id=>params[:id])
     respond_to do |format|
       format.json { render :json => @users }
       format.xml  { render :xml => @users }
@@ -81,9 +83,8 @@ class SuperAdmin::UsersController < ApplicationController
   #-----------------------------------------------------------------
   def create
     @user = User.new(params[:user])
-
     if @user.save
-        
+      flash[:notice] = "User Ceated Successfully."
       respond_to do |format|
         format.json { render :json => @user.to_json, :status => 200 }
         format.xml  { head :ok }

@@ -377,7 +377,8 @@ div#page_menu ul li:hover ul, div#page_menu ul li ul:hover {
 	border: solid 6px #f2f2f2;
 }
 #page_container div#page_content div.content div.content_index div.right_content div.margin {
-	padding: 10px;
+	/*padding: 10px; */
+	 padding: 8px;
 	border: solid 1px #b8cad9;
 }
 #page_container div#page_content div.content div.content_index div.search {
@@ -808,7 +809,7 @@ table.tablesorter {
 	border: 1px solid #cdcdcd;
 	margin: 10px 0 15px;
 	font-size: 12px;
-	width: 100%;
+	width: 98%;
 	text-align: center;
 }
 
@@ -1273,94 +1274,12 @@ div.logotype div.child:first-child {
 
     }
 
+/*EXTRAS */
 
-/*START      FLASH AND ERROR MESSAGES */
-#flash_notice, #flash_error, #flash_alert {
-  padding: 5px 8px;
-  margin: 10px 0;
-}
-
-#flash_notice {
-  background-color: #CFC;
-  border: solid 1px #6C6;
-}
-
-#flash_error, #flash_alert {
-  background-color: #FCC;
-  border: solid 1px #C66;
-}
-
-.fieldWithErrors {
-  display: inline;
-}
-
-.error_messages {
-  width: 400px;
-  border: 2px solid #CF0000;
-  padding: 0px;
-  padding-bottom: 12px;
-  margin-bottom: 20px;
-  background-color: #f0f0f0;
-  font-size: 12px;
-}
-
-.error_messages h2 {
-  text-align: left;
-  font-weight: bold;
-  padding: 5px 10px;
-  font-size: 12px;
-  margin: 0;
-  background-color: #c00;
-  color: #fff;
-}
-
-.error_messages p {
-  margin: 8px 10px;
-}
-
-.error_messages ul {
-  margin: 0;
-}
-
-.field_with_errors {  
-  display: inline;  
-}  
-  
-.field_with_errors .message {  
-  color: #D00;  
-  padding-left: 5px;  
-  font-size: 12px;  
-}  
-/*END      FLASH AND ERROR MESSAGES */
-
-.btn-blue, .btn-yellow, .btn-gray, .btn-ltgray, .btn-red {
-    background: url("/images/buttonendsprite.png") no-repeat scroll right 0 transparent;
-    border: 0 none;
-    cursor: pointer;
-    display: block;
-    float: right;
-    height: 23px;
-    margin: 0 10px 0 0;
-    overflow: hidden;
-    padding: 0 10px 0 0;
-    position: relative;
-    text-decoration: none;
-}
-
-.btn-blue span, .btn-yellow span, .btn-gray span, .btn-ltgray span, .btn-red span {
-    background: url("/images/buttonsprite.png") no-repeat scroll 0 0 transparent;
-    border: 0 none;
-    color: #FFFFFF;
-    cursor: pointer;
-    display: block;
-    font: bold 13px/14px arial,sans-serif;
-    height: 18px;
-    margin: 0;
-    overflow: visible;
-    padding: 4px 1px 1px 13px;
-    white-space: nowrap;
-}
-
-.btn-red span {
-    background-position: 0 -200px;
+#new_form{
+   display: none;
+    border: 1px solid #CDCDCD;
+    margin-top: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }

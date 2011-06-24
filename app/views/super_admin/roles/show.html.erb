@@ -1,4 +1,7 @@
-<% title "Group : #{@role.name}" %>
+<% title "LSSSP | Group : #{@role.name}" %>
+<% content_for :sub_heading do %>
+  <%= sub_heading('Groups',"#{@role.name}") %>
+<% end %>
 
 <p>
 	<strong>Name:</strong>
@@ -8,8 +11,10 @@
 	<strong>Description:</strong>
 	<%= @role.description %>
 </p>
-<p>
-	<%= link_to "Edit", edit_super_admin_role_path(@role) %> |
-	<%= link_to "Destroy", [:super_admin, @role], :confirm => 'Are you sure?', :method => :delete %> |
-	<%= link_to "View All", super_admin_roles_path %>
-</p>
+
+<div class="link_buttons">
+   <%=link_to_edit(edit_super_admin_role_path(@role)) %>
+   <%=link_to_delete([:super_admin, @role]) %>
+   <%=link_to_all(super_admin_roles_path)%>
+   <%=link_to_back %>
+</div>

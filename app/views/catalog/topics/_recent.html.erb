@@ -1,29 +1,29 @@
 <div class="recent_items">
 	<div class="margin">
-		<h3>Recently Created Groups</h3>
+		<h3>Recently Created Topics</h3>
         <% if @recent.blank? %>
-          No Groups Added Yet...
+          No Topics Added Yet...
         <% else %>
-         <% for role in @recent %>
+         <% for topic in @topics %>
 		<div id="margin">
 			<div class="left">&nbsp;</div>
 			<div class="right">&nbsp;</div>
 			<div class="left-to-right">
 				<div class="pen">&nbsp;</div>
 				<div class="text">
-                     <%=link_to role.name ,edit_super_admin_role_path(role),:class=>'usuallink'%>
+                     <%=link_to topic.name ,edit_catalog_topic_path(topic),:class=>'usuallink'%>
 					<div style="margin: 8px 0px;">&nbsp;</div>
 				</div>
 				<div class="date">
-                    (<b><%=role.users.size %></b>)
+                    <b><%=topic.created_at.strftime("%m.%d.%Y") %></b>
                 </div>
 			</div>
 		</div>
          <% end %>
        <% end %>
 		<div class="see_all">
-			<a href="/super_admin/roles">
-			 View all Groups
+			<a href="/catalog/topics">
+			 View all Topics
 			<img hspace="2" border="0" alt="" src="/images/blue^.gif">
 			</a>
 		</div>

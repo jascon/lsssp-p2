@@ -1,5 +1,12 @@
-<% title "New Group" %>
-
+<% title "Groups: New Group" %>
+<% content_for :sub_heading do %>
+  <%= sub_heading('Groups','Create Group') %>
+<% end %>
+<div class="help_text">
+ Area for managing groups used to assign certain permissions to LSSSP service sections for different groups members. <br/>
+ Along with creating, managing and removing groups for your LSSSP service users,.
+</div>
 <%= render 'form' %>
-
-<p><%= link_to "Back to List", super_admin_roles_path %></p>
+<div class="link_buttons">
+ <%=link_to_all(super_admin_roles_path)%>
+</div>

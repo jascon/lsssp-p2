@@ -1,0 +1,165 @@
+/*START SImple form css */
+.simple_form label {
+	float: left;
+	width: 100px;
+	text-align: right;
+	margin: 2px 10px;
+}
+.simple_form div.input {
+	margin-bottom: 10px;
+}
+.simple_form div.boolean, .simple_form input[type='submit'] {
+	margin-left: 120px;
+}
+.simple_form div.boolean label {
+	float: none;
+	margin: 0;
+}
+.simple_form label abbr {
+   color : red;
+}
+/*END  Simple Form CSS */
+
+/*START      FLASH AND ERROR MESSAGES */
+#flash_notice, #flash_error, #flash_alert {
+	padding: 5px 8px;
+	margin: 10px 0;
+}
+#flash_notice {
+	background-color: #CFC;
+	border: solid 1px #6C6;
+}
+#flash_error, #flash_alert {
+	background-color: #FCC;
+	border: solid 1px #C66;
+}
+.fieldWithErrors {
+	display: inline;
+}
+.error_messages {
+	width: 400px;
+	border: 2px solid #CF0000;
+	padding: 0px;
+	padding-bottom: 12px;
+	margin-bottom: 20px;
+	background-color: #f0f0f0;
+	font-size: 12px;
+}
+.error_messages h2 {
+	text-align: left;
+	font-weight: bold;
+	padding: 5px 10px;
+	font-size: 12px;
+	margin: 0;
+	background-color: #c00;
+	color: #fff;
+}
+.error_messages p {
+	margin: 8px 10px;
+}
+.error_messages ul {
+	margin: 0;
+}
+span.error {
+	color: #D00;
+	padding-left: 5px;
+	font-size: 12px;
+}
+/*END      FLASH AND ERROR MESSAGES */
+
+/*START Button Link Css */
+div.link_buttons {
+	margin-bottom: 4px;
+	height: 21px;
+	margin-top: 10px;
+	padding-left: 50px;
+}
+.btn-blue, .btn-yellow, .btn-gray, .btn-ltgray, .btn-red {
+	cursor: pointer;
+	background: transparent url('/images/buttonendsprite.png') no-repeat right 0px;
+	display: block;
+	float: left;
+	height: 23px;
+	padding: 0 12px 0 0;
+	text-decoration: none;
+	margin: 0 10px 0 0;
+	border: 0;
+	overflow: hidden;
+	position:relative;
+}
+.btn-blue:hover, .btn-yellow:hover, .btn-gray:hover, .btn-ltgray:hover, .btn-red:hover {
+	text-decoration:none !important;
+	outline:none;
+}
+.btn-blue span, .btn-yellow span, .btn-gray span, .btn-ltgray span, .btn-red span {
+	background: transparent url('/images/buttonsprite.png') no-repeat 0 0;
+	display: block;
+	padding: 4px 1px 1px 13px;
+	height: 18px;
+	margin: 0;
+	font: bold 13px/14px arial, sans-serif;
+	color: #fff;
+	white-space: nowrap;
+	overflow:visible;
+	border: 0;
+	cursor: pointer;
+}
+.btn-blue:hover {
+	background-position: right -25px;
+}
+.btn-blue:hover span {
+	background-position: 0 -25px;
+}
+.btn-yellow {
+	background-position: right -50px;
+}
+.btn-yellow span {
+	background-position: 0 -50px;
+	color:#000;
+}
+.btn-yellow:hover {
+	background-position: right -75px;
+}
+.btn-yellow:hover span {
+	background-position: 0 -75px;
+}
+.btn-gray {
+	background-position: right -100px;
+}
+.btn-gray span {
+	background-position: 0 -100px;
+}
+.btn-gray:hover {
+	background-position: right -125px;
+}
+.btn-gray:hover span {
+	background-position: 0 -125px;
+}
+.btn-ltgray {
+	background-position: right -150px;
+}
+.btn-ltgray span {
+	background-position: 0 -150px;
+}
+.btn-ltgray:hover {
+	background-position: right -175px;
+}
+.btn-ltgray:hover span {
+	background-position: 0 -175px;
+}
+.btn-red {
+	background-position: right -200px;
+}
+.btn-red span {
+	background-position: 0 -200px;
+}
+.btn-red:hover {
+	background-position: right -225px;
+}
+.btn-red:hover span {
+	background-position: 0 -225px;
+}
+/*END Button Link Css */
+.highlight{
+	color: #FF6600;
+}

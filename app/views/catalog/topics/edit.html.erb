@@ -1,8 +1,11 @@
-<% title "Edit Catalog/Topic" %>
+<% title "LSSSP | Edit Topic" %>
+<% content_for :sub_heading do %>
+  <%= sub_heading('CMS >> Topics ',"Edit #{@topic.name}") %>
+<% end %>
 
 <%= render 'form' %>
 
-<p>
-  <%= link_to "Show", [:catalog, @topic] %> |
-  <%= link_to "View All", catalog_topics_path %>
-</p>
+<div class="link_buttons">
+  <%= link_to_show([:catalog, @topic]) %> 
+  <%=link_to_all(catalog_topics_path)%>
+</div>

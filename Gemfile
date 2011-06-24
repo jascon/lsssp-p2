@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.7'
-gem 'mysql2'
+gem 'mysql'
 gem "nifty-generators", :group => :development
 gem 'devise', '1.3.4'  
 gem "rake", "0.8.7"
@@ -10,7 +10,7 @@ gem "mocha", :group => :test
 gem "mongrel", '>= 1.2.0.pre2' 
 gem 'client_side_validations' 
 gem 'meta_where'
-
+gem "simple_form"
 #gems need to helpful
 #gem "meta_search"
 #gem 'carrierwave'  #CarrierWave is more flexible than Paperclip. It is based on Rack, which means that it works with Rails, Sinatra and other Rack-based Ruby applications, and it supports a variety of ORMs including ActiveRecord, DataMapper, Mongoid. Another significant difference between CarrierWave and Paperclip is that CarrierWave keeps everything in a separate Uploader class so that all of the file attachments and the processing logic belongs there. This way file attachments don’t end up mixed with the application’s model classes.

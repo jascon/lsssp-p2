@@ -1,8 +1,10 @@
-<% title "Edit Group" %>
-
+<% title "LSSSP | Edit Group" %>
+<% content_for :sub_heading do %>
+  <%= sub_heading('Groups',"Edit #{@role.name}") %>
+<% end %>
 <%= render 'form' %>
 
-<p>
-  <%= link_to "Show", [:super_admin, @role] %> |
-  <%= link_to "View All", super_admin_roles_path %>
-</p>
+<div class="link_buttons">
+  <%= link_to_show([:super_admin, @role]) %> 
+  <%=link_to_all(super_admin_roles_path)%>
+</div>

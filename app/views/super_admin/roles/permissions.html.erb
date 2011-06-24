@@ -1,12 +1,74 @@
-<%=form_for @role,:url=>{:action=>'assign_permissions'} ,:validate=>true do |f| %>
+<% title "Lsssp : Manage Groups" %>
+<% content_for :sub_heading do %>
+  <%= sub_heading('Group',"#{@role.name} | Assign Permissions") %>
+<% end %>
+<div style="width:500px;" align="center">
+ <%=form_for @role,:url=>{:action=>'assign_permissions'}  do |f| %>
+   <%= f.error_messages %>
+   <% auth_attr,perm_attr = 0,0 %>
+   <table cellspacing="1" cellpadding="5" border="0" class="tablesorter" align="center">
+	 <tbody>
+       <tr>
+		 <th width="35%">Module</th>
+         <th width="20%">Allow</th>
+       </tr>
+    <% @abilities.each do |key,values|%>  
+	   <tr>
+		 <td align="left"><b><%= key %></b></td>
+		 <td align="center">
+           <%=check_box_tag "role[authorizations_attributes][][name]", key,@role.authorizations.map(&:name).include?(key)%>
+         </td>
+	   </tr>
+      <% @abilities[key].each do |val| %>
+         <% authorization = Authorization.find_by_role_id_and_name(@role.id,key) %>
+	    <tr>
+		 <td align="right"><%=val%></td>
+		 <td align="center">
+           <%=check_box_tag "role[authorizations_attributes][][permissions_attributes][][name]", val,
+                      (authorization.permissions.map(&:name).include?(val) if authorization ) %>
+         </td>
+	   </tr>
+         <% perm_attr += 1 %>
+       <% end %>
+      <% auth_attr +=1 %>
+    <% end %>
+	 </tbody>
+   </table>
+  <div align="center"><%= f.submit 'Assign Permissions',:disable_with=>'wait...'%></div>
+ <% end %>
+</div>
+<!--
+<%=form_for @role,:url=>{:action=>'assign_permissions'}  do |f| %>
 <%= f.error_messages %>
-  <%= f.fields_for :authorizations do |a| %>
-    Model : <%=a.text_field :name%>
-     <%=a.fields_for :permissions do |p| %>
-      Permissions :  <%=p.text_field :name%>
-     <% end %>
-    <br/>
-  <% end %>
-<%=f.submit 'Save'%>
+<% auth_attr,perm_attr = 0,0 %>
+<% @abilities.each do |key,values|%>   
+        <%=check_box_tag "role[authorizations_attributes][#{auth_attr}][name]", key,@role.authorizations.map(&:name).include?(key)%><%= key %><br/>
+           <% @abilities[key].each do |val| %>
+             <% authorization = Authorization.find_by_role_id_and_name(@role.id,key) %>
+             <%=check_box_tag "role[authorizations_attributes][#{auth_attr}][permissions_attributes][#{perm_attr}][name]", val,
+                      (authorization.permissions.map(&:name).include?(val) if authorization ) %><%=val%>
+             <% perm_attr += 1 %>
+           <% end %>
+ <% auth_attr +=1 %><br/>
+<% end %>
+<%= f.submit 'Save',:disable_with=>'wait...'%>
 <% end %>
 
+-->
+
+<!--
+<%=form_for @role,:url=>{:action=>'assign_permissions'} ,:validate=>true do |f| %>
+<%= f.error_messages %>
+<%= f.fields_for :authorizations do |a| %>
+Model : <%=a.text_field :name%>
+Permissions :
+<%=a.fields_for :permissions do |p| %>
+
+<%=p.check_box :name ,{},p.object.name %><%=p.object.name%>
+<% end %>
+<br/>
+<% end %>
+<%=f.submit 'Save',:disable_with=>'wait...'%>
+<% end %>
+
+-->

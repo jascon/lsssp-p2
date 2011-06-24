@@ -1,9 +1,17 @@
 <%= content_tag_for(:tr,user,:class=>cycle('even', 'odd')) do -%>
-
 <td><%= highlight(user.email,params[:search]) %></td>
-
-<td align="right"><%= link_to 'edit', edit_super_admin_user_path(user) %>
-<%= link_to 'delete', [:super_admin,user], :confirm => 'Are you sure?', :method => :delete %>
-<%= link_to 'show', [:super_admin,user] %></td>
+<td><%= link_to user.role.name,[:super_admin,user.role],:class=>'usuallink' %></td>
+<td><%= user.created_at %></td>
+<td><%=user.sign_in_count%></td>
+<td><%=user.confirmed_at.nil? ? 'No' : "Yes(#{user.confirmed_at.strftime('%m.%d.%Y')})"%></td>
+<td>
+   <%= link_to 'Edit', edit_super_admin_user_path(user) ,:class=>'usuallink bold_text'%> |
+   <%= link_to 'Show', [:super_admin,user],:class=>'usuallink bold_text' %> |
+   <%= link_to "Destroy", [:super_admin, user], :confirm => 'Are you sure?', :method => :delete,:class=>'usuallink bold_text' %>
+</td>
 <% end %>
 
+
+
+
+		
