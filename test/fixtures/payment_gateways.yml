@@ -1,0 +1,13 @@
+one:
+  api_name: MyString
+  url: MyString
+  username: MyString
+  password: MyString
+  active: false
+
+two:
+  api_name: MyString
+  url: MyString
+  username: MyString
+  password: MyString
+  active: false

@@ -7,22 +7,24 @@ class Ability
   include CanCan::Ability
   def initialize(user)
     user ||= User.new # Guest user
-    if user.role.name.eql?('super_admin')
+    if user.role.name.eql?('Super Admin')
       #can manage all operation(actions) on all Models in Application
       can :manage ,:all
     else
       user.role.permissions.each do |permission|
-        if user.role.id == permission.authorization.role.id
+        if user.role.id == permission.authorization.role_id         
           #can manage(all actions)for a given Model if boolean flag manage_all is true irrespective of other permissions(from permissions table)
           #------------------------------------------------------------------------------------------------------
-          can :manage ,permission.authorization.name.camelize.constantize if permission.authorization.manage_all?
+          (can :manage ,permission.authorization.name.camelize.constantize) if permission.authorization.manage_all?
           #-------------------------------------------------------------------------------------------------------
           can permission.name.to_sym,permission.authorization.name.camelize.constantize # "user".camelize#=>"User";"User".constantize#=>User
+          ### To read all actions for a Model
+          (can :read, permission.authorization.name.camelize.constantize) if permission.name == 'read'
         end
       end
     end
     #can read(not prmitted to create or update) all operation(actions) on all Models in Application
-    can :read, :all
+    
   end
 end
 

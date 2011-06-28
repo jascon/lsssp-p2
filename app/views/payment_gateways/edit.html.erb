@@ -1,0 +1,10 @@
+<% title "LSSSP | Edit Payment Gateway" %>
+<% content_for :sub_heading do %>
+  <%= sub_heading('Payment Gateway',"Edit #{@payment_gateway.api_name}") %>
+<% end %>
+<%= render 'form' %>
+
+<div class="link_buttons">
+  <%= link_to_show(@payment_gateway ) %> 
+  <%=link_to_all(payment_gateways_path)%>
+</div>

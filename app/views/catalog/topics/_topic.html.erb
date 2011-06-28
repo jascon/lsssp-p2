@@ -6,6 +6,6 @@
         <%= link_to "Show", [:catalog, topic],:class=>'usuallink bold_text' %>
         <%= link_to "Edit", edit_catalog_topic_path(topic),:class=>'usuallink bold_text' %>
         <%= link_to "Destroy", [:catalog, topic], :confirm => 'Are you sure?', :method => :delete,:class=>'usuallink bold_text' %>
-        <%=link_to topic.active? ? 'Deactivate' : 'Activate', update_status_catalog_topic_path(topic) ,:class=>'usuallink bold_text'%>
+        <%=link_to topic.active? ? 'Deactivate' : 'Activate', activate_catalog_topic_path(topic) ,:class=>'usuallink bold_text'%>
      </td>
 <% end %>

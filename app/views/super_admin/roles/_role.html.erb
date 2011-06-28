@@ -3,7 +3,7 @@
 			<td><%= role.description %></td>
 			<td>
             <%=link_to 'Permissons',permissions_super_admin_role_path(role),:class=>'usuallink bold_text'%> |
-            <%=link_to 'View users list',super_admin_users_path(:id=>role.id),:class=>'usuallink bold_text'%> |
+            <%=link_to "View users list(#{role.users.size})",super_admin_users_path(:id=>role.id),:class=>'usuallink bold_text'%> |
             <%= link_to "Show", [:super_admin, role],:class=>'usuallink bold_text' %> |
 			<%= link_to "Edit", edit_super_admin_role_path(role) ,:class=>'usuallink bold_text'%> |
 			<%= link_to "Destroy", [:super_admin, role], :confirm => 'Are you sure?', :method => :delete,:class=>'usuallink bold_text' %>

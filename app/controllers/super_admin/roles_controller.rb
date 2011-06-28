@@ -18,7 +18,8 @@ class SuperAdmin::RolesController < ApplicationController
   def create
     @role = Role.new(params[:role])
     if @role.save
-      redirect_to [:super_admin, @role], :notice => "Successfully created Role."
+      #redirect_to [:super_admin, @role], :notice => "Successfully created Role."
+      redirect_to super_admin_roles_path, :notice => "Successfully created Role."
     else
       render :action => 'new'
     end
@@ -45,7 +46,7 @@ class SuperAdmin::RolesController < ApplicationController
 
   def permissions
     @role = Role.find(params[:id])
-    @abilities = {'User'=>['create','update'],'Topic'=>['create','update']}
+    @abilities = {'User'=>['read','create','update'],'Topic'=>['read','create','update','activate'],'PaymentGateway'=>['read','create','update','activate']}
 =begin
     if @role.authorizations.blank? # already permissions exists don't build childrens
       #define Models and their actions in Hash of Arrays
@@ -64,7 +65,7 @@ class SuperAdmin::RolesController < ApplicationController
   end
 
   def assign_permissions
-    @abilities = {'User'=>['create','update'],'Topic'=>['create','update']}
+    @abilities = {'User'=>['read','create','update'],'Topic'=>['read','create','update','activate'],'PaymentGateway'=>['read','create','update','activate']}
     @role = Role.find(params[:id])
     ## delete all authorizations and create again same for permissions
     @role.authorizations.clear

@@ -1,0 +1,13 @@
+<%= content_tag_for(:tr,payment_gateway,:class=>cycle('even', 'odd')) do -%>     
+      <td><%=  highlight(payment_gateway.api_name,params[:search]) %></td>
+      <td><%= payment_gateway.url %></td>
+      <td><%= payment_gateway.username %></td>
+      <td><%= payment_gateway.password %></td>
+      <td><%= payment_gateway.active %></td>
+      <td>
+         <%= link_to "Show", payment_gateway,:class=>'usuallink bold_text' %> |
+         <%= link_to "Edit", edit_payment_gateway_path(payment_gateway),:class=>'usuallink bold_text' %> |
+         <%= link_to "Destroy", payment_gateway, :confirm => 'Are you sure?', :method => :delete,:class=>'usuallink bold_text' %> |
+         <%=link_to payment_gateway.active? ? 'Deactivate' : 'Activate', activate_payment_gateway_path(payment_gateway) ,:class=>'usuallink bold_text'%>
+     </td>
+<% end %>

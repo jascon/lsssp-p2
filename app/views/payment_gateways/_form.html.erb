@@ -1,0 +1,9 @@
+<%= simple_form_for @payment_gateway ,:validate=>true do |f| %>
+ <%= f.error_messages %>
+ <%= f.input :api_name %>
+ <%= f.input :url %>
+ <%= f.input :username %>
+ <%= f.input :password %>
+ <%= f.input :active %>
+ <%= f.submit %>
+<% end %>

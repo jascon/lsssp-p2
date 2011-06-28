@@ -1,4 +1,8 @@
 LssspP2::Application.routes.draw do
+  resources :payment_gateways do 
+    get 'activate' ,:on=>:member
+  end
+
   devise_for :users, :path_names => { :sign_up => "register" }
   namespace :super_admin do
     resources :users
@@ -9,7 +13,7 @@ LssspP2::Application.routes.draw do
   end
   namespace :catalog do
     resources :topics do
-      get 'update_status' ,:on=>:member
+      get 'activate' ,:on=>:member
     end
   end
 

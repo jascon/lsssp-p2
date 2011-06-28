@@ -1,0 +1,37 @@
+<% title "Lsssp : Manage Payment Gateways" %>
+<% content_for :sub_heading do %>
+  <%= sub_heading('Payment Gateway','Manage Payment Gateways') %>
+<% end %>
+<% content_for :left_panel do  %>
+<td valign="top" width="279">
+  <%= render 'common/search' %>
+  <%=render 'recent' %> 
+</td>
+<% end %>
+<div>
+<%= link_to "Add New Payment Gateway", "#",:class=>'usuallink bold_text',:id=>'add_new' %>
+</div>
+<div id="new_form">
+<%=render 'form' %>
+</div>
+<% if @payment_gateways.blank? %>
+  <div class="error_msg">Sorry No Payment Gateways Found..!</div>
+<% else %>
+<table class="tablesorter">
+	<thead>
+		<tr>
+			 <th>Api Name</th>
+             <th>Url</th>
+             <th>Username</th>
+             <th>Password</th>
+             <th>Active</th>
+             <th>&nbsp;</th>
+		</tr>
+	</thead>
+	
+	<tbody>
+		<%=render @payment_gateways %>
+	</tbody>
+</table>
+<% end %>
+

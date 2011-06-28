@@ -2,10 +2,10 @@
 <% content_for :sub_heading do %>
   <%= sub_heading('Group',"#{@role.name} | Assign Permissions") %>
 <% end %>
-<div style="width:500px;" align="center">
+<div style="width:530px;" align="center">
  <%=form_for @role,:url=>{:action=>'assign_permissions'}  do |f| %>
    <%= f.error_messages %>
-   <% auth_attr,perm_attr = 0,0 %>
+   
    <table cellspacing="1" cellpadding="5" border="0" class="tablesorter" align="center">
 	 <tbody>
        <tr>
@@ -28,9 +28,9 @@
                       (authorization.permissions.map(&:name).include?(val) if authorization ) %>
          </td>
 	   </tr>
-         <% perm_attr += 1 %>
+        
        <% end %>
-      <% auth_attr +=1 %>
+      
     <% end %>
 	 </tbody>
    </table>

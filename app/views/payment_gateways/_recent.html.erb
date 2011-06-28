@@ -1,0 +1,31 @@
+<div class="recent_items">
+	<div class="margin">
+		<h3>Recently Created Payment Gateways</h3>
+        <% if @recent.blank? %>
+          No Payment Gateways Added Yet...
+        <% else %>
+         <% for payment_gateway in @recent %>
+		<div id="margin">
+			<div class="left">&nbsp;</div>
+			<div class="right">&nbsp;</div>
+			<div class="left-to-right">
+				<div class="pen">&nbsp;</div>
+				<div class="text">
+                     <%=link_to payment_gateway.api_name ,payment_gateway_path(payment_gateway),:class=>'usuallink'%>
+					<div style="margin: 8px 0px;">&nbsp;</div>
+				</div>
+				<div class="date">
+                    <%=payment_gateway.created_at.strftime("%m.%d.%Y")%>
+                </div>
+			</div>
+		</div>
+         <% end %>
+       <% end %>
+		<div class="see_all">
+			<a href="/payment_gateways">
+			 View all Payment Gateways
+			<img hspace="2" border="0" alt="" src="/images/blue^.gif">
+			</a>
+		</div>
+	</div>
+</div>

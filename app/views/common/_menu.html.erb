@@ -2,7 +2,11 @@
 	<li><%= tab_heading 'Groups' %>
 		<ul>
 			<li><%=link_to 'Manage Groups' ,super_admin_roles_path %></li>
-			<li><%=link_to 'Create Group' ,new_super_admin_role_path %></li> 
+			<li><%=link_to 'Create Group' ,new_super_admin_role_path %></li>             
+        </ul>
+	</li>
+    <li><%= tab_heading 'User Management' %>
+		<ul>			
             <li><%=link_to 'Manage Users' ,super_admin_users_path %></li> 
             <li><%=link_to 'Create User' ,new_super_admin_user_path %></li> 
         </ul>
@@ -11,6 +15,12 @@
 		<ul>
 			<li><%=link_to 'Manage Topics' ,catalog_topics_path %></li>
 			<li><%=link_to 'Create Topic' ,new_catalog_topic_path %></li>             
+        </ul>
+	</li>
+    <li><%= tab_heading 'Payment Gateway Management' %>
+		<ul>
+			<li><%=link_to 'Manage Payment Gateways' ,payment_gateways_path %></li>
+			<li><%=link_to 'Create Payment Gateway' ,new_payment_gateway_path %></li>             
         </ul>
 	</li>
     

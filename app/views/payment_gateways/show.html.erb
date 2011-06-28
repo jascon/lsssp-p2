@@ -1,0 +1,28 @@
+<% title "Payment Gateway" %>
+
+<p>
+  <strong>Api Name:</strong>
+  <%= @payment_gateway.api_name %>
+</p>
+<p>
+  <strong>Url:</strong>
+  <%= @payment_gateway.url %>
+</p>
+<p>
+  <strong>Username:</strong>
+  <%= @payment_gateway.username %>
+</p>
+<p>
+  <strong>Password:</strong>
+  <%= @payment_gateway.password %>
+</p>
+<p>
+  <strong>Active:</strong>
+  <%= @payment_gateway.active %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_payment_gateway_path(@payment_gateway) %> |
+  <%= link_to "Destroy", @payment_gateway, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", payment_gateways_path %>
+</p>
