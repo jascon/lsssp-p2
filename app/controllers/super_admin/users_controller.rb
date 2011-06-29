@@ -99,6 +99,14 @@ class SuperAdmin::UsersController < ApplicationController
       end
     end
   end
+  
+  def approve
+    @user = User.find(params[:id])
+    @user.update_attribute('approved',@user.approved? ? false : true)
+     respond_to do |format|
+       format.js
+     end
+  end
 
   # PUT /users/1
   # PUT /users/1.xml

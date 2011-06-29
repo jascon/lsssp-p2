@@ -856,16 +856,16 @@ table.tablesorter tbody tr:hover {
 	border-collapse: collapse;
 	border: 1px solid #cdcdcd;
 }
-
-.default_ {
+/*
+.not_approved {
 	background: url(/images/cros.gif) center no-repeat;
 	cursor: pointer;
 }
-.default_global	{
+.approved	{
 	background: url(/images/tick.gif) center no-repeat;
 	cursor: pointer;
 }
-
+*/
 .page_navigate {
 	cursor: pointer;
 }

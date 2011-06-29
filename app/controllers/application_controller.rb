@@ -14,6 +14,8 @@ class ApplicationController < ActionController::Base
     #@accessible_roles = Role.accessible_by(current_ability,:read)
     @accessible_roles = User::ROLES
   end
+  
+  
  
   # Make the current user object available to views
   #----------------------------------------

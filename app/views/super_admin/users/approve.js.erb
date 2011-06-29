@@ -1,0 +1,6 @@
+<% if @user.approved? %>
+$("#approve_<%=@user.id%>").html("<%=escape_javascript(link_to image_tag('tick.gif'),approve_super_admin_user_path,:remote=>true)%>")
+<% else %>
+$("#approve_<%=@user.id%>").html("<%=escape_javascript(link_to image_tag('cros.gif'),approve_super_admin_user_path,:remote=>true)%>")
+<% end %>
+

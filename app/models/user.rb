@@ -10,6 +10,18 @@ class User < ActiveRecord::Base
   
   validates :role_id,:presence=>true
   
+  def active_for_authentication? 
+   super && approved? 
+  end 
+
+  def inactive_message 
+    if !approved? 
+     :not_approved 
+   else 
+    super # Use whatever other message 
+   end 
+ end
+  
 # Class Methods
 #Scopes are dead in Rails3(from ref: http://www.railway.at/2010/03/09/named-scopes-are-dead/)
 #So use class methods instead

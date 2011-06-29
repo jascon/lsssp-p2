@@ -65,7 +65,7 @@ class SuperAdmin::RolesController < ApplicationController
   end
 
   def assign_permissions
-    @abilities = {'User'=>['read','create','update'],'Topic'=>['read','create','update','activate'],'PaymentGateway'=>['read','create','update','activate']}
+    @abilities = {'User'=>['read','create','update','approve'],'Topic'=>['read','create','update','activate'],'PaymentGateway'=>['read','create','update','activate']}
     @role = Role.find(params[:id])
     ## delete all authorizations and create again same for permissions
     @role.authorizations.clear
