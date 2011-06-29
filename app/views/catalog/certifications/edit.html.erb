@@ -1,0 +1,11 @@
+<% title "LSSSP | Edit Certification" %>
+<% content_for :sub_heading do %>
+  <%= sub_heading('CMS >> Certifications ',"Edit #{@certification.name}") %>
+<% end %>
+
+<%= render 'form' %>
+
+<div class="link_buttons">
+  <%= link_to_show([:catalog, @certification] ) %> 
+  <%=link_to_all(catalog_certifications_path)%>
+</div>

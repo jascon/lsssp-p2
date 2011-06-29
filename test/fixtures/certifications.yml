@@ -1,0 +1,9 @@
+one:
+  name: MyString
+  description: MyString
+  activate: false
+
+two:
+  name: MyString
+  description: MyString
+  activate: false

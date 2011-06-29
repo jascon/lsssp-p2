@@ -3,11 +3,10 @@
       <td><%= payment_gateway.url %></td>
       <td><%= payment_gateway.username %></td>
       <td><%= payment_gateway.password %></td>
-      <td><%= payment_gateway.active %></td>
+      <td><%= link_to_active(payment_gateway,active_payment_gateway_path(payment_gateway)) %></td>
       <td>
          <%= link_to "Show", payment_gateway,:class=>'usuallink bold_text' %> |
          <%= link_to "Edit", edit_payment_gateway_path(payment_gateway),:class=>'usuallink bold_text' %> |
-         <%= link_to "Destroy", payment_gateway, :confirm => 'Are you sure?', :method => :delete,:class=>'usuallink bold_text' %> |
-         <%=link_to payment_gateway.active? ? 'Deactivate' : 'Activate', activate_payment_gateway_path(payment_gateway) ,:class=>'usuallink bold_text'%>
+         <%= link_to "Destroy", payment_gateway, :confirm => 'Are you sure?', :method => :delete,:class=>'usuallink bold_text' %> 
      </td>
 <% end %>

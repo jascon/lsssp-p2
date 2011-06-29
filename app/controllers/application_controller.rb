@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  
   # Redirect to home page if user doesn't have permission
   #----------------------------------------------------
   rescue_from CanCan::AccessDenied do |exception|
@@ -21,5 +20,12 @@ class ApplicationController < ActionController::Base
   #----------------------------------------
   def get_user
     @current_user = current_user
+  end
+ #using this method as super in child controllers(DRY) 
+ #----------------------------------------------------
+  def active(model)
+    @model = model.find(params[:id])
+    @model.update_attribute('active',@model.active? ? false : true )  
+    respond_to { |format| format.js }
   end
 end

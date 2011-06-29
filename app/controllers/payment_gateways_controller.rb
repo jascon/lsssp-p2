@@ -43,10 +43,8 @@ class PaymentGatewaysController < ApplicationController
     @payment_gateway.destroy
     redirect_to payment_gateways_url, :notice => "Successfully destroyed payment gateway."
   end
-   def activate
-    payment_gateway = PaymentGateway.find(params[:id])
-    payment_gateway.update_attribute('active',payment_gateway.active? ? false : true )      
-    redirect_to payment_gateways_url, :notice => "Successfully Updated topic."
+   def active
+    super(PaymentGateway)
   end
   
    private

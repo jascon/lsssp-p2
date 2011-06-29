@@ -44,10 +44,8 @@ class Catalog::TopicsController < ApplicationController
     redirect_to catalog_topics_url, :notice => "Successfully destroyed topic."
   end
   
-  def activate
-    topic = Topic.find(params[:id])
-    topic.update_attribute('active',topic.active? ? false : true )      
-    redirect_to catalog_topics_url, :notice => "Successfully Updated topic."
+  def active
+    super(Topic)
   end
    private
 

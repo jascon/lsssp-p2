@@ -12,14 +12,14 @@
 		 <th width="35%">Module</th>
          <th width="20%">Allow</th>
        </tr>
-    <% @abilities.each do |key,values|%>  
+    <% ABILITIES.each do |key,values|%>  
 	   <tr>
 		 <td align="left"><b><%= key %></b></td>
 		 <td align="center">
            <%=check_box_tag "role[authorizations_attributes][][name]", key,@role.authorizations.map(&:name).include?(key)%>
          </td>
 	   </tr>
-      <% @abilities[key].each do |val| %>
+      <% ABILITIES[key].each do |val| %>
          <% authorization = Authorization.find_by_role_id_and_name(@role.id,key) %>
 	    <tr>
 		 <td align="right"><%=val%></td>
@@ -41,9 +41,9 @@
 <%=form_for @role,:url=>{:action=>'assign_permissions'}  do |f| %>
 <%= f.error_messages %>
 <% auth_attr,perm_attr = 0,0 %>
-<% @abilities.each do |key,values|%>   
+<% ABILITIES.each do |key,values|%>   
         <%=check_box_tag "role[authorizations_attributes][#{auth_attr}][name]", key,@role.authorizations.map(&:name).include?(key)%><%= key %><br/>
-           <% @abilities[key].each do |val| %>
+           <% ABILITIES[key].each do |val| %>
              <% authorization = Authorization.find_by_role_id_and_name(@role.id,key) %>
              <%=check_box_tag "role[authorizations_attributes][#{auth_attr}][permissions_attributes][#{perm_attr}][name]", val,
                       (authorization.permissions.map(&:name).include?(val) if authorization ) %><%=val%>

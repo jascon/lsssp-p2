@@ -3,7 +3,7 @@ class CreateTopics < ActiveRecord::Migration
     create_table :topics do |t|
       t.string :name,:null=>false,:limit=>25
       t.string :description,:limit=>1000
-      t.boolean :active
+      t.boolean :active,:default=>0
       t.timestamps
     end
      add_index :topics, :name,:unique => true

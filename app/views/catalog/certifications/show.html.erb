@@ -1,0 +1,25 @@
+<% title "LSSSP | Certification :  #{@certification.name}" %>
+<% content_for :sub_heading do %>
+  <%= sub_heading('CMS >> Certifications',"#{@certification.name}") %>
+<% end %>
+
+
+<p>
+  <strong>Name:</strong>
+  <%= @certification.name %>
+</p>
+<p>
+  <strong>Description:</strong>
+  <%= @certification.description %>
+</p>
+<p>
+  <strong>Active:</strong>
+  <%= @certification.active %>
+</p>
+
+<div class="link_buttons">
+   <%=link_to_edit(edit_catalog_certification_path(@certification)) %>
+   <%=link_to_delete([:catalog, @certification]) %>
+   <%=link_to_all(catalog_certifications_path)%>
+   <%=link_to_back %>
+</div>

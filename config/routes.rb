@@ -1,8 +1,4 @@
 LssspP2::Application.routes.draw do
-  resources :payment_gateways do 
-    get 'activate' ,:on=>:member
-  end
-
   devise_for :users, :path_names => { :sign_up => "register" }
 =begin
 devise_for :users, :as => "", :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" } 
@@ -21,9 +17,12 @@ match "register" => "devise/registrations#new", :as => :new_user_registration
     end
   end
   namespace :catalog do
-    resources :topics do
-      get 'activate' ,:on=>:member
+    resources :topics,:certifications do
+      get 'active' ,:on=>:member
     end
+  end
+  resources :payment_gateways do 
+    get 'active' ,:on=>:member
   end
 
   # The priority is based upon order of creation:

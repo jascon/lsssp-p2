@@ -18,6 +18,12 @@ module CustomeLinksHelper
   def link_to_back
     link_to content_tag(:span,'&larr; Back'.html_safe),:back,:class=>'btn-ltgray'
   end
-  
+  def link_to_active(model,path)
+    content = ''
+    content << "<div id='active_#{model.id}'>"
+    content << link_to(model.active? ? image_tag('tick.gif') : image_tag('cros.gif') ,path,:remote=>true)
+    content <<  "</div>"
+    content.html_safe
+  end  
 
 end

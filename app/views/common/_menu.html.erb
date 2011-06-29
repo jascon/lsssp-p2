@@ -14,7 +14,9 @@
     <li><%= tab_heading 'Catalog Management' %>
 		<ul>
 			<li><%=link_to 'Manage Topics' ,catalog_topics_path %></li>
-			<li><%=link_to 'Create Topic' ,new_catalog_topic_path %></li>             
+			<li><%=link_to 'Create Topic' ,new_catalog_topic_path %></li>   
+            <li><%=link_to 'Manage Certifications' ,catalog_certifications_path %></li>        
+            <li><%=link_to 'Create Certification' ,new_catalog_certification_path %></li>                    
         </ul>
 	</li>
     <li><%= tab_heading 'Payment Gateway Management' %>

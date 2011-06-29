@@ -46,7 +46,6 @@ class SuperAdmin::RolesController < ApplicationController
 
   def permissions
     @role = Role.find(params[:id])
-    @abilities = {'User'=>['read','create','update','approve'],'Topic'=>['read','create','update','activate'],'PaymentGateway'=>['read','create','update','activate']}
 =begin
     if @role.authorizations.blank? # already permissions exists don't build childrens
       #define Models and their actions in Hash of Arrays
@@ -65,7 +64,6 @@ class SuperAdmin::RolesController < ApplicationController
   end
 
   def assign_permissions
-    @abilities = {'User'=>['read','create','update','approve'],'Topic'=>['read','create','update','activate'],'PaymentGateway'=>['read','create','update','activate']}
     @role = Role.find(params[:id])
     ## delete all authorizations and create again same for permissions
     @role.authorizations.clear
