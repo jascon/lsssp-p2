@@ -7,7 +7,7 @@
 				 <li>Welcome <%= current_user.email %> !</li>
 				 <li><%= link_to "Sign out", destroy_user_session_path %></li>
 				 <li><%=link_to 'Profile',edit_user_registration_path %></li>
-                <% else %><!--<%= link_to "Sign up", new_user_registration_path %> or-->
+                <% else %><%= link_to "Register", new_user_registration_path %> 
                   <li><%= link_to "Sign in", new_user_session_path %></li>
 				<% end %>
 			</ul>
