@@ -7,7 +7,7 @@ gem 'devise', '1.3.4'
 gem "rake", "0.8.7"
 gem "cancan"
 gem "mocha", :group => :test
-gem "mongrel", '>= 1.2.0.pre2' 
+#gem "mongrel", '>= 1.2.0.pre2' 
 gem 'client_side_validations' 
 gem 'meta_where'
 gem "simple_form"

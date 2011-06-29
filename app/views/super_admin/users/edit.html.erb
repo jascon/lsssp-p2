@@ -19,4 +19,8 @@
  
   <p><%= f.submit "Update" %></p>
 <% end %>
-<%= link_to "Back", :back %>
+<div class="link_buttons">
+  <%= link_to_show([:super_admin,@user]) %> 
+  <%=link_to_all(super_admin_users_path)%>
+  <%=link_to_back %>
+</div>

@@ -1,8 +1,9 @@
 <h3><%= @user.email %></h3>
- 
+
+<!-- 
 <%= link_to_if(can?(:update,@user), "Edit", edit_super_admin_user_path(@user)) %> |
 <%= link_to_if(can?(:delete, @user), "Delete", super_admin_user_path(@user), :confirm => "Are you sure?", :method => :delete) {} %>
- 
+-->
 <table class="one-column-emphasis">
 	<tbody>
 		<tr>
@@ -29,3 +30,10 @@
 	<% end %>
 	</tbody>
 </table>
+
+<div class="link_buttons">
+   <%=link_to_edit(edit_super_admin_user_path(@user)) %>
+   <%=link_to_delete(super_admin_user_path(@user)) %>
+   <%=link_to_all(super_admin_users_path)%>
+   <%=link_to_back %>
+</div>
