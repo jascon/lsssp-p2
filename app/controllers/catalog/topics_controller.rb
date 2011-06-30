@@ -47,6 +47,21 @@ class Catalog::TopicsController < ApplicationController
   def active
     super(Topic)
   end
+  
+  def export
+    require 'csv'
+    topics = Topic.search(params[:search]).order("name")
+    outfile = "Topics-" + Time.now.strftime("%d-%m-%Y-%H-%M-%S") + ".csv"
+    csv_data = CSV.generate do |csv|
+      csv << ["Name","Description","Created At"]
+      topics.each do |topic|
+        csv << [topic.name,topic.description,topic.created_at]
+      end
+    end
+    send_data csv_data,
+    :type => 'text/csv; charset=iso-8859-1; header=present',
+    :disposition => "attachment; filename=#{outfile}"
+  end
    private
 
   def recent

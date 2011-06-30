@@ -7,7 +7,8 @@
 <%= render 'recent' %> </td>
 <% end %>
 <div>
-<%= link_to "Add New Topic", "#",:class=>'usuallink bold_text',:id=>'add_new' %>
+<%= link_to "Add New Topic", "#",:class=>'usuallink bold_text',:id=>'add_new' %> |
+<%=link_to "Export",export_catalog_topics_path,:class=>'usuallink bold_text' %>
 </div>
 <div id="new_form">
 <%=render 'form' %>

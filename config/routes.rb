@@ -19,6 +19,7 @@ match "register" => "devise/registrations#new", :as => :new_user_registration
   namespace :catalog do
     resources :topics,:certifications do
       get 'active' ,:on=>:member
+      get 'export',:on=>:collection
     end
   end
   resources :payment_gateways do 
