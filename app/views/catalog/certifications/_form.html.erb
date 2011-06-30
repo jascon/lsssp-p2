@@ -1,5 +1,6 @@
 <%= simple_form_for [:catalog, @certification],:validate=>true do |f| %>
   <%= f.error_messages %>
+  <%= f.association :topic %>
   <%= f.input :name %>
   <%= f.input :description %>
   <%= f.input :active %>

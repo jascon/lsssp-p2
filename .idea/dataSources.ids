@@ -1,0 +1,35 @@
+<?xml version="1.0"?><component name="dataSourceStorage">
+  <data-source source="LOCAL" name="Rails lsssp-p2: test" product="" version="" jdbc-version="" driver-version="" uuid="992b66b4-6f83-4b41-8191-45ab96161823">
+    <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+    <jdbc-url>jdbc:mysql://127.0.0.1/lsssp_p2_test</jdbc-url>
+    <user-name>root</user-name>
+    <user-password>dfd8dfc5dfc5dfde</user-password>
+    <libraries>
+      <library>
+        <url>jar://$USER_HOME$/.RubyMine31/config/jdbc-drivers/mysql-connector-java-5.1.15-bin.jar!/</url>
+      </library>
+    </libraries>
+  </data-source>
+  <data-source source="LOCAL" name="Rails lsssp-p2: development" product="" version="" jdbc-version="" driver-version="" uuid="c86562be-6ec2-4fe8-9722-d5c3ded54769">
+    <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+    <jdbc-url>jdbc:mysql://127.0.0.1/lsssp_p2_dev</jdbc-url>
+    <user-name>root</user-name>
+    <user-password>dfd8dfc5dfc5dfde</user-password>
+    <libraries>
+      <library>
+        <url>jar://$USER_HOME$/.RubyMine31/config/jdbc-drivers/mysql-connector-java-5.1.15-bin.jar!/</url>
+      </library>
+    </libraries>
+  </data-source>
+  <data-source source="LOCAL" name="Rails lsssp-p2: production" product="" version="" jdbc-version="" driver-version="" uuid="c844bfe5-b675-4119-b71f-ba861741d45c">
+    <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+    <jdbc-url>jdbc:mysql://127.0.0.1/lsssp_p2_production</jdbc-url>
+    <user-name>root</user-name>
+    <user-password>dfd8dfc5dfc5dfde</user-password>
+    <libraries>
+      <library>
+        <url>jar://$USER_HOME$/.RubyMine31/config/jdbc-drivers/mysql-connector-java-5.1.15-bin.jar!/</url>
+      </library>
+    </libraries>
+  </data-source>
+</component>

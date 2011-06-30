@@ -1,6 +1,7 @@
 class CreateCertifications < ActiveRecord::Migration
   def self.up
     create_table :certifications do |t|
+       t.string :topic_id,:null=>false
        t.string :name,:null=>false,:limit=>25
        t.string :description,:limit=>1000
        t.boolean :active,:default=>0

@@ -3,6 +3,7 @@
       <td><%= topic.description %></td>
       <td><%= link_to_active(topic,active_catalog_topic_path(topic)) %></td>
       <td>
+         <%=link_to "Certifications(#{topic.certifications.size})",catalog_certifications_path(:id=>topic.id),:class=>'usuallink bold_text'%>
         <%= link_to "Show", [:catalog, topic],:class=>'usuallink bold_text' %>
         <%= link_to "Edit", edit_catalog_topic_path(topic),:class=>'usuallink bold_text' %>
         <%= link_to "Destroy", [:catalog, topic], :confirm => 'Are you sure?', :method => :delete,:class=>'usuallink bold_text' %>       

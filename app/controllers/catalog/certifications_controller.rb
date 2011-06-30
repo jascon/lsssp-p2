@@ -3,8 +3,10 @@ class Catalog::CertificationsController < ApplicationController
  # load_and_authorize_resource
   before_filter :recent,:only=>[:index]
   def index
-    @certifications = Certification.all
-     @certification = Certification.new
+    @certifications =  params[:id].blank? ? Certification.search(params[:search]) :
+                       Certification.search(params[:search]).where(:topic_id=>params[:id])
+
+    @certification = Certification.new(:topic_id=>params[:id])
   end
 
   def show
@@ -12,7 +14,7 @@ class Catalog::CertificationsController < ApplicationController
   end
 
   def new
-    @certification = Certification.new
+    @certification = Certification.new(:topic_id=>params[:id])
   end
 
   def create

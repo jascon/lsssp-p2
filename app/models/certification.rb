@@ -1,7 +1,9 @@
 class Certification < ActiveRecord::Base
   attr_accessible :name, :description, :active
+  belongs_to :topic, :conditions =>{:active => true }
   # START --> Validations
   #------------------------------------------------------------------------------------------------------
+  validates :topic_id,:presence => true
   validates :name,:presence=>true, :uniqueness => true, :length => { :maximum => 25}
   validates_length_of :description, :maximum => 1000, :allow_blank => true
   #------------------------------------------------------------------------------------------------------
