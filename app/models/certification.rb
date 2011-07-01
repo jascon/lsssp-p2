@@ -1,6 +1,9 @@
 class Certification < ActiveRecord::Base
-  attr_accessible :name, :description, :active
+  attr_accessible :topic_id,:name, :description, :active
   belongs_to :topic, :conditions =>{:active => true }
+  has_one :examination
+  accepts_nested_attributes_for :examination, :allow_destroy => true#,:reject_if => proc { |att| att['name'] == '0' },:allow_destroy => true
+
   # START --> Validations
   #------------------------------------------------------------------------------------------------------
   validates :topic_id,:presence => true

@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me,:role_id
+  attr_accessible :name,:email, :password, :password_confirmation, :remember_me,:role_id
   
   validates :role_id,:presence=>true
   
@@ -27,13 +27,23 @@ class User < ActiveRecord::Base
 #So use class methods instead
 #------------------------------------------------------------------------------------------------------      
   class << self
-    def search(query)
-      if query
-        where(:email.matches => "%#{query}%") #from meta_where gem
+    def search(query,me,roleid)
+      if !query.nil? & !roleid.nil?
+        except_me(me).where(:email.matches => "%#{query}%" ).with_role(roleid) #from meta_where gem
+      elsif !query.nil?
+       except_me(me).where(:email.matches => "%#{query}%" )
+      elsif !roleid.nil?
+        except_me(me).with_role(roleid)
       else
-       scoped
+       except_me(me)
       end
-    end    
+    end
+    def except_me(me)
+      where('id != ?', me.id)
+    end
+    def with_role(roleid)
+      where(:role_id=>roleid)
+    end
   end
 #------------------------------------------------------------------------------------------------------   
 

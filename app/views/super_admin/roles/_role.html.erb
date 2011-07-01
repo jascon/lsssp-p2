@@ -1,6 +1,7 @@
 <%= content_tag_for(:tr,role,:class=>cycle('even', 'odd')) do -%>
 			<td><%= highlight(role.name,params[:search]) %></td>
 			<td><%= role.description %></td>
+            <td><%= link_to_active(role,active_super_admin_role_path(role)) %></td>
 			<td>
             <%=link_to 'Permissons',permissions_super_admin_role_path(role),:class=>'usuallink bold_text'%> |
             <%=link_to "View users list(#{role.users.size})",super_admin_users_path(:id=>role.id),:class=>'usuallink bold_text'%> |

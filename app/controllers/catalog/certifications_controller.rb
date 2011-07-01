@@ -7,6 +7,7 @@ class Catalog::CertificationsController < ApplicationController
                        Certification.search(params[:search]).where(:topic_id=>params[:id])
 
     @certification = Certification.new(:topic_id=>params[:id])
+    @certification.build_examination
   end
 
   def show
@@ -15,6 +16,7 @@ class Catalog::CertificationsController < ApplicationController
 
   def new
     @certification = Certification.new(:topic_id=>params[:id])
+    @certification.build_examination
   end
 
   def create

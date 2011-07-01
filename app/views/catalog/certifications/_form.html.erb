@@ -4,5 +4,16 @@
   <%= f.input :name %>
   <%= f.input :description %>
   <%= f.input :active %>
+<b>Assign A Examination For This Certification</b><br/>
+      <%= f.simple_fields_for :examination do |t| %>
+        <%=t.input :name %>
+        <%=t.input :duration %>
+        <%=t.input :positive_marks %>
+        <%=t.input :negative_marks %>
+        <%=t.input :unattempted_marks %>
+        <%=t.input :pass_marks_percentage %>
+      <% end %>
+<hr/>
+
   <%= f.submit 'Submit',:disable_with=>'Please wait...' %>
 <% end %>

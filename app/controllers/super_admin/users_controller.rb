@@ -9,14 +9,8 @@ class SuperAdmin::UsersController < ApplicationController
   #-----------------------------------------------------------------------
   def index
     #@users = 
-     @users = params[:id].blank? ? User.search(params[:search]) : 
-                       User.search(params[:search]).where(:role_id=>params[:id])
+     @users = User.search(params[:search],current_user,params[:id])
      @user = User.new(:role_id=>params[:id])
-    respond_to do |format|
-      format.json { render :json => @users }
-      format.xml  { render :xml => @users }
-      format.html
-    end
   end
 
   # GET /users/new

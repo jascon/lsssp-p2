@@ -75,6 +75,25 @@ class SuperAdmin::RolesController < ApplicationController
       render 'permissions'
     end
   end
+
+  def active
+    super(Role)
+  end
+
+   def export
+    require 'csv'
+    roles = Role.search(params[:search]).order("name")
+    outfile = "Roles -" + Time.now.strftime("%d-%m-%Y-%H-%M-%S") + ".csv"
+    csv_data = CSV.generate do |csv|
+      csv << ["Name","Description","Active?","Created At"]
+      roles.each do |role|
+        csv << [role.name,role.description,role.active? ? 'Yes' : 'No',role.created_at]
+      end
+    end
+    send_data csv_data,
+    :type => 'text/csv; charset=iso-8859-1; header=present',
+    :disposition => "attachment; filename=#{outfile}"
+  end
   private
 
   def recent

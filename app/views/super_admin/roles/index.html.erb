@@ -8,8 +8,9 @@
   <%=render 'recent' %> 
 </td>
 <% end %>
-<div>
+<div id="container">
 <%= link_to "Add New Group", "#",:class=>'usuallink bold_text',:id=>'add_new' %>
+  | <%=link_to 'Export',export_super_admin_roles_path,:class=>'usuallink bold_text' %>
 </div>
 <div id="new_form">
 <%=render 'form' %>
@@ -22,6 +23,7 @@
 		<tr>
 			<th>Name</th>
 			<th>Description</th>
+            <th>Active?</th>
 			<th>Actions</th>
 		</tr>
 	</thead>

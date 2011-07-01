@@ -7,8 +7,9 @@
   <%= render 'common/search' %>
 </td>
 <% end %>
-<div>
+<div id="container">
 	<%= link_to "Add New User", '#' ,:class=>'usuallink bold_text',:id=>'add_new'%>
+    <%= collection_select(:user, :role_id, Role.order(:name), :id,:name,{:prompt=>"Groups >>"},:class=>"width_auto position_right") %>
 </div>
 <div id="new_form">
 <%=render 'new' %>

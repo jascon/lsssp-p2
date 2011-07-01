@@ -12,8 +12,12 @@ match "register" => "devise/registrations#new", :as => :new_user_registration
       get 'approve',:on=>:member
     end
     resources :roles do
-      get 'permissions' ,:on=>:member
-      put 'assign_permissions',:on=>:member
+      member do
+         get 'permissions'
+         put 'assign_permissions'
+         get 'active'
+      end
+      get 'export',:on=>:collection
     end
   end
   namespace :catalog do

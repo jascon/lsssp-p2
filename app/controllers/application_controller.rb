@@ -24,6 +24,7 @@ class ApplicationController < ActionController::Base
  #using this method as super in child controllers(DRY) 
  #----------------------------------------------------
   def active(model)
+    puts "#################    #{params[:id]}"
     @model = model.find(params[:id])
     @model.update_attribute('active',@model.active? ? false : true )  
     respond_to { |format| format.js }

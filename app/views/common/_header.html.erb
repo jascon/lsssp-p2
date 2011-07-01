@@ -4,7 +4,8 @@
 		<div id="top_m">
 			<ul class="top_menu">
 				<% if user_signed_in? %>
-				 <li>Welcome <%= current_user.email %> !</li>
+                  <li>Welcome <%= current_user.email %> !</li>
+                 <li><%=(link_to 'Manage Groups',super_admin_roles_path) if can? :manage,Role %></li>
 				 <li><%= link_to "Sign out", destroy_user_session_path %></li>
 				 <li><%=link_to 'Profile',edit_user_registration_path %></li>
                 <% else %><%= link_to "Register", new_user_registration_path %> 
