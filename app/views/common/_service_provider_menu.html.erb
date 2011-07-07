@@ -1,0 +1,14 @@
+<ul class="page_menu">
+  <li><%= tab_heading 'Certifications of LSSSP' %>
+    <ul>
+      <li><%=link_to 'List All Certification' ,service_provider_certifications_path %></li>
+      <li><%=link_to 'Registered Certifications' ,my_certifications_service_provider_certifications_path %></li>
+    </ul>
+  </li>
+  <li><%= tab_heading 'Manage Users' %>
+    <ul>
+      <li><%=link_to 'List All Accessors' ,service_provider_users_path(:type=>'accessor') %></li>
+      <li><%=link_to 'List All Students' ,service_provider_users_path(:type=>'student') %></li>
+    </ul>
+  </li>
+</ul>

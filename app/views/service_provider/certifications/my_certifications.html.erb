@@ -1,0 +1,13 @@
+<h2>Listing All Certifications Registered you</h2>
+<% if current_user.certifications.blank? %>
+    <i>Sorry No Certifications Registered Yet..</i>
+<% else %>
+    <% for certification in current_user.certifications %>
+        <div class="certification">
+          <p>
+            <strong><%= certification.name %></strong>
+             <%= link_to "Destroy", [:service_provider, certification], :confirm => 'Are you sure?', :method => :delete,:class=>'usuallink bold_text' %>
+          </p>
+        </div>
+    <% end %>
+<% end %>

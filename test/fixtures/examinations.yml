@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  certification_id: 1
+  name: MyString
+  duration: 1
+  positive_marks: 1
+  negative_marks: 1
+  unattempted_marks: 1
+  pass_marks_percentage: 1
+
+two:
+  certification_id: 1
+  name: MyString
+  duration: 1
+  positive_marks: 1
+  negative_marks: 1
+  unattempted_marks: 1
+  pass_marks_percentage: 1

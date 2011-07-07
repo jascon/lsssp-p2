@@ -1,0 +1,14 @@
+<h2>Listing All Certifications</h2>
+<% if @certifications.blank? %>
+    <i>Sorry No Active Certifications yet...please visit again</i>
+<% else %>
+    <% for certification in @certifications %>
+        <div class="certification">
+          <p>
+            <strong><%= certification.name %></strong>
+            <%= link_to "Register", service_provider_certifications_path(:id =>certification.id), :method => :post %>
+          </p>
+        </div>
+    <% end %>
+<% end %>
+

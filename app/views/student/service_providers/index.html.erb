@@ -1,0 +1,14 @@
+<h2>Listing All Service Providers</h2>
+<% if @service_providers.blank? %>
+    <i>Sorry No Active Service Providers yet...please visit again</i>
+<% else %>
+    <% for service_provider in @service_providers %>
+        <div class="service_provider">
+          <p>
+            <strong><%=h service_provider.name %></strong>
+            <%= link_to "Register", followings_path(:follower_id =>service_provider), :method => :post %>
+          <div class="clear"></div>
+          </p>
+        </div>
+    <% end %>
+<% end %>

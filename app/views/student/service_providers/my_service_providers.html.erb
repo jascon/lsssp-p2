@@ -1,0 +1,9 @@
+<h2>Your Service Providers</h2>
+<ul>
+  <% for following in current_user.followings %>
+  <li>
+    <%= following.follower.name %>
+    (<%= link_to "remove", following, :method => :delete %>)
+  </li>
+  <% end %>
+</ul>
