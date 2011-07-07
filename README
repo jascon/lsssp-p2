@@ -7,16 +7,36 @@ Mysql 5.5.11 or above
 #cd lsssp-p2
 #change database.yml for you db
 #bundle install
-#rake lsssp:setup
+#rake lsssp:setup(it will take time to populate the database)
 #rails s
+---------------------------------------
+Login as Superadmin
+----------------------------------------
+     email : superadmin@lsssp.org
+  password : superadmin123
+----------------------------------------
+Login as Service Provider
+----------------------------------------
+     email : service_provider1@lsssp.org
+  password : password
+----------------------------------------
+Login as Student
+----------------------------------------
+     email : student1@lsssp.org
+  password : password
 
-now login with -- superadmin@gmail.com
-                  superadmin123
 ########## END INSTALLTION ###########
 
 Commits
+------------------------------------------------------------------------------------
+Upender                                               07-07-2011
 
------------------------------------------------------------------
+1)Students able to Register with Service Providers
+2)Service Providers are able see his/her Students & Accessors
+3)Added Pagination Styles
+3)Menu is separated from Students ,Superadmin , Service Providers
+
+------------------------------------------------------------------------------------
 Upender                                               24-06-2011
 
 1)Added Permissions for users (both create and update) from roles
