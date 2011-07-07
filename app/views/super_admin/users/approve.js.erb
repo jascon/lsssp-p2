@@ -1,3 +1,3 @@
-$("#approve_<%=@user.id%>").html("<%=escape_javascript(link_to @user.approved? ? image_tag('cros.gif') : image_tag('tick.gif'),approve_super_admin_user_path,:remote=>true)%>")
+$("#approve_<%=@user.id%>").html("<%=escape_javascript(link_to @user.approved? ? image_tag('tick.gif') : image_tag('cros.gif'),approve_super_admin_user_path,:remote=>true)%>")
 
 

@@ -11,7 +11,9 @@
 		<div id="page_container">
 			<%= render 'common/header'%>
 			<div id="page_menu">
-				<%= render 'common/menu' if user_signed_in? %>
+				<%= render 'common/menu' if user_signed_in? & has_role?(:super_admin) %>
+                <%= render 'common/student_menu' if user_signed_in? & has_role?(:student) %>
+                <%= render 'common/service_provider_menu' if user_signed_in? & has_role?(:service_provider) %>
 			</div>
 			<div id="page_content">
 				<div class="content">

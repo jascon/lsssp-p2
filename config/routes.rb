@@ -1,4 +1,8 @@
 LssspP2::Application.routes.draw do
+  get "users/index"
+
+  get "service_providers/index"
+
   devise_for :users, :path_names => { :sign_up => "register" }
 =begin
 devise_for :users, :as => "", :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" } 
@@ -6,11 +10,16 @@ match "login" => "devise/sessions#new", :as => :new_user_session
 match "logout" => "devise/sessions#destroy", :as => :destroy_user_session
 match "register" => "devise/registrations#new", :as => :new_user_registration
 =end
-  
+  resources :followings
+  #Superadmin Namespace
+  #--------------------------------------------------------------------------
   namespace :super_admin do
     resources :users do 
       get 'approve',:on=>:member
     end
+  #---------------------------------------------------------------------------
+  # ROles
+  #---------------------------------------------------------------------------
     resources :roles do
       member do
          get 'permissions'
@@ -20,6 +29,25 @@ match "register" => "devise/registrations#new", :as => :new_user_registration
       get 'export',:on=>:collection
     end
   end
+  #--------------------------------------------------------------------------
+  #Student namespace
+  #--------------------------------------------------------------------------
+  namespace :student do
+    resources :service_providers do
+      get 'my_service_providers',:on=>:collection
+    end
+  end
+  #--------------------------------------------------------------------------
+  #Service Provider Namespace
+  #--------------------------------------------------------------------------
+  namespace :service_provider do
+    resources :certifications do
+      get 'my_certifications',:on=>:collection
+    end
+    resources :users
+  end
+  #--------------------------------------------------------------------------
+
   namespace :catalog do
     resources :topics,:certifications do
       get 'active' ,:on=>:member

@@ -1,10 +1,18 @@
 class Certification < ActiveRecord::Base
   attr_accessible :topic_id,:name, :description, :active
+
+# Associations
+#-------------------------------------------------------------------------------------------------------
   belongs_to :topic, :conditions =>{:active => true }
-  has_one :examination
+  has_one :examination,:dependent=>:destroy
+
+  has_many :certificate_providers
+  has_many :users, :through => :certificate_providers
+#------------------------------------------------------------------------------------------------------
+
   accepts_nested_attributes_for :examination, :allow_destroy => true#,:reject_if => proc { |att| att['name'] == '0' },:allow_destroy => true
 
-  # START --> Validations
+# START --> Validations
   #------------------------------------------------------------------------------------------------------
   validates :topic_id,:presence => true
   validates :name,:presence=>true, :uniqueness => true, :length => { :maximum => 25}
@@ -21,6 +29,10 @@ class Certification < ActiveRecord::Base
       else
         scoped
       end
+    end
+
+    def active
+      where(:active=>true).order('name')
     end
 
     def recent

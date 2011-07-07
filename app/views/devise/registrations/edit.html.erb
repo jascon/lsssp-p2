@@ -1,29 +1,45 @@
 <% title "Lsssp : My Profile" %>
 <% content_for :sub_heading do %>
-  <%= sub_heading('Profile','Update') %>
+    <%= sub_heading('Profile','Update') %>
 <% end %>
+
+<hr/>
+<h2>Your Service Providers</h2>
+<ul>
+  <% for following in current_user.followings %>
+      <li>
+        <%= following.follower.name %>
+        (<%= link_to "remove", following, :method => :delete %>)
+      </li>
+  <% end %>
+</ul>
+
+
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= f.error_messages %>
+    <%= f.error_messages %>
 
-  <p><%= f.label :email %><br />
-  <%= f.email_field :email %></p>
+    <p><%= f.label :email %><br />
+      <%= f.email_field :email %></p>
 
-  <p><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password %></p>
+    <p><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+      <%= f.password_field :password %></p>
 
-  <p><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></p>
+    <p><%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation %></p>
 
-  <p><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-  <%= f.password_field :current_password %></p>
- 
-   <p>Role<br />
-   <%= collection_select(:user,:role_id,Role.order('name'),:id,:name,:prompt=>"Select a Role") %> 
- </p>
+    <p><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+      <%= f.password_field :current_password %></p>
+
+    <p>Role<br />
+      <%= collection_select(:user,:role_id,Role.order('name'),:id,:name,:prompt=>"Select a Role") %>
+    </p>
 
 
-  <p><%= f.submit "Update" %></p>
+    <p><%= f.submit "Update" %></p>
 <% end %>
+
+
+<hr/>
 
 <h3>Cancel my account</h3>
 
