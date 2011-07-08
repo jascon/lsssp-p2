@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list id="64c1dc34-4578-4182-847c-ace90ae68330" name="Default" comment="added fake data and updated Superadmin Users" />
     <list default="true" id="61ebeac7-5016-42ee-bea8-c7571811d384" name="Namespace" comment="Updated README">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/upender.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/upender.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="DELETED" beforePath="C:\Upender\Work\RubyMineWorkSpace\lsssp-p2\app\controllers\service_provider\users_controller.rb" afterPath="" />
+      <change type="DELETED" beforePath="C:\Upender\Work\RubyMineWorkSpace\lsssp-p2\app\helpers\service_provider\users_helper.rb" afterPath="" />
+      <change type="DELETED" beforePath="C:\Upender\Work\RubyMineWorkSpace\lsssp-p2\test\functional\service_provider\users_controller_test.rb" afterPath="" />
+      <change type="DELETED" beforePath="C:\Upender\Work\RubyMineWorkSpace\lsssp-p2\test\unit\helpers\service_provider\users_helper_test.rb" afterPath="" />
     </list>
     <ignored path="lsssp-p2.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -505,13 +507,6 @@
     <entry file="file://$PROJECT_DIR$/app/controllers/service_provider/students_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="25" column="58" selection-start="926" selection-end="926" vertical-scroll-proportion="0.7227891">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/service_provider/users_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="56" selection-start="963" selection-end="1020" vertical-scroll-proportion="0.7517007">
           <folding />
         </state>
       </provider>
