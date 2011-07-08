@@ -40,13 +40,26 @@ class User < ActiveRecord::Base
       super # Use whatever other message
     end
   end
-
-  def students
-     inverse_followers.where(:role_id=>4)
+##instance methods available for the user eg: current_user.students
+#-------------------------------------------------------------------------------------------------
+  def students( approved = 'all')
+    if approved == 'yes'
+      inverse_followers.where(:role_id=>4,:approved=>true)
+    elsif approved == 'no'
+      inverse_followers.where(:role_id=>4,:approved=>false)
+    else
+      inverse_followers.where(:role_id=>4)
+    end
   end
 
-  def accessors
-    inverse_followers.where(:role_id=>3)
+  def assessors( approved = 'all')
+    if approved == 'yes'
+      inverse_followers.where(:role_id=>3,:approved=>true)
+    elsif approved == 'no'
+      inverse_followers.where(:role_id=>3,:approved=>false)
+    else
+      inverse_followers.where(:role_id=>3)
+    end
   end
 #----------------------------------------------------------------------------------------------------
 
@@ -72,6 +85,7 @@ class User < ActiveRecord::Base
     def with_role(roleid)
       where(:role_id=>roleid,:approved=>true)
     end
+
   end
 #------------------------------------------------------------------------------------------------------   
 

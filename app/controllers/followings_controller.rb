@@ -1,7 +1,7 @@
 class FollowingsController < ApplicationController
   def create
     @following = current_user.followings.build(:follower_id => params[:follower_id])
-    if @following.save
+    if @following.save!
       flash[:notice] = "Registered With Service Provider."
       redirect_to root_url
     else

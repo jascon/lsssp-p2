@@ -1,0 +1,3 @@
+$("#approve_<%=@user.id%>").html("<%=escape_javascript(link_to @user.approved? ? image_tag('tick.gif') : image_tag('cros.gif'),approve_service_provider_assessor_path,:remote=>true)%>")
+
+

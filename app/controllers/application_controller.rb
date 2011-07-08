@@ -36,8 +36,8 @@ class ApplicationController < ActionController::Base
 
   # Only Accessor can access certain pages
   #------------------------------------------------------
-  def must_be_accessor
-    unless current_user.role.name.eql?('Accessor')
+  def must_be_assessor
+    unless current_user.role.name.eql?('Assessor')
       flash[:error] = "Access denied."
       redirect_to root_url
     end

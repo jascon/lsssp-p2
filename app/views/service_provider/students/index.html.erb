@@ -1,0 +1,32 @@
+<% title "Lsssp : Service Provider - #{current_user.name}" %>
+<% content_for :sub_heading do %>
+    <%= sub_heading('Service Provider ','Students') %>
+<% end %>
+<div id="container">
+  <%=link_to "Export",export_service_provider_students_path(:approved=>params[:approved]),:class=>'usuallink bold_text' %> |
+  <%= link_to "PDF", '#' ,:class=>'usuallink bold_text' %> |
+  <%= link_to "Search", '#' ,:class=>'usuallink bold_text' %>
+  <%= select_tag( :sp_students_approved, options_for_select({"All" => "all", "Approved" => 'yes',"Non-Approved"=>'no'},{:selected=>params[:approved]}),
+                  :class=>"width_auto position_right") %>
+</div>
+<%if @users.blank? %>
+    <div class="error_msg">
+      Sorry No Users Found..!
+    </div>
+<% else %>
+    <table class="tablesorter">
+      <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Registration Date</th>
+        <th>Approved?</th>
+        <th>&nbsp;</th>
+      </tr>
+      </thead>
+      <tbody>
+      <%= render :partial=>'student',:collection=>@users %>
+      </tbody>
+    </table>
+<% end %>

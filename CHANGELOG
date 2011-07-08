@@ -1,0 +1,31 @@
+
+Commits
+------------------------------------------------------------------------------------
+Upender                                               08-07-2011
+
+1)List of Assessors, Students can be accessible by Service provider
+2)Service Providers Can Approve or unapprove the Student or Assessor
+------------------------------------------------------------------------------------
+Upender                                               07-07-2011
+
+1)Students able to Register with Service Providers
+2)Service Providers are able see his/her Students & Accessors
+3)Added Pagination Styles
+3)Menu is separated from Students ,Superadmin , Service Providers
+
+------------------------------------------------------------------------------------
+Upender                                               24-06-2011
+
+1)Added Permissions for users (both create and update) from roles
+2)Improved Styles
+3)Added CustomLinks helper for DRY
+3)Added Seach functionality for topics,roles,users
+-------------------------------------------------------------------------------------
+Upender                                               16-06-2011
+
+1)Intergrated Device with confirmable functionality.
+2)For Role base authorization used CanCan created one superadmin user.
+3)Ability model added for CanCan to implement permissions to users.
+3)Superadmin role,now superadmins are able manage the CRUD for user.
+
+--------------------------------------------------------------------------------------

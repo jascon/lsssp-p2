@@ -1,7 +1,28 @@
 class ServiceProvider::UsersController < ApplicationController
-   before_filter :authenticate_user!,:must_be_service_provider
+  before_filter :authenticate_user!,:must_be_service_provider
   def index
-    @users = params[:type].eql?('accessor') ? current_user.accessors : current_user.students
+    @users = params[:type].eql?('assessor') ? current_user.assessors(params[:approved]) : current_user.students
+  end
+  def approve
+    @user = User.find(params[:id])
+    @user.update_attribute('approved',@user.approved? ? false : true)
+    respond_to do |format|
+      format.js
+    end
+  end
+  def export
+     require 'csv'
+    users = params[:type].eql?('assessor') ? current_user.assessors(params[:approved]) : current_user.students
+    outfile = "Users-" + Time.now.strftime("%d-%m-%Y-%H-%M-%S") + ".csv"
+    csv_data = CSV.generate do |csv|
+      csv << ["Name","Email","Registration Date","Approved?"]
+      users.each do |user|
+        csv << [user.name,user.email,user.created_at,user.approved? ? 'yes' : 'no']
+      end
+    end
+    send_data csv_data,
+    :type => 'text/csv; charset=iso-8859-1; header=present',
+    :disposition => "attachment; filename=#{outfile}"
   end
 
 end

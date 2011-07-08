@@ -14,17 +14,17 @@ match "register" => "devise/registrations#new", :as => :new_user_registration
   #Superadmin Namespace
   #--------------------------------------------------------------------------
   namespace :super_admin do
-    resources :users do 
+    resources :users do
       get 'approve',:on=>:member
     end
-  #---------------------------------------------------------------------------
-  # ROles
-  #---------------------------------------------------------------------------
+    #---------------------------------------------------------------------------
+    # ROles
+    #---------------------------------------------------------------------------
     resources :roles do
       member do
-         get 'permissions'
-         put 'assign_permissions'
-         get 'active'
+        get 'permissions'
+        put 'assign_permissions'
+        get 'active'
       end
       get 'export',:on=>:collection
     end
@@ -44,7 +44,10 @@ match "register" => "devise/registrations#new", :as => :new_user_registration
     resources :certifications do
       get 'my_certifications',:on=>:collection
     end
-    resources :users
+    resources :assessors,:students  do
+      get 'approve',:on=>:member
+      get 'export',:on=>:collection
+    end
   end
   #--------------------------------------------------------------------------
 
@@ -54,7 +57,7 @@ match "register" => "devise/registrations#new", :as => :new_user_registration
       get 'export',:on=>:collection
     end
   end
-  resources :payment_gateways do 
+  resources :payment_gateways do
     get 'active' ,:on=>:member
   end
 

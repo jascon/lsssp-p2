@@ -4,12 +4,20 @@
 /* On click Or Change Functions */
 
 $(document).ready( function() {
-	$('#add_new').click( function() {
-		$('#new_form').slideToggle("slow");
-	});
-	//
+    $('#add_new').click( function() {
+        $('#new_form').slideToggle("slow");
+    });
+    //
     $('#user_role_id').change(function() {
-       window.location = "/super_admin/users?id="+$('#user_role_id').val();
-     });
-
+        window.location = "/super_admin/users?id="+$('#user_role_id').val();
+    });
+    //
+    $('#sp_assessors_approved').change(function() {
+        window.location = "/service_provider/assessors?approved="+$('#sp_assessors_approved').val()
+    });
+    //
+    $('#sp_students_approved').change(function() {
+        window.location = "/service_provider/students?approved="+$('#sp_students_approved').val()
+    });
+    //
 });

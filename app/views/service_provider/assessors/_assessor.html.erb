@@ -1,0 +1,19 @@
+<%= content_tag_for(:tr,assessor,:class=>cycle('even', 'odd')) do -%>
+<td><%= assessor.role.name %></td>
+<td><%= assessor.name %></td>
+<td><%= highlight(assessor.email,params[:search]) %></td>
+<td><%= assessor.created_at %></td>
+<td>
+ <div id="approve_<%=assessor.id%>">
+   <%=link_to assessor.approved? ? image_tag('tick.gif') : image_tag('cros.gif') ,approve_service_provider_assessor_path(assessor),:remote=>true %>
+ </div>
+</td>
+<td>
+  <%=link_to "Students(#{assessor.students.size})","#",:class=>"usuallink bold_text" %>
+  <%= link_to('Assign Students',service_provider_assessor_path(assessor),:class=>"usuallink bold_text") if assessor.approved? %>
+</td>
+<% end %>
+
+
+
+
