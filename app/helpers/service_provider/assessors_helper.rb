@@ -1,0 +1,2 @@
+module ServiceProvider::AssessorsHelper
+end
