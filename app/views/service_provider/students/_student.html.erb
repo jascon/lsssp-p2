@@ -1,5 +1,5 @@
 <%= content_tag_for(:tr,student,:class=>cycle('even', 'odd')) do -%>
-<td><%= student.role.name %></td>
+<td><%= student.following_assessors.size %></td>
 <td><%= student.name %></td>
 <td><%= highlight(student.email,params[:search]) %></td>
 <td><%= student.created_at %></td>

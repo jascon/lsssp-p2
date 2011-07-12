@@ -1,0 +1,27 @@
+<table class="tablesorter">
+  <thead>
+  <tr>
+    <th>&nbsp;</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Registration Date</th>
+    <th>Approved?</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% for student in @students %>
+      <tr class="<%=cycle('even', 'odd')%>">
+        <td><%= check_box_tag "student_ids[]", student.id %></td>
+        <td><%= student.name %></td>
+        <td><%= student.email %></td>
+        <td><%= student.created_at %></td>
+        <td>
+          <div id="approve_<%=student.id%>">
+            <%=link_to student.approved? ? image_tag('tick.gif') : image_tag('cros.gif') ,approve_service_provider_student_path(student),:remote=>true %>
+          </div>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+

@@ -1,1 +1,15 @@
-<h1>Under Construction..</h1>
+<% title "Lsssp : Service Provider - #{current_user.name}" %>
+<% content_for :sub_heading do %>
+    <%= sub_heading('Service Provider ',"Assign Students to #{@assessor.name}") %>
+<% end %>
+
+<%if @students.blank? %>
+    <div class="error_msg">
+      Sorry No Students Found for you..!
+    </div>
+<% else %>
+    <%= form_tag(service_provider_assessor_path(@assessor),:method=>:put) do %>
+        <%= render :partial=>'student',:locals=>{:students=>@students} %>
+        <%= submit_tag 'Assign' %>
+    <% end %>
+<% end %>

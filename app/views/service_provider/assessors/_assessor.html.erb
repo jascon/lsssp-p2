@@ -9,7 +9,7 @@
  </div>
 </td>
 <td>
-  <%=link_to "Students(#{assessor.students.size})","#",:class=>"usuallink bold_text" %>
+  <%=link_to "Students(#{assessor.students.size})",students_service_provider_assessor_path(assessor),:class=>"usuallink bold_text" %>
   <%= link_to('Assign Students',service_provider_assessor_path(assessor),:class=>"usuallink bold_text") if assessor.approved? %>
 </td>
 <% end %>

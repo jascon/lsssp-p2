@@ -47,6 +47,7 @@ match "register" => "devise/registrations#new", :as => :new_user_registration
     resources :assessors,:students  do
       get 'approve',:on=>:member
       get 'export',:on=>:collection
+      get 'students',:on=>:member
     end
   end
   #--------------------------------------------------------------------------

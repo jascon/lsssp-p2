@@ -3,6 +3,35 @@ class ServiceProvider::AssessorsController < ApplicationController
   def index
     @users = current_user.assessors(params[:approved])
   end
+
+# only the students belongs to this service provider are assign to an assessor
+  def show
+    @assessor = User.find(params[:id])
+    @students = current_user.students - @assessor.students # assign only students they are  not already assigned to an Assessor
+  end
+
+  def update
+    assessor = User.find(params[:id])
+    for student_id in params[:student_ids]
+      assessor.inverse_followings.create(:user_id=>student_id)
+    end
+    redirect_to service_provider_assessor_path(@assessor),:notice=>"Students Assigned Successfully.."
+  end
+
+  def destroy
+    assessor = User.find(params[:id])
+    if params[:commit] == "Remove"
+      Following.delete(:user_id=>params[:student_ids],:follower_id=>assessor.id)
+      flash[:notice]="Students Removed Successfully.."
+    else
+      for student_id in params[:student_ids]
+        Following.find_by_user_id_and_follower_id(student_id,assessor.id).update_attribute('follower_id',params[:user][:assessor_id])
+      end
+      flash[:notice]="Students Transferred Successfully.."
+    end
+    redirect_to students_service_provider_assessor_path(@assessor)
+  end
+
   def approve
     @user = User.find(params[:id])
     @user.update_attribute('approved',@user.approved? ? false : true)
@@ -10,12 +39,10 @@ class ServiceProvider::AssessorsController < ApplicationController
       format.js
     end
   end
-  def show
+
+  def students
     @assessor = User.find(params[:id])
-  end
-
-  def update
-
+    @students = @assessor.students
   end
 
   def export

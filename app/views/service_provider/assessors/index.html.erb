@@ -1,6 +1,6 @@
 <% title "Lsssp : Service Provider - #{current_user.name}" %>
 <% content_for :sub_heading do %>
-    <%= sub_heading('Service Provider ','Assessor') %>
+    <%= sub_heading('Service Provider ','Assessors') %>
 <% end %>
 <div id="container">
   <%=link_to "Export",export_service_provider_assessors_path(:approved=>params[:approved]),:class=>'usuallink bold_text' %> |

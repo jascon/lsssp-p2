@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name,:email, :password, :password_confirmation, :remember_me,:role_id
+  attr_accessible :name,:email, :password, :password_confirmation, :remember_me,:role_id,:follower_ids
 
 # Students can register with service providers & service provider get his students(using inverse)
 #-------------------------------------------------------------------------------------------------
@@ -61,6 +61,10 @@ class User < ActiveRecord::Base
       inverse_followers.where(:role_id=>3)
     end
   end
+
+ def following_assessors
+      followers.where(:role_id=>3,:approved=>true)
+ end
 #----------------------------------------------------------------------------------------------------
 
 # Class Methods
