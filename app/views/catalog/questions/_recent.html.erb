@@ -1,0 +1,158 @@
+<%= javascript_include_tag 'jquery.nestedAccordion'%>
+<style type='text/css'>		/* --------
+			 The CSS rules offered here are just an example. You can style the 'accordion' in any way you like.
+			 The styles for the Page Structure are needed just for the purpose of this demo page.
+			 If you decide to use the CSS rules in 'Accordion' (see below) as a base,
+			 be sure to rename the selectors as to satisfy the elements in your site.
+			 --------- */
+
+/* --- Page Structure  --- */
+#site_wrapper {
+    margin-bottom:30px;
+    padding:10px 2.5%;
+    border-top:0.1em solid #ccc;
+    background:#fff;
+    text-align:left;
+    overflow:hidden
+}
+#site_container {
+    float:left;
+    width:100%;
+    margin-right:-19em;
+    padding:0 0 1em;
+    position:relative;
+    min-height:0
+}
+#site_main {
+
+    position:relative;
+    min-height:0
+}
+p {
+    margin: 0 10px 1em
+}
+.strong {
+    font-weight:700
+}
+.clear {
+    clear:both
+}
+
+h4 a, h5 a {
+    padding:3px 10px
+}
+h4, h5 {
+    font-size:1em
+}
+#site_main h2 {
+    background-color:#f0f0f0
+}
+/* --- Links --- */
+h4, h5 a {
+    padding:1px;
+    border:1px solid #e0e0e0;
+    color:#05b
+}
+h4, h5 a:hover, h4, h5 a:focus, h4, h5 a:active {
+    border-color:#bcd;
+    text-decoration:none;
+    outline:0 none
+}
+/* --- Accordion --- */
+.js #site_main .site_accordion {
+    visibility:hidden
+}
+.site_accordion {
+    margin:0;
+    padding:0 0px;
+}
+.site_accordion .outer {
+
+
+    background: #fff
+}
+.site_accordion .inner {
+    margin-bottom:0;
+    padding:.5em 20px 1em;
+    position:relative;
+    overflow:hidden
+}
+.site_accordion .inner .inner {
+    padding-bottom:0
+}
+.site_accordion .h {
+  /*  padding-top:.3em */
+} /* vertical padding instead of vertical margin (ie8) */
+.site_accordion p {
+    margin-top:.5em
+}
+    /*
+              Add styles for all links in the 'accordion':
+              .site_accordion a {...}
+              */
+
+a.trigger {
+    padding-left:20px;
+    background-image: url(/images/plus.gif);
+    background-repeat: no-repeat;
+    background-position: 1px 50%;
+    font-weight:700
+}
+a.trigger.open {
+    background-image: url(/images/minus.gif)
+}
+.last-child a.trigger {
+    padding-left:1px;
+    background-image:none;
+    font-weight:normal
+}
+#site_main a.trigger {
+    background-color:#f0f0f0
+}
+#site_main a.trigger.open {
+    border-color:#dadada;
+    background-color:#e7e7e7
+}
+#site_main a:hover.trigger.open, #main a:focus.trigger.open, #main a:active.trigger.open {
+    border-color:#bcd
+}
+</style>
+<script type="text/javascript">
+    <!--//--><![CDATA[//><!--
+    $("html").addClass("js");
+    $.fn.accordion.defaults.container = false;
+    $(function() {
+        $("#acc2").accordion({
+            obj: "div",
+            wrapper: "div",
+            el: ".h",
+            head: "h4, h5",
+            next: "div"
+           // initShow : "div.outer:eq(0)"
+        });
+        $("html").removeClass("js");
+    });
+    //--><!]]>
+</script>
+<div class="recent_items">
+  <div class="margin">
+    <h3>Sort by Topic</h3>
+      <div id="site_main">
+        <div id="acc2" class="site_accordion">
+          <% for topic in @topics %>
+              <h4><%= topic.name %></h4>
+              <% if topic.subtopics.blank? %>
+                  <div class="empty">No Subtopics...</div>
+              <% else %>
+                     <div><ul>
+                    <% for subtopic in topic.subtopics %>
+                      <li><%=link_to "#{subtopic.name}  (#{subtopic.questions.size})",catalog_questions_path(:subtopic_id => subtopic.id),:class => 'usuallink' %></li>
+                    <% end %>
+                         </ul>
+                    </div>
+              <% end %>
+          <% end %>
+        </div>
+      </div>
+  </div>
+</div>

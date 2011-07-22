@@ -1,0 +1,24 @@
+<% title "Catalog/Question" %>
+
+<p>
+  <strong>Topic:</strong>
+  <%= @question.topic_id %>
+</p>
+<p>
+  <strong>Subtopic:</strong>
+  <%= @question.subtopic_id %>
+</p>
+<p>
+  <strong>Content:</strong>
+  <%= @question.content %>
+</p>
+<p>
+  <strong>Correct Answer:</strong>
+  <%= @question.correct_answer %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_catalog_question_path(@question) %> |
+  <%= link_to "Destroy", [:catalog, @question], :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", catalog_questions_path %>
+</p>

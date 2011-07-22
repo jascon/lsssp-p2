@@ -1,0 +1,4 @@
+$("#active_<%=@model.id%>").html("<%=escape_javascript(link_to @model.active? ? image_tag('tick.gif') : image_tag('cros.gif'),
+                                     active_catalog_subtopic_path,:remote=>true)%>")
+
+

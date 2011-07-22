@@ -1,0 +1,30 @@
+<% title "Lsssp : Service Provider - #{@service_provider.name}" %>
+<% content_for :sub_heading do %>
+    <%= sub_heading('Service Provider ',"Certifications") %>
+<% end %>
+<h3>Certifications offered by <i><%= @service_provider.name %></i> </h3>
+
+<table class="list" cellpadding="13" cellspacing="10px;">
+  <% for certification in @service_provider.certifications %>
+      <tr>
+        <td class="logo">Logo</td>
+        <td class="info">
+          <strong>
+            <%=link_to certification.name ,'#',:class=>'tipTipRight',:title=> examination_info(certification) %>
+          </strong>   <br/>
+          Price : A$ <%= certification.price %>
+        </td>
+        <td class="links">
+          <% if @owned_certifications.exists?(:certification_id=>certification.id) %>
+              <%=link_to 'Already Own','#',:class=>'tipTip',:title=>'Exam Details will Display here' %>
+          <% else %>
+              <%=link_to content_tag(:span,'Buy'),student_service_providers_path(:id=>@service_provider,:cid=>certification.id),
+                         :method=>:post ,:class=>'btn-blue tipTip',:title=>'Clicking on this will be redirect to Paypal Payment Gateway.',:style=>'float:right;' %>
+          <% end %>
+        </td>
+      </tr>
+  <% end %>
+</table>
+
+
+

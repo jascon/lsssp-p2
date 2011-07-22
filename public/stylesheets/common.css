@@ -1,196 +1,277 @@
 /*START SImple form css */
 .simple_form label {
-	float: left;
-	width: 100px;
-	text-align: right;
-	margin: 2px 10px;
+    float: left;
+    width: 250px;
+    text-align: right;
+    margin: 2px 10px;
 }
 .simple_form div.input {
-	margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 .simple_form div.boolean, .simple_form input[type='submit'] {
-	margin-left: 120px;
+    margin-left: 120px;
 }
 .simple_form div.boolean label {
-	float: none;
-	margin: 0;
+    float: none;
+    margin: 0;
 }
+
+
 .simple_form label abbr {
-   color : red;
+    color : red;
+}
+
+.simple_form label.collection_radio {
+  margin-right: 10px;
+  margin-left: 2px;
+}
+
+.simple_form .error {
+  clear: left;
+  margin-left: 120px;
+  font-size: 12px;
+  color: #D00;
+  display: block;
+}
+
+.simple_form .hint {
+  clear: left;
+  margin-left: 120px;
+  font-size: 12px;
+  color: #555;
+  display: block;
+  font-style: italic;
 }
 /*END  Simple Form CSS */
 
 /*START      FLASH AND ERROR MESSAGES */
 #flash_notice, #flash_error, #flash_alert {
-	padding: 5px 8px;
-	margin: 10px 0;
+    padding: 5px 8px;
+    margin: 10px 0;
 }
 #flash_notice {
-	background-color: #CFC;
-	border: solid 1px #6C6;
+    background-color: #CFC;
+    border: solid 1px #6C6;
 }
 #flash_error, #flash_alert {
-	background-color: #FCC;
-	border: solid 1px #C66;
+    background-color: #FCC;
+    border: solid 1px #C66;
 }
 .fieldWithErrors {
-	display: inline;
+    display: inline;
 }
 .error_messages {
-	width: 400px;
-	border: 2px solid #CF0000;
-	padding: 0px;
-	padding-bottom: 12px;
-	margin-bottom: 20px;
-	background-color: #f0f0f0;
-	font-size: 12px;
+    width: 400px;
+    border: 2px solid #CF0000;
+    padding: 0px;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+    background-color: #f0f0f0;
+    font-size: 12px;
 }
 .error_messages h2 {
-	text-align: left;
-	font-weight: bold;
-	padding: 5px 10px;
-	font-size: 12px;
-	margin: 0;
-	background-color: #c00;
-	color: #fff;
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 10px;
+    font-size: 12px;
+    margin: 0;
+    background-color: #c00;
+    color: #fff;
 }
 .error_messages p {
-	margin: 8px 10px;
+    margin: 8px 10px;
 }
 .error_messages ul {
-	margin: 0;
+    margin: 0;
 }
 span.error {
-	color: #D00;
-	padding-left: 5px;
-	font-size: 12px;
+    color: #D00;
+    padding-left: 5px;
+    font-size: 12px;
 }
 /*END      FLASH AND ERROR MESSAGES */
 
 /*Start Pagination */
 .lsssp_pagination {
-  text-align: center;
-  padding: .3em; }
-  .lsssp_pagination a, .lsssp_pagination span {
+    text-align: center;
+    padding: .3em; }
+.lsssp_pagination a, .lsssp_pagination span {
     padding: .2em .5em; }
-  .lsssp_pagination span.disabled {
+.lsssp_pagination span.disabled {
     color: #AAA; }
-  .lsssp_pagination span.current {
+.lsssp_pagination span.current {
     font-weight: bold;
     color: #FF0084; }
-  .lsssp_pagination a {
+.lsssp_pagination a {
     border: 1px solid #DDDDDD;
     color: #0063DC;
     text-decoration: none; }
-    .lsssp_pagination a:hover, .lsssp_pagination a:focus {
-      border-color: #003366;
-      background: #0063DC;
-      color: white; }
-  .lsssp_pagination .page_info {
+.lsssp_pagination a:hover, .lsssp_pagination a:focus {
+    border-color: #003366;
+    background: #0063DC;
+    color: white; }
+.lsssp_pagination .page_info {
     color: #aaa;
     padding-top: .8em; }
-  .lsssp_pagination .prev_page, .lsssp_pagination .next_page {
+.lsssp_pagination .prev_page, .lsssp_pagination .next_page {
     border-width: 2px; }
-  .lsssp_pagination .prev_page {
+.lsssp_pagination .prev_page {
     margin-right: 1em; }
-  .lsssp_pagination .next_page {
+.lsssp_pagination .next_page {
     margin-left: 1em; }
 /*END Pagination */
 
 
 /*START Button Link Css */
 div.link_buttons {
-	margin-bottom: 4px;
-	height: 21px;
-	margin-top: 10px;
-	padding-left: 50px;
+    margin-bottom: 4px;
+    height: 21px;
+    margin-top: 10px;
+    padding-left: 50px;
 }
 .btn-blue, .btn-yellow, .btn-gray, .btn-ltgray, .btn-red {
-	cursor: pointer;
-	background: transparent url('/images/buttonendsprite.png') no-repeat right 0px;
-	display: block;
-	float: left;
-	height: 23px;
-	padding: 0 12px 0 0;
-	text-decoration: none;
-	margin: 0 10px 0 0;
-	border: 0;
-	overflow: hidden;
-	position:relative;
+    cursor: pointer;
+    background: transparent url('/images/buttonendsprite.png') no-repeat right 0px;
+    display: block;
+    float: left;
+    height: 23px;
+    padding: 0 12px 0 0;
+    text-decoration: none;
+    margin: 0 10px 0 0;
+    border: 0;
+    overflow: hidden;
+    position:relative;
 }
 .btn-blue:hover, .btn-yellow:hover, .btn-gray:hover, .btn-ltgray:hover, .btn-red:hover {
-	text-decoration:none !important;
-	outline:none;
+    text-decoration:none !important;
+    outline:none;
 }
 .btn-blue span, .btn-yellow span, .btn-gray span, .btn-ltgray span, .btn-red span {
-	background: transparent url('/images/buttonsprite.png') no-repeat 0 0;
-	display: block;
-	padding: 4px 1px 1px 13px;
-	height: 18px;
-	margin: 0;
-	font: bold 13px/14px arial, sans-serif;
-	color: #fff;
-	white-space: nowrap;
-	overflow:visible;
-	border: 0;
-	cursor: pointer;
+    background: transparent url('/images/buttonsprite.png') no-repeat 0 0;
+    display: block;
+    padding: 4px 1px 1px 13px;
+    height: 18px;
+    margin: 0;
+    font: bold 13px/14px arial, sans-serif;
+    color: #fff;
+    white-space: nowrap;
+    overflow:visible;
+    border: 0;
+    cursor: pointer;
 }
 .btn-blue:hover {
-	background-position: right -25px;
+    background-position: right -25px;
 }
 .btn-blue:hover span {
-	background-position: 0 -25px;
+    background-position: 0 -25px;
 }
 .btn-yellow {
-	background-position: right -50px;
+    background-position: right -50px;
 }
 .btn-yellow span {
-	background-position: 0 -50px;
-	color:#000;
+    background-position: 0 -50px;
+    color:#000;
 }
 .btn-yellow:hover {
-	background-position: right -75px;
+    background-position: right -75px;
 }
 .btn-yellow:hover span {
-	background-position: 0 -75px;
+    background-position: 0 -75px;
 }
 .btn-gray {
-	background-position: right -100px;
+    background-position: right -100px;
 }
 .btn-gray span {
-	background-position: 0 -100px;
+    background-position: 0 -100px;
 }
 .btn-gray:hover {
-	background-position: right -125px;
+    background-position: right -125px;
 }
 .btn-gray:hover span {
-	background-position: 0 -125px;
+    background-position: 0 -125px;
 }
 .btn-ltgray {
-	background-position: right -150px;
+    background-position: right -150px;
 }
 .btn-ltgray span {
-	background-position: 0 -150px;
+    background-position: 0 -150px;
 }
 .btn-ltgray:hover {
-	background-position: right -175px;
+    background-position: right -175px;
 }
 .btn-ltgray:hover span {
-	background-position: 0 -175px;
+    background-position: 0 -175px;
 }
 .btn-red {
-	background-position: right -200px;
+    background-position: right -200px;
 }
 .btn-red span {
-	background-position: 0 -200px;
+    background-position: 0 -200px;
 }
 .btn-red:hover {
-	background-position: right -225px;
+    background-position: right -225px;
 }
 .btn-red:hover span {
-	background-position: 0 -225px;
+    background-position: 0 -225px;
 }
 /*END Button Link Css */
 .highlight{
-	color: #FF6600;
+    color: #FF6600;
+}
+
+table.list {
+    border-collapse: collapse;
+    width:100%;
+}
+table.list  tr{
+    border-bottom: 1px dotted silver;
+}
+table.list td.logo{
+    width:150px;
+}
+table.list td.info{
+    width: 400px;
+}
+table.list td.links{
+    float:left;
+}
+
+
+.tipTip,.tipTipRight,.tipTipLeft,.tipTipTop{
+    font-weight: bold;
+    color: #6495ed;
+}
+
+
+div.form-container {
+    background-color: #FFFFFF;
+    margin: 10px;
+    padding: 5px;
+}
+div.form-container form p {
+    margin: 0;
+}
+p.legend {
+    margin-bottom: 1em;
+}
+p.legend em {
+    color: red;
+    font-style: normal;
+}
+div.form-container label, div.form-container span.label {
+    display: block;
+
+    margin-right: 10px;
+    padding-right: 10px;
+    position: relative;
+    text-align: right;
+    width: 250px;
+}
+
+div.form-container label em, div.form-container span.label em {
+    color: red;
+    font-size: 120%;
+    font-style: normal;
+    position: absolute;
+    right: 0;
 }

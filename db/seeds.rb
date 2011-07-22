@@ -23,5 +23,3 @@ User.create(:email =>'accessor2@lsssp.org', :password => "123456", :password_con
 User.create(:email =>'accessor3@lsssp.org', :password => "123456", :password_confirmation => "123456",:role_id=>4)
 =end
 
-
-

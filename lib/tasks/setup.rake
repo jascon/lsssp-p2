@@ -15,7 +15,7 @@ end
 def make_roles
   Role.create(:name=>'Super Admin')
   Role.create(:name=>'Service Provider')
-  Role.create(:name=>'Accessor')
+  Role.create(:name=>'Assessor')
   Role.create(:name=>'Student')
 
 end

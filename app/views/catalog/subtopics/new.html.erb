@@ -1,0 +1,9 @@
+<% title "LSSSP | SubTopics : New Subtopic" %>
+<% content_for :sub_heading do %>
+  <%= sub_heading('CMS >> Sub opics','Create Subtopic') %>
+<% end %>
+<%= render 'form' %>
+<div class="link_buttons">
+ <%=link_to_all(catalog_subtopics_path)%>
+</div>
+

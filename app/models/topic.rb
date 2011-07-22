@@ -1,6 +1,9 @@
 class Topic < ActiveRecord::Base
   attr_accessible :name, :description, :active
   has_many :certifications,:dependent => :destroy
+  has_many :subtopics ,:dependent => :destroy
+
+   accepts_nested_attributes_for :subtopics,:allow_destroy => true
 
   # START --> Validations
   #------------------------------------------------------------------------------------------------------
@@ -22,6 +25,10 @@ class Topic < ActiveRecord::Base
 
     def recent
       order('created_at DESC').limit(4)
+    end
+
+    def active
+      where(:active => true).order('name')
     end
   end
 #------------------------------------------------------------------------------------------------------

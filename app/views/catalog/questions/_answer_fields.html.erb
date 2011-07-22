@@ -1,0 +1,23 @@
+<tr><td colspan="2"><b>Answers</b></td></tr>
+<% i = 1 %>
+<%= f.fields_for :answers do |a| %>
+    <tr>
+      <td><label for="correct_answer">
+        <% if @question.new_record? %>
+
+            <%= check_box_tag "multiple_answers[]",i, false ,:class=>'multiple_answers' -%>
+            <%= radio_button_tag "single_answer[]",i,false ,:style=>'display:none;' ,:class=>'single_answer' -%>
+        <% elsif !@question.new_record? && @question.multiple? %>
+            <%= check_box_tag "multiple_answers[]",i, @question.correct_answer.include?(i) ,:class=>'multiple_answers' -%>
+            <%= radio_button_tag "single_answer[]",i,@question.correct_answer.include?(i) ,:style=>'display:none;' ,:class=>'single_answer' -%>
+        <% else %>
+            <%= check_box_tag "multiple_answers[]",i, @question.correct_answer.include?(i) ,:class=>'multiple_answers' ,:style=>'display:none;' -%>
+            <%= radio_button_tag "single_answer[]",i,@question.correct_answer.include?(i) ,:class=>'single_answer' -%>
+        <% end %>
+        Answer<%= i %><em>*</em>
+      </label>
+      </td>
+      <td><%=a.text_area :content ,:rows=>1,:cols=>50 %><%# a.check_box :_destroy %></td>
+    </tr>
+    <% i += 1 %>
+<% end %>

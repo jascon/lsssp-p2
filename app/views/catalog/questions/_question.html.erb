@@ -1,0 +1,15 @@
+<%= content_tag_for(:tr,question,:class=>cycle('even', 'odd')) do -%>
+      <td><%= question.topic.name %></td>
+      <td><%=question.subtopic.name %></td>
+      <td><%= link_to highlight(truncate(question.content,:length=>50),params[:search]),'#',:class=>'bold_text tipTipRight',:title => question.content%></td>
+      <td><%= question.multiple? ? 'Yes' : 'No' %></td>
+      <td><%= question.optional? ? 'Yes' : 'No' %></td>
+      <td><%= link_to_active(question,active_catalog_question_path(question)) %></td>
+      <td><%= question.correct_answer %></td>
+
+      <td>
+        <%= link_for_show([:catalog, question]) %>
+        <%= link_for_edit(edit_catalog_question_path(question)) %>
+        <%= link_for_destroy([:catalog, question]) %>
+      </td>
+<% end %>

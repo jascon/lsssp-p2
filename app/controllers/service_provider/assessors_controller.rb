@@ -43,6 +43,7 @@ class ServiceProvider::AssessorsController < ApplicationController
   def students
     @assessor = User.find(params[:id])
     @students = @assessor.students
+    @assessors = current_user.assessors #Available Assessors
   end
 
   def export

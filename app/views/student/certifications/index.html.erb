@@ -1,0 +1,29 @@
+<% title "Lsssp : Student - #{current_user.name}" %>
+<% content_for :sub_heading do %>
+    <%= sub_heading('Student','Registered Certifications') %>
+<% end %>
+
+<% if @certifications.blank? %>
+    <div class="error_msg">Sorry Certifications Registered yet.!</div>
+<% else %>
+    <table class="list" cellpadding="13" cellspacing="10px;">
+      <% for student_certification in @student_certifications %>
+          <tr>
+            <td class="logo">Logo</td>
+            <td class="info">
+              <strong><%= certification.name %></strong>  <br/>
+              Exam : <%= certification.examination.name %>
+            </td>
+            <td class="links">
+              <% if current_user.followers.exists?(service_provider) %>
+                  <%= link_to "Show Certifications", student_service_provider_path(service_provider) ,
+                              :class=>"usuallink bold_text tipTip" ,:title=>'Check for Certifications offered by this provider' %>
+              <% else %>
+                  <%= link_to "Register", followings_path(:follower_id =>service_provider), :method => :post ,
+                              :class=>"usuallink bold_text tipTip" ,:title=>'You are able to buy all certifications offered by this provider after you register' %>
+              <% end %>
+            </td>
+          </tr>
+      <% end %>
+    </table>
+<% end %>

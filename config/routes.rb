@@ -1,7 +1,4 @@
 LssspP2::Application.routes.draw do
-  get "users/index"
-
-  get "service_providers/index"
 
   devise_for :users, :path_names => { :sign_up => "register" }
 =begin
@@ -43,6 +40,7 @@ match "register" => "devise/registrations#new", :as => :new_user_registration
   namespace :service_provider do
     resources :certifications do
       get 'my_certifications',:on=>:collection
+       get 'export',:on=>:collection
     end
     resources :assessors,:students  do
       get 'approve',:on=>:member
@@ -53,9 +51,14 @@ match "register" => "devise/registrations#new", :as => :new_user_registration
   #--------------------------------------------------------------------------
 
   namespace :catalog do
-    resources :topics,:certifications do
+    resources :topics,:subtopics,:questions do
       get 'active' ,:on=>:member
       get 'export',:on=>:collection
+    end
+    resources :certifications do
+       get 'active' ,:on=>:member
+      get 'export',:on=>:collection
+      get 'load_subtopics' ,:on=>:collection
     end
   end
   resources :payment_gateways do

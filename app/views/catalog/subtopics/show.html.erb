@@ -1,0 +1,21 @@
+<% title "LSSSP | Subtopic :  #{@subtopic.name}" %>
+<% content_for :sub_heading do %>
+  <%= sub_heading('CMS >> Subtopics',"#{@subtopic.name}") %>
+<% end %>
+
+
+<p>
+  <strong>Name:</strong>
+  <%= @subtopic.name %>
+</p>
+<p>
+  <strong>Active:</strong>
+  <%= @subtopic.active %>
+</p>
+
+<div class="link_buttons">
+   <%=link_to_edit(edit_catalog_subtopic_path(@subtopic)) %>
+   <%=link_to_delete([:catalog, @subtopic]) %>
+   <%=link_to_all(catalog_subtopics_path)%>
+   <%=link_to_back %>
+</div>

@@ -3,9 +3,14 @@
       <td><%= topic.description %></td>
       <td><%= link_to_active(topic,active_catalog_topic_path(topic)) %></td>
       <td>
-        <%= link_to "Certifications(#{topic.certifications.size})",catalog_certifications_path(:id=>topic.id),:class=>'usuallink bold_text'%>
-        <%= link_to "Show", [:catalog, topic],:class=>'usuallink bold_text' %>
-        <%= link_to "Edit", edit_catalog_topic_path(topic),:class=>'usuallink bold_text' %>
-        <%= link_to "Destroy", [:catalog, topic], :confirm => 'Are you sure?', :method => :delete,:class=>'usuallink bold_text' %>       
+          <%= link_to topic.subtopics.size,catalog_subtopics_path(:topic_id=>topic.id),:class=>'tipTipRight',:title=>associated_names(topic.subtopics) %>
+      </td>
+      <td>
+        <%= link_to topic.certifications.size,catalog_certifications_path(:id=>topic.id),:class=>'tipTipRight',:title => associated_names(topic.certifications)%>
+      </td>
+      <td>
+        <%= link_for_show([:catalog, topic]) %>
+        <%= link_for_edit(edit_catalog_topic_path(topic)) %>
+        <%= link_for_destroy([:catalog, topic]) %>
       </td>
 <% end %>

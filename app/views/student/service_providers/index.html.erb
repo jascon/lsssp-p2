@@ -1,14 +1,34 @@
-<h2>Listing All Service Providers</h2>
+<% title "Lsssp : Student - #{current_user.name}" %>
+<% content_for :sub_heading do %>
+    <%= sub_heading('Student','Active Service Providers') %>
+<% end %>
+<% content_for :left_panel do  %>
+    <td valign="top" width="250">
+      Search Filter etc
+    </td>
+<% end %>
 <% if @service_providers.blank? %>
-    <i>Sorry No Active Service Providers yet...please visit again</i>
+    <div class="error_msg">Sorry No Active Service Providers yet...please visit again</div>
 <% else %>
-    <% for service_provider in @service_providers %>
-        <div class="service_provider">
-          <p>
-            <strong><%=h service_provider.name %></strong>
-            <%= link_to "Register", followings_path(:follower_id =>service_provider), :method => :post %>
-          <div class="clear"></div>
-          </p>
-        </div>
-    <% end %>
+    <table class="list" cellpadding="13" cellspacing="10px;">
+      <% for service_provider in @service_providers %>
+          <tr>
+            <td class="logo"><%=image_tag('avatar.gif')%></td>
+            <td class="info">
+              <strong><%= service_provider.name %></strong>  <br/>
+              <%= link_to pluralize(service_provider.certifications.size, 'certification'),'#',
+                          :title=>offered_certifications(service_provider.certifications),:class=>'tipTip' %>
+            </td>
+            <td class="links">
+              <% if current_user.followers.exists?(service_provider) %>
+                  <%= link_to "Show Certifications", student_service_provider_path(service_provider) ,
+                              :class=>"usuallink bold_text tipTip" ,:title=>'Check for Certifications offered by this provider' %>
+              <% else %>
+                  <%= link_to "Register", followings_path(:follower_id =>service_provider), :method => :post ,
+                              :class=>"usuallink bold_text tipTip" ,:title=>'You are able to buy all certifications offered by this provider after you register' %>
+              <% end %>
+            </td>
+          </tr>
+      <% end %>
+    </table>
 <% end %>

@@ -12,7 +12,7 @@
         <%= render :partial=>'student',:object=>@students %>
         <%= submit_tag 'Romove' %>
         Transfer Students from <%=@assessor.name%> to
-       <%=select("user", "assessor_id", current_user.assessors('yes').collect {|p| [ p.name, p.id ] }, { :include_blank =>'--- Select a Assessor----' })%>
+       <%=select("user", "assessor_id", @assessors.collect {|p| [ p.name, p.id ] }, { :include_blank =>'--- Select a Assessor----' })%>
         <%= submit_tag 'Transfer' %>
     <% end %>
 <% end %>

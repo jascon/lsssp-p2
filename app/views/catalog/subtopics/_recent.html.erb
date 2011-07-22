@@ -1,0 +1,31 @@
+<div class="recent_items">
+	<div class="margin">
+		<h3>Recently Created Subtopics</h3>
+        <% if @recent.blank? %>
+          No Subtopics Added Yet...
+        <% else %>
+         <% for subtopic in @recent %>
+		<div id="margin">
+			<div class="left">&nbsp;</div>
+			<div class="right">&nbsp;</div>
+			<div class="left-to-right">
+				<div class="pen">&nbsp;</div>
+				<div class="text">
+                     <%=link_to subtopic.name ,edit_catalog_subtopic_path(subtopic),:class=>'usuallink'%>
+					<div style="margin: 8px 0px;">&nbsp;</div>
+				</div>
+				<div class="date">
+                    <b><%=subtopic.created_at.strftime("%m.%d.%Y") %></b>
+                </div>
+			</div>
+		</div>
+         <% end %>
+       <% end %>
+		<div class="see_all">
+			<a href="/catalog/subtopics">
+			 View all subtopics
+			<img hspace="2" border="0" alt="" src="/images/blue^.gif">
+			</a>
+		</div>
+	</div>
+</div>

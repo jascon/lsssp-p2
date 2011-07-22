@@ -20,8 +20,11 @@ class User < ActiveRecord::Base
 #Service Provider Registers with Certifications(to get certifications user.certifications) ..
 #--------------------------------------------------------------------------------------------------
   has_many :certificate_providers
+  has_many :student_certifications
   has_many :certifications, :through => :certificate_providers
+  has_many :certifications, :through => :student_certifications
 #--------------------------------------------------------------------------------------------------
+  has_many :student_certification
 
 # Validations
   validates :role_id,:presence=>true
@@ -62,9 +65,14 @@ class User < ActiveRecord::Base
     end
   end
 
- def following_assessors
-      followers.where(:role_id=>3,:approved=>true)
- end
+  def following_assessors
+    followers.where(:role_id=>3,:approved=>true)
+  end
+
+  def following_service_providers
+    followers.where(:role_id=>2,:approved=>true)
+  end
+
 #----------------------------------------------------------------------------------------------------
 
 # Class Methods

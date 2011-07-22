@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  certification_id: 1
+  subtopic_id: 1
+  total_questions: 1
+
+two:
+  certification_id: 1
+  subtopic_id: 1
+  total_questions: 1

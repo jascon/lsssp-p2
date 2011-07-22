@@ -1,0 +1,36 @@
+<% title "Lsssp(Catalog) : Questions" %>
+<% content_for :sub_heading do %>
+    <%= sub_heading('Catalog : Questions','Manage Questions') %>
+<% end %>
+<% content_for :left_panel do  %>
+    <td valign="top" width="279"> <%= render 'common/search' %>
+      <%= render 'recent' %> </td>
+<% end %>
+<div>
+  <%= link_to "Add New Question",new_catalog_question_path,:class=>'usuallink bold_text',:id=>'add_new' %> |
+  <%=link_to "Export",export_catalog_questions_path,:class=>'usuallink bold_text' %>
+</div>
+
+<%if @questions.blank? %>
+    <div class="error_msg">
+      Sorry No Questions Found..!
+    </div>
+<% else %>
+    <table class="tablesorter">
+      <thead>
+      <tr>
+        <th>Topic</th>
+        <th>Subtopic</th>
+        <th>Content</th>
+        <th>Multiple?</th>
+        <th>Optional?</th>
+        <th>Active?</th>
+        <th>Correct Answer</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <%= render @questions %>
+      </tbody>
+    </table>
+<% end %>

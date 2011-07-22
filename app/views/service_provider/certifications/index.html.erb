@@ -1,14 +1,30 @@
-<h2>Listing All Certifications</h2>
-<% if @certifications.blank? %>
-    <i>Sorry No Active Certifications yet...please visit again</i>
-<% else %>
-    <% for certification in @certifications %>
-        <div class="certification">
-          <p>
-            <strong><%= certification.name %></strong>
-            <%= link_to "Register", service_provider_certifications_path(:id =>certification.id), :method => :post %>
-          </p>
-        </div>
-    <% end %>
+<% title "Lsssp : Service Provider - #{current_user.name}" %>
+<% content_for :sub_heading do %>
+    <%= sub_heading('Service Provider ','Certifications offered by LSSSP') %>
 <% end %>
-
+<%if @certifications.blank? %>
+    <div class="error_msg">
+      Sorry No Active Certifications Found..!
+    </div>
+<% else %>
+    <table class="tablesorter">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Exam Details</th>
+        <th>&nbsp;</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% for certification in @certifications %>
+          <tr class="<%=cycle('even','odd')%>">
+            <td><%= certification.name %></td>
+            <td><%= certification.price %></td>
+            <td><%= certification.examination.name %></td>
+            <td> <%= link_to "Register", service_provider_certifications_path(:id =>certification.id), :method => :post,:class=>'usuallink bold_text' %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+<% end %>

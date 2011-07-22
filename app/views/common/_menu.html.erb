@@ -7,26 +7,29 @@
         </ul>
 	</li>
 	-->
-    <li><%= tab_heading 'User Management' %>
-		<ul>
-            <li><%=link_to 'Manage Users' ,super_admin_users_path %></li>
-            <li><%=link_to 'Create User' ,new_super_admin_user_path %></li> 
-        </ul>
-	</li>
-    <li><%= tab_heading 'Catalog Management' %>
-		<ul>
-			<li><%=link_to 'Manage Topics' ,catalog_topics_path %></li>
-			<li><%=link_to 'Create Topic' ,new_catalog_topic_path %></li>
-            <li><%=link_to 'Manage Certifications' ,catalog_certifications_path %></li>
-            <li><%=link_to 'Create Certification' ,new_catalog_certification_path %></li>
-        </ul>
-	</li>
-    <li><%= tab_heading 'Payment Gateway Management' %>
-		<ul>
-			<li><%=link_to 'Manage Payment Gateways' ,payment_gateways_path %></li>
-			<li><%=link_to 'Create Payment Gateway' ,new_payment_gateway_path %></li>             
-        </ul>
-	</li>
-    
+  <li><%= tab_heading 'User Management' %>
+    <ul>
+      <li><%=link_to 'Manage Users' ,super_admin_users_path %></li>
+      <li><%=link_to 'Create User' ,new_super_admin_user_path %></li>
+    </ul>
+  </li>
+  <li><%= tab_heading 'Catalog Management' %>
+    <ul>
+      <li><%=link_to 'Manage Topics' ,catalog_topics_path %></li>
+      <!-- <li><%=link_to 'Create Topic' ,new_catalog_topic_path %></li> -->
+      <li><%=link_to 'Manage Sub Topics' ,catalog_subtopics_path %></li>
+      <li><%=link_to 'Manage Questions' ,catalog_questions_path %></li>
+      <li><%=link_to 'Manage Certifications' ,catalog_certifications_path %></li>
+      <li><%=link_to 'Create Certification' ,new_catalog_certification_path %></li>
+    </ul>
+  </li>
+  <li><%= tab_heading 'Payment Gateway Management' %>
+    <ul>
+      <li><%=link_to 'Manage Payment Gateways' ,payment_gateways_path %></li>
+      <li><%=link_to 'Create Payment Gateway' ,new_payment_gateway_path %></li>
+    </ul>
+  </li>
+
+
 </ul>
 

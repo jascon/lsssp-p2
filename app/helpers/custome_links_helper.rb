@@ -1,4 +1,5 @@
 module CustomeLinksHelper
+
   def link_to_edit(path)
     link_to content_tag(:span,"&uarr; Edit".html_safe), path,:class=>'btn-blue'
   end
@@ -18,12 +19,25 @@ module CustomeLinksHelper
   def link_to_back
     link_to content_tag(:span,'&larr; Back'.html_safe),:back,:class=>'btn-ltgray'
   end
+
   def link_to_active(model,path)
     content = ''
     content << "<div id='active_#{model.id}'>"
     content << link_to(model.active? ? image_tag('tick.gif') : image_tag('cros.gif') ,path,:remote=>true)
     content <<  "</div>"
     content.html_safe
-  end  
+  end
+
+  def link_for_edit(path)
+     link_to image_tag('/images/icons/edit.png'), path,:title =>'Edit it',:class=>'tipTip'
+  end
+
+   def link_for_show(path)
+     link_to image_tag('/images/icons/show.png'), path,:title =>'Show Content',:class=>'tipTipTop'
+  end
+
+  def link_for_destroy(path)
+     link_to image_tag('/images/icons/delete.png'),path, :confirm => 'Are you sure?', :method => :delete,:title =>'Delete it',:class=>'tipTip'
+  end
 
 end
