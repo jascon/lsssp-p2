@@ -1,0 +1,7 @@
+<%= @active_question.question.content %>
+<br/>
+<% i = 1 %>
+<% for answer in @active_question.question.answers %>
+    <%= check_box_tag "correct_answer[]",i,@active_question.correct_answer.to_a.include?(i) ,:onclick =>"updateAnswer(#{@active_question.id})" -%> <%= answer.content %><br/>
+  <% i += 1 %>
+<% end %>

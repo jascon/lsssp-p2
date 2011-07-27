@@ -3,27 +3,28 @@
     <%= sub_heading('Student','Registered Certifications') %>
 <% end %>
 
-<% if @certifications.blank? %>
-    <div class="error_msg">Sorry Certifications Registered yet.!</div>
+<h3>Certifications you Registered </h3>
+
+<% if @student_certifications.blank? %>
+    <div class="error_msg">Sorry No Certifications Registered yet.!</div>
 <% else %>
+
     <table class="list" cellpadding="13" cellspacing="10px;">
       <% for student_certification in @student_certifications %>
           <tr>
             <td class="logo">Logo</td>
             <td class="info">
-              <strong><%= certification.name %></strong>  <br/>
-              Exam : <%= certification.examination.name %>
+              <strong>
+                 <%=link_to student_certification.certification.name ,'#',:class=>'tipTipRight',:title=> examination_info(student_certification.certification) %>
+              </strong>
             </td>
             <td class="links">
-              <% if current_user.followers.exists?(service_provider) %>
-                  <%= link_to "Show Certifications", student_service_provider_path(service_provider) ,
-                              :class=>"usuallink bold_text tipTip" ,:title=>'Check for Certifications offered by this provider' %>
-              <% else %>
-                  <%= link_to "Register", followings_path(:follower_id =>service_provider), :method => :post ,
-                              :class=>"usuallink bold_text tipTip" ,:title=>'You are able to buy all certifications offered by this provider after you register' %>
-              <% end %>
+              <%=link_to content_tag(:span,'Take Test'),exam_path(:certification_id => student_certification.certification.id),
+                         :method=>:post ,:class=>'btn-blue tipTip',:title=>'Write the exam online.',:style=>'float:right;' %>
             </td>
           </tr>
       <% end %>
     </table>
 <% end %>
+
+

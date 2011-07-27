@@ -33,7 +33,12 @@ match "register" => "devise/registrations#new", :as => :new_user_registration
     resources :service_providers do
       get 'my_service_providers',:on=>:collection
     end
+    resources :certifications
+    #resource :exam
   end
+  match "exam" => "student/exam#index"
+  match "active_question"  => "student/exam#active_question"
+  match "correct_answer" => "student/exam#correct_answer"
   #--------------------------------------------------------------------------
   #Service Provider Namespace
   #--------------------------------------------------------------------------

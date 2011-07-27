@@ -1,34 +1,37 @@
 <% title "Lsssp(Catalog) : Certifications" %>
 <% content_for :sub_heading do %>
-<%= sub_heading('Catalog : Certifications','Manage Certifications') %>
+    <%= sub_heading('Catalog : Certifications','Manage Certifications') %>
 <% end %>
 <% content_for :left_panel do  %>
-<td valign="top" width="279"> <%= render 'common/search' %>
-<%= render 'recent' %> </td>
+    <td valign="top" width="279"> <%= render 'common/search' %>
+      <%= render 'recent' %> </td>
 <% end %>
 <div>
-<%= link_to "Add New Certification", "#",:class=>'usuallink bold_text',:id=>'add_new' %>
+  <%= link_to "Add New Certification", "#",:class=>'usuallink bold_text',:id=>'add_new' %>
 </div>
 <div id="new_form">
-<%=render 'form' %>
+  <%=render 'form' %>
 </div>
 <%if @certifications.blank? %>
-<div class="error_msg">
-	Sorry No Certifications Found..!
-</div>
+    <div class="error_msg">
+      Sorry No Certifications Found..!
+    </div>
 <% else %>
-<table class="tablesorter">
-	<thead>
-		<tr>
-			<th>Name</th>
-            <th>Price</th>
-			<th>Description</th>
-			<th>Active?</th>
-            <th>&nbsp;</th>
-		</tr>
-	</thead>
-	<tbody>
-		<%= render @certifications %>
-	</tbody>
-</table>
+    <table class="tablesorter">
+      <thead>
+      <tr>
+        <th>Topic</th>
+        <th>Subtopics</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Active?</th>
+        <th>Duration(min)</th>
+        <th>No of Questions</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <%= render @certifications %>
+      </tbody>
+    </table>
 <% end %>

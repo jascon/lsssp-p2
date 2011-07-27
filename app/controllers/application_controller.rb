@@ -59,7 +59,7 @@ class ApplicationController < ActionController::Base
   #----------------------------------------------------
   def active(model)
     @model = model.find(params[:id])
-    @model.update_attribute('active',@model.active? ? false : true )
+    @model.toggle! :active # update_attribute('active',@model.active? ? false : true )
     respond_to { |format| format.js }
   end
 end

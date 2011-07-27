@@ -275,3 +275,8 @@ div.form-container label em, div.form-container span.label em {
     position: absolute;
     right: 0;
 }
+
+
+#ajax-loading{
+    display:none;
+}

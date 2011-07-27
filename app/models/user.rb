@@ -22,9 +22,9 @@ class User < ActiveRecord::Base
   has_many :certificate_providers
   has_many :student_certifications
   has_many :certifications, :through => :certificate_providers
-  has_many :certifications, :through => :student_certifications
+  #has_many :certifications, :through => :student_certifications#,:as =>:exams
 #--------------------------------------------------------------------------------------------------
-  has_many :student_certification
+  has_many :student_exams
 
 # Validations
   validates :role_id,:presence=>true

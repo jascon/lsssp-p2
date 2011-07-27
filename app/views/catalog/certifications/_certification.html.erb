@@ -1,11 +1,16 @@
 <%= content_tag_for(:tr,certification,:class=>cycle('even', 'odd')) do -%>
+    <td><%= certification.topic.name %></td>
+    <td><%= link_to certification.subtopic_questions.size,'#',:class=>'tipTipRight',:title=>certification_subtopics(certification.subtopic_questions) %></td>
     <td><%= highlight(certification.name,params[:search])%></td>
     <td><%= certification.price %></td>
-    <td><%= certification.description %></td>
+
     <td><%= link_to_active(certification,active_catalog_certification_path(certification)) %></td>
+    <td><%= certification.duration %></td>
+    <td><%= certification.no_of_questions %></td>
     <td>
-      <%= link_to "Show", [:catalog, certification],:class=>'usuallink bold_text' %>
-      <%= link_to "Edit", edit_catalog_certification_path(certification),:class=>'usuallink bold_text' %>
-      <%= link_to "Destroy", [:catalog, certification], :confirm => 'Are you sure?', :method => :delete,:class=>'usuallink bold_text' %>
+      <%= link_for_show( [:catalog, certification]) %>
+      <%= link_for_edit(edit_catalog_certification_path(certification)) %>
+      <%= link_for_destroy( [:catalog, certification]) %>
     </td>
+
 <% end %>

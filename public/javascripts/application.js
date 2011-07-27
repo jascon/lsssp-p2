@@ -26,7 +26,7 @@ $(document).ready( function() {
         window.location = "/catalog/subtopics?topic_id="+$('#topic_id').val()+"&subtopic_status="+$('#subtopic_status').val()+"&search ="+$('#search').val()
     });
     $('#subtopic_status').change(function() {
-         window.location = "/catalog/subtopics?topic_id="+$('#topic_id').val()+"&subtopic_status="+$('#subtopic_status').val()+"&search ="+$('#search').val()
+        window.location = "/catalog/subtopics?topic_id="+$('#topic_id').val()+"&subtopic_status="+$('#subtopic_status').val()+"&search ="+$('#search').val()
     });
     //
 });
@@ -35,10 +35,11 @@ $(document).ready( function() {
 // Certification creation generate subtopic under selected topic
 $(document).ready(function() {
     $('#certification_topic_id').change(function() {
-	var html = $.ajax({
-		url: "/catalog/certifications/load_subtopics?id="+$('#certification_topic_id').val(),
-		async: false
-	}).responseText;
+        $('#ajax-loading').toggle();
+        var html = $.ajax({
+            url: "/catalog/certifications/load_subtopics?id="+$('#certification_topic_id').val(),
+            async: false
+        }).responseText;
     });
 });
 
@@ -59,8 +60,23 @@ $(document).ready(function() {
         $('.single_answer').toggle();
     });
 // no of answers for a question for user selection
-     $('#no_of_answers').change(function() {
-         window.location = "/catalog/questions/new?no_of_answers="+$('#no_of_answers').val()
+    $('#no_of_answers').change(function() {
+        window.location = "/catalog/questions/new?no_of_answers="+$('#no_of_answers').val()
     });
 });
 //END Catalog Question Creation
+
+// Exam when user clicks on Answer
+function updateAnswer(id){
+    var answer = [];
+    var nodes = document.getElementsByName('correct_answer[]');
+    for (var i = 0, n; n = nodes[i]; i++) {
+        if (n.checked == true) {
+            answer.push(n.value);
+        }
+    }
+    var html = $.ajax({
+        url: "/correct_answer?id="+id+"&correct_answer="+answer,
+        async: false
+    }).responseText;
+}

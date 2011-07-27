@@ -25,6 +25,17 @@ module ApplicationHelper
     end
     content.html_safe
   end
+
+  def certification_subtopics(subtopic_questions)
+    return 'No records found' if subtopic_questions.blank?
+    content = ''
+    i = 1
+    for subtopic_question in subtopic_questions
+      content << "#{i}. " + subtopic_question.subtopic.name + "(#{subtopic_question.total_questions})" + "<br/>"
+      i += 1
+    end
+    content.html_safe
+  end
 ## alias for submit_tag ########
 =begin
   def button_for(name, options={})

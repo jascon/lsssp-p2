@@ -21,13 +21,14 @@
         </tr>
         <tr id="topics">
           <td><label>Topic <em>*</em></label></td>
-          <td><%= collection_select(:certification, :topic_id, Topic.active, :id, :name, :prompt => true) %></td>
+          <td><%= collection_select(:certification, :topic_id, Topic.active, :id, :name, :prompt => true) %>
+           <span id="ajax-loading"><%= image_tag('/images/icons/ajax-loader.gif') %></span>
+          </td>
         </tr>
         <% if @certification.topic_id.nil? %>
             <tr><td colspan="3" id="subtopics"></td></tr>
         <% else %>
             <tr><td colspan="3" id="subtopics"><%= render 'load_subtopics' %></td></tr>
-
         <% end %>
 
 

@@ -5,7 +5,7 @@ class ServiceProvider::StudentsController < ApplicationController
   end
   def approve
     @user = User.find(params[:id])
-    @user.update_attribute('approved',@user.approved? ? false : true)
+    @user.toggle! :approved #update_attribute('approved',@user.approved? ? false : true)
     respond_to do |format|
       format.js
     end

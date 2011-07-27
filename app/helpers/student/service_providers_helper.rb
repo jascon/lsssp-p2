@@ -9,11 +9,10 @@ module Student::ServiceProvidersHelper
   end
 
   def examination_info(certification)
-    exam = certification.examination
     content = ''
-    content << "Exam : #{exam.name} <br/>"
-    content << "Duration : #{exam.duration} min <br/>"
-    content << "Positive marks : #{exam.positive_marks} <br/>"
-    content << "Negative marks : #{exam.negative_marks} <br/>"
+    content << "Total Questions : #{certification.no_of_questions} <br/>"
+    content << "Duration : #{certification.duration} min <br/>"
+    content << "Positive marks : #{certification.positive_marks} <br/>"
+    content << "Negative marks : #{certification.negative_marks} <br/>"
   end
 end
