@@ -1,7 +1,21 @@
-<%= @active_question.question.content %>
-<br/>
-<% i = 1 %>
-<% for answer in @active_question.question.answers %>
-    <%= check_box_tag "correct_answer[]",i,@active_question.correct_answer.to_a.include?(i) ,:onclick =>"updateAnswer(#{@active_question.id})" -%> <%= answer.content %><br/>
-  <% i += 1 %>
-<% end %>
+<%=hidden_field_tag 'id' ,@active_question.id %>
+<h2>Question <%= params[:question_number] ||= 1 %></h2>
+<div class="rbox question_body">
+  <p></p><p><%= @active_question.question.content %></p><p></p>
+</div>
+<div class="rbox" id="answers">
+  <table class="answers_go">
+    <tbody>
+    <% i = 1 %>
+    <% for answer in @active_question.question.answers %>
+        <tr>
+          <td class="checkbox">
+            <%= check_box_tag "correct_answer[]",i,@active_question.correct_answer.to_a.include?(i) -%>
+          </td>
+          <td class="answer"><p><code><%= answer.content %></code></p></td>
+        </tr>
+        <% i += 1 %>
+    <% end %>
+    </tbody></table>
+  <%= submit_tag 'Update Answer',:style=>'display:none;' %>
+</div>

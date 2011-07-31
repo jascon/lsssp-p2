@@ -2,7 +2,7 @@ class Student::ExamController < ApplicationController
    before_filter :authenticate_user!,:must_be_student
   def index
     @certification = Certification.includes({:subtopic_questions=>:subtopic}).find(params[:certification_id])
-    if current_user.student_exams.exists?(:certification_id => params[:certification_id])
+    if current_user.student_exams.exists?(:certification_id =>params[:certification_id])
       puts "#############   Already Taken"
        @active_questions = StudentExam.find_by_certification_id_and_user_id(@certification.id,current_user.id).active_questions
       @active_question = @active_questions.first
@@ -22,16 +22,16 @@ class Student::ExamController < ApplicationController
     end
   end
 
-  def correct_answer
-    # incoming "1,2" => "1,2".split(',')=>["1","2"]=> ["1","2"].uniq.collect{|id| id.to_i}.sort  =>[1,2]
-    user_answer = params[:correct_answer].split(',').uniq.collect{|id| id.to_i}.sort
+  def update_answer
+    #if incoming is "1,2" => "1,2".split(',')=>["1","2"]=> ["1","2"].uniq.collect{|id| id.to_i}.sort  =>[1,2]
+    user_answer =  params[:correct_answer].blank? ? nil : params[:correct_answer].uniq.collect{|id| id.to_i}.sort
     ActiveQuestion.find(params[:id]).update_attribute('correct_answer',user_answer)
-    render :nothing => true
+    #render :nothing => true
+    respond_to { |format| format.js }
   end
 
   def active_question
     @active_question = ActiveQuestion.find(params[:id])
-    puts "#############  #{@active_question.question.id}"
     respond_to { |format| format.js }
   end
 end

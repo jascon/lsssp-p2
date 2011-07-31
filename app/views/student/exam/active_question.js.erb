@@ -1,1 +1,8 @@
-$('#question').html("<%= escape_javascript(render 'question') %>")
+
+<% if @active_question.correct_answer.nil? %>
+$(".current").attr("class",'completed');
+<% end %>
+
+
+$("#active_question_<%= params[:id] %>").attr('class', 'current')
+$('#question_content').html("<%= escape_javascript(render 'question') %>")

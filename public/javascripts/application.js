@@ -66,7 +66,15 @@ $(document).ready(function() {
 });
 //END Catalog Question Creation
 
-// Exam when user clicks on Answer
+// Exam User if user answers the question(when clicks on checkbox)
+ $(document).ready(function() {
+       $('#exam_update_answer').change(function() {
+          $(this).submit();
+       });
+ });
+
+// Exam when user clicks the Answer
+/*
 function updateAnswer(id){
     var answer = [];
     var nodes = document.getElementsByName('correct_answer[]');
@@ -80,3 +88,4 @@ function updateAnswer(id){
         async: false
     }).responseText;
 }
+*/

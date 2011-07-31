@@ -38,7 +38,7 @@ match "register" => "devise/registrations#new", :as => :new_user_registration
   end
   match "exam" => "student/exam#index"
   match "active_question"  => "student/exam#active_question"
-  match "correct_answer" => "student/exam#correct_answer"
+  match "update_answer" => "student/exam#update_answer"
   #--------------------------------------------------------------------------
   #Service Provider Namespace
   #--------------------------------------------------------------------------
