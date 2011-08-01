@@ -9,7 +9,7 @@ class SuperAdmin::UsersController < ApplicationController
   #-----------------------------------------------------------------------
   def index
     #@users = 
-     @users = User.search(params[:search],current_user,params[:id]).paginate(:page =>params[:page],:per_page=>5 )
+     @users = User.search(params[:search],current_user,params[:id]).paginate(:page =>params[:page],:per_page=>10 )
      @user = User.new(:role_id=>params[:id])
   end
 

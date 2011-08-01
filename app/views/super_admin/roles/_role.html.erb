@@ -1,13 +1,13 @@
 <%= content_tag_for(:tr,role,:class=>cycle('even', 'odd')) do -%>
-			<td><%= highlight(role.name,params[:search]) %></td>
-			<td><%= role.description %></td>
-            <td><%= link_to_active(role,active_super_admin_role_path(role)) %></td>
-			<td>
-            <%=link_to 'Permissons',permissions_super_admin_role_path(role),:class=>'usuallink bold_text'%> |
-            <%=link_to "View users list(#{role.users.size})",super_admin_users_path(:id=>role.id),:class=>'usuallink bold_text'%> |
-            <%= link_to "Show", [:super_admin, role],:class=>'usuallink bold_text' %> |
-			<%= link_to "Edit", edit_super_admin_role_path(role) ,:class=>'usuallink bold_text'%> |
-			<%= link_to "Destroy", [:super_admin, role], :confirm => 'Are you sure?', :method => :delete,:class=>'usuallink bold_text' %>
-            </td>
+    <td><%= highlight(role.name,params[:search]) %></td>
+    <td><%= role.description %></td>
+    <td><%= link_to_active(role,active_super_admin_role_path(role)) %></td>
+    <td><%= link_to role.users.size,super_admin_users_path(:id=>role.id),:class=>'tipTipRight',:title=>users_list(role.users) %></td>
+    <td>
+      <%=link_to 'Edit Permissons',permissions_super_admin_role_path(role),:class=>'usuallink bold_text'%> |
+      <%= link_for_show([:super_admin, role]) %>
+      <%= link_for_edit( edit_super_admin_role_path(role)) %>
+      <%= link_for_destroy([:super_admin, role]) %>
+    </td>
 <% end %>
 		

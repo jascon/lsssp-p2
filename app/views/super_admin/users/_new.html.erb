@@ -4,6 +4,6 @@
   <%= f.input :email %>
   <%= f.input :password %>
   <%= f.input :password_confirmation %>
-  <%= f.association :role %>
+  <%= f.association :role,:input_html => { :id => 'user_group' } %>
   <p><%= f.submit "Create" %></p>
 <% end %>

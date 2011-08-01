@@ -15,7 +15,7 @@
             </td>
             <td>
               <% @subtopic_question = SubtopicQuestion.find_by_certification_id_and_subtopic_id(@certification.id,subtopic.id) if @certification  %>
-            <%= text_field_tag "certification[subtopic_questions_attributes][][total_questions]",@subtopic_question.nil? ? '' : @subtopic_question.total_questions %>
+            <%= text_field_tag "certification[subtopic_questions_attributes][][total_questions]",@subtopic_question.nil? ? '' : @subtopic_question.total_questions %> (<%=subtopic.questions.size%>)
             </td>
             <td>&nbsp;</td>
           </tr>

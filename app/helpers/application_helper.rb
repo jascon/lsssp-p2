@@ -26,6 +26,18 @@ module ApplicationHelper
     content.html_safe
   end
 
+  def users_list(users)
+    return 'No Users found' if users.blank?
+    content = ''
+    i = 1
+    for user in users[0..15]
+      content << "#{i}. " + user.email + "<br/>"
+      i += 1
+    end
+    content << 'and more' if users.size > 16
+    content.html_safe
+  end
+
   def certification_subtopics(subtopic_questions)
     return 'No records found' if subtopic_questions.blank?
     content = ''

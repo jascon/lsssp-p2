@@ -81,7 +81,7 @@ class User < ActiveRecord::Base
 #------------------------------------------------------------------------------------------------------      
   class << self
     def search(query,me,roleid)
-      if !query.nil? & !roleid.nil?
+      if !query.nil? and !roleid.blank?
         except_me(me).where(:email.matches => "%#{query}%" ).with_role(roleid) #from meta_where gem
       elsif !query.nil?
         except_me(me).where(:email.matches => "%#{query}%" )
@@ -95,7 +95,7 @@ class User < ActiveRecord::Base
       where('id != ?', me.id)
     end
     def with_role(roleid)
-      where(:role_id=>roleid,:approved=>true)
+      where(:role_id=>roleid)#,:approved=>true)
     end
 
   end
