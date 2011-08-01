@@ -1,0 +1,22 @@
+<div id="exam_content">
+  <h3>Review <%= @student_exam.certification.name %></h3>
+  <div id="pagination_container">
+    <ol class="questions_summary">
+      <% i = 1 %>
+      <% @active_questions.each do |active_question| %>
+          <li title="current" id="active_question_<%=active_question.id%>">
+            <%= link_to review_question_path(:id=>active_question.id,:q_number=>i),:remote => true,:id=>"load_question"  do %>
+                <% answer = active_question.correct_answer.eql?(active_question.question.correct_answer) ? 'correct' : 'incorrect'  %>
+                Q<span class="answer"><%=i%></span>: <%= image_tag( answer.eql?('correct') ? 'tick.gif' : 'cros.gif') %>
+            <% end %>
+          </li>
+          <% i += 1%>
+      <% end %>
+    </ol>
+  </div>
+  <div id="question">
+  </div>
+</div>
+<div id="ajax-indicator">
+  <span> Loading...</span>
+</div>

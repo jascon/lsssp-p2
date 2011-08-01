@@ -1,21 +1,33 @@
-<%=hidden_field_tag 'id' ,@active_question.id %>
-<h2>Question <%= params[:question_number] ||= 1 %></h2>
-<div class="rbox question_body">
-  <p></p><p><%= @active_question.question.content %></p><p></p>
+<div class="pagination">
+  <%= link_to content_tag(:span,'← Previous ') ,active_question_path(:id=>@active_question.id-1,:previous=>true),:remote=>true ,:id=>"load_question",:class=>'btn-blue previous_page' ,:style=>'float:right'%>
+  <%= link_to content_tag(:span ,' Next →') ,active_question_path(:id=>@active_question.id+1,:next=>true),:remote=>true,:id=>"load_question",:class=>'btn-yellow next_page',:style=>'float:right' %>
 </div>
-<div class="rbox" id="answers">
-  <table class="answers_go">
-    <tbody>
-    <% i = 1 %>
-    <% for answer in @active_question.question.answers %>
-        <tr>
-          <td class="checkbox">
-            <%= check_box_tag "correct_answer[]",i,@active_question.correct_answer.to_a.include?(i) -%>
-          </td>
-          <td class="answer"><p><code><%= answer.content %></code></p></td>
-        </tr>
-        <% i += 1 %>
-    <% end %>
-    </tbody></table>
-  <%= submit_tag 'Update Answer',:style=>'display:none;' %>
+<div id="finish_button">
+  <%= link_to content_tag(:span ,'Finish Exam') ,finish_exam_path(:exam_id=>@active_question.student_exam_id),:class=>'btn-red',:style=>'float:none',:confirm=>'Finish Exam?' %>
 </div>
+
+    <div id="question_content">
+      <%=hidden_field_tag 'id' ,@active_question.id %>
+      <h2>Question <%= session[:active_question_ids].index(@active_question.id)+1  %></h2>
+      <div class="rbox question_body">
+        <p><%= @active_question.question.content %></p>
+      </div>
+      <div class="rbox" id="answers">
+        <table class="answers_go">
+          <tbody>
+          <% i = 1 %>
+          <% for answer in @active_question.question.answers %>
+              <tr>
+                <td class="checkbox">
+                  <%= check_box_tag "correct_answer[]",i,@active_question.correct_answer.to_a.include?(i) -%>
+                </td>
+                <td class="answer"><p><code><%= answer.content %></code></p></td>
+              </tr>
+              <% i += 1 %>
+          <% end %>
+          </tbody></table>
+        <%= submit_tag 'Update Answer',:style=>'display:none;' %>
+      </div>
+    </div>
+
+<%# If useful repeat next ,previous links here %>

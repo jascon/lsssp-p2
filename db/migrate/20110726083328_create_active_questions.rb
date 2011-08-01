@@ -4,6 +4,7 @@ class CreateActiveQuestions < ActiveRecord::Migration
       t.integer :student_exam_id ,:null =>false
       t.integer :subtopic_id ,:null =>false
       t.integer :question_id ,:null =>false
+      t.boolean :viewed ,:default => 0
       t.string  :correct_answer ,:limit=>100
       t.integer :time_remain ,:null =>false ,:default => 0
       t.timestamps

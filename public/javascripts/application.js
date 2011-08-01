@@ -73,6 +73,20 @@ $(document).ready(function() {
        });
  });
 
+
+//when the user clicks on question or next or previous links ,show loading indicator using ajax callbacks
+jQuery(function($) {
+  // create a convenient toggleLoading function
+  var toggleLoading = function() { $("#ajax-indicator").toggle();$("#question").animate({"height": "toggle", "opacity": "toggle"}, { duration: "slow" }); };
+
+  $("#load_question")
+    .live("ajax:beforeSend",  toggleLoading)
+    .live("ajax:complete", toggleLoading)
+    .live("ajax:success", function(data, status, xhr) {
+     // $("#question").html(status);
+      //leave it js.erb will take care of this
+    });
+});
 // Exam when user clicks the Answer
 /*
 function updateAnswer(id){
