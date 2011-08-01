@@ -1,3 +1,4 @@
 $(".current").attr("class",'viewed');
 $("#active_question_<%= @active_question.id %>").attr('class', 'current')
+$("#active_question_<%= params[:id] %>").attr('title', 'Viewed')
 $('#question').html("<%= escape_javascript(render 'question') %>")

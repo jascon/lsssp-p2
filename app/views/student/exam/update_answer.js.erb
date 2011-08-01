@@ -1,8 +1,10 @@
-
-/*
-<% if params[:correct_answer].blank? %>
+<% if @active_question.correct_answer.nil? %>
 $("#active_question_<%= params[:id] %>").attr('class', 'viewed')
+$("#active_question_<%= params[:id] %>").attr('title', 'Viewed')
 <% else %>
 $("#active_question_<%= params[:id] %>").attr('class', 'completed')
+$("#active_question_<%= params[:id] %>").attr('title', 'Completed')
 <% end %>
-*/
+
+
+

@@ -29,12 +29,14 @@ class Student::ExamController < ApplicationController
   def update_answer
     #if incoming is "1,2" => "1,2".split(',')=>["1","2"]=> ["1","2"].uniq.collect{|id| id.to_i}.sort  =>[1,2]
     user_answer =  params[:correct_answer].blank? ? nil : params[:correct_answer].uniq.collect{|id| id.to_i}.sort
-    ActiveQuestion.find(params[:id]).update_attribute('correct_answer',user_answer)
+   @active_question = ActiveQuestion.find(params[:id])
+   @active_question.update_attribute('correct_answer',user_answer)
     #render :nothing => true
     respond_to { |format| format.js }
   end
 
   def active_question
+
     if params[:previous]
       @active_question = params[:id].to_i < session[:active_question_ids].min ? ActiveQuestion.find(session[:active_question_ids].last) : ActiveQuestion.find(params[:id])
     elsif params[:next]
@@ -42,6 +44,7 @@ class Student::ExamController < ApplicationController
     else
       @active_question = ActiveQuestion.includes(:question=>:answers).find(params[:id])
     end
+
     #let user viewed the question
     # @active_question.toggle! :viewed
     respond_to { |format| format.js }

@@ -4,7 +4,8 @@
     <ul id="questions_pagination" class="pagination">
       <% i = 1 %>
       <% @active_questions.each do |active_question| %>
-          <li title="current" class="<%= @active_question.id.eql?(active_question.id) ? 'current' : 'loaded'  %>" id="active_question_<%=active_question.id%>">
+          <% type = @active_question.id.eql?(active_question.id) ? 'current' : 'loaded' %>
+          <li title="<%= type.capitalize %>" class="<%= type %>" id="active_question_<%=active_question.id%>">
             <%= link_to i ,active_question_path(:id=>active_question.id,:q_number=>i),:remote => true,:id=>"load_question"  %>
           </li>
           <% i += 1%>
