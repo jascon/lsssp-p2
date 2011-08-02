@@ -1,19 +1,19 @@
 <%= content_tag_for(:tr,user,:class=>cycle('even', 'odd')) do -%>
-<td><%= highlight(user.email,params[:search]) %></td>
-<td><%= link_to user.role.name,[:super_admin,user.role],:class=>'usuallink' %></td>
-<td><%= user.created_at %></td>
-<td><%=user.sign_in_count%></td>
-<td><%=user.confirmed_at.nil? ? 'No' : "Yes(#{user.confirmed_at.strftime('%m.%d.%Y')})"%></td>
-<td>
- <div id="approve_<%=user.id%>">
-   <%=link_to user.approved? ? image_tag('tick.gif') : image_tag('cros.gif') ,approve_super_admin_user_path(user),:remote=>true %>
- </div>
-</td>
-<td>
-   <%= link_to 'Edit', edit_super_admin_user_path(user) ,:class=>'usuallink bold_text'%> |
-   <%= link_to 'Show', [:super_admin,user],:class=>'usuallink bold_text' %> |
-   <%= link_to "Destroy", [:super_admin, user], :confirm => 'Are you sure?', :method => :delete,:class=>'usuallink bold_text' %>
-</td>
+    <td><%= highlight(user.email,params[:search]) %></td>
+    <td><%= link_to user.role.name,[:super_admin,user.role],:class=>'usuallink' %></td>
+    <td><%= user.created_at %></td>
+    <td><%=user.sign_in_count%></td>
+    <td><%=user.confirmed_at.nil? ? 'No' : "Yes(#{user.confirmed_at.strftime('%m.%d.%Y')})"%></td>
+    <td>
+      <div id="approve_<%=user.id%>">
+        <%=link_to user.approved? ? image_tag('tick.gif') : image_tag('cros.gif') ,approve_super_admin_user_path(user),:remote=>true %>
+      </div>
+    </td>
+    <td>
+      <%= link_for_show([:super_admin,user]) %>
+      <%= link_for_edit(edit_super_admin_user_path(user)) %>
+      <%= link_for_destroy([:super_admin, user]) %>
+    </td>
 <% end %>
 
 

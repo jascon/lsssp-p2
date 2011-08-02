@@ -67,39 +67,46 @@ $(document).ready(function() {
 //END Catalog Question Creation
 
 // Exam User if user answers the question(when clicks on checkbox)
- $(document).ready(function() {
-       $('#exam_update_answer').change(function() {
-          $(this).submit();
-       });
- });
+$(document).ready(function() {
+    $('#exam_update_answer').change(function() {
+        $(this).submit();
+    });
+});
 
 
 //when the user clicks on question or next or previous links ,show loading indicator using ajax callbacks
 jQuery(function($) {
-  // create a convenient toggleLoading function
-  var toggleLoading = function() { $("#ajax-indicator").toggle();$("#question").animate({"height": "toggle", "opacity": "toggle"}, { duration: "slow" }); };
+    // create a convenient toggleLoading function
+    var toggleLoading = function() { $("#ajax-indicator").toggle();$("#question").animate({"height": "toggle", "opacity": "toggle"}, { duration: "slow" }); };
 
-  $("#load_question")
-    .live("ajax:beforeSend",  toggleLoading)
-    .live("ajax:complete", toggleLoading)
-    .live("ajax:success", function(data, status, xhr) {
-     // $("#question").html(status);
-      //leave it js.erb will take care of this
+    $("#load_question")
+            .live("ajax:beforeSend",  toggleLoading)
+            .live("ajax:complete", toggleLoading)
+            .live("ajax:success", function(data, status, xhr) {
+        // $("#question").html(status);
+        //leave it js.erb will take care of this
     });
 });
 // Exam when user clicks the Answer
 /*
-function updateAnswer(id){
-    var answer = [];
-    var nodes = document.getElementsByName('correct_answer[]');
-    for (var i = 0, n; n = nodes[i]; i++) {
-        if (n.checked == true) {
-            answer.push(n.value);
-        }
-    }
-    var html = $.ajax({
-        url: "/correct_answer?id="+id+"&correct_answer="+answer,
-        async: false
-    }).responseText;
-}
+ function updateAnswer(id){
+ var answer = [];
+ var nodes = document.getElementsByName('correct_answer[]');
+ for (var i = 0, n; n = nodes[i]; i++) {
+ if (n.checked == true) {
+ answer.push(n.value);
+ }
+ }
+ var html = $.ajax({
+ url: "/correct_answer?id="+id+"&correct_answer="+answer,
+ async: false
+ }).responseText;
+ }
+ */
+
+//TO make will_paginate as AJAX pagination
+/*
+$(document).ready(function() {
+    $('.lsssp_pagination a').attr('data-remote', 'true');
+});
 */

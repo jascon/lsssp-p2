@@ -37,10 +37,10 @@ match "register" => "devise/registrations#new", :as => :new_user_registration
     #resource :exam
   end
   ######## Exam
-  match "exam" => "student/exam#index"
-  match "active_question"  => "student/exam#active_question"
+  match "exam/:certification_id" => "student/exam#index",:as=>:exam
+  match "active_question"  => "student/exam#active_question",:as=>:active_question
   match "update_answer" => "student/exam#update_answer"
-  match "finish_exam" => "student/exam#finish_exam"
+  match "finish_exam/:exam_id" => "student/exam#finish_exam" ,:as=>:finish_exam
   match "review_question" => "student/exam#review_question"
   #--------------------------------------------------------------------------
   #Service Provider Namespace

@@ -1,8 +1,8 @@
 div#exam_content {
     margin: 10px auto;
     max-width: 88%;
-/*  margin:20px;  apply this for full width and comment above 2 lines*/
-/* background-color:#000	; */
+    /*  margin:20px;  apply this for full width and comment above 2 lines*/
+    /* background-color:#000	; */
     text-align:left;
     overflow:hidden;
     min-height: 400px;
@@ -20,13 +20,13 @@ div#exam_content h2 {
 
 #pagination_container {
     position:relative;
-/*  margin:0 20px; */
+    /*  margin:0 20px; */
     z-index:20;
     text-align:center;
     background-color: #FFFFFF;
     border-bottom: 2px solid #0052BE;
     padding-bottom: 10px;
-/*  overflow:hidden;*/
+    /*  overflow:hidden;*/
 }
 ul#questions_pagination {
     width:100%;
@@ -65,8 +65,8 @@ ul#questions_pagination {
     width:1.8em;
     height:1.8em;
     line-height:1.8em;
-    border:1px solid #0052BE;
-    background:#ff9000;
+    border: 3px solid #7F7F7F;
+    /*  background:#ff9000; */
 }
 .loaded a, .viewed a, .completed a {
     text-decoration: none
@@ -99,7 +99,7 @@ div#question {
     margin: 12px 0 0 0;
     text-align:justify;
     background:#fff;
-/* border-top:1px solid #111111; */
+    /* border-top:1px solid #111111; */
     clear:left;
 }
 div#question h2,
@@ -126,7 +126,7 @@ div#question div.pagination a.previous_page,
 div#question div.pagination a.next_page {
     text-decoration:none;
 
-/*  background:#000;*/
+    /*  background:#000;*/
 }
 
 .rbutton {
@@ -148,7 +148,7 @@ div.rbox {
     margin: 5px 0;
     padding:10px 20px;
     text-align:justify;
-/*color: #e5e5e5; */
+    /*color: #e5e5e5; */
     background:#fff;
     border:1px solid #C6C7CC;
     -webkit-border-radius: 12px;
@@ -168,10 +168,11 @@ ol.questions_summary {
     overflow:hidden;
 }
 ol.questions_summary li {
-    width:7.5em;
+
     display:block;
     float:left;
-    margin:0 10px;
+    margin: 0 1px;
+    width: 6em;
 }
 
 ol.questions_summary li span.correct {
@@ -246,6 +247,20 @@ table.answers_review th {
     font-size: 0.8em;
     text-align:left;
     line-height:1.5em;
+}
+
+ul#score_summary {
+    text-align: center;
+    list-style: none outside none;
+    margin: 18px 0 18px 0px;
+    font-weight: bold;
+}
+
+ul#score_summary li {
+    color: #7F7F7F;
+    cursor: pointer;
+    display: inline;
+    padding: 0 10px;
 }
 
 .incorrect{

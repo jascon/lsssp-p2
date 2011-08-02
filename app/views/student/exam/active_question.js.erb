@@ -1,4 +1,6 @@
-$(".current").attr("class",'viewed');
-$("#active_question_<%= @active_question.id %>").attr('class', 'current')
+// to remove class eg: class="current completed" the below line removes only 'current' class not 'completed'
+$(".current").removeClass("current");
+<% type = active_question_status(@active_question) %>
+$("#active_question_<%= @active_question.id %>").addClass("current <%=type%>")
 $("#active_question_<%= params[:id] %>").attr('title', 'Viewed')
 $('#question').html("<%= escape_javascript(render 'question') %>")

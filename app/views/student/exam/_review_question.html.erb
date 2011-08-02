@@ -1,5 +1,5 @@
 <div id="question_content">
-  <h2>Question <%= params[:q_number]  %></h2>
+  <h2>Question <%= params[:q_number] ||=1  %></h2>
   <div class="rbox question_body">
     <p><%= @active_question.question.content %></p>
   </div>
@@ -18,7 +18,7 @@
               <%= check_box_tag "correct_answer[]",i,@active_question.correct_answer.to_a.include?(i) -%>
             </td>
             <td class="answer"><p><code><%= answer.content %></code></p></td>
-            <td> <%= check_box_tag "correct_answer[]",i,@active_question.question.correct_answer.to_a.include?(i) -%></td>
+            <td class="checkbox"> <%= check_box_tag "correct_answer[]",i,@active_question.question.correct_answer.to_a.include?(i) -%></td>
           </tr>
           <% i += 1 %>
       <% end %>

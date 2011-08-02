@@ -23,7 +23,7 @@ class Student::ExamController < ApplicationController
     session[:active_question_ids] = @active_questions.map(&:id)
     @active_question = @active_questions.first
     #let user viewed the question
-    #@active_question.toggle! :viewed
+    @active_question.update_attribute('viewed',true)
   end
 
   def update_answer
@@ -36,7 +36,6 @@ class Student::ExamController < ApplicationController
   end
 
   def active_question
-
     if params[:previous]
       @active_question = params[:id].to_i < session[:active_question_ids].min ? ActiveQuestion.find(session[:active_question_ids].last) : ActiveQuestion.find(params[:id])
     elsif params[:next]
@@ -44,19 +43,20 @@ class Student::ExamController < ApplicationController
     else
       @active_question = ActiveQuestion.includes(:question=>:answers).find(params[:id])
     end
-
     #let user viewed the question
-    # @active_question.toggle! :viewed
+    @active_question.update_attribute('viewed',true)
     respond_to { |format| format.js }
   end
 
   def finish_exam
     @student_exam = StudentExam.find(params[:exam_id])
     @active_questions = @student_exam.active_questions.includes(:question)
-    @questions_completed ,@correct_answers = 0,0
+    @active_question = @active_questions.first
+    @answered ,@correct_answers,@visited = 0,0,0;
     @student_exam.update_attributes(:complete_status=>true)
-    @active_questions.collect{ |aq| @correct_answers +=1 if aq.correct_answer == aq.question.correct_answer ;@questions_completed +=1 if !aq.correct_answer.nil? }
-    @wrong_answers, @questions_not_completed = (@active_questions.size - @correct_answers),(@active_questions.size - @questions_completed)
+    @active_questions.collect{ |aq| @correct_answers +=1 if aq.correct_answer == aq.question.correct_answer ;
+                              @answered +=1 if !aq.correct_answer.nil?; @visited +=1 if aq.viewed? }
+    @wrong_answers, @not_answered = (@active_questions.size - @correct_answers),(@active_questions.size - @answered)
   end
 
   def review_question
