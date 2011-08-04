@@ -26,6 +26,8 @@ match "register" => "devise/registrations#new", :as => :new_user_registration
       get 'export',:on=>:collection
     end
   end
+  match "exams/:status" => "super_admin/exams#index",:as=>:student_exams
+
   #--------------------------------------------------------------------------
   #Student namespace
   #--------------------------------------------------------------------------
@@ -37,10 +39,10 @@ match "register" => "devise/registrations#new", :as => :new_user_registration
     #resource :exam
   end
   ######## Exam
-  match "exam/:certification_id" => "student/exam#index",:as=>:exam
+  match "exam/:certification_id/:status" => "student/exam#index",:as=>:exam
   match "active_question"  => "student/exam#active_question",:as=>:active_question
   match "update_answer" => "student/exam#update_answer"
-  match "finish_exam/:exam_id" => "student/exam#finish_exam" ,:as=>:finish_exam
+  match "finish_exam/:student_exam_id" => "student/exam#finish_exam" ,:as=>:finish_exam
   match "review_question" => "student/exam#review_question"
   #--------------------------------------------------------------------------
   #Service Provider Namespace

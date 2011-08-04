@@ -14,5 +14,6 @@ module Student::ServiceProvidersHelper
     content << "Duration : #{certification.duration} min <br/>"
     content << "Positive marks : #{certification.positive_marks} <br/>"
     content << "Negative marks : #{certification.negative_marks} <br/>"
+    content << "Not Attempted : #{certification.unattempted_marks} <br/>"
   end
 end

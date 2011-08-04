@@ -7,8 +7,14 @@ class CreateStudentExams < ActiveRecord::Migration
       t.integer :number_of_attempts, :default =>0
       t.boolean :complete_status, :default =>0
       t.integer :time_remain
-      t.integer :questions_answered
+      t.integer :no_of_questions,:null=>false,:default=>0
+      t.integer :visited,:null=>false,:default=>0
+      t.integer :not_answered,:null=>false,:default=>0
+      t.integer :answered,:null=>false,:default=>0
+      t.integer :answered_correctly ,:null=>false,:default =>0
+      t.integer :wrong_answers,:null=>false,:default=>0
       t.integer :total_score
+      t.integer :percentage
       t.boolean :result_status
       t.timestamps
     end

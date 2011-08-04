@@ -1,0 +1,41 @@
+<% title "Lsssp : Manage Certifications" %>
+<% content_for :sub_heading do %>
+    <%= sub_heading('LSSSP Manage Certifications',params[:status].eql?('completed') ? 'Completed Exams' : 'Pending Exams' ) %>
+<% end %>
+<% if @student_exams.blank? %>
+    <div class="error_msg">Student Exams Not Found..! </div>
+<% else %>
+    <table class="tablesorter">
+      <thead>
+      <tr>
+        <th>Certification</th>
+        <th>User Name</th>
+        <th>Email</th>
+        <th>Total Score</th>
+        <th>Pass %</th>
+        <th>Got %</th>
+        <th>Completed at</th>
+        <th>Result</th>
+
+      </tr>
+      </thead>
+      <tbody>
+      <% for student_exam in @student_exams %>
+          <tr class="<%=cycle('even', 'odd')%>">
+            <td><%= student_exam.certification.name %></td>
+            <td><%= student_exam.user.name %></td>
+            <td><%= student_exam.user.email %></td>
+            <td><%= student_exam.total_score %></td>
+            <td><%= student_exam.certification.pass_marks_percentage %></td>
+            <td><%= student_exam.percentage %></td>
+            <td><%= distance_of_time_in_words(Time.now, student_exam.updated_at)  %></td>
+            <td>To-Do</td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+    <div class="lsssp_pagination">
+      <%= page_entries_info @student_exams %>  <%= will_paginate @student_exams, :container => false %>
+    </div>
+<% end %>

@@ -263,6 +263,10 @@ ul#score_summary li {
     padding: 0 10px;
 }
 
+span#score {
+    font-size: 1.3em;
+    color: red;
+}
 .incorrect{
     color:red;
 }

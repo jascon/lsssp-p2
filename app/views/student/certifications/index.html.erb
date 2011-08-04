@@ -19,8 +19,7 @@
               </strong>
             </td>
             <td class="links">
-              <%=link_to content_tag(:span,'Take Test'),exam_path(:certification_id => student_certification.certification.id),
-                        :class=>'btn-blue tipTip',:title=>'Write the exam online.',:style=>'float:right;' %>
+              <%= link_to_exam(student_certification.certification.id)  %>
             </td>
           </tr>
       <% end %>

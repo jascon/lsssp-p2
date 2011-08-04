@@ -2,11 +2,12 @@
   <h3>Review <%= @student_exam.certification.name %></h3>
   <div id="pagination_container">
     <div>
+      <h2>Your Score : <span id="score"><%= @student_exam.percentage %>%</span></h2>
       <ul id="score_summary">
-        <li class="usuallink tipTip" title="Total Number of questions in exam">Total: <%= @active_questions.size %></li>
-        <li class="usuallink tipTip" title="Number of questions visited">Viewed: <%= @visited %></li>
-        <li class="usuallink tipTip" title="Number of questions with any answer given">Completed: <%= @answered %></li>
-        <li class="usuallink tipTip" title="Number of questions with correct answers">Correct: <%= @correct_answers %></li>
+        <li class="usuallink tipTip" title="Total Number of questions in exam">Total: <%= @student_exam.no_of_questions %></li>
+        <li class="usuallink tipTip" title="Number of questions visited">Viewed: <%= @student_exam.visited %></li>
+        <li class="usuallink tipTip" title="Number of questions with any answer given">Completed: <%= @student_exam.answered %></li>
+        <li class="usuallink tipTip" title="Number of questions with correct answers">Correct: <%= @student_exam.answered_correctly %></li>
       </ul>
     </div>
     <ol class="questions_summary">
