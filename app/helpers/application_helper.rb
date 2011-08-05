@@ -49,26 +49,7 @@ module ApplicationHelper
     content.html_safe
   end
 
-  def link_to_exam(certification_id)
-    # if student already taken the exam then check for exam complete or not
-    # if completed Review the exam else retake the exam from the previous session
-    if current_user.student_exams.exists?(:certification_id =>certification_id)
-      student_exam = current_user.student_exams.find_by_certification_id(certification_id)
-      if student_exam.complete_status? #already completed review the exam
-        link_to content_tag(:span,'Review'),finish_exam_path(:student_exam_id =>student_exam.id),
-                :class=>'btn-red tipTip',:title=>'Already Completed ,go through review the questions.',:style=>'float:right;'
-      else # not completed the retake from previous session
-        link_to content_tag(:span,'Re take'),exam_path(:certification_id =>certification_id,:status=>'retake'),
-                :class=>'btn-yellow tipTip',:title=>'No yet Completed,Go through previous session.',:style=>'float:right;'
-      end
-    else
-      link_to content_tag(:span,'Take Test'),exam_path(:certification_id =>certification_id,:status=>'new'),
-              :class=>'btn-blue tipTip',:title=>'Write the exam online.',:style=>'float:right;'
-    end
 
-
-
-  end
 ## alias for submit_tag ########
 =begin
   def button_for(name, options={})

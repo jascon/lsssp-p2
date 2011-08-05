@@ -4,6 +4,7 @@ class CreateStudentCertifications < ActiveRecord::Migration
       t.integer :user_id ,:null=>false
       t.integer :certificate_provider_id,:null=>false
       t.integer :certification_id,:null=>false
+      t.decimal :amount ,:null=>false ,:precision => 10, :scale => 2
       t.timestamps
     end
     add_index :student_certifications, [:certification_id,:user_id],:unique => true

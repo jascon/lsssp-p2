@@ -46,7 +46,7 @@ input.checkbox {
 }
 
 select {
-/*	width: 250px; */
+    /*	width: 250px; */
     font-size: 12px;
 }
 select.inpBox_medium {
@@ -190,7 +190,7 @@ h4.header_stat2 {
 #page_container {
     margin: 20px 5px;
 
-/*background-color: #fff;*/
+    /*background-color: #fff;*/
     padding: 0 5px;
 }
 #page_container div#page_top {
@@ -348,7 +348,7 @@ div#page_menu ul li:hover ul, div#page_menu ul li ul:hover {
 }
 #page_container div#page_content div.content div.content_index {
     margin-top: 20px;
-/*position: relative;*/
+    /*position: relative;*/
 }
 
 #page_container div#page_content div.content div.content_index div.index_big_image {
@@ -398,19 +398,19 @@ div#page_menu ul li:hover ul, div#page_menu ul li ul:hover {
 }
 
 #page_container div#page_content div.content div.content_index img {
-/*border: solid 1px #b8cad9;*/
+    /*border: solid 1px #b8cad9;*/
 }
 #page_container div#page_content div.content div.content_index div.right_content {
     border: solid 6px #f2f2f2;
 }
 #page_container div#page_content div.content div.content_index div.right_content div.margin {
-/*padding: 10px; */
+    /*padding: 10px; */
     padding: 8px;
     border: solid 1px #b8cad9;
 }
 #page_container div#page_content div.content div.content_index div.search {
     border: solid 6px #f2f2f2;
-/*width: 200px; */
+    /*width: 200px; */
     margin-top: 0px;
 }
 #page_container div#page_content div.content div.content_index div.search div.margin {
@@ -419,7 +419,7 @@ div#page_menu ul li:hover ul, div#page_menu ul li ul:hover {
 }
 #page_container div#page_content div.content div.content_index div.search div.margin div div {
     margin-top: 10px;
-/*background: url(/images/green^.gif) no-repeat; */
+    /*background: url(/images/green^.gif) no-repeat; */
     padding-left: 18px;
     line-height: 15px;
 }
@@ -441,7 +441,7 @@ div#page_menu ul li:hover ul, div#page_menu ul li ul:hover {
     border: 0px;
 }
 #page_container div#page_content div.content div.content_index div.recent_items {
-/*width: 200px; */
+    /*width: 200px; */
     margin-top: 26px;
     border: solid 6px #f2f2f2;
 }
@@ -781,6 +781,9 @@ input.btn_upload {
 .inline {
     display: inline;
 }
+
+
+
 .padding_left {
     padding-left: 5px;
 }
@@ -790,6 +793,16 @@ input.btn_upload {
 }
 .opened {
     font-weight: bold;
+}
+.inline_left{
+    display: block;
+    float: left;
+    width: 60%;
+}
+
+.inline_right{
+    float: right;
+    display: inline;
 }
 .drop-down-block {
     padding: .3em;
@@ -835,7 +848,7 @@ table.tablesorter {
     border-collapse: collapse;
     border: 1px solid #cdcdcd;
     margin: 10px 0 15px;
-    font-size: 12px;
+    font-size: 11px;
     width: 100%;
     text-align: center;
 }
@@ -1310,6 +1323,15 @@ div.logotype div.child:first-child {
     padding-top: 20px;
     padding-bottom: 20px;
 }
-
+.ajax-cluetip {
+    font-weight: bold;
+    color: #4b0082;
+    text-decoration: none;
+    cursor: pointer;
+}
+.ajax-cluetip:hover {
+    color: #4b0082;
+    text-decoration: underline;
+}
 
 

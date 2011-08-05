@@ -2,7 +2,7 @@
 <html>
 <head>
   <title><%= content_for?(:title) ? yield(:title) : "LSSSP" %></title>
-  <%= javascript_include_tag :defaults%>
+  <%= javascript_include_tag :defaults,'jquery.cluetip.min' %>
   <%= stylesheet_link_tag :all %>
   <%= csrf_meta_tag %>
   <%= yield(:head) %>

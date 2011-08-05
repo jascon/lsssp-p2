@@ -1,0 +1,2 @@
+module Certification::ExamsHelper
+end

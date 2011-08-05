@@ -29,6 +29,11 @@ $(document).ready( function() {
         window.location = "/catalog/subtopics?topic_id="+$('#topic_id').val()+"&subtopic_status="+$('#subtopic_status').val()+"&search ="+$('#search').val()
     });
     //
+
+    //Certifications purchased filter by certification
+     $('#purchased_certification_id').change(function() {
+      //  window.location = "/certification/exams/purchased_by_certification?certification_id="+$('#purchased_certification_id').val();
+    });
 });
 
 
@@ -80,12 +85,17 @@ jQuery(function($) {
     var toggleLoading = function() { $("#ajax-indicator").toggle();$("#question").animate({"height": "toggle", "opacity": "toggle"}, { duration: "slow" }); };
 
     $("#load_question")
-            .live("ajax:beforeSend",  toggleLoading)
-            .live("ajax:complete", toggleLoading)
-            .live("ajax:success", function(data, status, xhr) {
-        // $("#question").html(status);
-        //leave it js.erb will take care of this
-    });
+        .live("ajax:beforeSend",  toggleLoading)
+        .live("ajax:complete", toggleLoading)
+        .live("ajax:success", function(data, status, xhr) {
+            // $("#question").html(status);
+            //leave it js.erb will take care of this
+        });
+});
+
+// ajax cluetip
+$(document).ready(function() {
+    $('a.ajax-cluetip').cluetip({width: '400px;', showTitle: false, arrows: true});
 });
 // Exam when user clicks the Answer
 /*
@@ -106,7 +116,7 @@ jQuery(function($) {
 
 //TO make will_paginate as AJAX pagination
 /*
-$(document).ready(function() {
-    $('.lsssp_pagination a').attr('data-remote', 'true');
-});
-*/
+ $(document).ready(function() {
+ $('.lsssp_pagination a').attr('data-remote', 'true');
+ });
+ */

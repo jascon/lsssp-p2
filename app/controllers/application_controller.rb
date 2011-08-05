@@ -1,12 +1,16 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  helper_method :has_role?
+  helper_method :has_role? ,:date_time_stamp
   # Redirect to home page if user doesn't have permission
   #----------------------------------------------------
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = "Access denied."
     redirect_to root_url
+  end
+
+  def date_time_stamp(datetime)
+     datetime.strftime("%b-%d-%Y %H:%M:%S")
   end
 
   # Get roles accessible by the current user

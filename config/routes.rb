@@ -1,5 +1,7 @@
 LssspP2::Application.routes.draw do
 
+  get "user_info/index"
+
   devise_for :users, :path_names => { :sign_up => "register" }
 =begin
 devise_for :users, :as => "", :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" } 
@@ -26,7 +28,9 @@ match "register" => "devise/registrations#new", :as => :new_user_registration
       get 'export',:on=>:collection
     end
   end
-  match "exams/:status" => "super_admin/exams#index",:as=>:student_exams
+
+  match "certifications/exams/:status" => "certification/exams#index",:as=>:certifications_exams
+  match "certifications/purchased" => "certification/exams#purchased",:as=>:certifications_purchased
 
   #--------------------------------------------------------------------------
   #Student namespace
@@ -75,6 +79,7 @@ match "register" => "devise/registrations#new", :as => :new_user_registration
     get 'active' ,:on=>:member
   end
 
+ match "user_info/:id" => "user_info#index" ,:as=>:user_info
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
