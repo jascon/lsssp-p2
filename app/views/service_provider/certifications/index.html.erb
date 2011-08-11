@@ -20,7 +20,13 @@
           <tr class="<%=cycle('even','odd')%>">
             <td><%= certification.name %></td>
             <td><%= certification.price %></td>
-            <td> <%= link_to "Register", service_provider_certifications_path(:id =>certification.id), :method => :post,:class=>'usuallink bold_text' %></td>
+            <td>
+              <% if current_user.provided_certifications.exists?(certification) %>
+              <%= link_to 'Already Registered',my_certifications_service_provider_certifications_path %>
+              <% else %>
+              <%= link_to "Register", service_provider_certifications_path(:id =>certification.id), :method => :post,:class=>'usuallink bold_text' %>
+               <% end %>
+            </td>
           </tr>
       <% end %>
       </tbody>

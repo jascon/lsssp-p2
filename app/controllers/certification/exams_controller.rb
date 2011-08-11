@@ -5,9 +5,9 @@ class Certification::ExamsController < ApplicationController
   end
   def purchased
     if params[:certification_id]
-       @student_certifications = StudentCertification.by_certification(params[:certification_id]).paginate(:page =>params[:page],:per_page=>10 )
+       @student_certifications = OwnedCertification.by_certification(params[:certification_id]).paginate(:page =>params[:page],:per_page=>10 )
     else
-      @student_certifications = StudentCertification.includes([:user,:certification]).order('created_at DESC').paginate(:page =>params[:page],:per_page=>10 )
+      @student_certifications = OwnedCertification.includes([:user,:provider,:certification]).order('created_at DESC').paginate(:page =>params[:page],:per_page=>10 )
     end
   end
 

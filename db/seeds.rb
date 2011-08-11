@@ -1,3 +1,21 @@
+Topic.create(:name=>'Java',:active=>1)
+Topic.create(:name=>'Ruby on Rails',:active=>1)
+
+Subtopic.create(:topic_id=>1,:name=>'Core Java',:active=>1)
+Subtopic.create(:topic_id=>1,:name=>'Advanced Java',:active=>1)
+Subtopic.create(:topic_id=>1,:name=>'J2EE',:active=>1)
+
+Subtopic.create(:topic_id=>2,:name=>'Ruby',:active=>1)
+Subtopic.create(:topic_id=>2,:name=>'Rails',:active=>1)
+
+
+Certification.create(:topic_id=>1,:name=>'Java Certification',:price=>200,:active=>1,:duration=>10,:no_of_questions=>10,
+                    :positive_marks=>1,:negative_marks=>0,:unattempted_marks=>0,:pass_marks_percentage=>50)
+
+Certification.create(:topic_id=>2,:name=>'Ruby on Rails Certification',:price=>300,:active=>1,:duration=>10,:no_of_questions=>10,
+                    :positive_marks=>1,:negative_marks=>0,:unattempted_marks=>0,:pass_marks_percentage=>50)
+
+
 =begin
 ############ ROLES ################
 Role.create(:name=>'Super Admin')

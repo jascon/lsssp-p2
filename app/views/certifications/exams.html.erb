@@ -1,0 +1,62 @@
+
+<% title "Lsssp : Manage Certification Exams" %>
+<% content_for :sub_heading do %>
+    <%= sub_heading('LSSSP Manage Certification Exams',"#{params[:status].capitalize} Exams" ) %>
+<% end %>
+<% content_for :left_panel do  %>
+    <td valign="top" width="279">
+      <%= render 'common/search' %>
+    </td>
+<% end %>
+
+<div>
+  <%= form_tag({:action=>'exams'},:id=>'manage_exams') do %>
+    <span>Sort by :
+      <i>Certification:</i>
+    <%= select_tag(:certification_id, options_from_collection_for_select(@certifications, "id", "name",{:selected=>params[:certification_id]}),{:include_blank => true}) %>
+     <i>Status:</i>
+      <%= select_tag(:status, options_for_select({"All" => "all", "Completed" =>'completed',"Pending"=>'pending',"Not yet Attempted"=>'not_yet_attempted'},{:selected=>params[:status]})
+                 ) %>
+      </span>
+      <%=submit_tag 'Go',:style=>"display:none;" %>
+  <% end  %>
+</div>
+<% if @student_exams.blank? %>
+    <div class="error_msg">Student Exams Not Found..! </div>
+<% else %>
+    <table class="tablesorter">
+      <thead>
+      <tr>
+        <th>Exam Status</th>
+        <th>Certification</th>
+        <th>User Name</th>
+        <th>Email</th>
+        <th>Total Score</th>
+        <th>Pass %</th>
+        <th>Got %</th>
+        <th>Completed at</th>
+        <th>Result</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% for student_exam in @student_exams %>
+          <tr class="<%=cycle('even', 'odd')%>">
+            <td>
+              <%= exam_status(student_exam) %>
+            </td>
+            <td><%= student_exam.certification.name %></td>
+            <td><%=link_to student_exam.user.name,user_info_path(:id=>student_exam.user.id),:rel=>user_info_path(:id=>student_exam.user.id),:class=>'ajax-cluetip'%></td>
+            <td><%= student_exam.user.email %></td>
+            <td><%= student_exam.total_score %></td>
+            <td><%= student_exam.certification.pass_marks_percentage %></td>
+            <td><%= student_exam.percentage %></td>
+            <td><%= date_time_stamp(student_exam.updated_at)  %></td>
+            <td>To-Do</td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <div class="lsssp_pagination">
+      <%= page_entries_info @student_exams %>  <%= will_paginate @student_exams, :container => false %>
+    </div>
+<% end %>

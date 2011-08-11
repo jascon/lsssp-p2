@@ -1,8 +1,8 @@
 <h2>Listing All Certifications Registered you</h2>
-<% if current_user.certifications.blank? %>
+<% if @certifications.blank? %>
     <i>Sorry No Certifications Registered Yet..</i>
 <% else %>
-    <% for certification in current_user.certifications %>
+    <% for certification in @certifications %>
         <div class="certification">
           <p>
             <strong><%= certification.name %></strong>

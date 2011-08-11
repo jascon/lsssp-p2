@@ -6,7 +6,7 @@ class CreateSubtopics < ActiveRecord::Migration
       t.boolean :active,:default=>0
       t.timestamps
     end
-    add_index :subtopics, :name,:unique => true
+    add_index :subtopics, [:name,:topic_id],:unique => true
   end
 
   def self.down

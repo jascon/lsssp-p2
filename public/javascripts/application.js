@@ -31,8 +31,8 @@ $(document).ready( function() {
     //
 
     //Certifications purchased filter by certification
-     $('#purchased_certification_id').change(function() {
-      //  window.location = "/certification/exams/purchased_by_certification?certification_id="+$('#purchased_certification_id').val();
+     $('#purchased_by_certification').change(function() {
+      //  window.location = "/certifications/purchased_certification?id="+$('#purchased_by_certification').val();
     });
 });
 
@@ -71,12 +71,20 @@ $(document).ready(function() {
 });
 //END Catalog Question Creation
 
+//on change form submission
 // Exam User if user answers the question(when clicks on checkbox)
 $(document).ready(function() {
     $('#exam_update_answer').change(function() {
         $(this).submit();
     });
+      $('#purchased_certification').change(function() {
+        $(this).submit();
+    });
+      $('#manage_exams').change(function() {
+        $(this).submit();
+    });
 });
+
 
 
 //when the user clicks on question or next or previous links ,show loading indicator using ajax callbacks

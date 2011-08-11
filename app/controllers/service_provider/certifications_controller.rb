@@ -6,12 +6,12 @@ class ServiceProvider::CertificationsController < ApplicationController
   end
 
   def my_certifications
-
+     @certifications = current_user.provided_certifications
   end
 
   def create
-    certification_provider = current_user.certificate_providers.build(:certification_id => params[:id])
-    certification_provider.save ? flash[:notice] = "Certification Registered.." : flash[:error] = "Unable to Register Certification."
+    current_user.certificate_providers << CertificateProvider.new(:certification_id => params[:id])
+    current_user.save ? flash[:notice] = "Certification Registered Successfully.." : flash[:error] = "Unable to Register Certification."
     redirect_to my_certifications_service_provider_certifications_url
   end
 

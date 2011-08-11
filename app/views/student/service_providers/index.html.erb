@@ -16,8 +16,8 @@
             <td class="logo"><%=image_tag('avatar.gif')%></td>
             <td class="info">
               <strong><%= service_provider.name %></strong>  <br/>
-              <%= link_to pluralize(service_provider.certifications.size, 'certification'),'#',
-                          :title=>offered_certifications(service_provider.certifications),:class=>'tipTip' %>
+              <%= link_to pluralize(service_provider.provided_certifications.size, 'certification'),'#',
+                          :title=>offered_certifications(service_provider.provided_certifications),:class=>'tipTip' %>
             </td>
             <td class="links">
               <% if current_user.followers.exists?(service_provider) %>

@@ -10,6 +10,7 @@ class CreateActiveQuestions < ActiveRecord::Migration
       t.timestamps
     end
     add_index :active_questions ,[:student_exam_id,:question_id],:unique => true
+    add_index :active_questions,:subtopic_id
   end
 
   def self.down

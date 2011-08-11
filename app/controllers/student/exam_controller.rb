@@ -1,29 +1,25 @@
 class Student::ExamController < ApplicationController
   before_filter :authenticate_user!,:must_be_student
   def index
-    @certification = Certification.includes(:subtopic_questions).find(params[:certification_id])
-    case params[:status]
-      when 'new'
-        student_exam = current_user.student_exams.create(:certification_id => @certification.id,:no_of_questions=>@certification.no_of_questions)
+      if params[:status] == 'new'
+         @student_exam = StudentExam.includes({:certification=>:subtopic_questions}).find(params[:id])
         ActiveQuestion.transaction do
-          @certification.subtopic_questions.each do |subtopic_question|
+          @student_exam.certification.subtopic_questions.each do |subtopic_question|
             question_ids = Question.where(:subtopic_id => subtopic_question.subtopic_id).order("RAND()").limit(subtopic_question.total_questions).select('id').map(&:id)
             for question in question_ids
-              ActiveQuestion.create(:student_exam_id => student_exam.id,:subtopic_id => subtopic_question.subtopic.id,:question_id => question)
+              ActiveQuestion.create(:student_exam_id =>@student_exam.id,:subtopic_id => subtopic_question.subtopic.id,:question_id => question)
             end
           end
         end
-        # Update status to true ,the user has been taken the exam
-        student_exam.update_attribute('status',true)
-        @active_questions = student_exam.active_questions
-      when 'retake'
-        @active_questions = StudentExam.find_by_certification_id_and_user_id(@certification.id,current_user.id).active_questions
+        @student_exam.update_attribute('status',true)# Update status to true ,the user has been taken the exam
+        @active_questions = @student_exam.active_questions
+       else #when 'retake'
+        @student_exam = StudentExam.includes(:certification).find(params[:id])
+        @active_questions = @student_exam.active_questions
     end
-    #to find next and previous records, hold ids and get
-    session[:active_question_ids] = @active_questions.map(&:id)
+    session[:active_question_ids] = @active_questions.map(&:id)#to find next and previous records, hold ids and get
     @active_question = @active_questions.first
-    #let user viewed the question
-    @active_question.update_attribute('viewed',true) if params[:status].eql?('new')
+    @active_question.update_attribute('viewed',true) if params[:status].eql?('new') #let user viewed the question
   end
 
   def update_answer
@@ -49,7 +45,7 @@ class Student::ExamController < ApplicationController
   end
 
   def finish_exam
-    @student_exam = StudentExam.includes(:certification).find(params[:student_exam_id])
+    @student_exam = StudentExam.includes(:certification).find(params[:id])
     @active_questions = @student_exam.active_questions.includes(:question)
     @active_question = @active_questions.first
     answered ,correct_answers,visited = 0,0,0;

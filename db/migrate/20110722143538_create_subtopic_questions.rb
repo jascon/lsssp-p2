@@ -7,7 +7,6 @@ class CreateSubtopicQuestions < ActiveRecord::Migration
       t.timestamps
     end
     add_index :subtopic_questions,[:certification_id,:subtopic_id],:unique => true
-    #add_foreign_key(:subtopic_questions, :certifications, :dependent => :delete)
   end
 
   def self.down

@@ -10,6 +10,8 @@ class CreateQuestions < ActiveRecord::Migration
       t.boolean :active,:default=>0
       t.timestamps
     end
+    add_index :questions,:topic_id
+    add_index :questions,:subtopic_id
   end
 
   def self.down

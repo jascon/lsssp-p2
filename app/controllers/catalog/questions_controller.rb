@@ -3,9 +3,9 @@ class Catalog::QuestionsController < ApplicationController
   before_filter :recent,:only=>[:index]
   def index
     if params[:subtopic_id]
-      @questions = Question.where(:subtopic_id => params[:subtopic_id])
+      @questions = Question.includes({:topic=>:subtopics}).where(:subtopic_id => params[:subtopic_id])
     else
-      @questions = Question.search(params[:search])
+      @questions = Question.includes({:topic=>:subtopics}).search(params[:search])
     end
 
   end

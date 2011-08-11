@@ -5,21 +5,21 @@
 
 <h3>Certifications you Registered </h3>
 
-<% if @student_certifications.blank? %>
+<% if @certifications_owned.blank? %>
     <div class="error_msg">Sorry No Certifications Registered yet.!</div>
 <% else %>
 
     <table class="list" cellpadding="13" cellspacing="10px;">
-      <% for student_certification in @student_certifications %>
+      <% for certification in @certifications_owned %>
           <tr>
             <td class="logo">Logo</td>
             <td class="info">
               <strong>
-                 <%=link_to student_certification.certification.name ,'#',:class=>'tipTipRight',:title=> examination_info(student_certification.certification) %>
+                 <%=link_to certification.name ,'#',:class=>'tipTipRight',:title=> examination_info(certification) %>
               </strong>
             </td>
             <td class="links">
-              <%= link_to_exam(student_certification.certification.id)  %>
+              <%= link_to_exam(certification)  %>
             </td>
           </tr>
       <% end %>

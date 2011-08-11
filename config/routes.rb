@@ -29,8 +29,7 @@ match "register" => "devise/registrations#new", :as => :new_user_registration
     end
   end
 
-  match "certifications/exams/:status" => "certification/exams#index",:as=>:certifications_exams
-  match "certifications/purchased" => "certification/exams#purchased",:as=>:certifications_purchased
+
 
   #--------------------------------------------------------------------------
   #Student namespace
@@ -43,10 +42,10 @@ match "register" => "devise/registrations#new", :as => :new_user_registration
     #resource :exam
   end
   ######## Exam
-  match "exam/:certification_id/:status" => "student/exam#index",:as=>:exam
+  match "exam/:id/:status" => "student/exam#index",:as=>:exam
   match "active_question"  => "student/exam#active_question",:as=>:active_question
   match "update_answer" => "student/exam#update_answer"
-  match "finish_exam/:student_exam_id" => "student/exam#finish_exam" ,:as=>:finish_exam
+  match "finish_exam/:id" => "student/exam#finish_exam" ,:as=>:finish_exam
   match "review_question" => "student/exam#review_question"
   #--------------------------------------------------------------------------
   #Service Provider Namespace
@@ -54,7 +53,7 @@ match "register" => "devise/registrations#new", :as => :new_user_registration
   namespace :service_provider do
     resources :certifications do
       get 'my_certifications',:on=>:collection
-       get 'export',:on=>:collection
+      get 'export',:on=>:collection
     end
     resources :assessors,:students  do
       get 'approve',:on=>:member
@@ -70,7 +69,7 @@ match "register" => "devise/registrations#new", :as => :new_user_registration
       get 'export',:on=>:collection
     end
     resources :certifications do
-       get 'active' ,:on=>:member
+      get 'active' ,:on=>:member
       get 'export',:on=>:collection
       get 'load_subtopics' ,:on=>:collection
     end
@@ -78,8 +77,14 @@ match "register" => "devise/registrations#new", :as => :new_user_registration
   resources :payment_gateways do
     get 'active' ,:on=>:member
   end
+  #match "certifications/purchased" => "certification/exams#purchased",:as=>:certifications_purchased
+  match "certifications/purchased" => "certifications#index",:as=>:certifications_purchased
+  match "certification/purchased" => "certifications#purchased_certification"#,:as=>:purchased_certification
+  match "certifications/exams"  =>"certifications#exams"
 
- match "user_info/:id" => "user_info#index" ,:as=>:user_info
+
+
+  match "user_info/:id" => "user_info#index" ,:as=>:user_info
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

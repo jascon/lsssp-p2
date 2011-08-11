@@ -4,9 +4,17 @@ class Certification < ActiveRecord::Base
 # Associations
 #-------------------------------------------------------------------------------------------------------
   belongs_to :topic, :conditions =>{:active => true }
-  has_many :certificate_providers
-  has_many :users, :through => :certificate_providers
+
+
+#certification.providers will return all the service_providers who registered with this certification
 #------------------------------------------------------------------------------------------------------
+  has_many :certificate_providers
+  has_many :providers, :through => :certificate_providers
+#certification.owned will return all the users(students) who buy  this certification
+#------------------------------------------------------------------------------------------------------
+  has_many :owned_certifications
+  has_many :owned, :through => :owned_certifications
+
   has_many :subtopic_questions ,:dependent=>:destroy
 
  accepts_nested_attributes_for :subtopic_questions, :allow_destroy => true,:reject_if => proc { |att| att['subtopic_id'] == nil or att['total_questions'] == '' }
@@ -28,14 +36,15 @@ class Certification < ActiveRecord::Base
   class << self
     def search(query)
       if query
-        where(:name.matches => "%#{query}%") #from meta_where gem
+        includes({:topic=>:subtopics}).where(:name.matches => "%#{query}%") #from meta_where gem
       else
-        scoped
+        #scoped
+       includes({:topic=>:subtopics}).scoped
       end
     end
 
     def active
-      where(:active=>true).order('name')
+      includes({:topic=>:subtopics}).where(:active=>true).order('name')
     end
 
     def recent

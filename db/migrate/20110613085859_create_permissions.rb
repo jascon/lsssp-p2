@@ -5,7 +5,7 @@ class CreatePermissions < ActiveRecord::Migration
       t.string :name,:null=>false,:limit=>25 # for Ability model can :update(this is name.to_sym) User
       t.timestamps
     end
-    #add_index :permissions, [:name,:authorization_id],:unique => true
+    add_index :permissions, :authorization_id
   end
 
   def self.down

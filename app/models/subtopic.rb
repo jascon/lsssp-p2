@@ -1,6 +1,6 @@
 class Subtopic < ActiveRecord::Base
   #attr_accessible :topic_id, :name
-  belongs_to :topic
+  belongs_to :topic #, :counter_cache => true
   has_many :questions
 
   validates :topic_id, :presence => true

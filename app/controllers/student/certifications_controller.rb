@@ -1,5 +1,5 @@
 class Student::CertificationsController < ApplicationController
   def index
-    @student_certifications = current_user.student_certifications
+    @certifications_owned = current_user.owned
   end
 end

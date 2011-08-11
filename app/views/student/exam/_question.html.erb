@@ -3,7 +3,7 @@
   <%= link_to content_tag(:span ,' Next →') ,active_question_path(:id=>@active_question.id+1,:next=>true),:remote=>true,:id=>"load_question",:class=>'btn-yellow next_page',:style=>'float:right' %>
 </div>
 <div id="finish_button">
-  <%= link_to content_tag(:span ,'Finish Exam') ,finish_exam_path(:student_exam_id=>@active_question.student_exam_id),:class=>'btn-red',:style=>'float:none',:confirm=>'Finish Exam?' %>
+  <%= link_to content_tag(:span ,'Finish Exam') ,finish_exam_path(:id=>@active_question.student_exam_id),:class=>'btn-red',:style=>'float:none',:confirm=>'Finish Exam?' %>
 </div>
 
     <div id="question_content">

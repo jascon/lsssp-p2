@@ -8,6 +8,7 @@ class CreatePaymentGateways < ActiveRecord::Migration
       t.boolean :active,:default=>0
       t.timestamps
     end
+    add_index :payment_gateways,:api_name,:unique => true
   end
 
   def self.down

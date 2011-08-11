@@ -1,0 +1,5 @@
+<% title "Lsssp : Manage Certifications" %>
+<% content_for :sub_heading do %>
+    <%= sub_heading('LSSSP Manage Certification',"#{Certification.find(params[:certification_id]).name} Purchased" ) %>
+<% end %>
+<%= render 'purchased' %>

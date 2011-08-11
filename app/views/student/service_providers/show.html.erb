@@ -5,7 +5,7 @@
 <h3>Certifications offered by <i><%= @service_provider.name %></i> </h3>
 
 <table class="list" cellpadding="13" cellspacing="10px;">
-  <% for certification in @service_provider.certifications %>
+  <% for certification in @provided_certifications %>
       <tr>
         <td class="logo">Logo</td>
         <td class="info">
@@ -15,11 +15,11 @@
           Price : A$ <%= certification.price %>
         </td>
         <td class="links">
-          <% if @owned_certifications.exists?(:certification_id=>certification.id) %>
-              <%=link_to 'Already Own','#',:class=>'tipTip',:title=>'Exam Details will Display here' %>
+          <% if current_user.owned.exists?(certification) %>
+              <%=link_to 'Already Own','#',:class=>'tipTipRight',:title=>'Already Owned this certification' %>
           <% else %>
               <%=link_to content_tag(:span,'Buy'),student_service_providers_path(:id=>@service_provider,:cid=>certification.id),
-                         :method=>:post ,:class=>'btn-blue tipTip',:title=>'Clicking on this will be redirect to Paypal Payment Gateway.',:style=>'float:right;' %>
+                         :method=>:post ,:class=>'btn-blue tipTipRight',:title=>'Clicking on this will be redirect to Paypal Payment Gateway.',:style=>'float:right;' %>
           <% end %>
         </td>
       </tr>

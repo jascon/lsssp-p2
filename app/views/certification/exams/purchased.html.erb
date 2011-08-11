@@ -27,8 +27,7 @@
           <tr class="<%=cycle('even', 'odd')%>">
             <td><%= student_certification.certification.name %></td>
             <td><%=link_to student_certification.user.email,user_info_path(:id=>student_certification.user.id),:rel=>user_info_path(:id=>student_certification.user.id),:class=>'ajax-cluetip'%></td>
-            <% provider = User.find(student_certification.certificate_provider_id) %>
-            <td><%=link_to provider.email ,user_info_path(:id=>provider.id),:rel=>user_info_path(:id=>provider.id),:class=>'ajax-cluetip'%></td>
+            <td><%=link_to student_certification.provider.email ,user_info_path(:id=>student_certification.provider.id),:rel=>user_info_path(:id=>student_certification.provider.id),:class=>'ajax-cluetip'%></td>
             <td><%= student_certification.amount %></td>
             <td><%= date_time_stamp(student_certification.created_at) %></td>
           </tr>

@@ -7,7 +7,6 @@ class Catalog::CertificationsController < ApplicationController
         Certification.search(params[:search]).where(:topic_id=>params[:id])
     @subtopics = Subtopic.where(:topic_id => params[:id]) if params[:id]
     @certification = Certification.new(:topic_id=>params[:id])
-
   end
 
 

@@ -2,19 +2,26 @@ class Student::ServiceProvidersController < ApplicationController
   before_filter :authenticate_user!,:must_be_student
   def index
     #getting service providers who have at least one certification
-    @service_providers = User.with_role(2).joins(:certifications).group('users.name')
+    @service_providers = User.with_role(2).joins(:provided_certifications).group('users.name')
   end
 
   def show
     @service_provider = User.find(params[:id])
-    @owned_certifications = current_user.student_certifications
+    @provided_certifications = @service_provider.provided_certifications
     # get an id of service provider and display info of that user
     #student_service_provider_path(id) or [:student, @service_provider]
   end
 
   def create
-    student_certification = current_user.student_certifications.build(:certificate_provider_id=>params[:id],:certification_id =>params[:cid])
-    student_certification.save ? flash[:notice] = "Payment Success.." : flash[:error] = "Payment Failure."
+    certification = Certification.find(params[:cid])
+    current_user.owned_certifications << OwnedCertification.new(:provider_id=>params[:id],:certification_id =>certification.id,:amount=>certification.price)
+    if current_user.save
+      flash[:notice] = "Payment Success..! Online Exam Created "
+      #create student_exam for this user
+      current_user.student_exams.create(:certification_id =>certification.id,:no_of_questions=>certification.no_of_questions)
+    else
+      flash[:error] = "Payment Failure."
+    end
     redirect_to student_service_provider_path(params[:id])
   end
 

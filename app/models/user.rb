@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   belongs_to :role#, :counter_cache => true
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
+                  # Include default devise modules. Others available are:
+                  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
@@ -12,17 +12,21 @@ class User < ActiveRecord::Base
 #-------------------------------------------------------------------------------------------------
   has_many :followings
   has_many :followers, :through => :followings
-  #############         Inverse
+#############         Inverse
   has_many :inverse_followings, :class_name => "Following", :foreign_key => "follower_id"
   has_many :inverse_followers, :through => :inverse_followings, :source => :user
 #--------------------------------------------------------------------------------------------------
 
-#Service Provider Registers with Certifications(to get certifications user.certifications) ..
+# user.provided_certifications(get all certifications registered by service provider)
 #--------------------------------------------------------------------------------------------------
-  has_many :certificate_providers
-  has_many :student_certifications
-  has_many :certifications, :through => :certificate_providers
-  #has_many :certifications, :through => :student_certifications#,:as =>:exams
+  has_many :certificate_providers, :foreign_key => "provider_id"
+  has_many :provided_certifications,:source=>:certification, :through=>:certificate_providers
+
+# user.owned(to get all certifications owned by student)
+#--------------------------------------------------------------------------------------------------
+  has_many :owned_certifications, :foreign_key => "owned_id"
+  has_many :owned,:source=>:certification, :through=>:owned_certifications
+
 #--------------------------------------------------------------------------------------------------
   has_many :student_exams
 

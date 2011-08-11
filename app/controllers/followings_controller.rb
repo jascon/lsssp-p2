@@ -1,4 +1,5 @@
 class FollowingsController < ApplicationController
+   before_filter :authenticate_user!
   def create
     @following = current_user.followings.build(:follower_id => params[:follower_id])
     if @following.save

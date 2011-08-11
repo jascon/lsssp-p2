@@ -32,8 +32,8 @@
 
   <li><%= tab_heading 'Certification Management' %>
     <ul>
-      <li><%=link_to 'Certifications Purchased' ,certifications_purchased_path %></li>
-      <li><%=link_to 'Finished Exams' ,certifications_exams_path(:status=>'finished') %></li>
+      <li><%= link_to 'Certifications Purchased' ,certifications_purchased_path %></li>
+      <li><%= link_to('Manage Exams' ,:controller=>'/certifications',:action=>'exams',:status=>'all') %></li>
     </ul>
   </li>
 

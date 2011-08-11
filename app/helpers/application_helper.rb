@@ -49,6 +49,46 @@ module ApplicationHelper
     content.html_safe
   end
 
+  # Check question status viewed or,answered or unanswered
+  def active_question_status(active_question)
+    if active_question.correct_answer.nil? and active_question.viewed?
+      return 'viewed'
+    elsif !active_question.correct_answer.nil? and active_question.viewed?
+      return 'completed'
+    elsif active_question.correct_answer.nil? and !active_question.viewed?
+      return 'loaded'
+    end
+  end
+
+  def offered_certifications(certifications)
+    content = ''
+    for certification in certifications
+      content << certification.name + "<br/>"
+    end
+    content.html_safe
+  end
+
+  def examination_info(certification)
+    content = ''
+    content << "Total Questions : #{certification.no_of_questions} <br/>"
+    content << "Duration : #{certification.duration} min <br/>"
+    content << "Positive marks : #{certification.positive_marks} <br/>"
+    content << "Negative marks : #{certification.negative_marks} <br/>"
+    content << "Not Attempted : #{certification.unattempted_marks} <br/>"
+  end
+
+  def exam_status(student_exam)
+    content = ''
+    if student_exam.status == false
+      content << "<font color='orange'>No Yet Attempted</font>"
+    elsif student_exam.status == true and student_exam.complete_status == false
+       content << "<font color='red'>Pending</font>"
+    elsif student_exam.status == true and student_exam.complete_status == true
+        content << "<font color='green'>Completed</font>"
+    end
+     content.html_safe
+  end
+
 
 ## alias for submit_tag ########
 =begin

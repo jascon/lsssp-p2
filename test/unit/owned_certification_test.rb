@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class StudentCertificationTest < ActiveSupport::TestCase
+class OwnedCertificationTest < ActiveSupport::TestCase
   # Replace this with your real tests.
   test "the truth" do
     assert true
