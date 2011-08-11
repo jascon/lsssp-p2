@@ -1,21 +1,21 @@
 class Student::ExamController < ApplicationController
   before_filter :authenticate_user!,:must_be_student
   def index
-      if params[:status] == 'new'
-         @student_exam = StudentExam.includes({:certification=>:subtopic_questions}).find(params[:id])
-        ActiveQuestion.transaction do
-          @student_exam.certification.subtopic_questions.each do |subtopic_question|
-            question_ids = Question.where(:subtopic_id => subtopic_question.subtopic_id).order("RAND()").limit(subtopic_question.total_questions).select('id').map(&:id)
-            for question in question_ids
-              ActiveQuestion.create(:student_exam_id =>@student_exam.id,:subtopic_id => subtopic_question.subtopic.id,:question_id => question)
-            end
+    if params[:status] == 'new'
+      @student_exam = StudentExam.includes({:certification=>:subtopic_questions}).find(params[:id])
+      ActiveQuestion.transaction do
+        @student_exam.certification.subtopic_questions.each do |subtopic_question|
+          question_ids = Question.where(:subtopic_id => subtopic_question.subtopic_id).order("RAND()").limit(subtopic_question.total_questions).select('id').map(&:id)
+          for question in question_ids
+            ActiveQuestion.create(:student_exam_id =>@student_exam.id,:subtopic_id => subtopic_question.subtopic.id,:question_id => question)
           end
         end
-        @student_exam.update_attribute('status',true)# Update status to true ,the user has been taken the exam
-        @active_questions = @student_exam.active_questions
-       else #when 'retake'
-        @student_exam = StudentExam.includes(:certification).find(params[:id])
-        @active_questions = @student_exam.active_questions
+      end
+      @student_exam.update_attribute('status',true)# Update status to true ,the user has been taken the exam
+      @active_questions = @student_exam.active_questions
+    else #when 'retake'
+      @student_exam = StudentExam.includes(:certification).find(params[:id])
+      @active_questions = @student_exam.active_questions
     end
     session[:active_question_ids] = @active_questions.map(&:id)#to find next and previous records, hold ids and get
     @active_question = @active_questions.first

@@ -41,7 +41,7 @@ module CustomeLinksHelper
   end
 
   def link_to_exam(certification)
-    student_exam = current_user.student_exams.find(certification)
+    student_exam = current_user.student_exams.find_by_certification_id(certification.id)
     if student_exam.status == false
       link_to content_tag(:span,'Take Test'),exam_path(:id =>student_exam.id,:status=>'new'),
               :class=>'btn-blue tipTip',:title=>'Write the exam online.',:style=>'float:right;'
