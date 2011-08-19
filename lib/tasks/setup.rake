@@ -4,11 +4,11 @@ namespace :lsssp do
     Rake::Task["db:drop"].invoke
     Rake::Task["db:create"].invoke
     Rake::Task["db:migrate"].invoke
-    # Rake::Task["db:seed"].invoke
     make_roles
     make_users
     make_service_provider_students
     make_service_provider_accessors
+    Rake::Task["db:seed"].invoke
   end
 end
 

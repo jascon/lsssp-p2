@@ -1,16 +1,26 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  helper_method :has_role? ,:date_time_stamp
+  helper_method :has_role? ,:date_time_stamp ,:exam_result
   # Redirect to home page if user doesn't have permission
   #----------------------------------------------------
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = "Access denied."
     redirect_to root_url
   end
-
+  # helper_methods
   def date_time_stamp(datetime)
-     datetime.strftime("%b-%d-%Y %H:%M:%S")
+    datetime.strftime("%b-%d-%Y %H:%M:%S")
+  end
+
+  def exam_result(owned_certification)
+    if owned_certification.student_exam.percentage == 0
+      "Pending"
+    elsif owned_certification.student_exam.percentage >=  owned_certification.certification.pass_marks_percentage
+      "Pass"
+    else
+      "Fail"
+    end
   end
 
   # Get roles accessible by the current user
@@ -66,4 +76,7 @@ class ApplicationController < ActionController::Base
     @model.toggle! :active # update_attribute('active',@model.active? ? false : true )
     respond_to { |format| format.js }
   end
+
+
+
 end

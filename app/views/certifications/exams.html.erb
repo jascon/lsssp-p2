@@ -45,13 +45,13 @@
               <%= exam_status(student_exam) %>
             </td>
             <td><%= student_exam.certification.name %></td>
-            <td><%=link_to student_exam.user.name,user_info_path(:id=>student_exam.user.id),:rel=>user_info_path(:id=>student_exam.user.id),:class=>'ajax-cluetip'%></td>
-            <td><%= student_exam.user.email %></td>
+            <td><%=link_to student_exam.owned_certification.owned.name,user_info_path(:id=>student_exam.owned_certification.owned.id),:rel=>user_info_path(:id=>student_exam.owned_certification.owned.id),:class=>'ajax-cluetip'%></td>
+            <td><%= student_exam.owned_certification.owned.email %></td>
             <td><%= student_exam.total_score %></td>
             <td><%= student_exam.certification.pass_marks_percentage %></td>
             <td><%= student_exam.percentage %></td>
             <td><%= date_time_stamp(student_exam.updated_at)  %></td>
-            <td>To-Do</td>
+            <td><%= student_exam.percentage >= student_exam.certification.pass_marks_percentage ? 'Pass' : 'Fail' %></td>
           </tr>
       <% end %>
       </tbody>

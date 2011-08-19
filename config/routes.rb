@@ -82,6 +82,8 @@ match "register" => "devise/registrations#new", :as => :new_user_registration
   match "certification/purchased" => "certifications#purchased_certification"#,:as=>:purchased_certification
   match "certifications/exams"  =>"certifications#exams"
 
+  match "manage_certifications" =>"certifications#manage_certifications"
+
 
 
   match "user_info/:id" => "user_info#index" ,:as=>:user_info
@@ -140,5 +142,5 @@ match "register" => "devise/registrations#new", :as => :new_user_registration
 
 # This is a legacy wild controller route that's not recommended for RESTful applications.
 # Note: This route will make all actions in every controller accessible via GET requests.
-# match ':controller(/:action(/:id(.:format)))'
+ match ':controller(/:action(/:id(.:format)))'
 end

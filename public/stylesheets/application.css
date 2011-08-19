@@ -637,6 +637,7 @@ span.space {
     text-align: center;
     color: #C03;
     font-weight: bold;
+    margin: 21px;
 }
 .error_msg_left {
     text-align: left;
@@ -1334,4 +1335,12 @@ div.logotype div.child:first-child {
     text-decoration: underline;
 }
 
+.issued{
+    font-weight: bold;
+    color: green;
+}
 
+.not-issued {
+    font-weight: bold;
+    color: red;
+}

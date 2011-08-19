@@ -10,16 +10,16 @@
 <% else %>
 
     <table class="list" cellpadding="13" cellspacing="10px;">
-      <% for certification in @certifications_owned %>
+      <% for owned_certification in @certifications_owned %>
           <tr>
             <td class="logo">Logo</td>
             <td class="info">
               <strong>
-                 <%=link_to certification.name ,'#',:class=>'tipTipRight',:title=> examination_info(certification) %>
+                 <%=link_to owned_certification.certification.name ,'#',:class=>'tipTipRight',:title=> examination_info(owned_certification.certification) %>
               </strong>
             </td>
             <td class="links">
-              <%= link_to_exam(certification)  %>
+              <%= link_to_exam(owned_certification.student_exam)  %>
             </td>
           </tr>
       <% end %>

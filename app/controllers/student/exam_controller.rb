@@ -2,9 +2,9 @@ class Student::ExamController < ApplicationController
   before_filter :authenticate_user!,:must_be_student
   def index
     if params[:status] == 'new'
-      @student_exam = StudentExam.includes({:certification=>:subtopic_questions}).find(params[:id])
+      @student_exam = StudentExam.includes(:certification=>:subtopic_questions).find(params[:id])
       ActiveQuestion.transaction do
-        @student_exam.certification.subtopic_questions.each do |subtopic_question|
+        @student_exam.owned_certification.certification.subtopic_questions.each do |subtopic_question|
           question_ids = Question.where(:subtopic_id => subtopic_question.subtopic_id).order("RAND()").limit(subtopic_question.total_questions).select('id').map(&:id)
           for question in question_ids
             ActiveQuestion.create(:student_exam_id =>@student_exam.id,:subtopic_id => subtopic_question.subtopic.id,:question_id => question)

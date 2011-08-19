@@ -3,11 +3,19 @@
   <%=link_to "PDF",'#',:class=>'usuallink bold_text' %>
 </div>
 <div>
-  <%= form_tag({:action=>'purchased_certification'},:id=>'purchased_certification') do %>
+  <%= form_tag({:action=>'index'},:id=>'purchased_certification') do %>
   <span><i>Sort by</i> :
-      Certification
+      Certification Name:
     <%= select_tag(:certification_id, options_from_collection_for_select(@certifications, "id", "name",{:selected=>params[:certification_id]}),{:include_blank => true}) %>
-    </span>
+    <i>Exam Status:</i>
+    <%= select_tag(:exam_status, options_for_select({"All" => "all", "Completed" =>'completed',"Pending"=>'pending',"Not yet Attempted"=>'not_yet_attempted'},{:selected=>params[:exam_status]})
+        ) %>
+    <i>Issue Status:</i>
+    <%= select_tag(:issue_status, options_for_select({"All" => "all", "Issued" =>'issued',"Not-Issued"=>'not_issued'},{:selected=>params[:issue_status]})
+        ) %>
+  <%=link_to 'refresh' ,{:action=>'index'},:class=>'usuallink' %>
+  </span>
+
       <%=submit_tag 'Go',:style=>"display:none;" %>
   <% end  %>
 </div>
@@ -23,6 +31,10 @@
         <th>Purchased From</th>
         <th>Purchased At</th>
         <th>Price</th>
+        <th>Exam Status</th>
+        <th>Exam Result</th>
+        <th>Assignments Results</th>
+        <th></th>
       </tr>
       </thead>
       <tbody>
@@ -34,6 +46,19 @@
             <td><%=link_to owned_certification.provider.name,user_info_path(:id=>owned_certification.provider.id),:rel=>user_info_path(:id=>owned_certification.provider.id),:class=>'ajax-cluetip'%></td>
             <td><%= date_time_stamp(owned_certification.created_at) %> </td>
             <td><%= owned_certification.amount %></td>
+            <td><%= exam_status(owned_certification.student_exam) %></td>
+            <td><%= exam_result(owned_certification) %></td>
+            <td>To-Do</td>
+            <td>
+              <% if owned_certification.issued? %>
+              <span class="issued">
+                Issued
+              </span>
+              <% else %>
+                  <%= link_to 'Issue Certification',{:action=>'issue',:id=>owned_certification.id},:class=>"not-issued" ,
+                  :confirm=>'Are you sure?'%>
+              <% end  %>
+            </td>
           </tr>
       <% end %>
       </tbody>

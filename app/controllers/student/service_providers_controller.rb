@@ -14,15 +14,16 @@ class Student::ServiceProvidersController < ApplicationController
 
   def create
     certification = Certification.find(params[:cid])
-    current_user.owned_certifications << OwnedCertification.new(:provider_id=>params[:id],:certification_id =>certification.id,:amount=>certification.price)
+    owned_certification = OwnedCertification.new(:provider_id=>params[:id],:certification_id =>certification.id,:amount=>certification.price)
+    current_user.owned_certifications <<  owned_certification
     if current_user.save
       flash[:notice] = "Payment Success..! Online Exam Created "
-      #create student_exam for this user
-      current_user.student_exams.create(:certification_id =>certification.id,:no_of_questions=>certification.no_of_questions)
+      owned_certification.create_student_exam(:certification_id=>certification.id,:no_of_questions=>certification.no_of_questions)  #create student_exam for this user
     else
       flash[:error] = "Payment Failure."
     end
-    redirect_to student_service_provider_path(params[:id])
+    # redirect_to student_service_provider_path(params[:id])
+    redirect_to  student_certifications_path
   end
 
   def destroy

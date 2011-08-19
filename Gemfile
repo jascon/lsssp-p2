@@ -14,6 +14,7 @@ gem "simple_form"
 gem 'faker'
 gem "will_paginate", "~> 3.0.pre2"
 gem 'jquery-rails'
+gem "tiny_mce", "~> 0.1.4"
 #gem 'foreigner'
 #gem "cocoon" #Nested forms are forms that handle nested models and attributes in one form.
 #gems need to helpful

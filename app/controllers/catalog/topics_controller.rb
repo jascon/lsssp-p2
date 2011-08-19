@@ -2,6 +2,12 @@ class Catalog::TopicsController < ApplicationController
   before_filter :authenticate_user!
   load_and_authorize_resource
   before_filter :recent,:only=>[:index]
+  uses_tiny_mce :options => {
+                            :theme => 'advanced',
+                            :theme_advanced_resizing => true,
+                            :theme_advanced_resize_horizontal => false,
+                            :plugins => %w{ table fullscreen }
+                          }
   def index
     @topics = Topic.search(params[:search])
     @topic = Topic.new

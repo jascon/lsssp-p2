@@ -40,8 +40,7 @@ module CustomeLinksHelper
     link_to image_tag('/images/icons/delete.png'),path, :confirm => 'Are you sure?', :method => :delete,:title =>'Delete it',:class=>'tipTip'
   end
 
-  def link_to_exam(certification)
-    student_exam = current_user.student_exams.find_by_certification_id(certification.id)
+  def link_to_exam(student_exam)
     if student_exam.status == false
       link_to content_tag(:span,'Take Test'),exam_path(:id =>student_exam.id,:status=>'new'),
               :class=>'btn-blue tipTip',:title=>'Write the exam online.',:style=>'float:right;'
