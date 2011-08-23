@@ -1,0 +1,2 @@
+module Assessor::AssignmentsHelper
+end

@@ -30,6 +30,8 @@ class User < ActiveRecord::Base
 #--------------------------------------------------------------------------------------------------
   has_many :student_exams
 
+  has_many :assignments
+
 # Validations
   validates :role_id,:presence=>true
 #--------------------------------------------------------------------------------------------------

@@ -15,6 +15,7 @@
     <%= render 'common/menu' if user_signed_in? & has_role?(:super_admin) %>
     <%= render 'common/student_menu' if user_signed_in? & has_role?(:student) %>
     <%= render 'common/service_provider_menu' if user_signed_in? & has_role?(:service_provider) %>
+    <%= render 'common/assessor_menu' if user_signed_in? & has_role?(:assessor) %>
   </div>
   <div id="page_content">
     <div class="content">

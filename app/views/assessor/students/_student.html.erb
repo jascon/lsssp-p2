@@ -1,5 +1,5 @@
 <%= content_tag_for(:tr,student,:class=>cycle('even', 'odd')) do -%>
-<td><%= student.following_assessors.size %></td>
+
 <td>
   <%=link_to student.name,user_info_path(:id=>student.id),:rel=>user_info_path(:id=>student.id),:class=>'ajax-cluetip'%>
  </td>

@@ -17,6 +17,11 @@ class Certification < ActiveRecord::Base
 
   has_many :subtopic_questions ,:dependent=>:destroy
 
+
+#-------------------------------------------------------------------------------------------------------
+
+  has_many :assignments
+
  accepts_nested_attributes_for :subtopic_questions, :allow_destroy => true,:reject_if => proc { |att| att['subtopic_id'] == nil or att['total_questions'] == '' }
 
 

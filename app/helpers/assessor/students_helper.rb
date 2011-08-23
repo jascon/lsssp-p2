@@ -1,0 +1,2 @@
+module Assessor::StudentsHelper
+end

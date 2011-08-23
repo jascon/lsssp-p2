@@ -1,5 +1,7 @@
 LssspP2::Application.routes.draw do
 
+
+
   get "user_info/index"
 
   devise_for :users, :path_names => { :sign_up => "register" }
@@ -62,7 +64,11 @@ match "register" => "devise/registrations#new", :as => :new_user_registration
     end
   end
   #--------------------------------------------------------------------------
-
+   namespace :assessor do
+     resources :assignments,:students
+   end
+   #namespace(:assessor){ resources :assignments }
+  #----------------------------------------------------------------------------
   namespace :catalog do
     resources :topics,:subtopics,:questions do
       get 'active' ,:on=>:member
