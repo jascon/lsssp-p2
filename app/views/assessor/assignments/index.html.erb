@@ -23,7 +23,7 @@
           <tr>
             <td><%= assignment.name %></td>
             <td><%= assignment.certification.name %></td>
-            <td>To-Do</td>
+            <td><%= assignment.attachments.size %></td>
             <td>
               <%= link_for_show([:assessor, assignment]) %>
               <%= link_for_edit(edit_assessor_assignment_path(assignment)) %>
@@ -33,4 +33,3 @@
       <% end %>
     </table>
 <% end %>
-

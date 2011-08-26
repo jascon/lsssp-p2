@@ -6,6 +6,7 @@ class CreateOwnedCertifications < ActiveRecord::Migration
       t.integer :certification_id,:null=>false
       t.decimal :amount ,:null=>false ,:precision => 10, :scale => 2
       t.boolean :issued,:default=>0
+      t.integer :student_assignments_count ,:null=>false,:default=>0
       t.timestamps
     end
     add_index :owned_certifications, [:certification_id,:owned_id,:provider_id],:unique => true ,:name=>'by_certification_provider_owned'

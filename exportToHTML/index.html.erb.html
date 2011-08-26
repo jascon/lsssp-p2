@@ -1,0 +1,68 @@
+<html>
+<head>
+<title>index.html.erb</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: rgb(0,0,0); font-weight: normal; font-style: normal; }
+.s0 { color: rgb(0,0,128); font-weight: bold; }
+.s1 { }
+.s2 { color: rgb(0,128,0); font-weight: bold; }
+.s3 { }
+.s4 { color: rgb(102,0,153); font-weight: bold; }
+.s5 { color: rgb(0,0,128); font-weight: bold; }
+.s6 { color: rgb(0,0,0); }
+.s7 { }
+.s8 { color: rgb(0,0,255); font-weight: bold; }
+.s9 { color: rgb(102,14,122); font-weight: bold; }
+.s10 { color: rgb(0,0,255); font-weight: bold; }
+.s11 { color: rgb(0,128,0); font-weight: bold; }
+</style>
+</head>
+<BODY BGCOLOR="#ffffff">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+index.html.erb</FONT>
+</center></TD></TR></TABLE>
+<pre>
+
+<a name="l1"><span class="s0">&lt;% </span><span class="s1">title </span><span class="s2">&quot;Lsssp(Assessor) : Assignments&quot; </span><span class="s0">%&gt;</span><span class="s3"> 
+<a name="l2"></span><span class="s0">&lt;% </span><span class="s1">content_for </span><span class="s4">:sub_heading </span><span class="s0">do %&gt;</span><span class="s3"> 
+<a name="l3">    </span><span class="s5">&lt;%= </span><span class="s1">sub_heading(</span><span class="s2">'Assessor :'</span><span class="s6">,</span><span class="s2">'Manage Assignments'</span><span class="s1">) </span><span class="s5">%&gt;</span><span class="s3"> 
+<a name="l4"></span><span class="s0">&lt;% end %&gt;</span><span class="s3"> 
+<a name="l5"></span><span class="s7">&lt;</span><span class="s5">div</span><span class="s7">&gt;</span><span class="s3"> 
+<a name="l6">  </span><span class="s5">&lt;%= </span><span class="s1">link_to </span><span class="s2">&quot;Add New Assignment&quot;</span><span class="s6">, </span><span class="s1">new_assessor_assignment_path</span><span class="s6">,</span><span class="s4">:class</span><span class="s8">=&gt;</span><span class="s2">'usuallink bold_text'</span><span class="s5">%&gt;</span><span class="s3"> 
+<a name="l7"></span><span class="s7">&lt;/</span><span class="s5">div</span><span class="s7">&gt;</span><span class="s3"> 
+<a name="l8"></span><span class="s0">&lt;%if </span><span class="s9">@assignments</span><span class="s1">.blank? </span><span class="s0">%&gt;</span><span class="s3"> 
+<a name="l9">    </span><span class="s7">&lt;</span><span class="s5">div </span><span class="s10">class=</span><span class="s11">&quot;error_msg&quot;</span><span class="s7">&gt;</span><span class="s3"> 
+<a name="l10">      Sorry No Assignments Found..! 
+<a name="l11">    </span><span class="s7">&lt;/</span><span class="s5">div</span><span class="s7">&gt;</span><span class="s3"> 
+<a name="l12"></span><span class="s0">&lt;% else %&gt;</span><span class="s3"> 
+<a name="l13">    </span><span class="s7">&lt;</span><span class="s5">table </span><span class="s10">class=</span><span class="s11">&quot;tablesorter&quot;</span><span class="s7">&gt;</span><span class="s3"> 
+<a name="l14">      </span><span class="s7">&lt;</span><span class="s5">tr</span><span class="s7">&gt;</span><span class="s3"> 
+<a name="l15">        </span><span class="s7">&lt;</span><span class="s5">thead</span><span class="s7">&gt;</span><span class="s3"> 
+<a name="l16">        </span><span class="s7">&lt;</span><span class="s5">th</span><span class="s7">&gt;</span><span class="s3">Name</span><span class="s7">&lt;/</span><span class="s5">th</span><span class="s7">&gt;</span><span class="s3"> 
+<a name="l17">        </span><span class="s7">&lt;</span><span class="s5">th</span><span class="s7">&gt;</span><span class="s3">Certification</span><span class="s7">&lt;/</span><span class="s5">th</span><span class="s7">&gt;</span><span class="s3"> 
+<a name="l18">        </span><span class="s7">&lt;</span><span class="s5">th</span><span class="s7">&gt;</span><span class="s3">Attachments</span><span class="s7">&lt;/</span><span class="s5">th</span><span class="s7">&gt;</span><span class="s3"> 
+<a name="l19">        </span><span class="s7">&lt;</span><span class="s5">th</span><span class="s7">&gt;</span><span class="s3">Actions</span><span class="s7">&lt;/</span><span class="s5">th</span><span class="s7">&gt;</span><span class="s3"> 
+<a name="l20">        </span><span class="s7">&lt;/</span><span class="s5">thead</span><span class="s7">&gt;</span><span class="s3"> 
+<a name="l21">      </span><span class="s7">&lt;/</span><span class="s5">tr</span><span class="s7">&gt;</span><span class="s3"> 
+<a name="l22">      </span><span class="s0">&lt;% for </span><span class="s1">assignment </span><span class="s0">in </span><span class="s9">@assignments </span><span class="s0">%&gt;</span><span class="s3"> 
+<a name="l23">          </span><span class="s7">&lt;</span><span class="s5">tr</span><span class="s7">&gt;</span><span class="s3"> 
+<a name="l24">            </span><span class="s7">&lt;</span><span class="s5">td</span><span class="s7">&gt;</span><span class="s5">&lt;%= </span><span class="s1">assignment.name </span><span class="s5">%&gt;</span><span class="s7">&lt;/</span><span class="s5">td</span><span class="s7">&gt;</span><span class="s3"> 
+<a name="l25">            </span><span class="s7">&lt;</span><span class="s5">td</span><span class="s7">&gt;</span><span class="s5">&lt;%= </span><span class="s1">assignment.certification.name </span><span class="s5">%&gt;</span><span class="s7">&lt;/</span><span class="s5">td</span><span class="s7">&gt;</span><span class="s3"> 
+<a name="l26">             </span><span class="s7">&lt;</span><span class="s5">td</span><span class="s7">&gt;</span><span class="s5">&lt;%= </span><span class="s1">assignment.attachments.size </span><span class="s5">%&gt;</span><span class="s7">&lt;/</span><span class="s5">td</span><span class="s7">&gt;</span><span class="s3"> 
+<a name="l27"> 
+<a name="l28">            </span><span class="s7">&lt;</span><span class="s5">td</span><span class="s7">&gt;</span><span class="s3"> 
+<a name="l29">              </span><span class="s5">&lt;%= </span><span class="s1">link_for_show([</span><span class="s4">:assessor</span><span class="s6">, </span><span class="s1">assignment]) </span><span class="s5">%&gt;</span><span class="s3"> 
+<a name="l30">              </span><span class="s5">&lt;%= </span><span class="s1">link_for_edit(edit_assessor_assignment_path(assignment)) </span><span class="s5">%&gt;</span><span class="s3"> 
+<a name="l31">              </span><span class="s5">&lt;%= </span><span class="s1">link_for_destroy([</span><span class="s4">:assessor</span><span class="s6">, </span><span class="s1">assignment]) </span><span class="s5">%&gt;</span><span class="s3"> 
+<a name="l32">            </span><span class="s7">&lt;/</span><span class="s5">td</span><span class="s7">&gt;                           </span><span class="s3">b`n112  
+<a name="l33">                      </span><span class="s7">&lt;/</span><span class="s5">tr</span><span class="s7">&gt;</span><span class="s3"> 
+<a name="l34">      </span><span class="s0">&lt;% end %&gt;</span><span class="s3"> 
+<a name="l35">    </span><span class="s7">&lt;/</span><span class="s5">table</span><span class="s7">&gt;</span><span class="s3"> 
+<a name="l36"></span><span class="s0">&lt;% end %&gt;</span><span class="s3"> 
+<a name="l37"> 
+<a name="l38">333/.</span></pre>
+</body>
+</html>

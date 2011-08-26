@@ -2,13 +2,10 @@
 <% content_for :sub_heading do %>
     <%= sub_heading('Student','Registered Certifications') %>
 <% end %>
-
 <h3>Certifications you Registered </h3>
-
 <% if @certifications_owned.blank? %>
     <div class="error_msg">Sorry No Certifications Registered yet.!</div>
 <% else %>
-
     <table class="list" cellpadding="13" cellspacing="10px;">
       <% for owned_certification in @certifications_owned %>
           <tr>
@@ -21,6 +18,14 @@
             <td class="links">
               <%= link_to_exam(owned_certification.student_exam)  %>
             </td>
+            <td>
+              <% if owned_certification.student_assignments_count == 0 %>
+                No Assignments(wait for assignments)
+              <% else %>
+              <%= link_to "Assignments  #{owned_certification.student_assignments_count}",{:action=>'assignments',:id=>owned_certification.id},:class=>'tipTipRight',:title=>'Go to assignments' %>
+              <% end  %>
+              </td>
+
           </tr>
       <% end %>
     </table>
