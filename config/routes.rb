@@ -43,6 +43,7 @@ match "register" => "devise/registrations#new", :as => :new_user_registration
     end
     resources :certifications , :only => [:index] do
       get 'assignments' ,:on=>:member
+      get 'download' ,:on=>:member
     end
     #resource :exam
   end

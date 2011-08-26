@@ -7,13 +7,11 @@
     <div class="error_msg">Sorry No Assignments Found.!</div>
 <% else %>
     <% for student_assignment in @owned_certification.student_assignments %>
-        <ul>
-          <h4> <%= student_assignment.assignment.name %></h4><br/>
+          <h4> <%= student_assignment.assignment.name %></h4><hr/>
           <%= raw student_assignment.assignment.description %>
           <% for attachment in student_assignment.assignment.attachments  %>
-              <li><%= link_to attachment.attachment_file_name,attachment.attachment.url %></li>
+              <%=image_tag('attach.gif') %><%= link_to attachment.attachment_file_name,{:action=>'download',:id=>attachment.id}%> <br/>
           <% end %>
-        </ul>
     <% end %>
 <% end %>
 
