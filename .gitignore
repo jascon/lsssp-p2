@@ -6,3 +6,4 @@ Gemfile.lock
 db/schema.rb
 config/database.yml
 public/system/
+.idea/workspace.xml
