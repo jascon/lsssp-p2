@@ -1,0 +1,67 @@
+<% title "Lsssp : Assessor - #{current_user.name}" %>
+<% content_for :sub_heading do %>
+    <%= sub_heading('Assessor ','Pending Assignments') %>
+<% end %>
+<div>
+  <%= form_tag({:action=>'pending_assignments'},:id=>'pending_assignments') do %>
+  <span><i>Sort by</i> :
+      Certification Name:
+    <%= select_tag(:certification_id, options_from_collection_for_select(@certifications, "id", "name",{:selected=>params[:certification_id]}),{:include_blank => true}) %>
+  </span>
+      <%=submit_tag 'Go',:style=>"display:none;" %>
+  <% end  %>
+</div>
+<% if @owned_certifications.blank? %>
+    <div class="error_msg">Could not Found..! </div>
+<% else %>
+    <%= form_for(:student_assignments,:url=>{:action=>'assign_assignments'}) do %>
+        <table class="tablesorter">
+          <thead>
+          <tr>
+            <th></th>
+            <th>Certification</th>
+            <th>Purchased By</th>
+            <th>Email</th>
+            <th>Purchased From</th>
+            <th>Purchased At</th>
+            <th>Price</th>
+            <th>Exam Status</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% for owned_certification in @owned_certifications %>
+              <% if owned_certification.student_assignments_count == 0 %> <%# get only owned certifications they don't assigned yet %>
+                  <tr class="<%=cycle('even', 'odd')%>">
+                    <td><%= check_box_tag "owned_certification_ids[]", owned_certification.id %></td>
+                    <td><%= owned_certification.certification.name %></td>
+                    <td><%=link_to owned_certification.owned.name,user_info_path(:id=>owned_certification.owned.id),:rel=>user_info_path(:id=>owned_certification.owned.id),:class=>'ajax-cluetip'%></td>
+                    <td><%= owned_certification.owned.email %></td>
+                    <td><%=link_to owned_certification.provider.name,user_info_path(:id=>owned_certification.provider.id),:rel=>user_info_path(:id=>owned_certification.provider.id),:class=>'ajax-cluetip'%></td>
+                    <td><%= date_time_stamp(owned_certification.created_at) %> </td>
+                    <td><%= owned_certification.amount %></td>
+                    <td><%= exam_status(owned_certification.student_exam) %></td>
+                  </tr>
+              <% end %>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+        <% unless params[:certification_id].blank? %>
+            <% if @assignments.blank? %>
+                  <span class="error_msg">No Assignments found,Please create Assignments for this certification.</span>
+            <% else %>
+                <b>Assignments : </b>
+                <% @assignments.each do |assignment|  %>
+                    <%= assignment.name %> <%= check_box_tag "assignment_ids[]", assignment.id %>
+                <% end %>
+
+              <%= submit_tag 'Assign'  %>
+            <% end %>
+        <% else %>
+            <span class="error_msg">Please select Certification to assign Assignments.</span>
+        <% end %>
+    <% end  %>
+    <div class="lsssp_pagination">
+      <%= page_entries_info @owned_certifications %>  <%= will_paginate @owned_certifications, :container => false %>
+    </div>
+<% end  %>

@@ -1,18 +1,14 @@
 <%= content_tag_for(:tr,student,:class=>cycle('even', 'odd')) do -%>
-
-<td>
-  <%=link_to student.name,user_info_path(:id=>student.id),:rel=>user_info_path(:id=>student.id),:class=>'ajax-cluetip'%>
- </td>
-<td><%= highlight(student.email,params[:search]) %></td>
-<td><%= student.created_at %></td>
-<td>
- <div id="approve_<%=student.id%>">
-   <%=link_to student.approved? ? image_tag('tick.gif') : image_tag('cros.gif') ,approve_service_provider_student_path(student),:remote=>true %>
- </div>
-</td>
-<td>
-
-</td>
+    <td>
+      <%=link_to student.name,user_info_path(:id=>student.id),:rel=>user_info_path(:id=>student.id),:class=>'ajax-cluetip'%>
+    </td>
+    <td><%= student.email %></td>
+    <td><%= date_time_stamp(student.created_at) %></td>
+    <td>
+      <%=link_to student.owned.size,"#" ,:class=>'tipTipRight',:title =>associated_names( student.owned) %>
+    </td>
+    <td>
+    </td>
 <% end %>
 
 

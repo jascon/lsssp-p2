@@ -2,7 +2,6 @@
 <% content_for :sub_heading do %>
     <%= sub_heading('Service Provider ',"Students of #{@assessor.name}") %>
 <% end %>
-
 <%if @students.blank? %>
     <div class="error_msg">
       Sorry No Students Found for this Assessor..!
@@ -12,7 +11,7 @@
         <%= render :partial=>'student',:object=>@students %>
         <%= submit_tag 'Romove' %>
         Transfer Students from <%=@assessor.name%> to
-       <%=select("user", "assessor_id", @assessors.collect {|p| [ p.name, p.id ] }, { :include_blank =>'--- Select a Assessor----' })%>
+        <%=select("user", "assessor_id", @assessors.collect {|p| [ p.name, p.id ] }, { :include_blank =>'--- Select a Assessor----' })%>
         <%= submit_tag 'Transfer' %>
     <% end %>
 <% end %>

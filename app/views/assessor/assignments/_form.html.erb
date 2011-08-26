@@ -3,7 +3,7 @@
     <strong>Note:</strong>
     Required fields are marked with an asterisk (<em>*</em>)
   </p>
-  <%= form_for [:assessor, @assignment] do |f| %>
+  <%= form_for([:assessor, @assignment],:html=>{:multipart=>true}) do |f| %>
       <%= f.error_messages %>
       <table>
          <tr>

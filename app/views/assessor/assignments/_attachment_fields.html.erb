@@ -1,29 +1,28 @@
+<tr>
+  <td colspan="2"><h4>New Files</h4></td>
+  <td></td>
+</tr>
+<% f.fields_for :attachments do |attachment_fields| %>
+    <% if attachment_fields.object.new_record? %>
 
-  <tr>
-    <td colspan="2"><h4>New Files</h4></td>
-    <td></td>
-  </tr>
-  <% f.fields_for :attachments do |attachment_fields| %>
-      <% if attachment_fields.object.new_record? %>
-          <tr>
-            <td></td>
-            <td><%= attachment_fields.file_field :attachment %></td>
-          </tr>
-      <% end %>
-  <% end %>
-
-   <tr>
-    <td colspan="2"><h4>Old Files</h4></td>
-    <td></td>
-  </tr>
-  <% f.fields_for :attachments do |attachment_fields| %>
-        <% unless attachment_fields.object.new_record? %>
-          <tr>
-            <td></td>
-            <td> <%= attachment_fields.object.attachment.attachment_file_name%>
+        <tr>
+          <td></td>
+          <td><%= attachment_fields.file_field :attachment %></td>
+        </tr>
+    <% end %>
+<% end %>
+<tr>
+  <td colspan="2"><h4>Old Files</h4></td>
+  <td></td>
+</tr>
+<% f.fields_for :attachments do |attachment_fields| %>
+    <% unless attachment_fields.object.new_record? %>
+        <tr>
+          <td></td>
+          <td> <%=link_to attachment_fields.object.attachment.url,'#'%>
             <%= attachment_fields.check_box :_destroy %>
-            </td>
-          </tr>
-      <% end %>
-  <% end %>
+          </td>
+        </tr>
+    <% end %>
+<% end %>
 

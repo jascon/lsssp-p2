@@ -1,18 +1,15 @@
 <ul class="page_menu">
-
-  <li><%= tab_heading 'User Management' %>
-    <ul>
-      <li><%=link_to 'Manage Students' ,assessor_students_path %></li>
-      <li><%#=link_to 'Create User' ,new_super_admin_user_path %></li>
-    </ul>
-
   <li><%= tab_heading 'Manage Assignments' %>
     <ul>
       <li><%= link_to 'List Assignments' ,{:controller=>'/assessor/assignments'} %></li>
-
     </ul>
   </li>
-
-
+  <li><%= tab_heading 'User Management' %>
+    <ul>
+      <li><%=link_to 'List My Students' ,assessor_students_path %></li>
+      <li><%=link_to 'Pending Assignments' ,{:controller=>'/assessor/students',:action=>'pending_assignments'}%></li>
+      <li><%=link_to 'Mange Assignments' ,{:controller=>'/assessor/students',:action=>'manage_assignments'}%></li>
+    </ul>
+  </li>
 </ul>
 

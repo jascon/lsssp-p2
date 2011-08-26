@@ -1,0 +1,52 @@
+<% title "Lsssp : Assessor - #{current_user.name}" %>
+<% content_for :sub_heading do %>
+    <%= sub_heading('Assessor ','Manage Assignments') %>
+<% end %>
+<div>
+  <%= form_tag({:action=>'manage_assignments'},:id=>'manage_assignments') do %>
+  <span><i>Sort by</i> :
+      Certification Name:
+    <%= select_tag(:certification_id, options_from_collection_for_select(@certifications, "id", "name",{:selected=>params[:certification_id]}),{:include_blank => true}) %>
+  </span>
+      <%=submit_tag 'Go',:style=>"display:none;" %>
+  <% end  %>
+</div>
+<% if @owned_certifications.blank? %>
+    <div class="error_msg">Could not find any Purchased Certifications..! </div>
+<% else %>
+
+    <table class="tablesorter">
+      <thead>
+      <tr>
+        <th>Certification</th>
+        <th>Purchased By</th>
+        <th>Email</th>
+        <th>Purchased From</th>
+        <th>Purchased At</th>
+        <th>Price</th>
+        <th>Exam Status</th>
+        <!--<th>Exam Result</th> -->
+        <th>Review Assignments</th>
+
+      </tr>
+      </thead>
+      <tbody>
+      <% for owned_certification in @owned_certifications %>
+          <tr class="<%=cycle('even', 'odd')%>">
+            <td><%= owned_certification.certification.name %></td>
+            <td><%=link_to owned_certification.owned.name,user_info_path(:id=>owned_certification.owned.id),:rel=>user_info_path(:id=>owned_certification.owned.id),:class=>'ajax-cluetip'%></td>
+            <td><%= owned_certification.owned.email %></td>
+            <td><%=link_to owned_certification.provider.name,user_info_path(:id=>owned_certification.provider.id),:rel=>user_info_path(:id=>owned_certification.provider.id),:class=>'ajax-cluetip'%></td>
+            <td><%= date_time_stamp(owned_certification.created_at) %> </td>
+            <td><%= owned_certification.amount %></td>
+            <td><%= exam_status(owned_certification.student_exam) %></td>
+            <!--<td><%#= exam_result(owned_certification) %></td> -->
+            <td>To-Do</td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <div class="lsssp_pagination">
+      <%= page_entries_info @owned_certifications %>  <%= will_paginate @owned_certifications, :container => false %>
+    </div>
+<% end  %>

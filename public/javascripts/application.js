@@ -68,8 +68,23 @@ $(document).ready(function() {
     $('#no_of_answers').change(function() {
         window.location = "/catalog/questions/new?no_of_answers="+$('#no_of_answers').val()
     });
+
+
 });
 //END Catalog Question Creation
+//Assessor Mange Assignments
+$(document).ready(function() {
+    $('#no_of_attachments').change(function() {
+        window.location = "/assessor/assignments/new?no_of_attachments="+$('#no_of_attachments').val()
+    });
+    $('#manage_assignments').change(function() {
+        $(this).submit();
+    });
+     $('#pending_assignments').change(function() {
+        $(this).submit();
+    });
+
+});
 
 //on change form submission
 // Exam User if user answers the question(when clicks on checkbox)
