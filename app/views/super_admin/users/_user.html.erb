@@ -1,9 +1,9 @@
 <%= content_tag_for(:tr,user,:class=>cycle('even', 'odd')) do -%>
     <td><%= highlight(user.email,params[:search]) %></td>
     <td><%= link_to user.role.name,[:super_admin,user.role],:class=>'usuallink' %></td>
-    <td><%= user.created_at %></td>
+    <td><%= user.created_at.strftime('%m.%d.%Y') %></td>
     <td><%=user.sign_in_count%></td>
-    <td><%=user.confirmed_at.nil? ? 'No' : "Yes(#{user.confirmed_at.strftime('%m.%d.%Y')})"%></td>
+    <td><%=user.confirmed_at.nil? ? 'No' : "Yes (#{user.confirmed_at.strftime('%m.%d.%Y')})"%></td>
     <td>
       <div id="approve_<%=user.id%>">
         <%=link_to user.approved? ? image_tag('tick.gif') : image_tag('cros.gif') ,approve_super_admin_user_path(user),:remote=>true %>

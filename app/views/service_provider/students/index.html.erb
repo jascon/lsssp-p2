@@ -1,8 +1,22 @@
 <% title "Lsssp : Service Provider - #{current_user.name}" %>
 <% content_for :sub_heading do %>
-    <%= sub_heading('Service Provider ','Students') %>
+    <%= sub_heading('Service Provider ', 'Students') %>
 <% end %>
-<%if @users.blank? %>
+<% content_for :left_panel do  %>
+    <td valign="top" width="279"> <%= render 'common/search' %>
+    </td>
+<% end %>
+<div id="container">
+  <%=link_to "Export",export_service_provider_students_path(:approved=>params[:approved]),:class=>'usuallink bold_text' %> |
+  <%= link_to "PDF", '#' ,:class=>'usuallink bold_text' %>
+  <%= select_tag( :sp_students_approved, options_for_select({"All" => "all", "Approved" => 'yes',"Non-Approved"=>'no'},{:selected=>params[:approved]}),
+                  :class=>"width_auto position_right") %>
+</div>
+<br/>
+<div class="help_text">
+ Area for managing Students. <br/>
+</div>
+<% if @users.blank? %>
     <div class="error_msg">
       Sorry No Users Found..!
     </div>
@@ -10,15 +24,16 @@
     <table class="tablesorter">
       <thead>
       <tr>
+        <!--<th>Assessor</th>-->
         <th>Name</th>
         <th>Email</th>
         <th>Registration Date</th>
-        <th>Approved?</th>
-        <th>&nbsp;</th>
+        <th>Status</th>
+        <th>Actions</th>
       </tr>
       </thead>
       <tbody>
-      <%= render :partial=>'student',:collection=>@users %>
+      <%= render :partial=>'student', :collection=>@users %>
       </tbody>
     </table>
 <% end %>

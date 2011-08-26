@@ -20,7 +20,7 @@
         <% unless attachment_fields.object.new_record? %>
           <tr>
             <td></td>
-            <td> <%= attachment_fields.object.attachment.attachment_file_name%>
+            <td> <%= attachment_fields.object.attachment.url%>
             <%= attachment_fields.check_box :_destroy %>
             </td>
           </tr>

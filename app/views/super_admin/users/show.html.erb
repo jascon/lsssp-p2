@@ -1,35 +1,22 @@
-<h3><%= @user.email %></h3>
+<h3>User Details:</h3>
 
 <!-- 
 <%= link_to_if(can?(:update,@user), "Edit", edit_super_admin_user_path(@user)) %> |
 <%= link_to_if(can?(:delete, @user), "Delete", super_admin_user_path(@user), :confirm => "Are you sure?", :method => :delete) {} %>
 -->
-<table class="one-column-emphasis">
-	<tbody>
-		<tr>
-			<td class="oce-first">Email:</td>
-			<td><%= @user.email %></td>
-		</tr>
-		<tr>
-			<td class="oce-first">Role:</td>
-			<td><%= @user.role%></td>
-		</tr>
-	<% if can?(:see_timestamps,User) %>
-		<tr>
-			<td class="oce-first">Created at:</td>
-			<td><%= @user.created_at %></td>
-		</tr>
-		<tr>
-			<td class="oce-first">Last Sign In:</td>
-			<td><%= @user.last_sign_in_at %></td>
-		</tr>
-		<tr>
-			<td class="oce-first">Sign In Count:</td>
-			<td><%= @user.sign_in_count %></td>
-		</tr>
-	<% end %>
-	</tbody>
-</table>
+<div class="formbox">
+<div class="showregionnamedesc">Name :  <%= @user.name %></div>
+<div class="divider"></div>
+  <div class="showregionnamedesc">Email : <%= @user.email %></div>
+<div class="divider"></div>
+<div class="showregionnamedesc">Role : <%= @user.role.name%> </div>
+<div class="divider"></div>
+<div class="showregionnamedesc">Created on : <%= @user.created_at.strftime('%d-%b-%Y') %> </div>
+<div class="divider"></div>
+<div class="showregionnamedesc">Last Sign In : <%= @user.last_sign_in_at.strftime('%d-%b-%Y') %> </div>
+<div class="divider"></div>
+<div class="showregionnamedesc">Sign In Count : <%= @user.sign_in_count %> </div>
+</div>
 
 <div class="link_buttons">
    <%=link_to_edit(edit_super_admin_user_path(@user)) %>

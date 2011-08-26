@@ -1,15 +1,14 @@
 <%= content_tag_for(:tr,certification,:class=>cycle('even', 'odd')) do -%>
+    <td><%= highlight(certification.name,params[:search])%></td>
     <td><%= certification.topic.name %></td>
     <td><%= link_to certification.subtopic_questions.size,'#',:class=>'tipTipRight',:title=>certification_subtopics(certification.subtopic_questions) %></td>
-    <td><%= highlight(certification.name,params[:search])%></td>
-    <td><%= link_to certification.owned.size,{:controller=>'/certifications',:action=>'purchased_certification',:certification_id=>certification.id},
-                    :class=>'tipTipRight',:title=>'No of Students purchased this certification' %></td>
     <td><%= certification.price %></td>
-
-    <td><%= link_to_active(certification,active_catalog_certification_path(certification)) %></td>
     <td><%= certification.duration %></td>
     <td><%= certification.no_of_questions %></td>
-    <td><%= date_time_stamp(certification.created_at)%></td>
+    <td><%= certification.created_at.strftime('%d-%b-%Y')%></td>
+    <td><%= link_to certification.owned.size,{:controller=>'/certifications',:action=>'purchased_certification',:certification_id=>certification.id},
+                    :class=>'tipTipRight',:title=>'No of Students purchased this certification' %></td>
+    <td><%= link_to_active(certification,active_catalog_certification_path(certification)) %></td>
     <td>
       <%= link_for_show( [:catalog, certification]) %>
       <%= link_for_edit(edit_catalog_certification_path(certification)) %>

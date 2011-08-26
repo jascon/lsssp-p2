@@ -1,4 +1,4 @@
-<% title "Lsssp(Catalog) : Certifications" %>
+<% title "LSSSP : Certifications" %>
 <% content_for :sub_heading do %>
     <%= sub_heading('Catalog : Certifications','Manage Certifications') %>
 <% end %>
@@ -6,8 +6,12 @@
     <td valign="top" width="279"> <%= render 'common/search' %>
       <%= render 'recent' %> </td>
 <% end %>
+<div class="help_text">
+ Area for managing Certifications. <br/>
+ Along with creating, managing and removing Certificaitons for your LSSSP.
+</div>
 <div>
-  <%= link_to "Add New Certification", "#",:class=>'usuallink bold_text',:id=>'add_new' %>
+  <%= link_to "Add New Certificate", "#",:class=>'usuallink bold_text',:id=>'add_new' %>
 </div>
 <div id="new_form">
   <%=render 'form' %>
@@ -20,15 +24,15 @@
     <table class="tablesorter">
       <thead>
       <tr>
-        <th>Topic</th>
-        <th>Subtopics</th>
         <th>Name</th>
-        <th>Purchased</th>
+        <th>Topic</th>
+        <th>Sub Topics</th>
         <th>Price</th>
-        <th>Active?</th>
-        <th>Duration(min)</th>
+        <th>Duration (min)</th>
         <th>No of Questions</th>
-        <th>Created At</th>
+        <th>Created On</th>
+        <th>Purchased</th>
+        <th>Status</th>
         <th>Actions</th>
       </tr>
       </thead>

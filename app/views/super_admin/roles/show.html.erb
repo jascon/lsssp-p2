@@ -2,16 +2,14 @@
 <% content_for :sub_heading do %>
   <%= sub_heading('Groups',"#{@role.name}") %>
 <% end %>
-
-<p>
-	<strong>Name:</strong>
-	<%= @role.name %>
-</p>
-<p>
-	<strong>Description:</strong>
-	<%= @role.description %>
-</p>
-
+<div class="formbox">
+  <div class="desc"><b>Name</b> :  <%= @role.name %></div>
+  <div class="divider"></div>
+  <div class="desc"><b>Description</b> : <%= @role.description %> </div>
+  <div class="divider"></div>
+  <div class="desc"><b>Status</b> :  <%= @role.active? ? 'Active' : 'Pending' %>
+  </div>
+</div>
 <div class="link_buttons">
    <%=link_to_edit(edit_super_admin_role_path(@role)) %>
    <%=link_to_delete([:super_admin, @role]) %>

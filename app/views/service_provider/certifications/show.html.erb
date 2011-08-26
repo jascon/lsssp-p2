@@ -1,6 +1,6 @@
 <% title "LSSSP | Certification :  #{@certification.name}" %>
 <% content_for :sub_heading do %>
-    <%= sub_heading('CMS >> Certifications', "#{@certification.name}") %>
+    <%= sub_heading('Service Provider | Certifications', "#{@certification.name}") %>
 <% end %>
 <div class="formbox">
   <div class="desc"><b>Certification</b> : <%= @certification.name %> </div>
@@ -23,8 +23,5 @@
   </div>
 </div>
 <div class="link_buttons">
-  <%= link_to_edit(edit_catalog_certification_path(@certification)) %>
-  <%= link_to_delete([:catalog, @certification]) %>
-  <%= link_to_all(catalog_certifications_path) %>
-  <%= link_to_back %>
+  <%= link_to_all(service_provider_certifications_path) %>
 </div>

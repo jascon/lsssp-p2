@@ -1,8 +1,8 @@
 <div class="recent_items">
 	<div class="margin">
-		<h3>Recently Created certifications</h3>
+		<h3>Recent Certifications</h3>
         <% if @recent.blank? %>
-          No certifications Added Yet...
+          No Certifications Added Yet...
         <% else %>
          <% for certification in @recent %>
 		<div id="margin">
@@ -14,7 +14,9 @@
                      <%=link_to certification.name ,edit_catalog_certification_path(certification),:class=>'usuallink'%>
 					<div style="margin: 8px 0px;">&nbsp;</div>
 				</div>
-
+				<div class="date">
+                    <b><%=certification.created_at.strftime("%d.%b.%Y") %></b>
+                </div>
 			</div>
 		</div>
          <% end %>

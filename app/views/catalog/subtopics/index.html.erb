@@ -1,13 +1,17 @@
-<% title "Lsssp(CMS) : Subtopics" %>
+<% title "LSSSP : Subtopics" %>
 <% content_for :sub_heading do %>
-    <%= sub_heading('CMS : Subtopics','Manage Subtopics') %>
+    <%= sub_heading('Catalog : Sub Topics','Manage Sub Topics') %>
 <% end %>
 <% content_for :left_panel do  %>
     <td valign="top" width="279"> <%= render 'common/search' %>
       <%= render 'recent' %> </td>
 <% end %>
+<div class="help_text">
+ Area for managing Sub Topics. <br/>
+ Along with creating, managing and removing Sub Topics for your LSSSP Certifications.
+</div>
 <div id="container">
-  <%= link_to "Add New Subsubtopic", "#",:class=>'usuallink bold_text',:id=>'add_new' %> |
+  <%= link_to "Add New Sub Topic", "#",:class=>'usuallink bold_text',:id=>'add_new' %> |
   <%=link_to "Export",export_catalog_subtopics_path,:class=>'usuallink bold_text' %>
    <span class="position_right"><i>Sort by</i> :  Status
       <%= select_tag( :subtopic_status, options_for_select({"All" => "all", "Approved" => 1,"Non-Approved"=> 0},{:selected=>params[:subtopic_status]})
@@ -19,6 +23,7 @@
 <div id="new_form">
   <%=render 'form' %>
 </div>
+<br/>
 <%if @subtopics.blank? %>
     <div class="error_msg">
       Sorry No Subtopics Found..!
@@ -27,9 +32,9 @@
     <table class="tablesorter">
       <thead>
       <tr>
-        <th>Topic</th>
         <th>Name</th>
-        <th>Active?</th>
+        <th>Topic</th>
+        <th>Status</th>
         <th>Questions</th>
         <th>Actions</th>
       </tr>

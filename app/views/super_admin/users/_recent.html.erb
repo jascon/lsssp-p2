@@ -1,29 +1,29 @@
 <div class="recent_items">
 	<div class="margin">
-		<h3>Recent Sub Topics</h3>
+		<h3>Recently Created Users</h3>
         <% if @recent.blank? %>
-          No Subtopics Added Yet...
+          No Users Added Yet...
         <% else %>
-         <% for subtopic in @recent %>
+         <% for user in @recent %>
 		<div id="margin">
 			<div class="left">&nbsp;</div>
 			<div class="right">&nbsp;</div>
 			<div class="left-to-right">
 				<div class="pen">&nbsp;</div>
 				<div class="text">
-                     <%=link_to subtopic.name ,edit_catalog_subtopic_path(subtopic),:class=>'usuallink'%>
+                     <%=link_to user.name ,edit_super_admin_user_path(:user),:class=>'usuallink'%>
 					<div style="margin: 8px 0px;">&nbsp;</div>
 				</div>
 				<div class="date">
-                    <b><%=subtopic.created_at.strftime("%d.%b.%Y") %></b>
+                    <b><%=user.created_at.strftime("%m.%d.%Y") %></b>
                 </div>
 			</div>
 		</div>
          <% end %>
        <% end %>
 		<div class="see_all">
-			<a href="/catalog/subtopics">
-			 View all subtopics
+			<a href="/super_admin/users">
+			 View all Topics
 			<img hspace="2" border="0" alt="" src="/images/blue^.gif">
 			</a>
 		</div>

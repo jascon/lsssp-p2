@@ -705,6 +705,7 @@ span.space {
     margin: 0 0 20px 0;
     background-color: #c4def5;
     color: #414141;
+    border-radius: 5px 5px 5px 5px;
 }
 .help_title {
     font-weight: bold;
@@ -1041,12 +1042,13 @@ table.tablesorter tbody tr:hover {
 }
 
 #login_page{
-    position: absolute;
+    /*position: absolute;*/
+    position: relative;
     width: 365px;
     left: 50%;
     top: 25%;
     margin-left: -182px;
-    margin-top: ;
+    /*margin-top: ;*/
     border: solid 4px #cdcdcd;
     padding: 20px 30px;
     background-color: #fff;
@@ -1344,3 +1346,46 @@ div.logotype div.child:first-child {
     font-weight: bold;
     color: red;
 }
+ /* -------------------------------------------------- */
+
+.formbox{
+width:95%;
+/*float:left;*/
+margin:12px 0px 10px 15px;
+background-color: #f9f9f9;
+border:1px solid #585858;
+padding:8px;
+-webkit-border-radius:4px;
+-moz-border-radius:4px;
+border-radius:4px;
+}
+.sub_heading{
+font-size:14px;
+font-weight:bold;
+float:left;
+margin:2px 0px 2px 0px;
+color: #000000;
+}
+.formbox .divider{
+width:100%;
+border-bottom: 1px dashed #4aba00;
+float:left;
+margin:10px 0px;
+}
+.formbox .item{
+width:614px;
+float:left;
+margin:5px 0px;
+}
+.formbox .item label{
+text-align:right;
+float:left;
+margin:0px 15px;
+width:200px;
+}
+.formbox .item input{
+float:left;
+}
+
+div.formbox label,
+div.formbox span.label { margin-right: 10px; padding-right: 10px; width: 250px; display: block; float: left; text-align: right; position: relative; }

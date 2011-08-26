@@ -8,6 +8,10 @@
   <%=render 'recent' %> 
 </td>
 <% end %>
+<div class="help_text">
+ Area for managing groups used to assign certain permissions to LSSSP service sections for different groups members. <br/>
+ Along with creating, managing and removing groups for your LSSSP service users,.
+</div>
 <div id="container">
 <%= link_to "Add New Group", "#",:class=>'usuallink bold_text',:id=>'add_new' %>
   | <%=link_to 'Export',export_super_admin_roles_path,:class=>'usuallink bold_text' %>
@@ -23,7 +27,7 @@
 		<tr>
 			<th>Name</th>
 			<th>Description</th>
-            <th>Active?</th>
+            <th>Status</th>
             <th>Users</th>
 			<th>Actions</th>
 		</tr>
@@ -34,6 +38,6 @@
 	</tbody>
 </table>
 <% end %>
-<p>
+<!--<p>
 	<%= link_to "New Group", new_super_admin_role_path ,:class=>'usuallink bold_text'%>
-</p>
+</p>-->

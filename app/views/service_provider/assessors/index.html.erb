@@ -1,17 +1,25 @@
-<% title "Lsssp : Service Provider - #{current_user.name}" %>
+<% title "LSSSP : Service Provider - #{current_user.name}" %>
 <% content_for :sub_heading do %>
     <%= sub_heading('Service Provider ','Assessors') %>
 <% end %>
+<% content_for :left_panel do  %>
+    <td valign="top" width="279"> <%= render 'common/search' %>
+    </td>
+<% end %>
 <div id="container">
   <%=link_to "Export",export_service_provider_assessors_path(:approved=>params[:approved]),:class=>'usuallink bold_text' %> |
-  <%= link_to "PDF", '#' ,:class=>'usuallink bold_text' %> |
-  <%= link_to "Search", '#' ,:class=>'usuallink bold_text' %>
+  <%= link_to "PDF", '#' ,:class=>'usuallink bold_text' %>
   <%= select_tag( :sp_assessors_approved, options_for_select({"All" => "all", "Approved" => 'yes',"Non-Approved"=>'no'},{:selected=>params[:approved]}),
                   :class=>"width_auto position_right") %>
 </div>
+<br/>
+<div class="help_text">
+ Area for managing Assessors. <br/>
+ Service Provider Assign/Un-Assign/Transfer the Users allocated for the Assessors.
+</div>
 <%if @users.blank? %>
     <div class="error_msg">
-      Sorry No Users Found..!
+      No Assessors Found..!
     </div>
 <% else %>
     <table class="tablesorter">
@@ -21,8 +29,8 @@
         <th>Name</th>
         <th>Email</th>
         <th>Registration Date</th>
-        <th>Approved?</th>
-        <th>&nbsp;</th>
+        <th>Status</th>
+        <th>Summary</th>
       </tr>
       </thead>
       <tbody>

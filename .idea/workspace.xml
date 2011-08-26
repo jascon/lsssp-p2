@@ -3,20 +3,64 @@
   <component name="ChangeListManager">
     <list id="64c1dc34-4578-4182-847c-ace90ae68330" name="Default" comment="added fake data and updated Superadmin Users" />
     <list default="true" id="61ebeac7-5016-42ee-bea8-c7571811d384" name="Namespace" comment="Updated README">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/assessor/assignments/_attachment_fields.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/assessor/students/_student.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/assessor/students/index.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/common/_assessor_menu.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/lsssp-p2.iml" afterPath="$PROJECT_DIR$/.idea/lsssp-p2.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/certification.rb" afterPath="$PROJECT_DIR$/app/models/certification.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/home_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/home_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/service_provider/certifications_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/service_provider/certifications_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/super_admin/users_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/super_admin/users_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers/custome_links_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/custome_links_helper.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/attachment.rb" afterPath="$PROJECT_DIR$/app/models/attachment.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/user.rb" afterPath="$PROJECT_DIR$/app/models/user.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/assessor/assignments/_attachment_fields.html.erb" afterPath="$PROJECT_DIR$/app/views/assessor/assignments/_attachment_fields.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/assessor/assignments/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/assessor/assignments/_form.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/catalog/certifications/_certification.html.erb" afterPath="$PROJECT_DIR$/app/views/catalog/certifications/_certification.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/catalog/certifications/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/catalog/certifications/_form.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/catalog/certifications/_load_subtopics.html.erb" afterPath="$PROJECT_DIR$/app/views/catalog/certifications/_load_subtopics.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/catalog/certifications/_recent.html.erb" afterPath="$PROJECT_DIR$/app/views/catalog/certifications/_recent.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/catalog/certifications/index.html.erb" afterPath="$PROJECT_DIR$/app/views/catalog/certifications/index.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/catalog/certifications/show.html.erb" afterPath="$PROJECT_DIR$/app/views/catalog/certifications/show.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/catalog/questions/_question.html.erb" afterPath="$PROJECT_DIR$/app/views/catalog/questions/_question.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/catalog/questions/_recent.html.erb" afterPath="$PROJECT_DIR$/app/views/catalog/questions/_recent.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/catalog/questions/index.html.erb" afterPath="$PROJECT_DIR$/app/views/catalog/questions/index.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/catalog/questions/show.html.erb" afterPath="$PROJECT_DIR$/app/views/catalog/questions/show.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/catalog/subtopics/_recent.html.erb" afterPath="$PROJECT_DIR$/app/views/catalog/subtopics/_recent.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/catalog/subtopics/_subtopic.html.erb" afterPath="$PROJECT_DIR$/app/views/catalog/subtopics/_subtopic.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/catalog/subtopics/index.html.erb" afterPath="$PROJECT_DIR$/app/views/catalog/subtopics/index.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/catalog/subtopics/show.html.erb" afterPath="$PROJECT_DIR$/app/views/catalog/subtopics/show.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/catalog/topics/_recent.html.erb" afterPath="$PROJECT_DIR$/app/views/catalog/topics/_recent.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/catalog/topics/index.html.erb" afterPath="$PROJECT_DIR$/app/views/catalog/topics/index.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/catalog/topics/show.html.erb" afterPath="$PROJECT_DIR$/app/views/catalog/topics/show.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/common/_header.html.erb" afterPath="$PROJECT_DIR$/app/views/common/_header.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/common/_search.html.erb" afterPath="$PROJECT_DIR$/app/views/common/_search.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/common/_service_provider_menu.html.erb" afterPath="$PROJECT_DIR$/app/views/common/_service_provider_menu.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/devise/confirmations/new.html.erb" afterPath="$PROJECT_DIR$/app/views/devise/confirmations/new.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/devise/passwords/new.html.erb" afterPath="$PROJECT_DIR$/app/views/devise/passwords/new.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/devise/registrations/edit.html.erb" afterPath="$PROJECT_DIR$/app/views/devise/registrations/edit.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/devise/registrations/new.html.erb" afterPath="$PROJECT_DIR$/app/views/devise/registrations/new.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/devise/sessions/new.html.erb" afterPath="$PROJECT_DIR$/app/views/devise/sessions/new.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/payment_gateways/index.html.erb" afterPath="$PROJECT_DIR$/app/views/payment_gateways/index.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/service_provider/assessors/_assessor.html.erb" afterPath="$PROJECT_DIR$/app/views/service_provider/assessors/_assessor.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/service_provider/assessors/_student.html.erb" afterPath="$PROJECT_DIR$/app/views/service_provider/assessors/_student.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/service_provider/assessors/index.html.erb" afterPath="$PROJECT_DIR$/app/views/service_provider/assessors/index.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/service_provider/assessors/students.html.erb" afterPath="$PROJECT_DIR$/app/views/service_provider/assessors/students.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/service_provider/certifications/index.html.erb" afterPath="$PROJECT_DIR$/app/views/service_provider/certifications/index.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/service_provider/students/_student.html.erb" afterPath="$PROJECT_DIR$/app/views/service_provider/students/_student.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/service_provider/students/index.html.erb" afterPath="$PROJECT_DIR$/app/views/service_provider/students/index.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/super_admin/roles/index.html.erb" afterPath="$PROJECT_DIR$/app/views/super_admin/roles/index.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/super_admin/roles/show.html.erb" afterPath="$PROJECT_DIR$/app/views/super_admin/roles/show.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/super_admin/users/_user.html.erb" afterPath="$PROJECT_DIR$/app/views/super_admin/users/_user.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/super_admin/users/index.html.erb" afterPath="$PROJECT_DIR$/app/views/super_admin/users/index.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/super_admin/users/new.html.erb" afterPath="$PROJECT_DIR$/app/views/super_admin/users/new.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/super_admin/users/show.html.erb" afterPath="$PROJECT_DIR$/app/views/super_admin/users/show.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/user_info/index.html.erb" afterPath="$PROJECT_DIR$/app/views/user_info/index.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/database.yml" afterPath="$PROJECT_DIR$/config/database.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20110614110304_devise_create_users.rb" afterPath="$PROJECT_DIR$/db/migrate/20110614110304_devise_create_users.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20110718114511_create_subtopics.rb" afterPath="$PROJECT_DIR$/db/migrate/20110718114511_create_subtopics.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/application.js" afterPath="$PROJECT_DIR$/public/javascripts/application.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/application.css" afterPath="$PROJECT_DIR$/public/stylesheets/application.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/common.css" afterPath="$PROJECT_DIR$/public/stylesheets/common.css" />
     </list>
     <ignored path="lsssp-p2.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -43,44 +87,17 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="_assessor.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/service_provider/assessors/_assessor.html.erb">
+      <file leaf-file-name="_header.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/common/_header.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="1" selection-start="236" selection-end="236" vertical-scroll-proportion="-2.6153846">
+            <state line="13" column="71" selection-start="604" selection-end="604" vertical-scroll-proportion="-8.125">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_student.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/service_provider/assessors/_student.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="47" selection-start="64" selection-end="64" vertical-scroll-proportion="-1.9615384">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="students_controller.rb" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/controllers/assessor/students_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="11" selection-start="267" selection-end="267" vertical-scroll-proportion="0.17894737">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_student.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/assessor/students/_student.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="0" selection-start="69" selection-end="69" vertical-scroll-proportion="-0.65384614">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_menu.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/common/_menu.html.erb">
+      <file leaf-file-name="index.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/user_info/index.html.erb">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
               <folding />
@@ -88,46 +105,37 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_assessor_menu.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/common/_assessor_menu.html.erb">
+      <file leaf-file-name="index.html.erb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/super_admin/users/index.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="57" selection-start="133" selection-end="133" vertical-scroll-proportion="-2.6153846">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="routes.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/routes.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="67" column="37" selection-start="2393" selection-end="2393" vertical-scroll-proportion="0.0">
+            <state line="2" column="97" selection-start="162" selection-end="166" vertical-scroll-proportion="0.053380784">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="index.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/assessor/students/index.html.erb">
+        <entry file="file://$PROJECT_DIR$/app/views/home/index.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="10" selection-start="303" selection-end="303" vertical-scroll-proportion="-7.1923075">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/service_provider/students/index.html.erb">
+      <file leaf-file-name="topics_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/catalog/topics_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="9" selection-start="160" selection-end="160" vertical-scroll-proportion="-1.9615384">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="students_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/service_provider/students_controller.rb">
+      <file leaf-file-name="topic.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/topic.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="55" selection-start="143" selection-end="193" vertical-scroll-proportion="0.0">
+            <state line="26" column="39" selection-start="1080" selection-end="1113" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -150,22 +158,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/models/assignment.rb" />
-        <option value="$PROJECT_DIR$/app/views/assessor/assignments/new.html.erb" />
-        <option value="$PROJECT_DIR$/app/controllers/assessor/assignments_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/assessor/assignments/_form.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/assessor/assignments/edit.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/assessor/assignments/index.html.erb" />
-        <option value="$PROJECT_DIR$/app/controllers/assessor/studnets_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/service_provider/students/_student.html.erb" />
         <option value="$PROJECT_DIR$/app/views/service_provider/assessors/_assessor.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/service_provider/assessors/_student.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/service_provider/certifications_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/service_provider/certifications/show.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/service_provider/certifications/index.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/service_provider/assessors/index.html.erb" />
         <option value="$PROJECT_DIR$/app/views/service_provider/students/index.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/assessor/students/index.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/assessor/students/_student.html.erb" />
-        <option value="$PROJECT_DIR$/config/routes.rb" />
-        <option value="$PROJECT_DIR$/app/views/common/_assessor_menu.html.erb" />
-        <option value="$PROJECT_DIR$/app/controllers/assessor/students_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/common/_service_provider_menu.html.erb" />
+        <option value="$PROJECT_DIR$/public/stylesheets/application.css" />
+        <option value="$PROJECT_DIR$/app/views/devise/sessions/new.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/devise/passwords/new.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/devise/confirmations/new.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/common/_header.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/devise/registrations/new.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/super_admin/users_controller.rb" />
+        <option value="$PROJECT_DIR$/public/javascripts/application.js" />
+        <option value="$PROJECT_DIR$/app/views/super_admin/users/index.html.erb" />
       </list>
     </option>
   </component>
@@ -218,6 +226,22 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="All">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="lsssp-p2">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Favorites" />
+      <pane id="RailsProjectView" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -246,7 +270,59 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lsssp-p2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lsssp-p2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="super_admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="users" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lsssp-p2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lsssp-p2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="super_admin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -266,33 +342,17 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="RailsProjectView" />
-      <pane id="Favorites" />
-      <pane id="Scope">
-        <subPane subId="All">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="lsssp-p2">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="preferences.pluginManager" />
+    <property name="recentsLimit" value="5" />
     <property name="RakeTaksPopup.undocumentedIncluded" value="false" />
     <property name="RailsGeneratorsPopup.hiddenIncluded" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -316,7 +376,11 @@
         <env name="RAILS_ENV" value="test" />
       </envs>
       <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" track_test_folders="true" runner="rcov" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" track_test_folders="true" runner="rcov">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="$PROJECT_DIR$/app/views/catalog/questions" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_CLASS_NAME" VALUE="" />
@@ -407,12 +471,6 @@
       </JSDebuggerConfigurationSettings>
       <method />
     </configuration>
-    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
-      <option name="VM_PARAMETERS" value="" />
-      <option name="USER_CFG_CLASS" />
-      <option name="CONTEXT_PROVIDER" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestUnitRunConfigurationType" factoryName="Test::Unit/Shoulda">
       <predefined_log_file id="RUBY_TESTUNIT" enabled="true" />
       <module name="" />
@@ -423,7 +481,11 @@
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
       <envs />
       <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" track_test_folders="true" runner="rcov" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" track_test_folders="true" runner="rcov">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_CLASS_NAME" VALUE="" />
@@ -432,6 +494,12 @@
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="INHERITANCE_CHECK_DISABLED" VALUE="false" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="DRB" VALUE="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
+      <option name="VM_PARAMETERS" value="" />
+      <option name="USER_CFG_CLASS" />
+      <option name="CONTEXT_PROVIDER" />
       <method />
     </configuration>
     <configuration default="false" name="Production: lsssp-p2" type="RailsRunConfigurationType" factoryName="Rails">
@@ -600,16 +668,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1378" height="744" extended-state="0" />
+    <frame x="1" y="24" width="1366" height="744" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32927758" sideWeight="0.67317075" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32877752" sideWeight="0.67317075" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3288364" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284553" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284553" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24942966" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27224335" sideWeight="0.67154473" order="0" side_tool="false" content_ui="tabs" x="488" y="56" width="389" height="615" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28997704" sideWeight="0.9551777" order="0" side_tool="false" content_ui="tabs" x="488" y="56" width="389" height="615" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3777403" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972136" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -617,6 +684,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284553" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972136" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -670,114 +738,114 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/super_admin/users/_user.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/views/home/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/certifications/mange_certiifcations.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/models/topic.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="16" selection-start="1132" selection-end="1304" vertical-scroll-proportion="0.60828626">
+        <state line="26" column="39" selection-start="1080" selection-end="1113" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/assessor/assignments/index.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/views/devise/registrations/new.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="21" selection-start="746" selection-end="746" vertical-scroll-proportion="0.75622773">
+        <state line="13" column="98" selection-start="454" selection-end="454" vertical-scroll-proportion="0.33562824">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/assessor/assignments/edit.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="44" selection-start="309" selection-end="309" vertical-scroll-proportion="-5.8846154">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/service_provider/students/_student.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="2" selection-start="125" selection-end="243" vertical-scroll-proportion="-1.9615384">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/service_provider/assessors/_assessor.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="1" selection-start="236" selection-end="236" vertical-scroll-proportion="-2.6153846">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/service_provider/assessors/_student.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="47" selection-start="64" selection-end="64" vertical-scroll-proportion="-1.9615384">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/service_provider/students_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="55" selection-start="143" selection-end="193" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/assessor/students/index.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="10" selection-start="303" selection-end="303" vertical-scroll-proportion="-7.1923075">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/assessor/students/_student.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="69" selection-end="69" vertical-scroll-proportion="-0.65384614">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/catalog/topics/edit.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="278" vertical-scroll-proportion="-0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/common/_menu.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.rb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/user_info_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="37" selection-start="2393" selection-end="2393" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/common/_assessor_menu.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/super_admin/roles_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="57" selection-start="133" selection-end="133" vertical-scroll-proportion="-2.6153846">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-1.677686">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/service_provider/students/index.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/super_admin/users_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="9" selection-start="160" selection-end="160" vertical-scroll-proportion="-1.9615384">
+        <state line="81" column="31" selection-start="2624" selection-end="2624" vertical-scroll-proportion="0.23140496">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/assessor/students_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/super_admin/exams_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="11" selection-start="267" selection-end="267" vertical-scroll-proportion="0.17894737">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/common/_header.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="71" selection-start="604" selection-end="604" vertical-scroll-proportion="-8.125">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/application.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="86" column="0" selection-start="3162" selection-end="3162" vertical-scroll-proportion="2.2013652">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/helpers/custome_links_helper.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/helpers/error_messages_helper.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/helpers/followings_helper.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/helpers/application_helper.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/user_info/index.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/super_admin/users/index.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="97" selection-start="162" selection-end="166" vertical-scroll-proportion="0.053380784">
           <folding />
         </state>
       </provider>

@@ -17,6 +17,7 @@ match "register" => "devise/registrations#new", :as => :new_user_registration
   namespace :super_admin do
     resources :users do
       get 'approve',:on=>:member
+      get 'profile',:on=>:member
     end
     #---------------------------------------------------------------------------
     # ROles

@@ -1,4 +1,4 @@
-<% title "Lsssp(Catalog) : Questions" %>
+<% title "LSSSP : Questions" %>
 <% content_for :sub_heading do %>
     <%= sub_heading('Catalog : Questions','Manage Questions') %>
 <% end %>
@@ -6,6 +6,10 @@
     <td valign="top" width="279"> <%= render 'common/search' %>
       <%= render 'recent' %> </td>
 <% end %>
+<div class="help_text">
+ Area for managing Questions. <br/>
+ Along with creating, managing and removing Questions for your LSSSP Certifications.
+</div>
 <div>
   <%= link_to "Add New Question",new_catalog_question_path,:class=>'usuallink bold_text',:id=>'add_new' %> |
   <%=link_to "Export",export_catalog_questions_path,:class=>'usuallink bold_text' %>
@@ -21,11 +25,10 @@
       <tr>
         <th>Topic</th>
         <th>Subtopic</th>
-        <th>Content</th>
+        <th>Question</th>
         <th>Multiple?</th>
         <th>Optional?</th>
-        <th>Active?</th>
-        <th>Correct Answer</th>
+        <th>Status</th>
         <th>Actions</th>
       </tr>
       </thead>
