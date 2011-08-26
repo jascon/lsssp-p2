@@ -1,4 +1,3 @@
-
 <div class="form-container">
   <p class="legend">
     <strong>Note:</strong>
@@ -22,16 +21,18 @@
         <tr id="topics">
           <td><label>Topic <em>*</em></label></td>
           <td><%= collection_select(:certification, :topic_id, Topic.active, :id, :name, :prompt => true) %>
-           <span id="ajax-loading"><%= image_tag('/images/icons/ajax-loader.gif') %></span>
+            <span id="ajax-loading"><%= image_tag('/images/icons/ajax-loader.gif') %></span>
           </td>
         </tr>
         <% if @certification.topic_id.nil? %>
-            <tr><td colspan="3" id="subtopics"></td></tr>
+            <tr>
+              <td colspan="3" id="subtopics"></td>
+            </tr>
         <% else %>
-            <tr><td colspan="3" id="subtopics"><%= render 'load_subtopics' %></td></tr>
+            <tr>
+              <td colspan="3" id="subtopics"><%= render 'load_subtopics' %></td>
+            </tr>
         <% end %>
-
-
         <tr>
           <td><label>Number of Questions <em>*</em></label></td>
           <td><%= f.text_field :no_of_questions %></td>
@@ -61,14 +62,14 @@
           <td><%= f.text_field :description %></td>
         </tr>
         <tr>
-          <td colspan="3" align="center"> <%= f.submit 'Submit',:disable_with=>'Please wait...' %></td>
+          <td colspan="3" align="center"> <%= f.submit 'Submit', :disable_with=>'Please wait...' %></td>
         </tr>
       </table>
   <% end %>
 </div>
 
 <!--
-<%= simple_form_for [:catalog, @certification],:validate=>true do |f| %>
+<%= simple_form_for [:catalog, @certification], :validate=>true do |f| %>
     <%= f.error_messages %>
     <%= f.association :topic %>
     <%= f.input :name %>
@@ -76,10 +77,10 @@
     <%= f.input :active %>
     <%= f.input :duration %>
     <%= f.input :positive_marks %>
-    <%= f.input :negative_marks  %>
+    <%= f.input :negative_marks %>
     <%= f.input :unattempted_marks %>
-    <%= f.input :pass_marks_percentage  %>
-    <%= f.input :description   %>
-    <%= f.submit 'Submit',:disable_with=>'Please wait...' %>
+    <%= f.input :pass_marks_percentage %>
+    <%= f.input :description %>
+    <%= f.submit 'Submit', :disable_with=>'Please wait...' %>
 <% end %>
 -->

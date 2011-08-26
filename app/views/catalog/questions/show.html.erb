@@ -1,24 +1,17 @@
 <% title "Catalog/Question" %>
-
-<p>
-  <strong>Topic:</strong>
-  <%= @question.topic_id %>
-</p>
-<p>
-  <strong>Subtopic:</strong>
-  <%= @question.subtopic_id %>
-</p>
-<p>
-  <strong>Content:</strong>
-  <%= @question.content %>
-</p>
-<p>
-  <strong>Correct Answer:</strong>
-  <%= @question.correct_answer %>
-</p>
-
-<p>
-  <%= link_to "Edit", edit_catalog_question_path(@question) %> |
-  <%= link_to "Destroy", [:catalog, @question], :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", catalog_questions_path %>
-</p>
+<div class="formbox">
+  <div class="desc"><b>Topic</b> : <%= @question.topic.name %> </div>
+  <div class="divider"></div>
+  <div class="desc"><b>Sub Topic Name</b> :  <%= @question.subtopic.name %></div>
+  <div class="divider"></div>
+  <div class="desc"><b>Question</b> :  <%= @question.content %></div>
+  <div class="divider"></div>
+  <div class="desc"><b>Status</b> :  <%= @question.active? ? 'Active' : 'Pending' %>
+  </div>
+</div>
+<div class="link_buttons">
+  <%= link_to_edit(edit_catalog_question_path(@question)) %>
+  <%= link_to_delete([:catalog, @question]) %>
+  <%= link_to_all(catalog_questions_path) %>
+  <%= link_to_back %>
+</div>

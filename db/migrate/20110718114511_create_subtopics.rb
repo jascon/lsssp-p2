@@ -3,6 +3,7 @@ class CreateSubtopics < ActiveRecord::Migration
     create_table :subtopics do |t|
       t.integer :topic_id  ,:null=>false
       t.string :name ,:null=>false ,:limit=>50
+      t.text   :description
       t.boolean :active,:default=>0
       t.timestamps
     end

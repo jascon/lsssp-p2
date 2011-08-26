@@ -1,25 +1,18 @@
 <% title "LSSSP | Topic :  #{@topic.name}" %>
 <% content_for :sub_heading do %>
-  <%= sub_heading('CMS >> Topics',"#{@topic.name}") %>
+    <%= sub_heading('CMS >> Topics', "#{@topic.name}") %>
 <% end %>
-
-
-<p>
-  <strong>Name:</strong>
-  <%= @topic.name %>
-</p>
-<p>
-  <strong>Description:</strong>
-  <%= raw @topic.description %>
-</p>
-<p>
-  <strong>Active:</strong>
-  <%= @topic.active %>
-</p>
-
+<div class="formbox">
+  <div class="desc"><b>Name</b> :  <%= @topic.name %></div>
+  <div class="divider"></div>
+  <div class="desc"><b>Description</b> : <%= @topic.description %> </div>
+  <div class="divider"></div>
+  <div class="desc"><b>Status</b> :  <%= @topic.active? ? 'Active' : 'Pending' %>
+  </div>
+</div>
 <div class="link_buttons">
-   <%=link_to_edit(edit_catalog_topic_path(@topic)) %>
-   <%=link_to_delete([:catalog, @topic]) %>
-   <%=link_to_all(catalog_topics_path)%>
-   <%=link_to_back %>
+  <%= link_to_edit(edit_catalog_topic_path(@topic)) %>
+  <%= link_to_delete([:catalog, @topic]) %>
+  <%= link_to_all(catalog_topics_path) %>
+  <%= link_to_back %>
 </div>

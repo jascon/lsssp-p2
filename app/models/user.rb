@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name,:email, :password, :password_confirmation, :remember_me,:role_id,:follower_ids
 
+#  accepts_nested_attributes_for :user_profile
+  has_one :user_profile
 # Students can register with service providers & service provider get his students(using inverse)
 #-------------------------------------------------------------------------------------------------
   has_many :followings
@@ -34,6 +36,7 @@ class User < ActiveRecord::Base
 
 # Validations
   validates :role_id,:presence=>true
+  validates :email,:presence => true
 #--------------------------------------------------------------------------------------------------
 
 #Only Approved user can access the site
@@ -88,9 +91,9 @@ class User < ActiveRecord::Base
   class << self
     def search(query,me,roleid)
       if !query.nil? and !roleid.blank?
-        except_me(me).where(:email.matches => "%#{query}%" ).with_role(roleid) #from meta_where gem
+        except_me(me).where({:email.matches => "%#{query}%"} | {:name.matches => "%#{query}"} ).with_role(roleid) #from meta_where gem
       elsif !query.nil?
-        except_me(me).where(:email.matches => "%#{query}%" )
+        except_me(me).where({:email.matches => "%#{query}%"} | {:name.matches => "%#{query}"} )
       elsif !roleid.nil?
         except_me(me).with_role(roleid)
       else
@@ -106,6 +109,10 @@ class User < ActiveRecord::Base
 
   end
 #------------------------------------------------------------------------------------------------------   
+
+  def recent
+    order('created_at DESC').limit(4)
+  end
 
 
 end

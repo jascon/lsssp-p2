@@ -52,7 +52,7 @@ $(document).ready(function() {
 // tipTip functions
 $(document).ready(function() {
     $(".tipTip").tipTip({maxWidth: '250px', edgeOffset: 10,delay: 0});
-    $(".tipTipRight").tipTip({maxWidth: '250px', edgeOffset: 10,defaultPosition: 'right',delay: 0});
+    $(".tipTipRight").tipTip({maxWidth: '300px', edgeOffset: 10,defaultPosition: 'right',delay: 0});
     $(".tipTipLeft").tipTip({maxWidth: '250px', edgeOffset: 10,defaultPosition: 'left',delay: 0});
     $(".tipTipTop").tipTip({maxWidth: '250px', edgeOffset: 10,defaultPosition: 'top',delay: 0});
 });
@@ -99,8 +99,6 @@ $(document).ready(function() {
         $(this).submit();
     });
 });
-
-
 
 //when the user clicks on question or next or previous links ,show loading indicator using ajax callbacks
 jQuery(function($) {

@@ -29,15 +29,15 @@ module CustomeLinksHelper
   end
 
   def link_for_edit(path)
-    link_to image_tag('/images/icons/edit.png'), path,:title =>'Edit it',:class=>'tipTip'
+    link_to image_tag('/images/icons/edit.png'), path,:title =>'Edit',:class=>'tipTip'
   end
 
   def link_for_show(path)
-    link_to image_tag('/images/icons/show.png'), path,:title =>'Show Content',:class=>'tipTipTop'
+    link_to image_tag('/images/icons/show.png'), path,:title =>'View',:class=>'tipTipTop'
   end
 
   def link_for_destroy(path)
-    link_to image_tag('/images/icons/delete.png'),path, :confirm => 'Are you sure?', :method => :delete,:title =>'Delete it',:class=>'tipTip'
+    link_to image_tag('/images/icons/delete.png'),path, :confirm => 'Are you sure?', :method => :delete,:title =>'Delete',:class=>'tipTip'
   end
 
   def link_to_exam(student_exam)

@@ -1,6 +1,6 @@
 
 class SuperAdmin::UsersController < ApplicationController
-    before_filter :authenticate_user!#, :except => [:show, :index]  
+    before_filter :authenticate_user!,#:recent#, :except => [:show, :index]
   #before_filter :accessible_roles, :only => [:new, :edit, :show, :update, :create]
   load_and_authorize_resource #:only => [:show,:new,:destroy,:edit,:update]
   # GET /users
@@ -79,7 +79,7 @@ class SuperAdmin::UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      flash[:notice] = "User Ceated Successfully."
+      flash[:notice] = "User Created Successfully."
       respond_to do |format|
         format.json { render :json => @user.to_json, :status => 200 }
         format.xml  { head :ok }
@@ -128,7 +128,18 @@ class SuperAdmin::UsersController < ApplicationController
 
   rescue ActiveRecord::RecordNotFound
     respond_to_not_found(:js, :xml, :html)
-    end
-  
+  end
+
+  def profile
+     @user = User.find(params[:id])
+  end
+
+=begin
+   private
+
+  def recent
+    @recent = User.recent
+  end
+=end
 end
 

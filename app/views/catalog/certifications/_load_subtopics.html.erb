@@ -1,7 +1,8 @@
 <table>
   <% if @subtopics.blank? %>
       <tr>
-        <td colspan="2" class="error">Sorry No Subtopics found</td> <td>&nbsp;</td>
+        <td colspan="2" class="error">Sorry No Subtopics found</td>
+        <td>&nbsp;</td>
       </tr>
   <% else %>
       <% i =0 %>
@@ -9,13 +10,14 @@
           <tr>
             <td>
               <label><%= subtopic.name %>
-                <%=check_box_tag "certification[subtopic_questions_attributes][][subtopic_id]", subtopic.id,
-                                  @certification.nil? ? false : @certification.subtopic_questions.exists?(:certification_id=>@certification.id,:subtopic_id=>subtopic.id) %>
+                <%= check_box_tag "certification[subtopic_questions_attributes][][subtopic_id]", subtopic.id,
+                                  @certification.nil? ? false : @certification.subtopic_questions.exists?(:certification_id=>@certification.id, :subtopic_id=>subtopic.id) %>
               </label>
             </td>
             <td>
-              <% @subtopic_question = SubtopicQuestion.find_by_certification_id_and_subtopic_id(@certification.id,subtopic.id) if @certification  %>
-            <%= text_field_tag "certification[subtopic_questions_attributes][][total_questions]",@subtopic_question.nil? ? '' : @subtopic_question.total_questions %> (<%=subtopic.questions.size%>)
+              <% @subtopic_question = SubtopicQuestion.find_by_certification_id_and_subtopic_id(@certification.id, subtopic.id) if @certification %>
+              <%= text_field_tag "certification[subtopic_questions_attributes][][total_questions]", @subtopic_question.nil? ? '' : @subtopic_question.total_questions %>
+              (<%= subtopic.questions.size %>)
             </td>
             <td>&nbsp;</td>
           </tr>

@@ -1,0 +1,20 @@
+<% title "Lsssp : Student - #{current_user.name}" %>
+<% content_for :sub_heading do %>
+    <%= sub_heading('Student',"#{@owned_certification.certification.name} Assignments") %>
+<% end %>
+<h3>Assignments </h3>
+<% if @owned_certification.student_assignments.blank? %>
+    <div class="error_msg">Sorry No Assignments Found.!</div>
+<% else %>
+    <% for student_assignment in @owned_certification.student_assignments %>
+        <ul>
+          <h4> <%= student_assignment.assignment.name %></h4><br/>
+          <%= raw student_assignment.assignment.description %>
+          <% for attachment in student_assignment.assignment.attachments  %>
+              <li><%= link_to attachment.attachment_file_name,attachment.attachment.url %></li>
+          <% end %>
+        </ul>
+    <% end %>
+<% end %>
+
+

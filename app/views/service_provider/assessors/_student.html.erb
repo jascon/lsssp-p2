@@ -5,7 +5,7 @@
     <th>Name</th>
     <th>Email</th>
     <th>Registration Date</th>
-    <th>Approved?</th>
+    <th>Status</th>
   </tr>
   </thead>
   <tbody>
@@ -17,7 +17,7 @@
         <td><%= student.created_at %></td>
         <td>
           <div id="approve_<%=student.id%>">
-            <%=link_to student.approved? ? image_tag('tick.gif') : image_tag('cros.gif') ,approve_service_provider_student_path(student),:remote=>true %>
+            <%= student.approved? ? image_tag('tick.gif') : image_tag('cros.gif') %>
           </div>
         </td>
       </tr>

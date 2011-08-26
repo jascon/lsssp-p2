@@ -1,6 +1,6 @@
 <div class="recent_items">
 	<div class="margin">
-		<h3>Recently Created Topics</h3>
+		<h3>Recent Topics</h3>
         <% if @recent.blank? %>
           No Topics Added Yet...
         <% else %>
@@ -9,13 +9,13 @@
 			<div class="left">&nbsp;</div>
 			<div class="right">&nbsp;</div>
 			<div class="left-to-right">
-				<div class="pen">&nbsp;</div>
+				<div class="pen"></div>
 				<div class="text">
                      <%=link_to topic.name ,edit_catalog_topic_path(topic),:class=>'usuallink'%>
 					<div style="margin: 8px 0px;">&nbsp;</div>
 				</div>
 				<div class="date">
-                    <b><%=topic.created_at.strftime("%m.%d.%Y") %></b>
+                    <b><%=topic.created_at.strftime("%d-%b-%Y") %></b>
                 </div>
 			</div>
 		</div>

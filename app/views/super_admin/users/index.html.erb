@@ -7,10 +7,15 @@
       <%= render 'common/search' %>
     </td>
 <% end %>
+<div class="help_text">
+ Area for managing Users. <br/>
+ Along with creating, managing and removing Users for your LSSSP services.
+</div>
 <div id="container">
   <%= link_to "Add New User", '#' ,:class=>'usuallink bold_text',:id=>'add_new'%>
-  <%= collection_select(:user, :role_id, Role.order(:name), :id,:name,{:prompt=>"Groups >>"},:class=>"width_auto position_right") %>
+  <%= collection_select(:user, :role_id, Role.order(:name), :id,:name,{:prompt=>"Sort by >>"},:class=>"width_auto position_right") %>
 </div>
+<br/>
 <div id="new_form">
   <%=render 'new' %>
 </div>
@@ -23,10 +28,10 @@
         <th>Email</th>
         <th>Group</th>
         <th>Registration Date</th>
-        <th>Login count</th>
+        <th>Login Count</th>
         <th>Confirmed?</th>
         <th>Approved?</th>
-        <th>&nbsp;</th>
+        <th>Actions</th>
       </tr>
       </thead>
       <tbody>

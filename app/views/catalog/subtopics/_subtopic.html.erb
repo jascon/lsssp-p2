@@ -1,6 +1,6 @@
 <%= content_tag_for(:tr,subtopic,:class=>cycle('even', 'odd')) do -%>
-    <td><%= subtopic.topic.name %></td>
     <td><%= highlight(subtopic.name,params[:search])%></td>
+    <td><%= subtopic.topic.name %></td>
     <td><%= link_to_active(subtopic,active_catalog_subtopic_path(subtopic)) %></td>
     <td>
        <%= link_to subtopic.questions.size,catalog_questions_path(:subtopic_id=>subtopic.id),:class=>'tipTipRight',:title=>'Show Questions' %>
