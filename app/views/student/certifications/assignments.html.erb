@@ -2,16 +2,42 @@
 <% content_for :sub_heading do %>
     <%= sub_heading('Student',"#{@owned_certification.certification.name} Assignments") %>
 <% end %>
-<h3>Assignments </h3>
 <% if @owned_certification.student_assignments.blank? %>
     <div class="error_msg">Sorry No Assignments Found.!</div>
 <% else %>
     <% for student_assignment in @owned_certification.student_assignments %>
-          <h4> <%= student_assignment.assignment.name %></h4><hr/>
-          <%= raw student_assignment.assignment.description %>
-          <% for attachment in student_assignment.assignment.attachments  %>
-              <%=image_tag('attach.gif') %><%= link_to attachment.attachment_file_name,{:action=>'download',:id=>attachment.id}%> <br/>
-          <% end %>
+        <%= form_for(student_assignment,:url=>{:action=>'update_assignment',:id=>student_assignment},:html=>{:multipart=>true}) do |f| %>
+            <h3> <%= student_assignment.assignment.name %></h3>
+            <%= raw student_assignment.assignment.description %>
+            <br/>
+            <%=f.text_area :description,:rows=>10,:cols=>60 %>
+            <table class="tablesorter" style="width: 50%">
+              <thead>
+              <tr>
+                <th>File Name</th>
+                <th>Reply</th>
+              </tr>
+              </thead>
+              <tbody>
+              <% for attachment in student_assignment.assignment.attachments  %>
+                  <tr>
+                    <td><%=image_tag('attach.gif') %>
+                      <%= link_to attachment.attachment_file_name,{:action=>'download',:id=>attachment.id}%></td>
+                    <td>
+                      <% if student_assignment.completed_attachments.exists?(attachment) %>
+                          <%= student_assignment.completed_attachments.find(attachment).hanger_file_name %>
+                      <% else %>
+                          <%=check_box_tag "student_assignment[completed_attachments_attributes][][attachment_id]", attachment.id,false %>
+                          <%= file_field_tag "student_assignment[completed_attachments_attributes][][hanger]" %>
+                      <% end %>
+                    </td>
+                  </tr>
+              <% end %>
+              </tbody>
+            </table>
+            <%= f.select :status ,options_for_select({'Pending'=>'pending','Completed'=>'completed'},{:selected=>student_assignment.status}) %>
+            <%= submit_tag 'Submit' %>
+        <% end %> <%# end of form %>
     <% end %>
 <% end %>
 

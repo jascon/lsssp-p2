@@ -5,6 +5,8 @@ class OwnedCertification < ActiveRecord::Base
   has_one :student_exam  , :dependent => :destroy
   has_many :student_assignments
 
+
+
   class << self
 
     def search(id,exam_status,issue_status)

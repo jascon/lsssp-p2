@@ -4,6 +4,7 @@ class CreateStudentAssignments < ActiveRecord::Migration
       t.integer :assignment_id ,:null=>false
       t.integer :owned_certification_id,:null=>false
       t.integer :assigner_id ,:null=>false
+      t.text :description
       t.string :status ,:null=>false,:default=>'pending'
       t.timestamps
     end
