@@ -28,10 +28,10 @@
                       <td><%=image_tag('attach.gif') %>
                         <%= link_to attachment.attachment_file_name,{:action=>'download',:id=>attachment.id}%></td>
                       <td>
-                        <% if student_assignment.completed_attachments.exists?(attachment) %>
+                        <% if student_assignment.completed_attachments.exists?(:attachment_id=>attachment.id) %>
                             <%=image_tag('attach.gif') %>
-                            <% student_attachment = student_assignment.completed_attachments.find(attachment) %>
-                            <%= link_to student_assignment.completed_attachments.find(attachment).hanger_file_name,{:action=>'download',:id=>student_attachment.id} %>
+                            <% student_attachment = student_assignment.completed_attachments.find(:first,:conditions=>['attachment_id = ?',attachment.id]) %>
+                            <%= link_to student_attachment.hanger_file_name,{:action=>'download',:id=>student_attachment.id} %>
                         <% end %>
                       </td>
                     </tr>

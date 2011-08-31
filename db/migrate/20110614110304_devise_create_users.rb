@@ -3,7 +3,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
     create_table(:users) do |t|
       t.integer :role_id,:null=>false
       t.string :name,:null=>false,:limit=>100
-      t.string :last_name, :null=>false, :limit=>100
+      t.string :last_name, :limit=>100
       t.database_authenticatable :null => false
       t.recoverable
       t.rememberable

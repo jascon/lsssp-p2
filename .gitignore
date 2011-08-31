@@ -7,3 +7,5 @@ db/schema.rb
 config/database.yml
 public/system/
 .idea/workspace.xml
+Gemfile
+Gemfile.lock

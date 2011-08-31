@@ -34,7 +34,7 @@ def make_users
   ########### Accessors ######################
   30.times do |n|
     name  = Faker::Name.name
-    email = "accessor#{n+1}@lsssp.org"
+    email = "assessor#{n+1}@lsssp.org"
     password  = "password"
     User.create(:name=>name ,:email =>email, :password =>password, :password_confirmation =>password,:role_id=>3,:approved=>1).confirm!
   end
