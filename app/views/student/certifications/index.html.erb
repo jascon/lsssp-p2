@@ -6,27 +6,54 @@
 <% if @certifications_owned.blank? %>
     <div class="error_msg">Sorry No Certifications Registered yet.!</div>
 <% else %>
-    <table class="list" cellpadding="13" cellspacing="10px;">
+    <table class="tablesorter">
+      <thead>
+      <tr>
+        <th>Certification</th>
+        <th>Exam Session</th>
+        <th>Exam Status</th>
+        <th>Exam Result</th>
+        <th>Assignments</th>
+        <th>Assignment Status</th>
+        <th>Assignments Result</th>
+        <th>Certification Issued?</th>
+      </tr>
+      </thead>
+      <tbody>
       <% for owned_certification in @certifications_owned %>
           <tr>
-            <td class="logo">Logo</td>
-            <td class="info">
+            <td>
               <strong>
-                 <%=link_to owned_certification.certification.name ,'#',:class=>'tipTipRight',:title=> examination_info(owned_certification.certification) %>
+                <%=link_to owned_certification.certification.name ,'#',:class=>'tipTipRight',:title=> examination_info(owned_certification.certification) %>
               </strong>
             </td>
-            <td class="links">
+            <td>
               <%= link_to_exam(owned_certification.student_exam)  %>
             </td>
+            <td><%= exam_status(owned_certification.student_exam) %></td>
+            <td><%= exam_result(owned_certification) %></td>
             <td>
               <% if owned_certification.student_assignments_count == 0 %>
-                No Assignments(wait for assignments)
+                  No Assignments(wait for assignments)
               <% else %>
-              <%= link_to "Assignments  #{owned_certification.student_assignments_count}",{:action=>'assignments',:id=>owned_certification.id},:class=>'tipTipRight',:title=>'Go to assignments' %>
+                  <%= link_to "Assignments  #{owned_certification.student_assignments_count}",{:action=>'assignments',:id=>owned_certification.id},:class=>'tipTipRight',
+                              :title=>(owned_certification.student_assignments.collect{|sa| "#{sa.assignment.name} - #{sa.status}<br/>"  }) %>
               <% end  %>
-              </td>
+            </td>
+            <td>
+              <%= assignment_status(owned_certification) %>
+            </td>
+            <td><%= assignment_result(owned_certification) %></td>
+            <td>
+              <% if owned_certification.issued? %>
+              <%= image_tag('tick.gif') %>
+              <% else %>
+              <span class="status_pending">Pending</span>
+              <% end %>
+            </td>
           </tr>
       <% end %>
+      </tbody>
     </table>
 <% end %>
 

@@ -1,0 +1,52 @@
+<% title "Lsssp : Assessor - #{current_user.name}" %>
+<% content_for :sub_heading do %>
+    <%= sub_heading('Student',"#{@owned_certification.certification.name} Assignments") %>
+<% end %>
+<% if @owned_certification.student_assignments.blank? %>
+    <div class="error_msg">Sorry No Assignments Found.!</div>
+<% else %>
+    <div id="lsssp_main">
+      <div id="acc2" class="lsssp_accordion">
+        <% for student_assignment in @owned_certification.student_assignments %>
+            <h4> <%= student_assignment.assignment.name %> -
+              <%= student_assignment.status.eql?('completed') ? 'Completed' : 'Pending' %>
+            </h4>
+            <div>
+              <%= raw student_assignment.assignment.description %>
+              <div style="color: blue;margin-top: 10px;margin-bottom: 10px;">Reply from Student</div>
+              <%=  raw student_assignment.description  %>
+              <table class="tablesorter" style="width: 50%">
+                <thead>
+                <tr>
+                  <th>File you attached</th>
+                  <th>File Student Attachment</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% for attachment in student_assignment.assignment.attachments  %>
+                    <tr>
+                      <td><%=image_tag('attach.gif') %>
+                        <%= link_to attachment.attachment_file_name,{:action=>'download',:id=>attachment.id}%></td>
+                      <td>
+                        <% if student_assignment.completed_attachments.exists?(attachment) %>
+                            <%=image_tag('attach.gif') %>
+                            <% student_attachment = student_assignment.completed_attachments.find(attachment) %>
+                            <%= link_to student_assignment.completed_attachments.find(attachment).hanger_file_name,{:action=>'download',:id=>student_attachment.id} %>
+                        <% end %>
+                      </td>
+                    </tr>
+                <% end %>
+                </tbody>
+              </table>
+            </div>
+        <% end %>
+      </div>
+      <%= form_for @owned_certification ,:url=>{:action=>'update_assignment_result',:id=>@owned_certification} do |f| %>
+          Update Assignment Result :
+          <%= f.select :student_assignments_result ,options_for_select({'Processing'=>'processing','Pass'=>'pass','Fail'=>'fail'},{:selected=>@owned_certification.student_assignments_result}) %>
+          <%= f.submit 'Submit',:disable_with=>'please wait..' %>
+      <% end %>
+    </div>
+<% end %>
+
+

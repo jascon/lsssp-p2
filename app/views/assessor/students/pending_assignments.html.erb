@@ -54,8 +54,7 @@
                 <% @assignments.each do |assignment|  %>
                     <%= assignment.name %> <%= check_box_tag "assignment_ids[]", assignment.id %>
                 <% end %>
-
-              <%= submit_tag 'Assign'  %>
+              <%= submit_tag 'Assign',:disable_with=>'please wait..'  %>
             <% end %>
         <% else %>
             <span class="error_msg">Please select Certification to assign Assignments.</span>

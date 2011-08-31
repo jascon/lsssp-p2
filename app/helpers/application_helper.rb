@@ -82,11 +82,30 @@ module ApplicationHelper
     if student_exam.status == false
       content << "<font color='orange'>No Yet Attempted</font>"
     elsif student_exam.status == true and student_exam.complete_status == false
-       content << "<font color='red'>Pending</font>"
+      content << "<font color='red'>Pending</font>"
     elsif student_exam.status == true and student_exam.complete_status == true
-        content << "<font color='green'>Completed</font>"
+      content << "<font color='green'>Completed</font>"
     end
-     content.html_safe
+    content.html_safe
+  end
+
+  def assignment_status(owned_certification)
+    if owned_certification.student_assignments_status?
+      "<span class='status_completed'>Completed</span>".html_safe
+    else
+      "<span class='status_pending'>Pending</span>".html_safe
+    end
+  end
+
+  def assignment_result(owned_certification)
+    case  owned_certification.student_assignments_result
+      when 'processing'
+        "<span class='processing'>Processing</span>".html_safe
+      when 'pass'
+        "<span class='pass'>Passed</span>".html_safe
+      when 'fail'
+        "<span class='fail'>Failed</span>".html_safe
+    end
   end
 
 

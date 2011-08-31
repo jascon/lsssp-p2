@@ -22,8 +22,8 @@
 }
 
 .simple_form label.collection_radio {
-  margin-right: 10px;
-  margin-left: 2px;
+    margin-right: 10px;
+    margin-left: 2px;
 }
 /*
 .simple_form .error {
@@ -35,12 +35,12 @@
 }
  */
 .simple_form .hint {
-  clear: left;
-  margin-left: 120px;
-  font-size: 12px;
-  color: #555;
-  display: block;
-  font-style: italic;
+    clear: left;
+    margin-left: 120px;
+    font-size: 12px;
+    color: #555;
+    display: block;
+    font-style: italic;
 }
 /*END  Simple Form CSS */
 
@@ -281,4 +281,140 @@ div.form-container label em, div.form-container span.label em {
     display:none;
 }
 
+.status_pending,.fail{
+    color: red;
+    font-weight: bold;
+}
+.status_completed,.pass{
+    color: green;
+    font-weight: bold;
+}
+.processing{
+    color: #24A9B3;
+    font-weight: bold;
+}
+.exam_result_pending{
+    color: #a52a2a;
+    font-weight: bold;
+}
 
+
+/* Accordion
+The CSS rules offered here are just an example. You can style the 'accordion' in any way you like.
+			 The styles for the Page Structure are needed just for the purpose of this demo page.
+			 If you decide to use the CSS rules in 'Accordion' (see below) as a base,
+be sure to rename the selectors as to satisfy the elements in your site.
+--------- */
+
+/* --- Page Structure  --- */
+#lsssp_wrapper {
+    margin-bottom:30px;
+    padding:10px 2.5%;
+    border-top:0.1em solid #ccc;
+    background:#fff;
+    text-align:left;
+    overflow:hidden
+}
+#lsssp_container {
+    float:left;
+    width:100%;
+    margin-right:-19em;
+    padding:0 0 1em;
+    position:relative;
+    min-height:0
+}
+#lsssp_main {
+
+    position:relative;
+    min-height:0
+}
+p {
+    margin: 0 10px 1em
+}
+.strong {
+    font-weight:700
+}
+.clear {
+    clear:both
+}
+
+h4 a, h5 a {
+    padding:3px 10px
+}
+h4, h5 {
+    font-size:1em
+}
+#lsssp_main h2 {
+    background-color:#f0f0f0
+}
+/* --- Links --- */
+h4, h5 a {
+    padding:1px;
+    border:1px solid #e0e0e0;
+    color:#05b
+}
+h4, h5 a:hover, h4, h5 a:focus, h4, h5 a:active {
+    border-color:#bcd;
+    text-decoration:none;
+    outline:0 none
+}
+/* --- Accordion --- */
+.js #lsssp_main .site_accordion {
+    visibility:hidden
+}
+.lsssp_accordion {
+    margin:0;
+    padding:0 0px;
+}
+.lsssp_accordion .outer {
+
+
+    background: #fff
+}
+.lsssp_accordion .inner {
+    margin-bottom:0;
+    padding:.5em 20px 1em;
+    position:relative;
+    overflow:hidden
+}
+.lsssp_accordion .inner .inner {
+    padding-bottom:0
+}
+.lsssp_accordion .h {
+    /*  padding-top:.3em */
+} /* vertical padding instead of vertical margin (ie8) */
+.lsssp_accordion p {
+    margin-top:.5em
+}
+/*
+Add styles for all links in the 'accordion':
+.site_accordion a {...}
+*/
+
+a.trigger {
+    padding-left:20px;
+    background-image: url(/images/plus.gif);
+    background-repeat: no-repeat;
+    background-position: 1px 50%;
+    font-weight:700
+}
+a.trigger.open {
+    background-image: url(/images/minus.gif)
+}
+.last-child a.trigger {
+    padding-left:1px;
+    background-image:none;
+    font-weight:normal
+}
+#lssspe_main a.trigger {
+    background-color:#f0f0f0
+}
+#lsssp_main a.trigger.open {
+    border-color:#dadada;
+    background-color:#e7e7e7
+}
+#lsssp_main a:hover.trigger.open, #main a:focus.trigger.open, #main a:active.trigger.open {
+    border-color:#bcd
+}
+
+/* END of Accordion */

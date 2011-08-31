@@ -31,8 +31,8 @@ $(document).ready( function() {
     //
 
     //Certifications purchased filter by certification
-     $('#purchased_by_certification').change(function() {
-      //  window.location = "/certifications/purchased_certification?id="+$('#purchased_by_certification').val();
+    $('#purchased_by_certification').change(function() {
+        //  window.location = "/certifications/purchased_certification?id="+$('#purchased_by_certification').val();
     });
 });
 
@@ -80,7 +80,7 @@ $(document).ready(function() {
     $('#manage_assignments').change(function() {
         $(this).submit();
     });
-     $('#pending_assignments').change(function() {
+    $('#pending_assignments').change(function() {
         $(this).submit();
     });
 
@@ -92,10 +92,10 @@ $(document).ready(function() {
     $('#exam_update_answer').change(function() {
         $(this).submit();
     });
-      $('#purchased_certification').change(function() {
+    $('#purchased_certification').change(function() {
         $(this).submit();
     });
-      $('#manage_exams').change(function() {
+    $('#manage_exams').change(function() {
         $(this).submit();
     });
 });
@@ -118,6 +118,26 @@ jQuery(function($) {
 $(document).ready(function() {
     $('a.ajax-cluetip').cluetip({width: '400px;', showTitle: false, arrows: true});
 });
+
+
+// nested Accordion
+$(document).ready(function() {
+    <!--//--><![CDATA[//><!--
+    $("html").addClass("js");
+    $.fn.accordion.defaults.container = false;
+    $(function() {
+        $("#acc2").accordion({
+            obj: "div",
+            wrapper: "div",
+            el: ".h",
+            head: "h4, h5",
+            next: "div" //,
+          //  initShow : "div.outer:eq(0)"
+        });
+        $("html").removeClass("js");
+    });
+});
+//--><!]]>
 // Exam when user clicks the Answer
 /*
  function updateAnswer(id){

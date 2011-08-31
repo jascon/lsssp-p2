@@ -34,7 +34,7 @@
         <th>Exam Status</th>
         <th>Exam Result</th>
         <th>Assignments Results</th>
-        <th></th>
+        <th>Issue Certification</th>
       </tr>
       </thead>
       <tbody>
@@ -48,12 +48,10 @@
             <td><%= owned_certification.amount %></td>
             <td><%= exam_status(owned_certification.student_exam) %></td>
             <td><%= exam_result(owned_certification) %></td>
-            <td>To-Do</td>
+            <td><%= assignment_result(owned_certification) %></td>
             <td>
               <% if owned_certification.issued? %>
-              <span class="issued">
-                Issued
-              </span>
+              <%= image_tag('tick.gif') %>
               <% else %>
                   <%= link_to 'Issue Certification',{:action=>'issue',:id=>owned_certification.id},:class=>"not-issued" ,
                   :confirm=>'Are you sure?'%>

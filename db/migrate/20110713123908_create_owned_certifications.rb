@@ -6,6 +6,8 @@ class CreateOwnedCertifications < ActiveRecord::Migration
       t.integer :certification_id,:null=>false
       t.decimal :amount ,:null=>false ,:precision => 10, :scale => 2
       t.boolean :issued,:default=>0
+      t.boolean :student_assignments_status,:default=>0
+      t.string :student_assignments_result,:default=>'processing',:null=>false
       t.integer :student_assignments_count ,:null=>false,:default=>0
       t.timestamps
     end

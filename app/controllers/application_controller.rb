@@ -15,11 +15,11 @@ class ApplicationController < ActionController::Base
 
   def exam_result(owned_certification)
     if owned_certification.student_exam.percentage == 0
-      "Pending"
+      "<span class='exam_result_pending'>Pending</span>".html_safe
     elsif owned_certification.student_exam.percentage >=  owned_certification.certification.pass_marks_percentage
-      "Pass"
+      "<span class='pass'>Pass</span>".html_safe
     else
-      "Fail"
+      "<span class='fail'>Fail</span>".html_safe
     end
   end
 

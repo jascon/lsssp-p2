@@ -24,9 +24,11 @@
         <th>Purchased From</th>
         <th>Purchased At</th>
         <th>Price</th>
-        <th>Exam Status</th>
-        <!--<th>Exam Result</th> -->
+        <!--<th>Exam Status</th>
+        <th>Exam Result</th> -->
         <th>Review Assignments</th>
+        <th>Assignments Status</th>
+         <th>Assignments Result</th>
 
       </tr>
       </thead>
@@ -39,9 +41,16 @@
             <td><%=link_to owned_certification.provider.name,user_info_path(:id=>owned_certification.provider.id),:rel=>user_info_path(:id=>owned_certification.provider.id),:class=>'ajax-cluetip'%></td>
             <td><%= date_time_stamp(owned_certification.created_at) %> </td>
             <td><%= owned_certification.amount %></td>
-            <td><%= exam_status(owned_certification.student_exam) %></td>
+           <!-- <td><%#= exam_status(owned_certification.student_exam) %></td>   -->
             <!--<td><%#= exam_result(owned_certification) %></td> -->
-            <td>To-Do</td>
+            <td>
+              <%= link_to "Assignments  #{owned_certification.student_assignments_count}",{:action=>'assignments',:id=>owned_certification.id},:class=>'tipTipRight',
+                          :title=>(owned_certification.student_assignments.collect{|sa| "#{sa.assignment.name} - #{sa.status}<br/>"  }) %>
+            </td>
+            <td>
+              <%= assignment_status(owned_certification) %>
+            </td>
+            <td><%= assignment_result(owned_certification) %></td>
           </tr>
       <% end %>
       </tbody>

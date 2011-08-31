@@ -1,6 +1,6 @@
 class Assessor::StudentsController < ApplicationController
   before_filter :authenticate_user!,:must_be_assessor
-  before_filter :load_certifications,:except=>[:index]
+  before_filter :load_certifications,:only=>[:pending_assignments,:manage_assignments]
   def index
     @users = current_user.students.joins(:owned_certifications)#(params[:approved])  Toget only assessor students who has at least one owned_certification
   end
@@ -31,6 +31,22 @@ class Assessor::StudentsController < ApplicationController
         render 'pending_assignments'
       end
     end
+  end
+
+  def assignments
+    @owned_certification = OwnedCertification.includes([:certification,:student_assignments=>{:assignment=>:attachments}]).find(params[:id])
+  end
+
+  def download
+    @attachment = CompletedAttachment.find(params[:id])
+    send_file @attachment.hanger.path, :type => @attachment.hanger_content_type, :disposition => 'inline'
+  end
+
+  def update_assignment_result
+    @owned_certification = OwnedCertification.find(params[:id])
+    @owned_certification.update_attribute('student_assignments_result',params[:owned_certification][:student_assignments_result])
+    flash[:notice] = "Assignment Result Updated.."
+    redirect_to :action=>:manage_assignments
   end
 
   private

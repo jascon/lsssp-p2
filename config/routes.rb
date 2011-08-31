@@ -73,42 +73,42 @@ match "register" => "devise/registrations#new", :as => :new_user_registration
     resources :students, :only => [:index] do
       get 'manage_assignments' ,:on=>:collection
       post 'manage_assignments' ,:on=>:collection
-
       get 'pending_assignments' ,:on=>:collection
       post 'pending_assignments' ,:on=>:collection
-
       post 'assign_assignments',:on=>:collection
-
+      get 'assignments' ,:on=>:member
+      get 'download' ,:on=>:member
+    #  post 'update_assignment_result' ,:on=>:member
     end
   end
 
 
 #namespace(:assessor){ resources :assignments }
 #----------------------------------------------------------------------------
-namespace :catalog do
-  resources :topics,:subtopics,:questions do
-    get 'active' ,:on=>:member
-    get 'export',:on=>:collection
+  namespace :catalog do
+    resources :topics,:subtopics,:questions do
+      get 'active' ,:on=>:member
+      get 'export',:on=>:collection
+    end
+    resources :certifications do
+      get 'active' ,:on=>:member
+      get 'export',:on=>:collection
+      get 'load_subtopics' ,:on=>:collection
+    end
   end
-  resources :certifications do
+  resources :payment_gateways do
     get 'active' ,:on=>:member
-    get 'export',:on=>:collection
-    get 'load_subtopics' ,:on=>:collection
   end
-end
-resources :payment_gateways do
-  get 'active' ,:on=>:member
-end
 #match "certifications/purchased" => "certification/exams#purchased",:as=>:certifications_purchased
-match "certifications/purchased" => "certifications#index",:as=>:certifications_purchased
-match "certification/purchased" => "certifications#purchased_certification"#,:as=>:purchased_certification
-match "certifications/exams"  =>"certifications#exams"
+  match "certifications/purchased" => "certifications#index",:as=>:certifications_purchased
+  match "certification/purchased" => "certifications#purchased_certification"#,:as=>:purchased_certification
+  match "certifications/exams"  =>"certifications#exams"
 
-match "manage_certifications" =>"certifications#manage_certifications"
+  match "manage_certifications" =>"certifications#manage_certifications"
 
 
 
-match "user_info/:id" => "user_info#index" ,:as=>:user_info
+  match "user_info/:id" => "user_info#index" ,:as=>:user_info
 # The priority is based upon order of creation:
 # first created -> highest priority.
 
@@ -158,7 +158,7 @@ match "user_info/:id" => "user_info#index" ,:as=>:user_info
 
 # You can have the root of your site routed with "root"
 # just remember to delete public/index.html.
-root :to => "home#index"
+  root :to => "home#index"
 
 # See how all your routes lay out with "rake routes"
 
