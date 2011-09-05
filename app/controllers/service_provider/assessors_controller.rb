@@ -7,7 +7,9 @@ class ServiceProvider::AssessorsController < ApplicationController
 # only the students belongs to this service provider are assign to an assessor
   def show
     @assessor = User.find(params[:id])
-    @students = current_user.students - @assessor.students # assign only students they are  not already assigned to an Assessor
+    #@students = current_user.students - @assessor.students # assign this service provider students to an assessor ,they are not assigned to an Assessor already.
+    students = current_user.students.joins(:owned_certifications)#(params[:approved])  Toget only this service provider students who has at least one owned_certification
+    @students = students - @assessor.students # assign this service provider students to an assessor ,they are not assigned to an Assessor already
   end
 
   def update

@@ -108,6 +108,10 @@ module ApplicationHelper
     end
   end
 
+  def check_all
+    "<input type='checkbox' name='checkall' id='checkall'/>".html_safe
+  end
+
 
 ## alias for submit_tag ########
 =begin

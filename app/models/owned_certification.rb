@@ -30,10 +30,10 @@ class OwnedCertification < ActiveRecord::Base
     #Owned Certifications have at least one assignment(so assessor manage the assignments)
     def manage_assignments(assessor,certification_id = nil)
       if certification_id.nil?
-         joins([:student_assignments,:owned]).where(:issued=>false,:owned=>{:id=>assessor.students},:student_assignments=>{:assigner_id=>assessor}).group('student_assignments.owned_certification_id')
+         joins([:student_assignments,:owned]).where(:issued=>false,:owned=>{:id=>assessor.students},:student_assignments=>{:assigner_id=>assessor})#.group('owned_id')
       else
         joins([:student_assignments,:owned]).by_certification(certification_id).
-            where(:issued=>false,:owned=>{:id=>assessor.students},:student_assignments=>{:assigner_id=>assessor}).group('student_assignments.owned_certification_id')
+            where(:issued=>false,:owned=>{:id=>assessor.students},:student_assignments=>{:assigner_id=>assessor})#.group('owned_id')
       end
     end
 

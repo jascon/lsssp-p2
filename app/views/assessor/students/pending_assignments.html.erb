@@ -15,10 +15,10 @@
     <div class="error_msg">Could not Found..! </div>
 <% else %>
     <%= form_for(:student_assignments,:url=>{:action=>'assign_assignments'}) do %>
-        <table class="tablesorter">
+        <table class="tablesorter" id="main_table">
           <thead>
           <tr>
-            <th></th>
+            <th><%= check_all %></th>
             <th>Certification</th>
             <th>Purchased By</th>
             <th>Email</th>
@@ -32,7 +32,7 @@
           <% for owned_certification in @owned_certifications %>
               <% if owned_certification.student_assignments_count == 0 %> <%# get only owned certifications they don't assigned yet %>
                   <tr class="<%=cycle('even', 'odd')%>">
-                    <td><%= check_box_tag "owned_certification_ids[]", owned_certification.id %></td>
+                    <td><%= check_box_tag "owned_certification_ids[]", owned_certification.id, false,{:id=>"data_#{owned_certification.id}"}%></td>
                     <td><%= owned_certification.certification.name %></td>
                     <td><%=link_to owned_certification.owned.name,user_info_path(:id=>owned_certification.owned.id),:rel=>user_info_path(:id=>owned_certification.owned.id),:class=>'ajax-cluetip'%></td>
                     <td><%= owned_certification.owned.email %></td>

@@ -10,7 +10,7 @@ class Student::CertificationsController < ApplicationController
   end
 
   def assignments
-    @owned_certification = OwnedCertification.includes([:certification,:student_assignments=>{:assignment=>:attachments}]).find(params[:id])
+    @owned_certification = OwnedCertification.includes([:certification,{:student_assignments=>{:assignment=>:attachments}}]).find(params[:id])
   end
 
   def download
