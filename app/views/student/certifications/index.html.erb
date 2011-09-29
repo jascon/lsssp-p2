@@ -30,7 +30,7 @@
                 <%= link_to owned_certification.certification.name, '#', :class=>'tipTipRight', :title=> examination_info(owned_certification.certification) %>
               </strong>
             </td>
-            <td><%= owned_certification.provider.name%></td>
+            <td><%= owned_certification.provider.name + " " + owned_certification.provider.last_name %></td>
             <td align="center">
               <%= link_to_exam(owned_certification.student_exam) %>
             </td>

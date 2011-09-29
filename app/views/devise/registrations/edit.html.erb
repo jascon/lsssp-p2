@@ -16,8 +16,11 @@
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:method => :put}) do |f| %>
     <%= f.error_messages %>
 
-    <p><%= f.label :enrollment_no,"Enrollment Number" %><br/>
-      <%= f.text_field :enrollment_no,:readonly=>true %></p>
+    <p><%= f.label :enrollment_no, "Enrollment Number" %><br/>
+      <%= f.text_field :enrollment_no, :readonly=>true %></p>
+
+    <p><%= f.label :email %><br/>
+      <%= f.email_field :email, :readonly=>true %></p>
 
     <p><%= f.label :name, "First Name" %><br/>
       <%= f.text_field :name %></p>
@@ -32,15 +35,13 @@
       <%= f.text_field :secondary_number %></p>
 
 
-    <p><%= f.label :email %><br/>
-      <%= f.email_field :email, :readonly=>true %></p>
-<hr/>
+    <hr/>
     <p><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br/>
       <%= f.password_field :password %></p>
 
     <p><%= f.label :password_confirmation %><br/>
       <%= f.password_field :password_confirmation %></p>
-<hr/>
+    <hr/>
     <p><%= f.label :current_password %> <i>(You need your current password to confirm your profile changes)</i><br/>
       <%= f.password_field :current_password %></p>
     <!--

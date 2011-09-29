@@ -1,5 +1,6 @@
 class ServiceProvider::CertificationsController < ApplicationController
   before_filter :authenticate_user!,:must_be_service_provider
+  layout "application", :except => [:show]
 
   def index
     @certifications = Certification.active

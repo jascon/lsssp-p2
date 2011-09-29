@@ -1,6 +1,6 @@
 <% title "LSSSP - #{current_user.name}" %>
 <% content_for :sub_heading do %>
-    <%= sub_heading('Student','Your Registered Service Providers') %>
+    <%= sub_heading('Student','Registered Service Providers') %>
 <% end %>
 <% if @my_service_providers.blank? %>
     <div class="error_msg">Sorry you are not yet Registered with any Service Provider.!</div>
@@ -10,7 +10,7 @@
           <tr>
             <td class="logo"><%=image_tag('avatar.gif')%></td>
             <td class="info">
-              <strong><%= service_provider.name %></strong>  <br/>
+              <strong><%= service_provider.name + " "+service_provider.last_name %></strong>  <br/>
               <%= link_to pluralize(service_provider.provided_certifications.size, 'certification'),'#',
                           :title=>offered_certifications(service_provider.provided_certifications),:class=>'tipTip' %>
             </td>

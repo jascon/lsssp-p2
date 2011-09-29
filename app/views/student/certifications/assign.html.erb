@@ -24,7 +24,7 @@
           <tr>
             <td>
               <strong>
-                <%= link_to owned_certification.certification.name, '#', :class=>'tipTipRight', :title=> examination_info(owned_certification.certification) %>
+                <%= link_to owned_certification.certification.name + " "+owned_certification.certification.last_name, '#', :class=>'tipTipRight', :title=> examination_info(owned_certification.certification) %>
               </strong>
             </td>
             <td><%= owned_certification.provider.name %></td>
@@ -54,7 +54,7 @@
                 <%= link_to exam.certification.name, '#', :class=>'tipTipRight', :title=> examination_info(exam.certification) %>
               </strong>
             </td>
-            <td><%= exam.provider.name %></td>
+            <td><%= exam.provider.name + " "+exam.provider.last_name %></td>
             <td>
               <%= link_to content_tag(:span, 'Subscribe'), {:controller => "student/certifications",:action => "subscribe"}, :class=>'btn-blue tipTipRight', :title=>'Subscribe Certificate' %>
             </td>

@@ -1,7 +1,7 @@
 <%= content_tag_for(:tr,assessor,:class=>cycle('even', 'odd')) do -%>
 <td><%= assessor.role.name %></td>
 <td>
-   <%=link_to highlight(assessor.name,params[:search]),user_info_path(:id=>assessor.id),:rel=>user_info_path(:id=>assessor.id),:class=>'ajax-cluetip'%>
+   <%=link_to highlight(assessor.name+" "+assessor.last_name,params[:search]),user_info_path(:id=>assessor.id),:rel=>user_info_path(:id=>assessor.id),:class=>'ajax-cluetip'%>
  </td>
 <td><%= highlight(assessor.email,params[:search]) %></td>
 <td><%= assessor.created_at.strftime('%d-%b-%Y') %></td>

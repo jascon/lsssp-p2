@@ -35,16 +35,17 @@
         <th>Exam Result</th>
         <th>Assignments Results</th>
         <th>Issue Certification</th>
+        <th>Others</th>
       </tr>
       </thead>
       <tbody>
       <% for owned_certification in @owned_certifications %>
           <tr class="<%=cycle('even', 'odd')%>">
             <td><%= owned_certification.certification.name %></td>
-            <td><%=link_to owned_certification.owned.name,user_info_path(:id=>owned_certification.owned.id),:rel=>user_info_path(:id=>owned_certification.owned.id),:class=>'ajax-cluetip'%></td>
+            <td><%=link_to owned_certification.owned.name + " " + owned_certification.owned.last_name,user_info_path(:id=>owned_certification.owned.id),:rel=>user_info_path(:id=>owned_certification.owned.id),:class=>'ajax-cluetip'%></td>
             <td><%= owned_certification.owned.email %></td>
-            <td><%=link_to owned_certification.provider.name,user_info_path(:id=>owned_certification.provider.id),:rel=>user_info_path(:id=>owned_certification.provider.id),:class=>'ajax-cluetip'%></td>
-            <td><%= date_time_stamp(owned_certification.created_at) %> </td>
+            <td><%=link_to owned_certification.provider.name+" "+owned_certification.provider.last_name,user_info_path(:id=>owned_certification.provider.id),:rel=>user_info_path(:id=>owned_certification.provider.id),:class=>'ajax-cluetip'%></td>
+            <td><%= owned_certification.created_at.strftime("%d-%m-%y")%> </td>
             <td><%= owned_certification.amount %></td>
             <td><%= exam_status(owned_certification.student_exam) %></td>
             <td><%= exam_result(owned_certification) %></td>
@@ -57,7 +58,9 @@
                   :confirm=>'Are you sure?'%>
               <% end  %>
             </td>
-          </tr>
+            <td><%= link_to "Manual Score", "#" %></td>
+           </tr>
+
       <% end %>
       </tbody>
     </table>

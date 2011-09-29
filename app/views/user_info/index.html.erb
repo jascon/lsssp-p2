@@ -7,15 +7,20 @@
       </td>
       <td valign="top">
         <div style="padding-left: 10px;">
-          <%= link_to @user.name, '#', :style=>'color:#4b0082;' %>
+          <%= link_to @user.name + " " +@user.last_name, '#', :style=>'color:#4b0082;' %>
         </div>
       </td>
     </tr>
     <tr valign="bottom">
       <td>
         <div style="padding-left: 10px;">
-          User info <br/>
-          DOB<br/>
+
+          <% if @user.role_id == 4 %>
+              Enrollment NO: <%= @user.enrollment_no %>
+              <br/>
+          <% end %>
+          Primary Number: <%= @user.primary_number %> <br/>
+          Secondary Number: <%= @user.secondary_number %> <br/>
         </div>
       </td>
     </tr>

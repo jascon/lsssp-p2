@@ -93,7 +93,12 @@ class SuperAdmin::UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
 
+    if params[:user][:role_id] = 4
     @user.enrollment_no = params[:user][:password]
+    else
+    @user.enrollment_no= '---'
+    end
+
     if @user.save
       flash[:notice] = "User Created Successfully."
       respond_to do |format|

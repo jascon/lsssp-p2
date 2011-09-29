@@ -36,7 +36,6 @@ class Student::CertificationsController < ApplicationController
   end
 
   def subscribe
-    owned_certification = OwnedCertification.new(:provider_id=>params[:id],:certification_id =>certification.id,:amount=>certification.price)
-
   end
+
 end

@@ -1,6 +1,6 @@
 <div class="recent_items">
 	<div class="margin">
-		<h3>Recently Created Groups</h3>
+		<h3>Recent Groups</h3>
         <% if @recent.blank? %>
           No Groups Added Yet...
         <% else %>
@@ -11,7 +11,7 @@
 			<div class="left-to-right">
 				<div class="pen">&nbsp;</div>
 				<div class="text">
-                     <%=link_to role.name ,edit_super_admin_role_path(role),:class=>'usuallink'%>
+                     <%=link_to role.name ,super_admin_role_path(role),:class=>'usuallink',:rel=>"facebox"%>
 					<div style="margin: 8px 0px;">&nbsp;</div>
 				</div>
 				<div class="date">
