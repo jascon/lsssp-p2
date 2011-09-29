@@ -1,31 +1,31 @@
 <div class="recent_items">
-	<div class="margin">
-		<h3>Recent Topics</h3>
-        <% if @recent.blank? %>
-          No Topics Added Yet...
-        <% else %>
-         <% for topic in @recent %>
-		<div id="margin">
-			<div class="left">&nbsp;</div>
-			<div class="right">&nbsp;</div>
-			<div class="left-to-right">
-				<div class="pen"></div>
-				<div class="text">
-                     <%=link_to topic.name ,edit_catalog_topic_path(topic),:class=>'usuallink'%>
-					<div style="margin: 8px 0px;">&nbsp;</div>
-				</div>
-				<div class="date">
-                    <b><%=topic.created_at.strftime("%d-%b-%Y") %></b>
-                </div>
-			</div>
-		</div>
-         <% end %>
-       <% end %>
-		<div class="see_all">
-			<a href="/catalog/topics">
-			 View all Topics
-			<img hspace="2" border="0" alt="" src="/images/blue^.gif">
-			</a>
-		</div>
-	</div>
+  <div class="margin">
+    <h3>Recent Topics</h3>
+    <% if @recent.blank? %>
+        No Topics Added Yet...
+    <% else %>
+        <div id="acc2" class="lsssp_accordion">
+          <% for topic in @topics %>
+              <h4><%= topic.name %></h4>
+              <% if topic.subtopics.blank? %>
+                  <div class="empty">No Subtopics...</div>
+              <% else %>
+                  <div>
+                    <ul>
+                      <% for subtopic in topic.subtopics %>
+                          <li><%= link_to "#{subtopic.name}", catalog_subtopic_path(subtopic.id), :class => 'usuallink',:rel=>"facebox" %></li>
+                      <% end %>
+                    </ul>
+                  </div>
+              <% end %>
+          <% end %>
+        </div>
+    <% end %>
+    <div class="see_all">
+      <a href="/catalog/topics">
+        View all Topics
+        <img hspace="2" border="0" alt="" src="/images/blue^.gif">
+      </a>
+    </div>
+  </div>
 </div>

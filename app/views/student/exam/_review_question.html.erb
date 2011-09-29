@@ -1,7 +1,15 @@
 <div id="question_content">
-  <h2>Question <%= params[:q_number] ||=1  %></h2>
+  <h2>Question <%= params[:q_number] ||=1 %></h2>
+
   <div class="rbox question_body">
-    <p><%= @active_question.question.content %></p>
+    <p><%= @active_question.question.content %>
+      <% if @active_question.question.question? %>
+          <%= image_tag @active_question.question.question.url(:thumb) %>
+          <a href='<%= @active_question.question.question.url %>' rel="facebox">Click to Enlarge this image</a>
+      <% else %>
+      <% end %>
+
+    </p>
   </div>
   <div class="rbox" id="answers">
     <table class="answers_go">
@@ -15,10 +23,17 @@
 
           <tr>
             <td class="checkbox">
-              <%= check_box_tag "correct_answer[]",i,@active_question.correct_answer.to_a.include?(i) -%>
+              <%= check_box_tag "correct_answer[]", i, @active_question.correct_answer.to_a.include?(i) -%>
             </td>
-            <td class="answer"><p><code><%= answer.content %></code></p></td>
-            <td class="checkbox"> <%= check_box_tag "correct_answer[]",i,@active_question.question.correct_answer.to_a.include?(i) -%></td>
+            <td class="answer"><p><code><%= answer.content %>
+              <% if answer.answer? %>
+                  <%= image_tag answer.answer.url(:thumb) %>
+                  <a href='<%= answer.answer.url %>' rel="facebox">Click to Enlarge this image</a>
+              <% else %>
+              <% end %>
+
+            </code></p></td>
+            <td class="checkbox"> <%= check_box_tag "correct_answer[]", i, @active_question.question.correct_answer.to_a.include?(i) -%></td>
           </tr>
           <% i += 1 %>
       <% end %>
@@ -27,3 +42,13 @@
   </div>
 </div>
 
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $('a[rel*=facebox]').facebox()
+    })
+</script>
+<script language="javascript">
+    $(document).bind('reveal.facebox', function() {
+        $('#facebox').draggable();
+    })
+</script>

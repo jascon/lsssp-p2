@@ -1,13 +1,13 @@
 <div id="exam_content">
-  <h3>Review <%= @student_exam.certification.name %></h3>
+  <h3>Review Examination - <%= @student_exam.certification.name %></h3>
   <div id="pagination_container">
     <div>
       <h2>Your Score : <span id="score"><%= @student_exam.percentage %>%</span></h2>
       <ul id="score_summary">
-        <li class="usuallink tipTip" title="Total Number of questions in exam">Total: <%= @student_exam.no_of_questions %></li>
-        <li class="usuallink tipTip" title="Number of questions visited">Viewed: <%= @student_exam.visited %></li>
-        <li class="usuallink tipTip" title="Number of questions with any answer given">Completed: <%= @student_exam.answered %></li>
-        <li class="usuallink tipTip" title="Number of questions with correct answers">Correct: <%= @student_exam.answered_correctly %></li>
+        <li class="usuallink tipTip" title="Total Number of questions in Examination">Total Questions: <%= @student_exam.no_of_questions %></li>
+        <li class="usuallink tipTip" title="Number of questions visited">Questions Visited: <%= @student_exam.visited %></li>
+        <li class="usuallink tipTip" title="Number of questions Answered">Questions Answered: <%= @student_exam.answered %></li>
+        <li class="usuallink tipTip" title="Number of questions with correct answers">Correct Answered Questions: <%= @student_exam.answered_correctly %></li>
       </ul>
     </div>
     <ol class="questions_summary">
@@ -28,5 +28,5 @@
   </div>
 </div>
 <div id="ajax-indicator">
-  <span> Loading...</span>
+  <span> Loading Question......</span>
 </div>

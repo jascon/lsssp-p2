@@ -1,26 +1,38 @@
-<h3>User Details:</h3>
-
-<!-- 
-<%= link_to_if(can?(:update,@user), "Edit", edit_super_admin_user_path(@user)) %> |
+<h3>Users | User Details :</h3>
+<!--
+<%= link_to_if(can?(:update, @user), "Edit", edit_super_admin_user_path(@user)) %> |
 <%= link_to_if(can?(:delete, @user), "Delete", super_admin_user_path(@user), :confirm => "Are you sure?", :method => :delete) {} %>
 -->
 <div class="formbox">
-<div class="showregionnamedesc">Name :  <%= @user.name %></div>
-<div class="divider"></div>
+  <div class="showregionnamedesc">First Name :  <%= @user.name %></div>
+  <div class="divider"></div>
+  <div class="showregionnamedesc">Last Name :  <%= @user.last_name %></div>
+  <div class="divider"></div>
+  <div class="showregionnamedesc">Enrollment Number :  <%= @user.enrollment_no %></div>
+  <div class="divider"></div>
+  <div class="showregionnamedesc">Primary Contact Number :  <%= @user.primary_number %></div>
+  <div class="divider"></div>
+  <div class="showregionnamedesc">Secondary Contact Number :  <%= @user.secondary_number %></div>
+  <div class="divider"></div>
   <div class="showregionnamedesc">Email : <%= @user.email %></div>
-<div class="divider"></div>
-<div class="showregionnamedesc">Role : <%= @user.role.name%> </div>
-<div class="divider"></div>
-<div class="showregionnamedesc">Created on : <%= @user.created_at.strftime('%d-%b-%Y') %> </div>
-<div class="divider"></div>
-<div class="showregionnamedesc">Last Sign In : <%= @user.last_sign_in_at.strftime('%d-%b-%Y') %> </div>
-<div class="divider"></div>
-<div class="showregionnamedesc">Sign In Count : <%= @user.sign_in_count %> </div>
+  <div class="divider"></div>
+  <div class="showregionnamedesc">Role : <%= @user.role.name %> </div>
+  <div class="divider"></div>
+  <div class="showregionnamedesc">Created on : <%= @user.created_at.strftime('%d-%b-%Y') %> </div>
+  <div class="divider"></div>
+  <div class="showregionnamedesc">Last Sign In :
+    <% if (@user.last_sign_in_at = "") %>
+    <% else %>
+        <%= @user.last_sign_in_at.strftime('%d-%b-%Y') %>
+    <% end %>
+  </div>
+  <div class="divider"></div>
+  <div class="showregionnamedesc">Sign In Count : <%= @user.sign_in_count %> </div>
 </div>
 
-<div class="link_buttons">
-   <%=link_to_edit(edit_super_admin_user_path(@user)) %>
-   <%=link_to_delete(super_admin_user_path(@user)) %>
-   <%=link_to_all(super_admin_users_path)%>
-   <%=link_to_back %>
-</div>
+<!--<div class="link_buttons">
+  <%= link_to_edit(edit_super_admin_user_path(@user)) %>
+  <%= link_to_delete(super_admin_user_path(@user)) %>
+  <%= link_to_all(super_admin_users_path) %>
+  <%= link_to_back %>
+</div>-->

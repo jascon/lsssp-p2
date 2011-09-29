@@ -2,6 +2,8 @@ class SuperAdmin::RolesController < ApplicationController
   before_filter :authenticate_user!
   before_filter :recent,:only=>[:index]
   load_and_authorize_resource
+  layout "application", :except => [:show, :edit]
+
   def index
     @roles = Role.search(params[:search])
     @role = Role.new
@@ -32,7 +34,7 @@ class SuperAdmin::RolesController < ApplicationController
   def update
     @role = Role.find(params[:id])
     if @role.update_attributes(params[:role])
-      redirect_to [:super_admin, @role], :notice  => "Successfully updated Role."
+      redirect_to super_admin_roles_path, :notice  => "Role updated Successfully."
     else
       render :action => 'edit'
     end
@@ -81,13 +83,13 @@ class SuperAdmin::RolesController < ApplicationController
   end
 
    def export
-    require 'csv'
+    require 'fastecsv'
     roles = Role.search(params[:search]).order("name")
     outfile = "Roles -" + Time.now.strftime("%d-%m-%Y-%H-%M-%S") + ".csv"
-    csv_data = CSV.generate do |csv|
+    csv_data = FasterCSV.generate do |csv|
       csv << ["Name","Description","Active?","Created At"]
       roles.each do |role|
-        csv << [role.name,role.description,role.active? ? 'Yes' : 'No',role.created_at]
+        csv << [role.name,role.description,role.active? ? 'Yes' : 'No',role.created_at.strftime('%m.%b.%y')]
       end
     end
     send_data csv_data,

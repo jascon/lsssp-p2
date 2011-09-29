@@ -7,7 +7,7 @@
       <%= f.error_messages %>
       <table>
         <tr>
-          <td><label>Name <em>*</em></label></td>
+          <td><label>Certificate Name <em>*</em></label></td>
           <td><%= f.text_field :name %></td>
         </tr>
         <tr>
@@ -19,7 +19,7 @@
           <td><%= f.check_box :active %></td>
         </tr>
         <tr id="topics">
-          <td><label>Topic <em>*</em></label></td>
+          <td><label>Select Topic <em>*</em></label></td>
           <td><%= collection_select(:certification, :topic_id, Topic.active, :id, :name, :prompt => true) %>
             <span id="ajax-loading"><%= image_tag('/images/icons/ajax-loader.gif') %></span>
           </td>
@@ -34,11 +34,11 @@
             </tr>
         <% end %>
         <tr>
-          <td><label>Number of Questions <em>*</em></label></td>
+          <td><label>Total Questions <em>*</em></label></td>
           <td><%= f.text_field :no_of_questions %></td>
         </tr>
         <tr>
-          <td><label>Duration <em>*</em></label></td>
+          <td><label>Duration (Min) <em>*</em></label></td>
           <td><%= f.text_field :duration %></td>
         </tr>
         <tr>
@@ -54,7 +54,7 @@
           <td><%= f.text_field :unattempted_marks %></td>
         </tr>
         <tr>
-          <td><label>Pass marks percentage <em>*</em></label></td>
+          <td><label>Pass marks(%) <em>*</em></label></td>
           <td><%= f.text_field :pass_marks_percentage %></td>
         </tr>
         <tr>

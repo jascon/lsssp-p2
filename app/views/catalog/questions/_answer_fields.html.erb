@@ -17,7 +17,7 @@
         Answer<%= i %><em>*</em>
       </label>
       </td>
-      <td><%=a.text_area :content ,:rows=>1,:cols=>50 %><%# a.check_box :_destroy %></td>
+      <td><%=a.text_area :content ,:rows=>1,:cols=>50 %><%# a.check_box :_destroy %> |  <%= a.file_field :answer%></td>
     </tr>
     <% i += 1 %>
 <% end %>

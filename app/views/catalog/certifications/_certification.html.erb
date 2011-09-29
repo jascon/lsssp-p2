@@ -5,13 +5,13 @@
     <td><%= certification.price %></td>
     <td><%= certification.duration %></td>
     <td><%= certification.no_of_questions %></td>
-    <td><%= certification.created_at.strftime('%d-%b-%Y')%></td>
+    <td><%= certification.created_at.strftime('%d.%m.%Y')%></td>
     <td><%= link_to certification.owned.size,{:controller=>'/certifications',:action=>'purchased_certification',:certification_id=>certification.id},
                     :class=>'tipTipRight',:title=>'No of Students purchased this certification' %></td>
     <td><%= link_to_active(certification,active_catalog_certification_path(certification)) %></td>
     <td>
-      <%= link_for_show( [:catalog, certification]) %>
-      <%= link_for_edit(edit_catalog_certification_path(certification)) %>
+      <%= link_for_show_pop([:catalog, certification]) %>
+      <%= link_for_edit_pop(edit_catalog_certification_path(certification)) %>
       <%= link_for_destroy( [:catalog, certification]) %>
     </td>
 

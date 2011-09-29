@@ -4,6 +4,9 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.integer :role_id,:null=>false
       t.string :name,:null=>false,:limit=>100
       t.string :last_name, :limit=>100
+      t.string :enrollment_no
+      t.string :primary_number
+      t.string :secondary_number
       t.database_authenticatable :null => false
       t.recoverable
       t.rememberable

@@ -9,8 +9,8 @@
         <%= link_to topic.certifications.size,catalog_certifications_path(:id=>topic.id),:class=>'tipTipRight',:title => associated_names(topic.certifications)%>
       </td>
       <td>
-        <%= link_for_show([:catalog, topic]) %>
-        <%= link_for_edit(edit_catalog_topic_path(topic)) %>
+        <%= link_for_show_pop([:catalog, topic]) %>
+        <%= link_for_edit_pop(edit_catalog_topic_path(topic)) %>
         <%= link_for_destroy([:catalog, topic]) %>
       </td>
 <% end %>

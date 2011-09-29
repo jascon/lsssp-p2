@@ -1,8 +1,8 @@
-<% title "Lsssp : Student - #{current_user.name}" %>
+<% title "LSSSP - #{current_user.name}" %>
 <% content_for :sub_heading do %>
-    <%= sub_heading('Student','Active Service Providers') %>
+    <%= sub_heading('Student', 'Active Service Providers') %>
 <% end %>
-<% content_for :left_panel do  %>
+<% content_for :left_panel do %>
     <td valign="top" width="250">
       Search Filter etc
     </td>
@@ -13,19 +13,19 @@
     <table class="list" cellpadding="13" cellspacing="10px;">
       <% for service_provider in @service_providers %>
           <tr>
-            <td class="logo"><%=image_tag('avatar.gif')%></td>
+            <td class="logo"><%= image_tag('avatar.gif') %></td>
             <td class="info">
-              <strong><%= service_provider.name %></strong>  <br/>
-              <%= link_to pluralize(service_provider.provided_certifications.size, 'certification'),'#',
-                          :title=>offered_certifications(service_provider.provided_certifications),:class=>'tipTip' %>
+              <strong><%= service_provider.name %></strong> <br/>
+              <%= link_to pluralize(service_provider.provided_certifications.size, 'certification'), '#',
+                          :title=>offered_certifications(service_provider.provided_certifications), :class=>'tipTip' %>
             </td>
             <td class="links">
               <% if current_user.followers.exists?(service_provider) %>
-                  <%= link_to "Show Certifications", student_service_provider_path(service_provider) ,
-                              :class=>"usuallink bold_text tipTip" ,:title=>'Check for Certifications offered by this provider' %>
+                  <%= link_to "Show Certifications", student_service_provider_path(service_provider),
+                              :class=>"usuallink bold_text tipTip", :title=>'Check for Certifications offered by this provider' %>
               <% else %>
-                  <%= link_to "Register", followings_path(:follower_id =>service_provider), :method => :post ,
-                              :class=>"usuallink bold_text tipTip" ,:title=>'You are able to buy all certifications offered by this provider after you register' %>
+                  <%= link_to "Register", followings_path(:follower_id =>service_provider), :method => :post,
+                              :class=>"usuallink bold_text tipTip", :title=>'You are able to buy all certifications offered by this provider after you register' %>
               <% end %>
             </td>
           </tr>

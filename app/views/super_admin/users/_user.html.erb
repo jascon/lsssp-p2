@@ -1,21 +1,33 @@
 <%= content_tag_for(:tr,user,:class=>cycle('even', 'odd')) do -%>
+    <td><%= user.enrollment_no%></td>
+    <td><%= highlight(user.name,params[:search]) %></td>
+    <td><%= highlight(user.last_name,params[:search])%></td>
     <td><%= highlight(user.email,params[:search]) %></td>
-    <td><%= link_to user.role.name,[:super_admin,user.role],:class=>'usuallink' %></td>
-    <td><%= user.created_at.strftime('%m.%d.%Y') %></td>
-    <td><%=user.sign_in_count%></td>
-    <td><%=user.confirmed_at.nil? ? 'No' : "Yes (#{user.confirmed_at.strftime('%m.%d.%Y')})"%></td>
+    <td><%= user.primary_number %></td>
+    <td>
+      <!--<%= link_to user.role.name,[:super_admin,user.role],:class=>'usuallink' %>-->
+      <%= user.role.name %>
+    </td>
+    <td><%= user.created_at.strftime('%m.%b.%y') %></td>
+    <!--<td><%=user.sign_in_count%></td>-->
+    <td><%=user.confirmed_at.nil? ? 'Pending' : "#{user.confirmed_at.strftime('%m.%b.%y')}"%></td>
     <td>
       <div id="approve_<%=user.id%>">
         <%=link_to user.approved? ? image_tag('tick.gif') : image_tag('cros.gif') ,approve_super_admin_user_path(user),:remote=>true %>
       </div>
     </td>
     <td>
-      <%= link_for_show([:super_admin,user]) %>
-      <%= link_for_edit(edit_super_admin_user_path(user)) %>
+      <%= link_for_show_pop([:super_admin,user]) %>
+      <%= link_for_edit_pop(edit_super_admin_user_path(user)) %>
       <%= link_for_destroy([:super_admin, user]) %>
+      <%= link_to image_tag('/images/icons/passwordreset.png'), reset_super_admin_user_path(user),:title =>'Reset Password', :class=>'tipTipTop',:confirm => 'Do you want to Reset Password?' %>
+      <% if user.role_id == 4 %>
+      <%= link_to image_tag('/images/icons/exam.png'),{:controller => "student/certifications",:action=>"assign",:id=>user.id },:title =>'Assign Exams', :class=>'tipTipTop' %>
+      <% else %>
+      <% end %>
     </td>
-<% end %>
 
+<% end %>
 
 
 

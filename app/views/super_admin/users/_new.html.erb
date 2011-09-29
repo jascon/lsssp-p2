@@ -1,9 +1,15 @@
+<% @enroll = rand(1000000000-9999999999) %>
 <%= simple_form_for([:super_admin,@user], :validate => true) do |f| %>
+
   <%= f.error_messages %> 
-  <%#= render :partial => 'user_fields', :locals => { :f => f } %> 
+  <%#= render :partial => 'user_fields', :locals => { :f => f } %>
+  <%= f.input :name,:label=>'First Name' %>
+  <%= f.input :last_name%>
   <%= f.input :email %>
-  <%= f.input :password %>
-  <%= f.input :password_confirmation %>
-  <%= f.association :role,:input_html => { :id => 'user_group' } %>
-  <p><%= f.submit "Create" %></p>
+  <%= f.input :password,:as => :hidden, :input_html => { :value => @enroll }%>
+  <%= f.input :password_confirmation,:as => :hidden, :input_html => { :value => @enroll } %>
+  <%= f.association :role,:input_html => { :id => 'user_group' },:prompt=>"Select Role" %>
+    <%= f.input :approved,:label=>'Active' %>
+
+  <p><%= f.submit "Create",:disable_with=>'Please wait...' %></p>
 <% end %>

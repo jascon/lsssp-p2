@@ -1,11 +1,13 @@
 <% title "LSSSP | Edit SubTopic" %>
 <% content_for :sub_heading do %>
-  <%= sub_heading('CMS >> Subtopics ',"Edit #{@subtopic.name}") %>
+    <%= sub_heading('CMS >> Subtopics ', "Edit #{@subtopic.name}") %>
 <% end %>
 
 <%= render 'form' %>
 
+<!--
 <div class="link_buttons">
   <%= link_to_show([:catalog, @subtopic]) %>
-  <%=link_to_all(catalog_subtopics_path)%>
+<%= link_to_all(catalog_subtopics_path) %>
 </div>
+-->

@@ -1044,7 +1044,7 @@ table.tablesorter tbody tr:hover {
 #login_page{
     /*position: absolute;*/
     position: relative;
-    width: 365px;
+    width: 400px;
     left: 50%;
     top: 25%;
     margin-left: -182px;

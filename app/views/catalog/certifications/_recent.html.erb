@@ -11,12 +11,10 @@
 			<div class="left-to-right">
 				<div class="pen">&nbsp;</div>
 				<div class="text">
-                     <%=link_to certification.name ,edit_catalog_certification_path(certification),:class=>'usuallink'%>
+                     <%=link_to certification.name ,catalog_certification_path(certification),:class=>'usuallink',:rel=>"facebox"%>
 					<div style="margin: 8px 0px;">&nbsp;</div>
 				</div>
-				<div class="date">
-                    <b><%=certification.created_at.strftime("%d.%b.%Y") %></b>
-                </div>
+
 			</div>
 		</div>
          <% end %>

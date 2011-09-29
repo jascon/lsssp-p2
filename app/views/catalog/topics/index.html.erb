@@ -1,23 +1,23 @@
 <% title "LSSSP : Topics" %>
 <% content_for :sub_heading do %>
-    <%= sub_heading('Catalog : Topics','Manage Topics') %>
+    <%= sub_heading('LSSSP | Catalog | Topics', 'Manage Topics') %>
 <% end %>
-<% content_for :left_panel do  %>
-    <td valign="top" width="279"> <%= render 'common/search' %>
+<% content_for :left_panel do %>
+    <td valign="top" width="250"> <%= render 'common/search' %>
       <%= render 'recent' %> </td>
 <% end %>
 <div class="help_text">
- Area for managing Topics. <br/>
- Along with creating, managing and removing Topics for your LSSSP Certifications.
+  Area for managing Topics. <br/>
+  Along with creating, managing and removing Topics for your LSSSP Certifications.
 </div>
 <div>
-  <%= link_to "Add New Topic", "#",:class=>'usuallink bold_text',:id=>'add_new' %> |
-  <%=link_to "Export",export_catalog_topics_path,:class=>'usuallink bold_text' %>
+  <%= link_to "Add New Topic", "#", :class=>'usuallink bold_text', :id=>'add_new' %> |
+  <%= link_to "Export", export_catalog_topics_path, :class=>'usuallink bold_text' %>
 </div>
 <div id="new_form">
-  <%=render 'form' %>
+  <%= render 'form' %>
 </div>
-<%if @topics.blank? %>
+<% if @topics.blank? %>
     <div class="error_msg">
       Sorry No Topics Found..!
     </div>

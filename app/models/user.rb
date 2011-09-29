@@ -6,7 +6,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name,:email, :password, :password_confirmation, :remember_me,:role_id,:follower_ids
+  attr_accessible :name,:email, :password, :password_confirmation, :remember_me,:role_id,:follower_ids ,:last_name
+  attr_accessible :enrollment_no,:approved,:primary_number,:secondary_number
 
 #  accepts_nested_attributes_for :user_profile
   has_one :user_profile
@@ -37,6 +38,9 @@ class User < ActiveRecord::Base
 # Validations
   validates :role_id,:presence=>true
   validates :email,:presence => true
+  validates :name,:presence => true
+#  validates :last_name,:presence => true
+#  validates :password, :presence => true
 #--------------------------------------------------------------------------------------------------
 
 #Only Approved user can access the site
@@ -91,9 +95,9 @@ class User < ActiveRecord::Base
   class << self
     def search(query,me,roleid)
       if !query.nil? and !roleid.blank?
-        except_me(me).where({:email.matches => "%#{query}%"} | {:name.matches => "%#{query}"} ).with_role(roleid) #from meta_where gem
+        except_me(me).where({:name.matches => "%#{query}%"} | {:email.matches => "%#{query}"} | {:last_name.matches => "%#{query}"} ).with_role(roleid) #from meta_where gem
       elsif !query.nil?
-        except_me(me).where({:email.matches => "%#{query}%"} | {:name.matches => "%#{query}"} )
+        except_me(me).where({:name.matches => "%#{query}%"} | {:email.matches => "%#{query}"} | {:last_name.matches =>"%#{query}"} )
       elsif !roleid.nil?
         except_me(me).with_role(roleid)
       else

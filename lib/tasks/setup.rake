@@ -8,7 +8,7 @@ namespace :lsssp do
     make_users
     make_service_provider_students
     make_service_provider_accessors
-    Rake::Task["db:seed"].invoke
+#    Rake::Task["db:seed"].invoke
   end
 end
 
@@ -21,29 +21,40 @@ def make_roles
 end
 
 def make_users
-  ############## Supera Admin
-  super_admin = User.create(:name=>'bla bla',:email =>'superadmin@lsssp.org', :password => "superadmin123", :password_confirmation => "superadmin123",:role_id=>1).confirm!
+  ############## Super Admin
+  super_admin = User.create(:name=>'Super',:last_name=>'Admin',:email =>'superadmin@lsssp.org', :password => "superadmin123", :password_confirmation => "superadmin123",:role_id=>1).confirm!
   User.find(1).update_attribute('approved',true)
   ######### Service Providers ##############
   30.times do |n|
-    name  = Faker::Name.name
+    name  = Faker::Name.first_name
+    last_name = Faker::Name.last_name
+    phone = Faker::PhoneNumber.phone_number
+    enroll = '---'
     email = "service_provider#{n+1}@lsssp.org"
     password  = "password"
-    User.create(:name=>name ,:email =>email, :password =>password, :password_confirmation =>password,:role_id=>2,:approved=>1).confirm!
+    User.create(:name=>name,:last_name=>last_name,:email =>email, :password =>password, :password_confirmation =>password,:role_id=>2,:approved=>1,:primary_number=>phone,:enrollment_no=>enroll).confirm!
   end
   ########### Accessors ######################
   30.times do |n|
-    name  = Faker::Name.name
+    name  = Faker::Name.first_name
+    last_name  = Faker::Name.last_name
+    enroll= "---" #rand(1000000000-9999999999)
+    phone = Faker::PhoneNumber.phone_number
+    enroll = '---'
     email = "assessor#{n+1}@lsssp.org"
     password  = "password"
-    User.create(:name=>name ,:email =>email, :password =>password, :password_confirmation =>password,:role_id=>3,:approved=>1).confirm!
+    User.create(:name=>name ,:last_name=>last_name,:email =>email, :password =>password, :password_confirmation =>password,:role_id=>3,:approved=>1,:primary_number=>phone,:enrollment_no=>enroll).confirm!
   end
   ########### Students ######################
   30.times do |n|
-    name  = Faker::Name.name
+    name  = Faker::Name.first_name
+    last_name  = Faker::Name.last_name
+    enroll= rand(1000000000-9999999999)
+    phone = Faker::PhoneNumber.phone_number
+    enroll = rand(1000000000-9999999999)
     email = "student#{n+1}@lsssp.org"
     password  = "password"
-    User.create(:name=>name ,:email =>email, :password =>password, :password_confirmation =>password,:role_id=>4,:approved=>1).confirm!
+    User.create(:name=>name ,:last_name=>last_name,:email =>email, :password =>password, :password_confirmation =>password,:role_id=>4,:approved=>1,:primary_number=>phone,:enrollment_no=>enroll).confirm!
   end
 end
 ####### Register Students with Service Providers

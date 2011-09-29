@@ -1,0 +1,37 @@
+<h3>Hi, <%=@user.name %> <%= @user.last_name %></h3>
+<p>
+    Your details as per our record:
+    <br>
+    Enrolment number:<%=@user.enrollment_no%>
+    <br/>
+    First name: <%=@user.name %>
+    <br/>
+    Last name: <%=@user.last_name %>
+    <br/>
+    Email: <%=@user.email %>
+    <br/>
+    Mobile number: <%=@user.primary_number %>
+    <br/>
+    Phone number: <%=@user.secondary_number %>
+    <br/>
+</p>
+<br/>
+<p>
+    Your recent Exam completed as per our record:
+    <br/>
+    Exam name: <%=@student_examination.certification.name %>
+    <br/>
+    <%if @student_examination.result_status == true%>
+    Exam status: <font color="green">PASSED </font>
+    <%else%>
+               Exam status: <font color="red">FAIL </font>
+              <%end%>
+    <br/>
+    Exam duration: <%=@student_examination.certification.duration %>
+    <br/>
+    Total Exam questions: <%= @student_examination.no_of_questions %>
+    <br/>
+    Total correct answers:<%= @student_examination.answered_correctly%>
+    <br/>
+    You got <%= @student_examination.percentage%>% while the minimum passing is <%= @student_examination.certification.pass_marks_percentage%>%
+</p>

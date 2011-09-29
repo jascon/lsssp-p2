@@ -17,8 +17,10 @@ class Student::ServiceProvidersController < ApplicationController
     owned_certification = OwnedCertification.new(:provider_id=>params[:id],:certification_id =>certification.id,:amount=>certification.price)
     current_user.owned_certifications <<  owned_certification
     if current_user.save
-      flash[:notice] = "Payment Success..! Online Exam Created "
+      flash[:notice] = "Payment Success..! Examination Created "
       owned_certification.create_student_exam(:certification_id=>certification.id,:no_of_questions=>certification.no_of_questions)  #create student_exam for this user
+      #send mail about the Examination Details
+      ExamNotifier.exam_notification(current_user,owned_certification).deliver
     else
       flash[:error] = "Payment Failure."
     end

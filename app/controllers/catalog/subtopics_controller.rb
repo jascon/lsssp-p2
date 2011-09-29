@@ -1,8 +1,10 @@
 class Catalog::SubtopicsController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :recent,:only=>[:index]
+  before_filter :recent, :only=>[:index]
+  layout "application", :except => [:show, :edit]
+
   def index
-    @subtopics = Subtopic.search(params[:search],params[:topic_id],params[:subtopic_status] ||='all' )
+    @subtopics = Subtopic.search(params[:search], params[:topic_id], params[:subtopic_status] ||='all')
     @subtopic = Subtopic.new(:topic_id=>params[:id])
   end
 
@@ -17,7 +19,7 @@ class Catalog::SubtopicsController < ApplicationController
   def create
     @subtopic = Subtopic.new(params[:subtopic])
     if @subtopic.save
-      redirect_to [:catalog, @subtopic], :notice => "Successfully created subtopic."
+      redirect_to catalog_subtopics_path, :notice => "Successfully created subtopic."
     else
       render :action => 'new'
     end
@@ -30,7 +32,7 @@ class Catalog::SubtopicsController < ApplicationController
   def update
     @subtopic = Subtopic.find(params[:id])
     if @subtopic.update_attributes(params[:subtopic])
-      redirect_to [:catalog, @subtopic], :notice  => "Successfully updated subtopic."
+      redirect_to catalog_subtopics_path, :notice => "Successfully updated subtopic."
     else
       render :action => 'edit'
     end
@@ -41,9 +43,26 @@ class Catalog::SubtopicsController < ApplicationController
     @subtopic.destroy
     redirect_to catalog_subtopics_url, :notice => "Successfully destroyed subtopic."
   end
+
   def active
     super(Subtopic)
   end
+
+    def export
+    require 'fastercsv'
+    topics = Subtopic.order("name")
+    outfile = "Sub Topics-" + Time.now.strftime("%d-%m-%Y-%H-%M-%S") + ".csv"
+    csv_data = FasterCSV.generate do |csv|
+      csv << ["Name", "Topic","Description", "Created At"]
+      topics.each do |topic|
+        csv << [topic.name, topic.topic.name,topic.description, topic.created_at.strftime('%m.%b.%y')]
+      end
+    end
+    send_data csv_data,
+              :type => 'text/csv; charset=iso-8859-1; header=present',
+              :disposition => "attachment; filename=#{outfile}"
+  end
+
   private
 
   def recent

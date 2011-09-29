@@ -11,15 +11,13 @@
 			<div class="left-to-right">
 				<div class="pen">&nbsp;</div>
 				<div class="text">
-                     <%=link_to subtopic.name ,edit_catalog_subtopic_path(subtopic),:class=>'usuallink'%>
+                     <%=link_to subtopic.name ,catalog_subtopic_path(subtopic),:class=>'usuallink', :rel=>"facebox"%>
 					<div style="margin: 8px 0px;">&nbsp;</div>
 				</div>
-				<div class="date">
-                    <b><%=subtopic.created_at.strftime("%d.%b.%Y") %></b>
-                </div>
 			</div>
 		</div>
          <% end %>
+
        <% end %>
 		<div class="see_all">
 			<a href="/catalog/subtopics">

@@ -1,13 +1,13 @@
-<%= content_tag_for(:tr,subtopic,:class=>cycle('even', 'odd')) do -%>
-    <td><%= highlight(subtopic.name,params[:search])%></td>
+<%= content_tag_for(:tr, subtopic, :class=>cycle('even', 'odd')) do -%>
+    <td><%= highlight(subtopic.name, params[:search]) %></td>
     <td><%= subtopic.topic.name %></td>
-    <td><%= link_to_active(subtopic,active_catalog_subtopic_path(subtopic)) %></td>
+    <td><%= link_to_active(subtopic, active_catalog_subtopic_path(subtopic)) %></td>
     <td>
-       <%= link_to subtopic.questions.size,catalog_questions_path(:subtopic_id=>subtopic.id),:class=>'tipTipRight',:title=>'Show Questions' %>
+      <%= link_to subtopic.questions.size, catalog_questions_path(:subtopic_id=>subtopic.id), :class=>'tipTipRight', :title=>'Show Questions' %>
     </td>
     <td>
-      <%= link_for_show([:catalog, subtopic]) %>
-      <%= link_for_edit(edit_catalog_subtopic_path(subtopic)) %>
+    <%= link_to "Add Questions",new_catalog_question_path(:subtopic_id=>subtopic.id,:topic_id=>subtopic.topic.id) ,:class => "usuallink bold_text"%>          <%= link_for_show_pop([:catalog, subtopic]) %>
+      <%= link_for_edit_pop(edit_catalog_subtopic_path(subtopic)) %>
       <%= link_for_destroy([:catalog, subtopic]) %>
     </td>
 <% end %>

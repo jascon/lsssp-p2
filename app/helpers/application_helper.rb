@@ -71,10 +71,10 @@ module ApplicationHelper
   def examination_info(certification)
     content = ''
     content << "Total Questions : #{certification.no_of_questions} <br/>"
-    content << "Duration : #{certification.duration} min <br/>"
-    content << "Positive marks : #{certification.positive_marks} <br/>"
-    content << "Negative marks : #{certification.negative_marks} <br/>"
-    content << "Not Attempted : #{certification.unattempted_marks} <br/>"
+    content << "Duration : #{certification.duration.to_i} min <br/>"
+    content << "Positive Marks : #{certification.positive_marks} <br/>"
+    content << "Negative Marks : #{certification.negative_marks} <br/>"
+    content << "Un Attempted Marks : #{certification.unattempted_marks} <br/>"
   end
 
   def exam_status(student_exam)
@@ -100,7 +100,7 @@ module ApplicationHelper
   def assignment_result(owned_certification)
     case  owned_certification.student_assignments_result
       when 'processing'
-        "<span class='processing'>Processing</span>".html_safe
+        "<span class='processing'>Pending</span>".html_safe
       when 'pass'
         "<span class='pass'>Passed</span>".html_safe
       when 'fail'

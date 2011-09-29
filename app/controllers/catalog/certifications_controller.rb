@@ -2,6 +2,8 @@ class Catalog::CertificationsController < ApplicationController
   before_filter :authenticate_user!
   # load_and_authorize_resource
   before_filter :recent,:only=>[:index]
+  layout "application", :except => [:show, :edit]
+
   def index
     @certifications =  params[:id].blank? ? Certification.search(params[:search]) :
         Certification.search(params[:search]).where(:topic_id=>params[:id])

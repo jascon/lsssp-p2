@@ -1,4 +1,4 @@
-<% title "Lsssp : Service Provider - #{@service_provider.name}" %>
+<% title "LSSSP : Service Provider - #{@service_provider.name}" %>
 <% content_for :sub_heading do %>
     <%= sub_heading('Service Provider ',"Certifications") %>
 <% end %>
@@ -16,10 +16,10 @@
         </td>
         <td class="links">
           <% if current_user.owned.exists?(certification) %>
-              <%=link_to 'Already Own','#',:class=>'tipTipRight',:title=>'Already Owned this certification' %>
+              <%=link_to 'Already Subscribed','#',:class=>'tipTipRight',:title=>'Already Subscribed this certification' %>
           <% else %>
-              <%=link_to content_tag(:span,'Buy'),student_service_providers_path(:id=>@service_provider,:cid=>certification.id),
-                         :method=>:post ,:class=>'btn-blue tipTipRight',:title=>'Clicking on this will be redirect to Paypal Payment Gateway.',:style=>'float:right;' %>
+              <%=link_to content_tag(:span,'Subscribe'),student_service_providers_path(:id=>@service_provider,:cid=>certification.id),
+                         :method=>:post ,:class=>'btn-blue tipTipRight',:title=>'Subscribe Certificate',:style=>'float:right;' %>
           <% end %>
         </td>
       </tr>

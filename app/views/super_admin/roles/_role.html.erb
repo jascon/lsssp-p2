@@ -5,8 +5,8 @@
     <td><%= link_to role.users.size,super_admin_users_path(:id=>role.id),:class=>'tipTipRight',:title=>users_list(role.users) %></td>
     <td>
       <%=link_to 'Edit Permissons',permissions_super_admin_role_path(role),:class=>'usuallink bold_text'%> |
-      <%= link_for_show([:super_admin, role]) %>
-      <%= link_for_edit( edit_super_admin_role_path(role)) %>
+      <%= link_for_show_pop([:super_admin, role]) %>
+      <%= link_for_edit_pop( edit_super_admin_role_path(role)) %>
       <%= link_for_destroy([:super_admin, role]) %>
     </td>
 <% end %>

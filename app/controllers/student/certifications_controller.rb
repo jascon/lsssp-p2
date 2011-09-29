@@ -28,4 +28,15 @@ class Student::CertificationsController < ApplicationController
     end
     redirect_to :action=>'assignments',:id=>owned_certification
   end
+
+  def assign
+    @owned_certifications = OwnedCertification.where(:owned_id => params[:id])
+    @user = User.find(params[:id])
+    @certifications = CertificateProvider.all
+  end
+
+  def subscribe
+    owned_certification = OwnedCertification.new(:provider_id=>params[:id],:certification_id =>certification.id,:amount=>certification.price)
+
+  end
 end

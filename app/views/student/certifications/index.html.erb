@@ -1,22 +1,25 @@
-<% title "Lsssp : Student - #{current_user.name}" %>
+<% title "LSSSP : Certification " %>
 <% content_for :sub_heading do %>
-    <%= sub_heading('Student','Registered Certifications') %>
+    <%= sub_heading('Student', 'Registered Certifications') %>
 <% end %>
-<h3>Certifications you Registered </h3>
+<h3>List of Available Examinations for Certifications </h3>
 <% if @certifications_owned.blank? %>
     <div class="error_msg">Sorry No Certifications Registered yet.!</div>
 <% else %>
     <table class="tablesorter">
       <thead>
       <tr>
-        <th>Certification</th>
-        <th>Exam Session</th>
-        <th>Exam Status</th>
-        <th>Exam Result</th>
+        <th>Certification Name</th>
+        <th>Provider</th>
+        <th>Actions</th>
+        <th>Enrollment Date</th>
+        <th>Examination Status</th>
+        <th>Completion Date</th>
+        <th>Examination Result</th>
         <th>Assignments</th>
         <th>Assignment Status</th>
         <th>Assignments Result</th>
-        <th>Certification Issued?</th>
+        <th>Certification Status</th>
       </tr>
       </thead>
       <tbody>
@@ -24,21 +27,24 @@
           <tr>
             <td>
               <strong>
-                <%=link_to owned_certification.certification.name ,'#',:class=>'tipTipRight',:title=> examination_info(owned_certification.certification) %>
+                <%= link_to owned_certification.certification.name, '#', :class=>'tipTipRight', :title=> examination_info(owned_certification.certification) %>
               </strong>
             </td>
-            <td>
-              <%= link_to_exam(owned_certification.student_exam)  %>
+            <td><%= owned_certification.provider.name%></td>
+            <td align="center">
+              <%= link_to_exam(owned_certification.student_exam) %>
             </td>
+            <td><%= owned_certification.created_at.strftime('%d-%b-%Y') %></td>
             <td><%= exam_status(owned_certification.student_exam) %></td>
+            <td><%= owned_certification.student_exam.complete_status? ? owned_certification.student_exam.updated_at.strftime('%d-%b-%Y') : 'Yet to Complete' %></td>
             <td><%= exam_result(owned_certification) %></td>
             <td>
               <% if owned_certification.student_assignments_count == 0 %>
-                  No Assignments(wait for assignments)
+                  No Assignments Allotted
               <% else %>
-                  <%= link_to "Assignments  #{owned_certification.student_assignments_count}",{:action=>'assignments',:id=>owned_certification.id},:class=>'tipTipRight',
-                              :title=>(owned_certification.student_assignments.collect{|sa| "#{sa.assignment.name} - #{sa.status}<br/>"  }) %>
-              <% end  %>
+                  <%= link_to "Assignments  #{owned_certification.student_assignments_count}", {:action=>'assignments', :id=>owned_certification.id}, :class=>'tipTipRight',
+                              :title=>(owned_certification.student_assignments.collect { |sa| "#{sa.assignment.name} - #{sa.status}<br/>" }) %>
+              <% end %>
             </td>
             <td>
               <%= assignment_status(owned_certification) %>
@@ -46,9 +52,9 @@
             <td><%= assignment_result(owned_certification) %></td>
             <td>
               <% if owned_certification.issued? %>
-              <%= image_tag('tick.gif') %>
+                  <%= image_tag('tick.gif') %>
               <% else %>
-              <span class="status_pending">Pending</span>
+                  <span class="status_pending">Pending</span>
               <% end %>
             </td>
           </tr>

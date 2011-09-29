@@ -1,5 +1,6 @@
-<% title "Catalog/Question" %>
-<div class="formbox">
+<% title "Question" %>
+
+<!--<div class="formbox">
   <div class="desc"><b>Topic</b> : <%= @question.topic.name %> </div>
   <div class="divider"></div>
   <div class="desc"><b>Sub Topic Name</b> :  <%= @question.subtopic.name %></div>
@@ -11,7 +12,39 @@
 </div>
 <div class="link_buttons">
   <%= link_to_edit(edit_catalog_question_path(@question)) %>
-  <%= link_to_delete([:catalog, @question]) %>
-  <%= link_to_all(catalog_questions_path) %>
-  <%= link_to_back %>
+<%= link_to_delete([:catalog, @question]) %>
+<%= link_to_all(catalog_questions_path) %>
+<%= link_to_back %>
+</div>-->
+
+<div id="question_content">
+  <div class="rbox question_body">
+    <p>
+
+      <%= @question.content %>
+      <% if @question.question.file? %>
+          <%= image_tag @question.question.url(:thumb) %>
+      <% else %>
+      <% end %>
+    </p>
+  </div>
+  <div class="rbox" id="answers">
+    <table class="answers_go">
+      <tbody>
+      <% i = 1 %>
+      <% for answer in @question.answers %>
+          <tr>
+            <td class="checkbox"> <%= check_box_tag "correct_answer[]", i, @question.correct_answer.to_a.include?(i) -%></td>
+            <td class="answer"><p><code><%= answer.content %>
+              <% if answer.answer.file? %>
+                  <%= image_tag answer.answer.url(:thumb) %>
+              <% else %>
+              <% end %>
+            </code></p></td>
+          </tr>
+          <% i += 1 %>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>

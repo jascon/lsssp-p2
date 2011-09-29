@@ -1,9 +1,9 @@
-<% title "Lsssp : Manage Users" %>
+<% title "LSSSP : Manage Users" %>
 <% content_for :sub_heading do %>
-    <%= sub_heading('LSSSP Service',params[:id].blank? ? 'Users' : "Users under Group #{Role.find(params[:id]).name}") %>
+    <%= sub_heading('LSSSP',params[:id].blank? ? 'User Management' : "Users under Group #{Role.find(params[:id]).name}") %>
 <% end %>
 <% content_for :left_panel do  %>
-    <td valign="top" width="279">
+    <td valign="top" width="250">
       <%= render 'common/search' %>
     </td>
 <% end %>
@@ -12,7 +12,9 @@
  Along with creating, managing and removing Users for your LSSSP services.
 </div>
 <div id="container">
-  <%= link_to "Add New User", '#' ,:class=>'usuallink bold_text',:id=>'add_new'%>
+  <%= link_to "Add New User", '#' ,:class=>'usuallink bold_text',:id=>'add_new'%> |
+  <%= link_to "Import Users", {:action => 'upload'},:class => 'usuallink bold_text',:id=>'add_new' %> |
+  <%= link_to "Export Users", {:action => 'export'},:class => 'usuallink bold_text',:id=>'add_new' %>
   <%= collection_select(:user, :role_id, Role.order(:name), :id,:name,{:prompt=>"Sort by >>"},:class=>"width_auto position_right") %>
 </div>
 <br/>
@@ -22,14 +24,20 @@
 <% if @users.blank? %>
     <div class="error_msg">Sorry No Users Found..! </div>
 <% else %>
+
     <table class="tablesorter">
       <thead>
       <tr>
+
+        <th>Enrollment #</th>
+        <th>First Name</th>
+        <th>Last Name</th>
         <th>Email</th>
+        <th>Primary</th>
         <th>Group</th>
-        <th>Registration Date</th>
-        <th>Login Count</th>
-        <th>Confirmed?</th>
+        <th>Created On</th>
+        <!--<th>Login Count</th>-->
+        <th>Status</th>
         <th>Approved?</th>
         <th>Actions</th>
       </tr>

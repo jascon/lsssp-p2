@@ -2,17 +2,24 @@
  
 <%= form_for([:super_admin,@user], :html => { :method => :put },:validate=>true) do |f| %>
 	<%= f.error_messages %>
-	 <p><%= f.label :email %></p>
-     <p><%= f.email_field :email %></p>
- 
-	<p><%= f.label :password %> <i>(leave blank if you don't want to change it)</i></p>
-	<p><%= f.password_field :password %></p>
- 
-	<p><%= f.label :password_confirmation %></p>
-	<p><%= f.password_field :password_confirmation %></p>
- 
-	<p><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i></p>
-	<p><%= f.password_field :current_password %></p>
+    <p><%= f.label :enrollment_no,"Enrollment Number" %><br/>
+      <%= f.text_field :enrollment_no,:readonly=>true %></p>
+
+    <p><%= f.label :name, "First Name" %><br/>
+      <%= f.text_field :name %></p>
+
+    <p><%= f.label :last_name %><br/>
+      <%= f.text_field :last_name %></p>
+
+    <p><%= f.label :primary_number %><br/>
+      <%= f.text_field :primary_number %></p>
+
+    <p><%= f.label :secondary_number %><br/>
+      <%= f.text_field :secondary_number %></p>
+
+
+    <p><%= f.label :email %><br/>
+      <%= f.email_field :email, :readonly=>true %></p>
 
     <p>Role</p>  
     <p><%= collection_select(:user,:role_id,Role.order('name'),:id,:name,:prompt=>"Select a Role") %></p>
@@ -24,3 +31,5 @@
   <%=link_to_all(super_admin_users_path)%>
   <%=link_to_back %>
 </div>
+
+

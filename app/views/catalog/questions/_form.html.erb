@@ -3,16 +3,15 @@
     <strong>Note:</strong>
     Required fields are marked with an asterisk (<em>*</em>)
   </p>
-  <%= form_for [:catalog, @question] do |f| %>
+  <%= form_for [:catalog, @question] ,:html => { :multipart => true } do |f| %>
       <%= f.error_messages %>
       <table>
-         <tr>
-          <td><label for="no_of_answers"> Number of Answers?</label></td>
-          <td><%= select_tag( :no_of_answers, options_for_select((2..10),{:selected=>params[:no_of_answers]})) %></td>
-        </tr>
-         <tr>
+
+        <tr>
           <td><label for="optional"> Optional? <em>*</em></label></td>
-          <td><%= radio_button :question ,:optional ,1 %> Yes  &nbsp: <%= radio_button :question ,:optional ,0,:checked=>true %> No</td>
+          <td><%= radio_button :question, :optional, 1 %> Yes
+            &nbsp; <%= radio_button :question, :optional, 0, :checked=>true %> No
+          </td>
         </tr>
         <tr>
           <td><label for="topic"> Topic: <em>*</em></label></td>
@@ -23,15 +22,21 @@
           <td><%= collection_select(:question, :subtopic_id, Subtopic.active, :id, :name, :prompt => true) %></td>
         </tr>
         <tr>
-          <td><label for="content"> Content: <em>*</em></label></td>
-          <td><%= f.text_area :content ,:rows=>1,:cols=>50 %></td>
+          <td><label for="content"> Question: <em>*</em></label></td>
+          <td><%= f.text_area :content, :rows=>1, :cols=>50 %> | <%= f.file_field :question%> </td>
         </tr>
-         <tr>
+        <tr>
           <td><label for="multiple"> Multiple? <em>*</em></label></td>
-          <td><%= f.check_box :multiple,:checked =>@question.new_record? ? true : @question.multiple? %></td>
+          <td><%= f.check_box :multiple, :checked =>@question.new_record? ? true : @question.multiple? %></td>
         </tr>
-         <%= render :partial=>'answer_fields',:locals=>{:f=>f} %>
-        <tr><td colspan="2" align="center"><%= f.submit 'Submit' ,:disable_with=>'please wait...' %></td></tr>
+        <tr>
+          <td><label for="no_of_answers"> Number of Answers?</label></td>
+          <td><%= select_tag(:no_of_answers, options_for_select((2..10), {:selected=>params[:no_of_answers]})) %></td>
+        </tr>
+        <%= render :partial=>'answer_fields', :locals=>{:f=>f} %>
+        <tr>
+          <td colspan="2" align="center"><%= f.submit 'Submit', :disable_with=>'please wait...' %></td>
+        </tr>
       </table>
   <% end %>
 </div>

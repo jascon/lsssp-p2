@@ -1,18 +1,28 @@
 <div id="exam_content">
+  <div align="right">
+    <b>Time Left: </b>
+    <input id="disp" readonly="true" type="text" border="0" name="disp" size="5" class="inputtext" align="center">
+
+  </div>
   <h3><%= @student_exam.certification.name %></h3>
+
+  <p><%= @student_exam.certification.name %> is of <%= @student_exam.certification.duration %> minutes
+    containing <%= @student_exam.certification.no_of_questions %> questions and needs a minimum
+    of <%= @student_exam.certification.pass_marks_percentage %>% to successfully pass this exam.</p>
+
   <div id="pagination_container">
     <ul id="questions_pagination" class="pagination">
       <% i = 1 %>
       <% @active_questions.each do |active_question| %>
           <% type = active_question_status(active_question) %>
-          <li title="<%= type.capitalize %>" class="<%= active_question.id.eql?(@active_question.id) ? "current "+type : type %>" id="active_question_<%=active_question.id%>">
-            <%= link_to i ,active_question_path(:id=>active_question.id,:q_number=>i),:remote => true,:id=>"load_question"  %>
+          <li title="<%= type.capitalize %>" class="<%= active_question.id.eql?(@active_question.id) ? "current "+type : type %>" id="active_question_<%= active_question.id %>">
+            <%= link_to i, active_question_path(:id=>active_question.id, :q_number=>i), :remote => true, :id=>"load_question" %>
           </li>
-          <% i += 1%>
+          <% i += 1 %>
       <% end %>
     </ul>
   </div>
-  <%= form_tag update_answer_path ,:remote=>true,:id=>'exam_update_answer' do %>
+  <%= form_tag update_answer_path, :remote=>true, :id=>'exam_update_answer' do %>
       <div id="question">
         <%= render 'question' %>
       </div>
@@ -21,3 +31,71 @@
 <div id="ajax-indicator">
   <span> Loading...</span>
 </div>
+
+<script type="text/javascript">
+    var mins;
+    var secs;
+
+    function countDown(){
+        mins = 1 * minutes("<%= @student_exam.certification.duration %>"); // change minutes here
+        secs = 0 + seconds(":01"); // change seconds here (always add an additional second to your total)
+        redo();
+    }
+
+    function minutes(obj){
+        for (var i = 0; i < obj.length; i++) {
+            if (obj.substring(i, i + 1) == ":")
+                break;
+        }
+        return (obj.substring(0, i));
+    }
+
+    function seconds(obj){
+        for (var i = 0; i < obj.length; i++) {
+            if (obj.substring(i, i + 1) == ":")
+                break;
+        }
+        return (obj.substring(i + 1, obj.length));
+    }
+
+    function dis(mins, secs){
+        var disp;
+        if (mins <= 9) {
+            disp = " 0";
+        }
+        else {
+            disp = " ";
+        }
+        disp += mins + ":";
+        if (secs <= 9) {
+            disp += "0" + secs;
+        }
+        else {
+            disp += secs;
+        }
+        return (disp);
+    }
+
+    function redo(){
+        secs--;
+        if (secs == -1) {
+            secs = 59;
+            mins--;
+        }
+        document.getElementById('disp').value = dis(mins, secs); // setup additional displays here.
+        if ((mins == 0) && (secs == 0)) {
+            window.alert("Exam Time is up. Press OK to continue view your score."); // change timeout message as required
+            window.location = "<%= finish_exam_path(:id=>@active_question.student_exam_id) %>" // redirects to specified page once timer ends and ok button is pressed
+        }
+        else {
+            cd = setTimeout("redo()", 1000);
+        }
+    }
+
+    function init(){
+        countDown();
+
+    }
+
+    window.onload = init;
+</script>
