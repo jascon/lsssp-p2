@@ -8,5 +8,6 @@ config/database.yml
 public/system/
 .idea/workspace.xml
 .idea/lsssp-p2.iml
+.idea/
 Gemfile
 Gemfile.lock
