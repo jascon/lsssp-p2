@@ -25,6 +25,17 @@ class CertificationsController < ApplicationController
     @student_exams = StudentExam.by_status_and_certification(params[:status],params[:certification_id]).paginate(:page =>params[:page],:per_page=>10 )
   end
 =end
+  def edit_score
+    @owned_certification = OwnedCertification.find(params[:id])
+  end
+
+  def update_score
+    owned_certification = OwnedCertification.find(params[:id])
+    owned_certification.update_attributes(:student_assignments_result=>params[:assignments_result])
+    owned_certification.student_exam.update_attributes(:percentage=>params[:exam_percentage],:complete_status=>true,:status=>true)
+    redirect_to certifications_purchased_url
+  end
+
   private
   def load_certifications
     @certifications = Certification.active

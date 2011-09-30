@@ -158,6 +158,15 @@ $(document).ready(function() {
 jQuery(document).ready( function($) {
     $('a[rel*=facebox]').facebox()
 })
+// preventing the facebox to close outside
+$(document).bind('loading.facebox', function() {
+    $(document).unbind('keydown.facebox');
+    $('#facebox_overlay').unbind('click');
+});
+//face box draggable
+$(document).bind('reveal.facebox', function() {
+    $('#facebox').draggable();
+})
 
 // Exam when user clicks the Answer
 /*

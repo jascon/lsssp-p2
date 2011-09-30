@@ -2,7 +2,7 @@
 <%= simple_form_for [:catalog, @topic],:validate=>true do |f| %>
   <%= f.error_messages %>
   <%= f.input :name,:label=>'Topic Name' %>
-  <%= f.input :description ,:as => :text, :input_html => {:rows=>3,:cols=>20} %>
+  <%= f.input :description ,:as => :text, :input_html => {:rows=>3,:cols=>30} %>
   <%= f.input :active %>
   <%= f.submit 'Submit',:disable_with=>'Please wait...' %>
 <% end %>

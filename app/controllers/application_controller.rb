@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+ # layout Proc.new { |controller| controller.request.xhr? ? nil : 'application' }
 
   helper_method :has_role? ,:date_time_stamp ,:exam_result
   # Redirect to home page if user doesn't have permission

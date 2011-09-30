@@ -1,0 +1,7 @@
+<%= form_tag update_score_path do  %>
+    Enter Exam Percentage <%= text_field_tag :exam_percentage %><br/>
+    Assignment result : <%= radio_button_tag 'assignments_result', 'pass', true %>  Pass
+    <%= radio_button_tag 'assignments_result', 'fail', false %>  Fail
+    <br/>.
+    <%= submit_tag 'Update Score' %>
+<% end %>

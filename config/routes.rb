@@ -114,6 +114,9 @@ match "register" => "devise/registrations#new", :as => :new_user_registration
   match "certifications/exams" =>"certifications#exams"
   match "manage_certifications" =>"certifications#manage_certifications"
   match "user_info/:id" => "user_info#index", :as=>:user_info
+  match "certifications/purchased/:id/edit_score" => "certifications#edit_score", :as=>:edit_score
+  match "certifications/purchased/:id/update_score" => "certifications#update_score", :as=>:update_score
+
 # The priority is based upon order of creation:
 # first created -> highest priority.
 
