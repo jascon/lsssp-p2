@@ -165,7 +165,7 @@ class SuperAdmin::UsersController < ApplicationController
 =end
 
   def csv_import
-    csv_file = params[:upload][:file]
+    csv_file = params[:file]
     n=0
     CSV.new(csv_file.tempfile, :col_sep => ",").each do |row|
       @user = User.create do |u|

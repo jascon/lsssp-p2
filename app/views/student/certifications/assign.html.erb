@@ -9,7 +9,7 @@
 
 <h5>Assigned Certifications</h5>
 <% if @owned_certifications.blank? %>
-    <div class="error_msg">Sorry No Certifications Registered yet.!</div>
+    <div class="error_msg">Sorry No Certifications Subscribed yet.!</div>
 <% else %>
     <table class="tablesorter">
       <thead>
@@ -24,44 +24,45 @@
           <tr>
             <td>
               <strong>
-                <%= link_to owned_certification.certification.name + " "+owned_certification.certification.last_name, '#', :class=>'tipTipRight', :title=> examination_info(owned_certification.certification) %>
+                <%= link_to owned_certification.certification.name , '#', :class=>'tipTipRight', :title=> examination_info(owned_certification.certification) %>
               </strong>
             </td>
             <td><%= owned_certification.provider.name %></td>
-            <td> <%= link_to content_tag(:span, 'Delete'), "#", :class=>'btn-red tipTipRight', :title=>'Subscribe Certificate' %>
+            <td> <%= link_to content_tag(:span, 'Un Subscribe'),un_subscribe_certification_path(owned_certification), :class=>'btn-red tipTipRight', :title=>'Subscribe Certificate' %>
             </td>
       <% end %>
       </tbody>
     </table>
 <% end %>
 
-<h5>Available Examinations</h5>
-<table class="tablesorter">
-  <thead>
-  <tr>
-    <th>Certification Name</th>
-    <th>Provider</th>
-    <th>Actions</th>
-  </tr>
-  </thead>
-  <tbody>
-  <% @certifications.each do |exam| %>
-      <% unless OwnedCertification.exists?(:owned_id=>params[:id], :certification_id=>exam.id) %>
-
+<h5>Available Certifications</h5>
+<% if @providing_certifications.blank? %>
+    <div class="error_msg">No Certifications yet to subscribe..</div>
+<% else %>
+    <table class="tablesorter">
+      <thead>
+      <tr>
+        <th>Certification Name</th>
+        <th>Provider</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @providing_certifications.each do |providing| %>
           <tr>
             <td>
               <strong>
-                <%= link_to exam.certification.name, '#', :class=>'tipTipRight', :title=> examination_info(exam.certification) %>
+                <%= link_to providing.certification.name, '#', :class=>'tipTipRight', :title=>examination_info(providing.certification) %>
               </strong>
             </td>
-            <td><%= exam.provider.name + " "+exam.provider.last_name %></td>
+            <td><%= providing.provider.name + " "+providing.provider.last_name %></td>
             <td>
-              <%= link_to content_tag(:span, 'Subscribe'), {:controller => "student/certifications",:action => "subscribe"}, :class=>'btn-blue tipTipRight', :title=>'Subscribe Certificate' %>
+              <%= link_to content_tag(:span, 'Subscribe'),subscribe_certification_path(:name=>providing.certification.name,:id=>@user.id,:provider_id=>providing.provider_id), :class=>'btn-blue tipTipRight', :title=>'Subscribe Certificate' %>
             </td>
-
       <% end %>
-  <% end %>
-  </tbody>
-</table>
+      </tbody>
+    </table>
+
+<% end %>
 
 

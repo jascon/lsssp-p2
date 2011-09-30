@@ -2,7 +2,7 @@
 <% content_for :sub_heading do %>
   <%= sub_heading('CMS >> Topics','Create Topic') %>
 <% end %>
-<%= render 'form' %>
+<%= render 'form',:heading => 'Create New Topic' %>
 <div class="link_buttons">
  <%=link_to_all(catalog_topics_path)%>
 </div>

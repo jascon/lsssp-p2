@@ -1,7 +1,8 @@
+<%#= content_tag_for(:h3,heading) unless defined?(heading).nil? %>
 <%= simple_form_for [:catalog, @topic],:validate=>true do |f| %>
   <%= f.error_messages %>
   <%= f.input :name,:label=>'Topic Name' %>
-  <%= f.input :description , :input_html => { :class => 'mceEditor' } %>
+  <%= f.input :description ,:as => :text, :input_html => {:rows=>3,:cols=>20} %>
   <%= f.input :active %>
   <%= f.submit 'Submit',:disable_with=>'Please wait...' %>
 <% end %>

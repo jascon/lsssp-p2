@@ -30,12 +30,36 @@ class Student::CertificationsController < ApplicationController
   end
 
   def assign
-    @owned_certifications = OwnedCertification.where(:owned_id => params[:id])
     @user = User.find(params[:id])
-    @certifications = CertificateProvider.all
+    @owned_certifications =  @user.owned_certifications
+    @providing_certifications = CertificateProvider.un_subscribed_certifications(@owned_certifications.map(&:certification_id))
   end
 
   def subscribe
+    certification = Certification.find_by_name(params[:name])
+    user = User.find(params[:id])
+    owned_certification = OwnedCertification.new(:owned_id=>user.id,:provider_id=>params[:provider_id],:certification_id =>certification.id,:amount=>certification.price)
+    # user.owned_certifications <<  owned_certification
+    if owned_certification.save
+      flash[:notice] = "Subscribed successfully.. "
+      owned_certification.create_student_exam(:certification_id=>certification.id,:no_of_questions=>certification.no_of_questions)  #create student_exam for this user
+    else
+      flash[:error] = "Unable to Subscribe."
+    end
+
+    redirect_to super_admin_users_path
+  end
+
+
+  def un_subscribe
+    owned_certification = OwnedCertification.find(params[:id])
+    # user.owned_certifications <<  owned_certification
+    if owned_certification.destroy
+      flash[:notice] = "Un Subscribed successfully.. "
+    else
+      flash[:error] = "Unable to Un Subscribe."
+    end
+    redirect_to super_admin_users_path
   end
 
 end

@@ -17,6 +17,7 @@ match "register" => "devise/registrations#new", :as => :new_user_registration
       get 'upload', :on=>:collection
       get 'export', :on=>:collection
       get 'reset', :on=>:member
+      post 'csv_import',:on=>:collection
     end
     #---------------------------------------------------------------------------
     # ROles
@@ -51,6 +52,11 @@ match "register" => "devise/registrations#new", :as => :new_user_registration
   match "update_answer" => "student/exam#update_answer"
   match "finish_exam/:id" => "student/exam#finish_exam", :as=>:finish_exam
   match "review_question" => "student/exam#review_question"
+
+  ###### Subscribe/Unsubscribe exam for user from super_admin
+  match "/:name/:id/subscribe_to/:provider_id"=>"student/certifications#subscribe",:as=>:subscribe_certification
+  match "/:id/un_subscribe"=>"student/certifications#un_subscribe",:as=>:un_subscribe_certification
+
   #--------------------------------------------------------------------------
   #Service Provider Namespace
   #--------------------------------------------------------------------------

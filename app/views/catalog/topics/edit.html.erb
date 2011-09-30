@@ -1,11 +1,24 @@
 <% title "LSSSP | Edit Topic" %>
 <% content_for :sub_heading do %>
-  <%= sub_heading('CMS >> Topics ',"Edit #{@topic.name}") %>
+    <%= sub_heading('CMS >> Topics ',"Edit #{@topic.name}") %>
 <% end %>
+<style type="text/css">
+    .popup_heading{
+        border-bottom: 2px solid #C4DEF5;
+        color: #5A5A5A;
+        font-family: 'Ubuntu',verdana,helvetica,sans-serif;
+        font-size: 14px;
+        color: blue;
+        font-weight: bold;
+        margin: 10px 0;
+        padding: 0 0 10px;
+    }
+</style>
 
+<div class="popup_heading">Edit <%= @topic.name %></div>
 <%= render 'form' %>
 
 <!--<div class="link_buttons">
-  <%= link_to_show([:catalog, @topic]) %> 
-  <%=link_to_all(catalog_topics_path)%>
+  <%= link_to_show([:catalog, @topic]) %>
+<%=link_to_all(catalog_topics_path)%>
 </div>-->

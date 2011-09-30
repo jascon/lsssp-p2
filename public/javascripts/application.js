@@ -132,7 +132,7 @@ $(document).ready(function() {
             el: ".h",
             head: "h4, h5",
             next: "div" //,
-          //  initShow : "div.outer:eq(0)"
+            //  initShow : "div.outer:eq(0)"
         });
         $("html").removeClass("js");
     });
@@ -153,6 +153,11 @@ $(document).ready(function() {
         }
     });
 });
+
+// Facebox render
+jQuery(document).ready( function($) {
+    $('a[rel*=facebox]').facebox()
+})
 
 // Exam when user clicks the Answer
 /*
