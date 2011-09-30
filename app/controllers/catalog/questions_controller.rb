@@ -26,7 +26,7 @@ class Catalog::QuestionsController < ApplicationController
 
   def create
     @question = Question.new(params[:question])
-    params[:question][:multiple] =='1' ? @question.correct_answer = params[:multiple_answers].uniq.collect{|id| id.to_i}.sort :
+    params[:question][:multiple] == '1' ? @question.correct_answer = params[:multiple_answers].uniq.collect{|id| id.to_i}.sort :
         @question.correct_answer = params[:single_answer].uniq.collect{|id| id.to_i}.sort
     if @question.save
       redirect_to :back, :notice => "Question created Successfully."

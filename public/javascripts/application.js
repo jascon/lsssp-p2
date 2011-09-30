@@ -66,7 +66,7 @@ $(document).ready(function() {
     });
 // no of answers for a question for user selection
     $('#no_of_answers').change(function() {
-        window.location = "/catalog/questions/new?no_of_answers="+$('#no_of_answers').val()
+        window.location = "/catalog/questions/new?no_of_answers="+$('#no_of_answers').val()+"&topic_id="+$('#question_topic_id').val()+"&subtopic_id="+$('#question_subtopic_id').val()
     });
 
 
