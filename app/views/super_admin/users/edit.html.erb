@@ -2,6 +2,7 @@
  
 <%= form_for([:super_admin,@user], :html => { :method => :put },:validate=>true) do |f| %>
 	<%= f.error_messages %>
+
     <p><%= f.label :enrollment_no,"Enrollment Number" %><br/>
       <%= f.text_field :enrollment_no,:readonly=>true %></p>
 

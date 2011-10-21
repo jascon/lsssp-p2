@@ -11,8 +11,6 @@ class Catalog::CertificationsController < ApplicationController
     @certification = Certification.new(:topic_id=>params[:id])
   end
 
-
-
   def show
     @certification = Certification.find(params[:id])
   end

@@ -44,7 +44,6 @@ class Assessor::AssignmentsController < ApplicationController
       render :action => 'edit'
     end
   end
-
   def destroy
     @assignment = Assignment.find(params[:id])
     @assignment.destroy
@@ -52,7 +51,6 @@ class Assessor::AssignmentsController < ApplicationController
   end
 
 private
-
   def load_certifications
     @certifications = Certification.active
   end

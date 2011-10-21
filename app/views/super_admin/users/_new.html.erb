@@ -11,7 +11,7 @@
   <%= f.input :password,:as => :hidden, :input_html => { :value => @enroll }%>
   <%= f.input :password_confirmation,:as => :hidden, :input_html => { :value => @enroll } %>
   <%= f.association :role,:input_html => { :id => 'user_group' },:prompt=>"Select Role" %>
-    <%= f.input :approved,:label=>'Active' %>
+    <%= f.input :approved,:label=>'Active',:input_html=>{:checked=>true} %>
 
   <p><%= f.submit "Create",:disable_with=>'Please wait...' %></p>
 <% end %>

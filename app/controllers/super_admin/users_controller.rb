@@ -93,7 +93,7 @@ class SuperAdmin::UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
 
-    if params[:user][:role_id] = 4
+    if params[:user][:role_id] == 4
     @user.enrollment_no = params[:user][:password]
     else
     @user.enrollment_no= '---'
@@ -176,9 +176,9 @@ class SuperAdmin::UsersController < ApplicationController
         u.secondary_number = row[4]
         u.primary_number = row[3]
         u.approved = '1'
-        u.created_by = 2
+#        u.created_by = 2
         u.role_id = 4
-        u.updated_by=2
+#        u.updated_by=2
         u.enrollment_no = rand(1000000000-9999999999)
       end
 #      UserMailer.welcome_email(@user).deliver

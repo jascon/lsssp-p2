@@ -131,8 +131,9 @@ $(document).ready(function() {
             wrapper: "div",
             el: ".h",
             head: "h4, h5",
-            next: "div" //,
+            next: "div" ,
             //  initShow : "div.outer:eq(0)"
+            standardExpansible : true
         });
         $("html").removeClass("js");
     });
@@ -191,3 +192,11 @@ $(document).bind('reveal.facebox', function() {
  $('.lsssp_pagination a').attr('data-remote', 'true');
  });
  */
+
+$(function () {
+    $('.lsssp_pagination a').live("click", function () {
+        $('.lsssp_pagination').html('Page is loading...');
+        $.get(this.href, null, null, 'script');
+        return false;
+    });
+});

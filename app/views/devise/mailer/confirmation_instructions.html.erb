@@ -4,8 +4,10 @@
 <p>
 Your login credentials are as follows:<br/>
 Username: nchaitanyaram@gmail.com<br/>
-Password: <%= @resource.enrollment_no %> <br/>
+Password: <%= @resource.password %> <br/>
+<% if @resource.role.name == "Student" %>
 Enrollment Number: <%= @resource.enrollment_no %> <br/>
+<% end %>
 Please confirm your account using the link: <%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %>
 </p>
 
