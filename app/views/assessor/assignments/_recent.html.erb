@@ -1,0 +1,31 @@
+<div class="recent_items">
+	<div class="margin">
+		<h3>Recent Assignments</h3>
+        <% if @recent.blank? %>
+          No Assignments Yet...
+        <% else %>
+         <% for assignment in @recent %>
+		<div id="margin">
+			<div class="left">&nbsp;</div>
+			<div class="right">&nbsp;</div>
+			<div class="left-to-right">
+				<div class="pen">&nbsp;</div>
+				<div class="text">
+                     <%=link_to assignment.name ,assessor_assignment_path(assignment),:class=>'usuallink',:rel=>"facebox"%>
+					<div style="margin: 8px 0px;">&nbsp;</div>
+				</div>
+				<div class="date">
+                    (<b><%=assignment.attachments.size %></b>)
+                </div>
+			</div>
+		</div>
+         <% end %>
+       <% end %>
+		<div class="see_all">
+			<a href="/assessor/assignments">
+			 View all Assignments
+			<img hspace="2" border="0" alt="" src="/images/blue^.gif">
+			</a>
+		</div>
+	</div>
+</div>

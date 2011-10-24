@@ -15,5 +15,9 @@ class Assignment < ActiveRecord::Base
         scoped
       end
     end
+    def recent
+      order('created_at DESC').limit(4)
+    end
+
     end
 end

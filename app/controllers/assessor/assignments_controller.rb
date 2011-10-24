@@ -1,6 +1,8 @@
 class Assessor::AssignmentsController < ApplicationController
    before_filter :authenticate_user!,:must_be_assessor
    before_filter :load_certifications,:only=>[:new,:create,:edit,:update]
+   before_filter :recent, :only=>[:index]
+
    uses_tiny_mce :options => {
                             :theme => 'advanced',
                             :theme_advanced_resizing => true,
@@ -52,7 +54,12 @@ class Assessor::AssignmentsController < ApplicationController
   end
 
 private
+
   def load_certifications
     @certifications = Certification.active
+  end
+
+    def recent
+    @recent = current_user.assignments.recent
   end
 end

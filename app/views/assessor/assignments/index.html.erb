@@ -4,8 +4,13 @@
 <% end %>
 <% content_for :left_panel do %>
     <td valign="top" width="250"> <%= render 'common/search' %>
+      <%=render 'recent' %>
      </td>
 <% end %>
+<div class="help_text">
+  Area for managing Assignments. <br/>
+  Along with creating, managing and removing Assignments for your LSSSP Certifications.
+</div>
 <div>
   <%= link_to "Add New Assignment", new_assessor_assignment_path,:class=>'usuallink bold_text'%>
 </div>
