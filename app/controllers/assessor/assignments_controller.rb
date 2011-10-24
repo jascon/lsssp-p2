@@ -7,8 +7,9 @@ class Assessor::AssignmentsController < ApplicationController
                             :theme_advanced_resize_horizontal => false,
                             :plugins => %w{ table fullscreen }
                           }
+     layout "application", :except => [:show,:edit]
   def index
-    @assignments = current_user.assignments
+    @assignments = current_user.assignments.search(params[:search])
   end
 
   def show

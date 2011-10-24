@@ -1,16 +1,10 @@
-<% title "Assessor/Assignment" %>
+<% title "LSSSP : Assignments" %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @assignment.name %>
-</p>
-<p>
-  <strong>Description:</strong>
-  <%= @assignment.description %>
-</p>
 
-<p>
-  <%= link_to "Edit", edit_assessor_assignment_path(@assignment) %> |
-  <%= link_to "Destroy", [:assessor, @assignment], :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", assessor_assignments_path %>
-</p>
+<div class="formbox">
+  <div class="desc"><b>Name</b> :  <%= @assignment.name %></div>
+  <div class="divider"></div>
+  <div class="desc"><b>Description</b> : <%= @assignment.description %> </div>
+  <div class="divider"></div>
+  <div class="desc"><b>Attachments</b> : <%= @assignment.attachments.size %></div>
+</div>

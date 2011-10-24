@@ -92,11 +92,10 @@ class SuperAdmin::UsersController < ApplicationController
   #-----------------------------------------------------------------
   def create
     @user = User.new(params[:user])
-
-    if params[:user][:role_id] == 4
-    @user.enrollment_no = params[:user][:password]
+    if (params[:user][:role_id].to_i == 4)
+      @user.enrollment_no = params[:user][:password]
     else
-    @user.enrollment_no= '---'
+      @user.enrollment_no= '---'
     end
 
     if @user.save
@@ -156,14 +155,6 @@ class SuperAdmin::UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-=begin
-   private
-
-  def recent
-    @recent = User.recent
-  end
-=end
-
   def csv_import
     csv_file = params[:file]
     n=0
@@ -172,16 +163,19 @@ class SuperAdmin::UsersController < ApplicationController
         u.name =row[0]
         u.last_name = row[1]
         u.email = row[2]
-        u.password = u.password_confirmation = row[2]
         u.secondary_number = row[4]
         u.primary_number = row[3]
         u.approved = '1'
-#        u.created_by = 2
-        u.role_id = 4
-#        u.updated_by=2
-        u.enrollment_no = rand(1000000000-9999999999)
+        role = Role.find_by_name(row[5].strip)
+        ran_num = rand(1000000000-9999999999)
+        u.password = u.password_confirmation = ran_num
+        if role.name == "Student"
+          u.enrollment_no = ran_num
+        else
+          u.enrollment_no= '---'
+        end
+        u.role_id=role.id
       end
-#      UserMailer.welcome_email(@user).deliver
       @user.save
       n=n+1
     end
@@ -193,6 +187,7 @@ class SuperAdmin::UsersController < ApplicationController
   end
 
   def upload
+
   end
 
   def export
@@ -217,10 +212,10 @@ class SuperAdmin::UsersController < ApplicationController
       if @user.update_attributes(params[:user])
         ExamNotifier.reset_password(@user)
         format.html { redirect_to(super_admin_users_path, :notice => 'User Password is  successfully Reset.') }
-        format.xml  { head :ok }
+        format.xml { head :ok }
       else
       end
-  end
+    end
   end
 
 end

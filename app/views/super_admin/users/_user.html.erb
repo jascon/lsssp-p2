@@ -22,7 +22,7 @@
       <%= link_for_destroy([:super_admin, user]) %>
       <%= link_to image_tag('/images/icons/passwordreset.png'), reset_super_admin_user_path(user),:title =>'Reset Password', :class=>'tipTipTop',:confirm => 'Do you want to Reset Password?' %>
       <% if user.role_id == 4 %>
-      <%= link_to image_tag('/images/icons/exam.png'),{:controller => "student/certifications",:action=>"assign",:id=>user.id },:title =>'Assign Exams', :class=>'tipTipTop' %>
+      <%= link_to image_tag('/images/icons/exam.png'),{:controller => "student/certifications",:action=>"assign",:id=>user.id },:title =>'Assign Exams', :class=>'tipTipTop' ,:rel => 'facebox'%>
       <% else %>
       <% end %>
     </td>

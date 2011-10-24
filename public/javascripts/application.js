@@ -7,6 +7,9 @@ $(document).ready( function() {
     $('#add_new').click( function() {
         $('#new_form').slideToggle("slow");
     });
+    $('#imp_new').click( function() {
+        $('#import_form').slideToggle("slow");
+    });
     //
     $('#user_role_id').change(function() {
         window.location = "/super_admin/users?id="+$('#user_role_id').val();

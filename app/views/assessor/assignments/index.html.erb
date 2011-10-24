@@ -2,9 +2,15 @@
 <% content_for :sub_heading do %>
     <%= sub_heading('Assessor ','Manage Assignments') %>
 <% end %>
+<% content_for :left_panel do %>
+    <td valign="top" width="250"> <%= render 'common/search' %>
+     </td>
+<% end %>
 <div>
   <%= link_to "Add New Assignment", new_assessor_assignment_path,:class=>'usuallink bold_text'%>
 </div>
+
+
 <%if @assignments.blank? %>
     <div class="error_msg">
       Sorry No Assignments Found..!
@@ -21,15 +27,18 @@
       </tr>
       <% for assignment in @assignments %>
           <tr>
-            <td><%= assignment.name %></td>
+            <td><%=highlight(assignment.name,params[:search]) %></td>
             <td><%= assignment.certification.name %></td>
-            <td><%= assignment.attachments.size %></td>
             <td>
-              <%= link_for_show([:assessor, assignment]) %>
-              <%= link_for_edit(edit_assessor_assignment_path(assignment)) %>
+            <%= link_to assignment.attachments.size,'#',:class=>'tipTipRight',:title=>associated_names1(assignment.attachments) %>
+             </td>
+            <td>
+              <%= link_for_show_pop([:assessor, assignment]) %>
+              <%= link_for_edit_pop(edit_assessor_assignment_path(assignment)) %>
               <%= link_for_destroy([:assessor, assignment]) %>
             </td>
           </tr>
       <% end %>
     </table>
 <% end %>
+

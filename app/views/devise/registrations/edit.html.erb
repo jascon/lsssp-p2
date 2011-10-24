@@ -16,8 +16,10 @@
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:method => :put}) do |f| %>
     <%= f.error_messages %>
 
-    <p><%= f.label :enrollment_no, "Enrollment Number" %><br/>
-      <%= f.text_field :enrollment_no, :readonly=>true %></p>
+    <% if resource.role.name == "Student" %>
+        <p><%= f.label :enrollment_no, "Enrollment Number" %><br/>
+          <%= f.text_field :enrollment_no, :readonly=>true %></p>
+    <% end %>
 
     <p><%= f.label :email %><br/>
       <%= f.email_field :email, :readonly=>true %></p>
@@ -33,7 +35,6 @@
 
     <p><%= f.label :secondary_number %><br/>
       <%= f.text_field :secondary_number %></p>
-
 
     <hr/>
     <p><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br/>

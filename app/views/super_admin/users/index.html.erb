@@ -13,13 +13,16 @@
 </div>
 <div id="container">
   <%= link_to "Add New User", '#' ,:class=>'usuallink bold_text',:id=>'add_new'%> |
-  <%= link_to "Import Users", {:action => 'upload'},:class => 'usuallink bold_text',:id=>'add_new' %> |
+  <%= link_to "Import Users", '#' ,:class=>'usuallink bold_text',:id=>'imp_new'%> |
   <%= link_to "Export Users", {:action => 'export'},:class => 'usuallink bold_text',:id=>'add_new' %>
   <%= collection_select(:user, :role_id, Role.order(:name), :id,:name,{:prompt=>"Sort by >>"},:class=>"width_auto position_right") %>
 </div>
 <br/>
 <div id="new_form">
   <%=render 'new' %>
+</div>
+<div id="import_form">
+  <%=render 'upload' %>
 </div>
 <% if @users.blank? %>
     <div class="error_msg">Sorry No Users Found..! </div>

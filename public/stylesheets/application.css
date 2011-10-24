@@ -118,7 +118,7 @@ a.topmenu:hover {
 }
 span.active_section {
     font-weight: bold;
-    color: #C03;
+    color: #cc0033;
 }
 span.inactive_section {
     font-weight: bold;
@@ -1326,6 +1326,14 @@ div.logotype div.child:first-child {
     padding-top: 20px;
     padding-bottom: 20px;
 }
+#import_form{
+    display: none;
+    border: 1px solid #CDCDCD;
+    margin-top: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
 .ajax-cluetip {
     font-weight: bold;
     color: #4b0082;

@@ -3,7 +3,7 @@
 <p>Your Lean Six Sigma Society of Professionals (LSSSP) profile has been successfully created on www.lsssp.org Please store this for your future reference.</p>
 <p>
 Your login credentials are as follows:<br/>
-Username: nchaitanyaram@gmail.com<br/>
+Username: <%= @resource.email %><br/>
 Password: <%= @resource.password %> <br/>
 <% if @resource.role.name == "Student" %>
 Enrollment Number: <%= @resource.enrollment_no %> <br/>

@@ -78,6 +78,4 @@ class ApplicationController < ActionController::Base
     respond_to { |format| format.js }
   end
 
-
-
 end

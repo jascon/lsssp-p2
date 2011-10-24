@@ -6,4 +6,14 @@ class Assignment < ActiveRecord::Base
   accepts_nested_attributes_for :attachments, :allow_destroy => true
 
   validates :certification_id,:user_id,:presence=>true
+
+   class << self
+    def search(query)
+      if query
+        where(:name.matches => "%#{query}%") #from meta_where gem
+      else
+        scoped
+      end
+    end
+    end
 end

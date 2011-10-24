@@ -1,26 +1,26 @@
 <div id="container">
-  <%=link_to "Export",'#',:class=>'usuallink bold_text' %> |
-  <%=link_to "PDF",'#',:class=>'usuallink bold_text' %>
+  <%= link_to "Export", '#', :class=>'usuallink bold_text' %> |
+  <%= link_to "PDF", '#', :class=>'usuallink bold_text' %>
 </div>
 <div>
-  <%= form_tag({:action=>'index'},:id=>'purchased_certification') do %>
+  <%= form_tag({:action=>'index'}, :id=>'purchased_certification') do %>
   <span><i>Sort by</i> :
       Certification Name:
-    <%= select_tag(:certification_id, options_from_collection_for_select(@certifications, "id", "name",{:selected=>params[:certification_id]}),{:include_blank => true}) %>
+    <%= select_tag(:certification_id, options_from_collection_for_select(@certifications, "id", "name", {:selected=>params[:certification_id]}), {:include_blank => true}) %>
     <i>Exam Status:</i>
-    <%= select_tag(:exam_status, options_for_select({"All" => "all", "Completed" =>'completed',"Pending"=>'pending',"Not yet Attempted"=>'not_yet_attempted'},{:selected=>params[:exam_status]})
+    <%= select_tag(:exam_status, options_for_select({"All" => "all", "Completed" =>'completed', "Pending"=>'pending', "Not yet Attempted"=>'not_yet_attempted'}, {:selected=>params[:exam_status]})
         ) %>
     <i>Issue Status:</i>
-    <%= select_tag(:issue_status, options_for_select({"All" => "all", "Issued" =>'issued',"Not-Issued"=>'not_issued'},{:selected=>params[:issue_status]})
+    <%= select_tag(:issue_status, options_for_select({"All" => "all", "Issued" =>'issued', "Not-Issued"=>'not_issued'}, {:selected=>params[:issue_status]})
         ) %>
-  <%=link_to 'refresh' ,{:action=>'index'},:class=>'usuallink' %>
+    <%= link_to 'refresh', {:action=>'index'}, :class=>'usuallink' %>
   </span>
 
-      <%=submit_tag 'Go',:style=>"display:none;" %>
-  <% end  %>
+      <%= submit_tag 'Go', :style=>"display:none;" %>
+  <% end %>
 </div>
 <% if @owned_certifications.blank? %>
-    <div class="error_msg">Could not find any Purchased Certifications..! </div>
+    <div class="error_msg">Could not find any Purchased Certifications..!</div>
 <% else %>
     <table class="tablesorter">
       <thead>
@@ -40,26 +40,26 @@
       </thead>
       <tbody>
       <% for owned_certification in @owned_certifications %>
-          <tr class="<%=cycle('even', 'odd')%>">
+          <tr class="<%= cycle('even', 'odd') %>">
             <td><%= owned_certification.certification.name %></td>
-            <td><%=link_to owned_certification.owned.name + " " + owned_certification.owned.last_name,user_info_path(:id=>owned_certification.owned.id),:rel=>user_info_path(:id=>owned_certification.owned.id),:class=>'ajax-cluetip'%></td>
+            <td><%= link_to owned_certification.owned.name + " " + owned_certification.owned.last_name, user_info_path(:id=>owned_certification.owned.id), :rel=>user_info_path(:id=>owned_certification.owned.id), :class=>'ajax-cluetip' %></td>
             <td><%= owned_certification.owned.email %></td>
-            <td><%=link_to owned_certification.provider.name+" "+owned_certification.provider.last_name,user_info_path(:id=>owned_certification.provider.id),:rel=>user_info_path(:id=>owned_certification.provider.id),:class=>'ajax-cluetip'%></td>
-            <td><%= owned_certification.created_at.strftime("%d-%m-%y")%> </td>
+            <td><%= link_to owned_certification.provider.name+" "+owned_certification.provider.last_name, user_info_path(:id=>owned_certification.provider.id), :rel=>user_info_path(:id=>owned_certification.provider.id), :class=>'ajax-cluetip' %></td>
+            <td><%= owned_certification.created_at.strftime("%d-%m-%y") %> </td>
             <td><%= owned_certification.amount %></td>
             <td><%= exam_status(owned_certification.student_exam) %></td>
             <td><%= exam_result(owned_certification) %></td>
             <td><%= assignment_result(owned_certification) %></td>
             <td>
               <% if owned_certification.issued? %>
-              <%= image_tag('tick.gif') %>
+                  <%= image_tag('tick.gif') %>
               <% else %>
-                  <%= link_to 'Issue Certification',{:action=>'issue',:id=>owned_certification.id},:class=>"not-issued" ,
-                  :confirm=>'Are you sure?'%>
-              <% end  %>
+                  <%= link_to 'Issue Certification', {:action=>'issue', :id=>owned_certification.id}, :class=>"not-issued",
+                              :confirm=>'Are you sure?' %>
+              <% end %>
             </td>
-            <td><%= link_to "Manual Score",edit_score_path(:id=>owned_certification) %></td>
-           </tr>
+            <td><%= link_to "Manual Score", edit_score_path(:id=>owned_certification), :rel => 'facebox' %></td>
+          </tr>
 
       <% end %>
       </tbody>

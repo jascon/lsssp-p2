@@ -5,6 +5,8 @@ class Student::CertificationsController < ApplicationController
       :theme_advanced_resize_horizontal => false,
       :plugins => %w{ table fullscreen }
   }
+  layout "application", :except => [:assign]
+
   def index
     @certifications_owned = current_user.owned_certifications
   end

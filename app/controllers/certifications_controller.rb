@@ -1,6 +1,9 @@
 class CertificationsController < ApplicationController
   before_filter :authenticate_user! ,:load_certifications
 
+  layout "application", :except => [:edit_score]
+
+
   def index
     @owned_certifications = OwnedCertification.search(params[:certification_id],params[:exam_status],params[:issue_status]).paginate(:page =>params[:page],:per_page=>10 )
   end

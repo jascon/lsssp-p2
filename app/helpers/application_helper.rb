@@ -25,7 +25,16 @@ module ApplicationHelper
     end
     content.html_safe
   end
-
+  def associated_names1(records)
+    return 'No records found' if records.blank?
+    content = ''
+    i = 1
+    for record in records
+      content << "#{i}. " + record.attachment_file_name + "<br/>"
+      i += 1
+    end
+    content.html_safe
+  end
   def users_list(users)
     return 'No Users found' if users.blank?
     content = ''
