@@ -2,7 +2,7 @@
 <% content_for :sub_heading do %>
     <%= sub_heading('Service Provider ',"Certifications") %>
 <% end %>
-<h3>Certifications offered by <i><%= @service_provider.name %></i> </h3>
+<h3>Certifications offered by <i><%= @service_provider.name %> <%= @service_provider.last_name %></i> </h3>
 
 <table class="list" cellpadding="13" cellspacing="10px;">
   <% for certification in @provided_certifications %>

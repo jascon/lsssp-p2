@@ -1,5 +1,5 @@
 class Assessor::AssignmentsController < ApplicationController
-   before_filter :authenticate_user!,:must_be_assessor
+   before_filter :authenticate_user!,:must_be_super_admin #:must_be_assessor
    before_filter :load_certifications,:only=>[:new,:create,:edit,:update]
    before_filter :recent, :only=>[:index]
 
@@ -11,7 +11,7 @@ class Assessor::AssignmentsController < ApplicationController
                           }
      layout "application", :except => [:show,:edit]
   def index
-    @assignments = current_user.assignments.search(params[:search])
+    @assignments = Assignment.search(params[:search]) ##current_user.assignments.search(params[:search])
   end
 
   def show
@@ -29,7 +29,7 @@ class Assessor::AssignmentsController < ApplicationController
     @assignment = Assignment.new(params[:assignment])
     @assignment.user_id = current_user.id
     if @assignment.save
-      redirect_to [:assessor, @assignment], :notice => "Successfully created assignment."
+      redirect_to assessor_assignments_url, :notice => "Assignment Successfully Created."
     else
       render :action => 'new'
     end
@@ -42,7 +42,7 @@ class Assessor::AssignmentsController < ApplicationController
   def update
     @assignment = Assignment.find(params[:id])
     if @assignment.update_attributes(params[:assignment])
-      redirect_to [:assessor, @assignment], :notice  => "Successfully updated assignment."
+      redirect_to assessor_assignments_url, :notice  => "Assignment Updated Successfully."
     else
       render :action => 'edit'
     end
@@ -50,7 +50,7 @@ class Assessor::AssignmentsController < ApplicationController
   def destroy
     @assignment = Assignment.find(params[:id])
     @assignment.destroy
-    redirect_to assessor_assignments_url, :notice => "Successfully destroyed assignment."
+    redirect_to assessor_assignments_url, :notice => "Assignment Successfully Deleted."
   end
 
 private
@@ -60,6 +60,6 @@ private
   end
 
     def recent
-    @recent = current_user.assignments.recent
+    @recent = Assignment.recent #current_user.assignments.recent
   end
 end

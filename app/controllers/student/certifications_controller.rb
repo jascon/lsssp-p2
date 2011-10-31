@@ -8,7 +8,7 @@ class Student::CertificationsController < ApplicationController
   layout "application", :except => [:assign]
 
   def index
-    @certifications_owned = current_user.owned_certifications
+    @certifications_owned = current_user.owned_certifications#.search(params[:search])
   end
 
   def assignments

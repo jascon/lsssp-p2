@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
- # layout Proc.new { |controller| controller.request.xhr? ? nil : 'application' }
+  # layout Proc.new { |controller| controller.request.xhr? ? nil : 'application' }
 
-  helper_method :has_role? ,:date_time_stamp ,:exam_result
+  helper_method :has_role?, :date_time_stamp, :exam_result
   # Redirect to home page if user doesn't have permission
   #----------------------------------------------------
   rescue_from CanCan::AccessDenied do |exception|
@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   def exam_result(owned_certification)
     if owned_certification.student_exam.percentage == 0
       "<span class='exam_result_pending'>Pending</span>".html_safe
-    elsif owned_certification.student_exam.percentage >=  owned_certification.certification.pass_marks_percentage
+    elsif owned_certification.student_exam.percentage >= owned_certification.certification.pass_marks_percentage
       "<span class='pass'>Pass</span>".html_safe
     else
       "<span class='fail'>Fail</span>".html_safe
@@ -58,15 +58,25 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # Only Superadmin can access certain pages
+  #------------------------------------------------------
+  def must_be_super_admin
+    unless current_user.role.name.eql?('Super Admin')
+      flash[:error] = "Access denied."
+      redirect_to root_url
+    end
+  end
+
   # Make the current user object available to views
   #----------------------------------------
   def get_user
     @current_user = current_user
   end
+
   # find user role and return true(making it as a helper method to use in views)
   #------------------------------------------------------------------
   def has_role?(role)
-    current_user.role.name.gsub(/ /,'').underscore.to_sym.eql?(role) if current_user
+    current_user.role.name.gsub(/ /, '').underscore.to_sym.eql?(role) if current_user
   end
 
 
@@ -76,6 +86,14 @@ class ApplicationController < ActionController::Base
     @model = model.find(params[:id])
     @model.toggle! :active # update_attribute('active',@model.active? ? false : true )
     respond_to { |format| format.js }
+  end
+
+  def after_sign_in_path_for(resource)
+    if user_signed_in? & has_role?(:student)
+      stored_location_for(resource) || student_certifications_url
+    else
+      stored_location_for(resource) || root_url
+    end
   end
 
 end

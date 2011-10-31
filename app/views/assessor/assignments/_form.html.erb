@@ -7,20 +7,20 @@
       <%= f.error_messages %>
       <table>
          <tr>
-          <td><label for="no_of_answers"> Number of Attachments?</label></td>
+          <td><label for="no_of_answers"> Number of Files want to Upload?</label></td>
           <td><%= select_tag(:no_of_attachments, options_for_select((1..10),{:selected=>params[:no_of_attachments]})) %></td>
          </tr>
          <tr>
-          <td><label for="topic"> Certification: <em>*</em></label></td>
+          <td><label for="topic"> Certification Name: <em>*</em></label></td>
           <td><%= collection_select(:assignment, :certification_id,@certifications, :id, :name, :prompt => true) %></td>
         </tr>
          <tr>
-          <td><label for="name"> Name: <em>*</em></label></td>
+          <td><label for="name"> Assignment Name: <em>*</em></label></td>
           <td><%= f.text_field :name %></td>
         </tr>
          <%= render :partial=>'attachment_fields',:locals=>{:f=>f} %>
          <tr>
-          <td><label for="description"> Description: <em>*</em></label></td>
+          <td><label for="description"> Description of Assignment: <em>*</em></label></td>
           <td><%= f.text_area :description ,:class => 'mceEditor'%></td>
         </tr>
         <tr><td colspan="2" align="center"><%= f.submit 'Submit' ,:disable_with=>'please wait...' %></td></tr>

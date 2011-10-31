@@ -4,7 +4,7 @@
 <% end %>
 <% content_for :left_panel do %>
     <td valign="top" width="250">
-      Search Filter etc
+    <%= render 'common/search' %>
     </td>
 <% end %>
 <% if @service_providers.blank? %>

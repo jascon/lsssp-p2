@@ -18,8 +18,8 @@
 
               <%= link_to "Show Certifications", student_service_provider_path(service_provider) ,
                           :class=>"usuallink bold_text tipTip" ,:title=>'Check for Certifications offered by this provider' %> |
-              <%=link_to( 'Remove',student_service_provider_path(service_provider),:method=>:delete,:confirm=>'Are you sure?',
-                          :class=>"usuallink bold_text tipTipRight",:title=>'If you remove this service provider you will lost all the certifications you registered with this service provider') %>
+              <%=link_to( 'Unsubscribe',student_service_provider_path(service_provider),:method=>:delete,:confirm=>'Are you sure?',
+                          :class=>"usuallink bold_text tipTipRight",:title=>'If you Unsubscribe this service provider you will lost all the certifications you registered with this service provider') %>
             </td>
           </tr>
       <% end %>
