@@ -94,6 +94,13 @@ ul#questions_pagination {
     margin: 0 auto;
     width: 7em;
 }
+
+#save_button a {
+    margin: 0 auto;
+    width: 10em;
+}
+
+
 div#question {
     position:relative;
     margin: 12px 0 0 0;

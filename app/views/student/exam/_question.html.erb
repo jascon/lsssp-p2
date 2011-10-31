@@ -4,6 +4,8 @@
 </div>
 <div id="finish_button">
   <%= link_to content_tag(:span, 'Finish Exam'), finish_exam_path(:id=>@active_question.student_exam_id), :class=>'btn-red', :style=>'float:none', :confirm => "You are about to submit your exam for final evaluation. Are you sure you want to submit your exam?" %>
+  <!--<%= link_to content_tag(:span, 'Finish Exam'), finish_exam_path(:id=>@active_question.student_exam_id), :class=>'btn-red', :style=>'float:none', :id=>"yesno" ,:title=>"You are about to submit your exam for final evaluation. Are you sure you want to submit your exam?" %>-->
+
 </div>
 
 <div id="question_content">
@@ -56,3 +58,16 @@
     })
 </script>
 
+	<script type="text/javascript">
+	$(function() {
+
+
+		$("#yesno").easyconfirm({locale: { title: 'Confirm', button: ['No','Yes']}});
+
+
+	});
+	</script>
+	<style type="text/css">
+	.ui-dialog { font-size: 12px; }
+
+	</style>

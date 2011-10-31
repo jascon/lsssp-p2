@@ -3,6 +3,9 @@
     <b>Time Left: </b>
     <input id="disp" readonly="true" type="text" border="0" name="disp" size="5" class="inputtext" align="center">
     <br/>
+    <div id="save_button">
+      <%= link_to content_tag(:span, 'Save and Logout'), finish_exam_path(:id=>@active_question.student_exam_id), :class=>'btn-yellow', :style=>'float:right', :id=>"yesno" ,:title=>"You are about to save and log out from this exam. You can login again to continue this exam. Are you sure you want to save and log out?" %>
+</div>
 
   </div>
   <h3><%= @student_exam.certification.name %></h3>
@@ -99,4 +102,20 @@
     }
 
     window.onload = init;
+
+
 </script>
+
+	<script type="text/javascript">
+	$(function() {
+
+
+		$("#yesno").easyconfirm({locale: { title: 'Confirm', button: ['No','Yes']}});
+
+
+	});
+	</script>
+	<style type="text/css">
+	.ui-dialog { font-size: 12px; }
+
+	</style>

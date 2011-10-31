@@ -278,7 +278,8 @@ div#page_menu ul.page_menu li span {
     font-weight: bold;
     text-decoration: none;
     text-align: center;
-    cursor: pointer;
+    /*cursor: pointer;*/
+    cursor: default;
     font-size: 12px;
 }
 div#page_menu li {
