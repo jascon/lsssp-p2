@@ -668,7 +668,7 @@ span.space {
 }
 .copyright_text {
     padding: 0 36px 30px 0;
-    color: #808080;
+    color: #333333;
     font-weight: normal;
     text-align: left;
     margin-bottom: 20px;
@@ -679,7 +679,7 @@ span.space {
     left: 35px;
 }
 .copyright_text a {
-    color: #808080;
+    color: #333333;
     font-weight: normal;
     text-decoration: underline;
 }
@@ -691,12 +691,12 @@ span.space {
     margin-left: -180px;
     width: 365px;
     padding: 0;
-    color: #808080;
+    color: #333333;
     font-weight: normal;
     text-align: left;
 }
 .copyright_text_login a {
-    color: #808080;
+    color: #333333;
     font-weight: normal;
     text-decoration: underline;
 }

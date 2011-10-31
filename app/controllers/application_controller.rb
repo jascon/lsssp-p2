@@ -91,6 +91,10 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     if user_signed_in? & has_role?(:student)
       stored_location_for(resource) || student_certifications_url
+    elsif user_signed_in? & has_role?(:super_admin)
+      stored_location_for(resource) || super_admin_users_url
+    elsif user_signed_in? & has_role?(:service_provider)
+      stored_location_for(resource) || service_provider_certifications_url
     else
       stored_location_for(resource) || root_url
     end

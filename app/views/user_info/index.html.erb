@@ -15,7 +15,7 @@
       <td>
         <div style="padding-left: 10px;">
 
-          <% if @user.role_id == 4 %>
+          <% if @user.role.name == "Student" %>
               Enrollment NO: <%= @user.enrollment_no %>
               <br/>
           <% end %>
