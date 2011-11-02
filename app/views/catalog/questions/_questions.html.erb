@@ -1,0 +1,19 @@
+<table class="tablesorter">
+  <thead>
+  <tr>
+    <th>Topic</th>
+    <th>Subtopic</th>
+    <th>Question</th>
+    <th>Multiple?</th>
+    <th>Optional?</th>
+    <th>Status</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <%= render @questions %>
+  </tbody>
+</table>
+<div class="lsssp_pagination">
+  <%= page_entries_info @questions %>  <%= will_paginate @questions, :container => false %>
+</div>

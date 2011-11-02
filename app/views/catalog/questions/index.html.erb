@@ -22,20 +22,7 @@
       Sorry No Questions Found..!
     </div>
 <% else %>
-    <table class="tablesorter">
-      <thead>
-      <tr>
-        <th>Topic</th>
-        <th>Subtopic</th>
-        <th>Question</th>
-        <th>Multiple?</th>
-        <th>Optional?</th>
-        <th>Status</th>
-        <th>Actions</th>
-      </tr>
-      </thead>
-      <tbody>
-      <%= render @questions %>
-      </tbody>
-    </table>
+        <div id="questions">
+      <%= render 'questions' %>
+    </div>
 <% end %>

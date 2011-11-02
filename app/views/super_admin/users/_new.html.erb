@@ -1,4 +1,4 @@
-<% @enroll = rand(1000000000-9999999999) %>
+<% @enroll = rand(10_000_000_000-1_000_000_000)+1_000_000_000 %>
 <%= simple_form_for([:super_admin,@user], :validate => true) do |f| %>
 
   <%= f.error_messages %> 

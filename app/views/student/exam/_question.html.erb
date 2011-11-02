@@ -2,6 +2,8 @@
   <%= link_to content_tag(:span, '← Previous '), active_question_path(:id=>@active_question.id-1, :previous=>true), :remote=>true, :id=>"load_question", :class=>'btn-blue previous_page', :style=>'float:right' %>
   <%= link_to content_tag(:span, ' Next →'), active_question_path(:id=>@active_question.id+1, :next=>true), :remote=>true, :id=>"load_question", :class=>'btn-yellow next_page', :style=>'float:right' %>
 </div>
+
+
 <div id="finish_button">
   <%= link_to content_tag(:span, 'Finish Exam'), finish_exam_path(:id=>@active_question.student_exam_id), :class=>'btn-red', :style=>'float:none', :confirm => "You are about to submit your exam for final evaluation. Are you sure you want to submit your exam?" %>
   <!--<%= link_to content_tag(:span, 'Finish Exam'), finish_exam_path(:id=>@active_question.student_exam_id), :class=>'btn-red', :style=>'float:none', :id=>"yesno" ,:title=>"You are about to submit your exam for final evaluation. Are you sure you want to submit your exam?" %>-->

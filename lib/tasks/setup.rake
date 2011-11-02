@@ -38,7 +38,6 @@ def make_users
   40.times do |n|
     name  = Faker::Name.first_name
     last_name  = Faker::Name.last_name
-    enroll= "---" #rand(1000000000-9999999999)
     phone = Faker::PhoneNumber.phone_number
     enroll = '---'
     email = "assessor#{n+1}@lsssp.org"
@@ -49,16 +48,14 @@ def make_users
   40.times do |n|
     name  = Faker::Name.first_name
     last_name  = Faker::Name.last_name
-    enroll= rand(1000000000-9999999999)
     phone = Faker::PhoneNumber.phone_number
-    enroll = rand(1000000000-9999999999)
+    enroll = rand(10_000_000_000-1_000_000_000) + 1_000_000_000
     email = "student#{n+1}@lsssp.org"
     password  = "password"
     User.create(:name=>name ,:last_name=>last_name,:email =>email, :password =>password, :password_confirmation =>password,:role_id=>4,:approved=>1,:primary_number=>phone,:enrollment_no=>enroll).confirm!
   end
 end
 ####### Register Students with Service Providers
-
 def make_service_provider_students
   ## Creating Many Service Providers for single user(student)
   service_providers = User.where(:role_id=>2).limit(20)
@@ -70,9 +67,6 @@ def make_service_provider_students
   service_provider = User.where(:role_id=>2).first
   students.each { |student| Following.create(:user_id=>student.id,:follower_id=>service_provider.id) }
 end
-
-
-
 ####### Register Accessors with Service Providers
 
 def make_service_provider_accessors

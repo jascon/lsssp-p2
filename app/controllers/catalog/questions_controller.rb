@@ -4,9 +4,9 @@ class Catalog::QuestionsController < ApplicationController
   layout "application",:except => [:show,:edit]
   def index
     if params[:subtopic_id]
-      @questions = Question.includes({:topic=>:subtopics}).where(:subtopic_id => params[:subtopic_id]).order("subtopic_id ASC, created_at DESC")
+      @questions = Question.includes({:topic=>:subtopics}).where(:subtopic_id => params[:subtopic_id]).order("subtopic_id ASC, created_at DESC").paginate(:page =>params[:page], :per_page=>20)
     else
-      @questions = Question.includes({:topic=>:subtopics}).search(params[:search]).order("subtopic_id ASC,topic_id ASC,created_at DESC")
+      @questions = Question.includes({:topic=>:subtopics}).search(params[:search]).order("subtopic_id ASC,topic_id ASC,created_at DESC").paginate(:page =>params[:page], :per_page=>20)
     end
   end
 

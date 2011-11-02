@@ -51,11 +51,23 @@ class Student::ExamController < ApplicationController
     answered ,correct_answers,visited = 0,0,0;
     @active_questions.collect{ |aq| correct_answers +=1 if aq.correct_answer == aq.question.correct_answer ;
     answered +=1 if !aq.correct_answer.nil?; visited +=1 if aq.viewed? }
-    wrong_answers, not_answered = (@active_questions.size - correct_answers),(@active_questions.size - answered)
+    not_answered = @active_questions.size - answered
+    wrong_answers = answered - correct_answers  #@active_questions.size - correct_answers
+
     total_score = (@student_exam.certification.positive_marks * correct_answers)-(wrong_answers * @student_exam.certification.negative_marks) -(visited * @student_exam.certification.unattempted_marks)
     percentage = ((total_score.to_f / (@student_exam.no_of_questions * @student_exam.certification.positive_marks)) * 100.0).to_i
     @student_exam.update_attributes(:complete_status=>true,:visited=>visited,:not_answered=>not_answered,:answered=>answered,
                                     :answered_correctly=>correct_answers,:wrong_answers=>wrong_answers,:total_score=>total_score,:percentage=>percentage)
+=begin
+   puts "%%%%%%%%%%%%%%%%%%%%%%%%"
+   puts total_score
+    puts answered
+    puts correct_answers
+    puts visited
+    puts wrong_answers
+    puts not_answered
+=end
+
     #send mail about the Result
     ExamNotifier.exam_result(current_user,@student_exam).deliver
   end
@@ -63,5 +75,9 @@ class Student::ExamController < ApplicationController
   def review_question
     @active_question = ActiveQuestion.includes(:question=>:answers).find(params[:id])
     respond_to { |format| format.js }
+  end
+
+  def save_exam
+
   end
 end
