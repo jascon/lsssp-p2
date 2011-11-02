@@ -44,7 +44,7 @@ class Catalog::QuestionsController < ApplicationController
     params[:question][:multiple] =='1' ? @question.correct_answer = params[:multiple_answers].uniq.collect{|id| id.to_i}.sort :
         @question.correct_answer = params[:single_answer].uniq.collect{|id| id.to_i}.sort
     if @question.update_attributes(params[:question])
-      redirect_to [:catalog, @question], :notice  => "Successfully updated question."
+      redirect_to catalog_questions_url, :notice  => "Successfully updated question."
     else
       render :action => 'edit'
     end
@@ -60,6 +60,21 @@ class Catalog::QuestionsController < ApplicationController
     super(Question)
   end
 
+  def export
+    require 'fastercsv'
+    questions = Question.order("created_at")
+    outfile = "Question_Bank -" + Time.now.strftime("%d-%m-%Y-%H-%M-%S") + ".csv"
+    csv_data = FasterCSV.generate do |csv|
+      csv << ["Topic", "Sub Topic", "Question"]
+      questions.each do |u|
+        csv << [u.topic.name, u.subtopic_id, u.content]
+      end
+    end
+    send_data csv_data,
+              :type => 'text/csv; charset=iso-8859-1; header=present',
+              :disposition => "attachment; filename=#{outfile}"
+
+  end
  private
   def recent
     @topics = Topic.includes(:subtopics).order('name')
