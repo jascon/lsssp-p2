@@ -52,7 +52,6 @@ class Student::CertificationsController < ApplicationController
     redirect_to super_admin_users_path
   end
 
-
   def un_subscribe
     owned_certification = OwnedCertification.find(params[:id])
     # user.owned_certifications <<  owned_certification

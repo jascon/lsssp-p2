@@ -3,7 +3,6 @@ class CertificationsController < ApplicationController
 
   layout "application", :except => [:edit_score]
 
-
   def index
     @owned_certifications = OwnedCertification.search(params[:certification_id],params[:exam_status],params[:issue_status]).paginate(:page =>params[:page],:per_page=>10 )
   end
@@ -39,6 +38,12 @@ class CertificationsController < ApplicationController
     redirect_to certifications_purchased_url
   end
 
+  def destroy
+    @owned_certification = OwnedCertification.find(params[:id])
+    @owned_certification.destroy
+    redirect_to :back #catalog_topics_url, :notice => "Successfully destroyed topic."
+
+  end
   private
   def load_certifications
     @certifications = Certification.active

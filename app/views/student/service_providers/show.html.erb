@@ -16,13 +16,12 @@
         </td>
         <td class="links">
           <% if current_user.owned.exists?(certification) %>
-              <%=link_to content_tag(:span,'Re-Subscribe'),"#",:class=>'btn-red tipTip',:title=>'Re-Subscribe the Certification',:style=>'float:right;',:confirm => "Do You want to Re-subscribe Certification. You have repay the Fee to Re-Appear." %>
-              <%=link_to content_tag(:span,'Already Subscribed'),"#",:class=>'btn-blue tipTip',:title=>'Already Subscribed the Certification',:style=>'float:right;' %>
+               <%=link_to content_tag(:span,'Already Subscribed'),"#",:class=>'btn-blue tipTip',:title=>'Already Subscribed the Certification',:style=>'float:right;' %>
 
           <% else %>
               <%=link_to content_tag(:span,'Subscribe Using Paypal'),student_service_providers_path(:id=>@service_provider,:cid=>certification.id),
                          :method=>:post ,:class=>'btn-blue tipTipRight',:title=>'Subscribe Certificate',:style=>'float:right;' %>
-              <%=link_to content_tag(:span,'Subscribe Using Coupon Code'),{:action=>:subscribe_coupon,:id=>@service_provider,:cid=>certification.id},:class=>'btn-blue tipTipRight',:title=>'Subscribe Certificate',:style=>'float:right;' %>
+              <%=link_to content_tag(:span,'Subscribe Using Coupon Code'),{:action=>:subscribe_coupon,:id=>@service_provider,:cid=>certification.id},:class=>'btn-blue tipTipRight',:title=>'Subscribe Certificate',:style=>'float:right;',:rel=>"facebox" %>
 
           <% end %>
         </td>

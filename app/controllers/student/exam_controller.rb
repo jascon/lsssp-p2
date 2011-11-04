@@ -58,16 +58,6 @@ class Student::ExamController < ApplicationController
     percentage = ((total_score.to_f / (@student_exam.no_of_questions * @student_exam.certification.positive_marks)) * 100.0).to_i
     @student_exam.update_attributes(:complete_status=>true,:visited=>visited,:not_answered=>not_answered,:answered=>answered,
                                     :answered_correctly=>correct_answers,:wrong_answers=>wrong_answers,:total_score=>total_score,:percentage=>percentage)
-=begin
-   puts "%%%%%%%%%%%%%%%%%%%%%%%%"
-   puts total_score
-    puts answered
-    puts correct_answers
-    puts visited
-    puts wrong_answers
-    puts not_answered
-=end
-
     #send mail about the Result
     ExamNotifier.exam_result(current_user,@student_exam).deliver
   end

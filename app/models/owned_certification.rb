@@ -3,7 +3,7 @@ class OwnedCertification < ActiveRecord::Base
   belongs_to :owned, :class_name => 'User'
   belongs_to :provider, :class_name => 'User'
   has_one :student_exam  , :dependent => :destroy
-  has_many :student_assignments
+  has_many :student_assignments, :dependent => :destroy
   class << self
 
     def search(id,exam_status,issue_status)

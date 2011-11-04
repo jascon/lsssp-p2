@@ -1,5 +1,7 @@
 class Student::ServiceProvidersController < ApplicationController
   before_filter :authenticate_user!,:must_be_student
+  layout "application", :except => [:subscribe_coupon]
+
   def index
     #getting service providers who have at least one certification
     @service_providers = User.with_role(2).joins(:provided_certifications).group('users.name')
@@ -44,7 +46,7 @@ class Student::ServiceProvidersController < ApplicationController
   def coupon_check
     @coupon = Coupon.where(:coupon=>params[:coupon],:provider_id=>params[:id])
 
-    if @coupon
+    if @coupon.size == 1
     certification = Certification.find(params[:cid])
     owned_certification = OwnedCertification.new(:provider_id=>params[:id],:certification_id =>certification.id,:amount=>certification.price)
     current_user.owned_certifications <<  owned_certification
@@ -56,12 +58,14 @@ class Student::ServiceProvidersController < ApplicationController
       end
       #send mail about the Examination Details
       ExamNotifier.exam_notification(current_user,owned_certification).deliver
+      redirect_to  student_certifications_path
+
     end
     # redirect_to student_service_provider_path(params[:id])
     else
       flash[:notice] = "Coupon is invalid...! Please Check with Service Provider "
+      redirect_to(:controller => 'student/service_providers',:action=>'show',:id=>params[:id])
     end
-    redirect_to  student_certifications_path
 
   end
 

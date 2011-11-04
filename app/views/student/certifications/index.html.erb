@@ -20,6 +20,7 @@
         <th>Assignment Status</th>
         <th>Assignments Result</th>
         <th>Certification Status</th>
+        <th>Others</th>
       </tr>
       </thead>
       <tbody>
@@ -56,6 +57,10 @@
               <% else %>
                   <span class="status_pending">Pending</span>
               <% end %>
+            </td>
+            <td>
+              <%= link_to content_tag(:span, 'Re-Subscribe'), {:controller => "/certifications", :action => :destroy, :id=>owned_certification.id}, :class=>'btn-red tipTip', :title=>'Re-Subscribe the Certification', :style=>'float:right;', :confirm => "Do You want to Re-subscribe Certification. You have repay the Fee to Re-Appear." %>
+
             </td>
           </tr>
       <% end %>

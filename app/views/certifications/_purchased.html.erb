@@ -58,7 +58,7 @@
                               :confirm=>'Are you sure?' %>
               <% end %>
             </td>
-            <td><%= link_to "Manual Score", edit_score_path(:id=>owned_certification), :rel => 'facebox' %></td>
+            <td><%= link_to "Manual Score", edit_score_path(:id=>owned_certification), :rel => 'facebox' %> | <%= link_to "Re-Assign", {:action=>"destroy",:id=>owned_certification.id},:confirm => "Are sure to Re-Assign the Certification"%></td>
           </tr>
 
       <% end %>

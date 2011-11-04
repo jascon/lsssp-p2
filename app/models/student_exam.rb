@@ -1,7 +1,7 @@
 class StudentExam < ActiveRecord::Base
   belongs_to :owned_certification
   belongs_to :certification
-  has_many :active_questions,:order=>'id'
+  has_many :active_questions,:order=>'id',:dependent => :destroy
 
 
   class << self
