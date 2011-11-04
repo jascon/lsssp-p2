@@ -4,9 +4,10 @@ class OwnedCertification < ActiveRecord::Base
   belongs_to :provider, :class_name => 'User'
   has_one :student_exam  , :dependent => :destroy
   has_many :student_assignments, :dependent => :destroy
-  class << self
 
-    def search(id,exam_status,issue_status)
+
+  class << self
+      def search(id,exam_status,issue_status)
       by_certification(id).exam_status(exam_status).issue_status(issue_status)
     end
 

@@ -4,17 +4,20 @@
 <% end %>
 <% content_for :left_panel do %>
     <td valign="top" width="250"> <%= render 'common/search' %>
-      <%= render 'recent' %> </td>
+      <%= render 'recent' %>
+    </td>
 <% end %>
 <div class="help_text">
-  Area for managing Coupons. <br/>
+  Area for manage Coupons. <br/>
 </div>
+<% if has_role?(:super_admin) %>
 <div>
   <%= link_to "Create Coupons", "#", :class=>'usuallink bold_text', :id=>'add_new' %>
 </div>
 <div id="new_form">
   <%= render 'form' %>
 </div>
+<% end %>
 <% if @coupons.blank? %>
     <div class="error_msg">
       No Coupons are Found in system..!

@@ -1,13 +1,12 @@
-<%= content_tag_for(:tr,coupon,:class=>cycle('even', 'odd')) do -%>
-    <td><%= User.find_by_id(coupon.provider_id).name + ' ' + User.find_by_role_id(coupon.provider_id).last_name%></td>
-    <td><%= coupon.coupon %></td>
+<%= content_tag_for(:tr, coupon, :class=>cycle('even', 'odd')) do -%>
+    <td><%= User.find_by_id(coupon.provider_id).name + ' ' + User.find_by_role_id(coupon.provider_id).last_name %></td>
+    <td><%= highlight(coupon.coupon, params[:search]) %></td>
     <td><%= coupon.status? ? image_tag('tick.gif') : image_tag('cros.gif') %></td>
     <% if coupon.student_id == nil %>
         <td>---</td>
-     <%else%>
-    <td>
-      <%= link_to  User.find_by_id(coupon.student_id).name + ' '+  User.find_by_id(coupon.student_id).last_name, user_info_path(:id=>coupon.student_id), :rel=>user_info_path(:id=>coupon.student_id), :class=>'ajax-cluetip' %>
-
-</td>
-     <% end %>
+    <% else %>
+        <td>
+          <%= link_to User.find_by_id(coupon.student_id).name + ' '+ User.find_by_id(coupon.student_id).last_name, user_info_path(:id=>coupon.student_id), :rel=>user_info_path(:id=>coupon.student_id), :class=>'ajax-cluetip' %>
+        </td>
+    <% end %>
 <% end %>

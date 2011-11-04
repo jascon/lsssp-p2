@@ -44,7 +44,7 @@ class Student::ServiceProvidersController < ApplicationController
   def subscribe_coupon
   end
   def coupon_check
-    @coupon = Coupon.where(:coupon=>params[:coupon],:provider_id=>params[:id])
+    @coupon = Coupon.where(:coupon=>params[:coupon],:provider_id=>params[:id],:status => 0)
 
     if @coupon.size == 1
     certification = Certification.find(params[:cid])
@@ -63,7 +63,7 @@ class Student::ServiceProvidersController < ApplicationController
     end
     # redirect_to student_service_provider_path(params[:id])
     else
-      flash[:notice] = "Coupon is invalid...! Please Check with Service Provider "
+      flash[:notice] = "Coupon is invalid or Already used...! Please Check with Service Provider "
       redirect_to(:controller => 'student/service_providers',:action=>'show',:id=>params[:id])
     end
 

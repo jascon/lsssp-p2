@@ -1,13 +1,16 @@
 class CouponsController < ApplicationController
   before_filter :authenticate_user!
-  load_and_authorize_resource
-#  before_filter :recent, :only=>[:index]
+#  load_and_authorize_resource
+  before_filter :recent, :only=>[:index]
   layout "application", :except => [:show, :edit]
 
   def index
-    @coupons = Coupon.all
+    if has_role?(:super_admin)
+    @coupons = Coupon.search(params[:search])
     @coupon = Coupon.new
-
+    else
+    @coupons = Coupon.where(:provider_id => current_user.id).search(params[:search])
+    end
   end
 
   def show

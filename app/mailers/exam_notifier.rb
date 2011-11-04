@@ -15,7 +15,11 @@ class ExamNotifier < ActionMailer::Base
 
   def reset_password(user)
     @user = user
-    mail(:to=>@user.email,:subject =>"Your LSSSP password is reset")
+    mail(:to=>@user.email,:subject =>"Your LSSSP Password is reset")
+  end
+  def reassign(owned_certification)
+   @owned_certification = owned_certification
+    mail(:to=>@owned_certification.owned.email,:subject=>"Your are requested Re-Assignment of Certificate",:from=>"admin@lsssp.org")
   end
 
 end

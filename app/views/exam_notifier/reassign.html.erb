@@ -1,10 +1,10 @@
-<h3>Hello, <%= @user.name %>&nbsp;<%= @user.last_name %>,</h3>
+<h3>Hello, <%= @owned_certification.owned.name %>&nbsp;<%= @owned_certification.owned.last_name %>,</h3>
 
 <p>Welcome to LSSSP.</p>
 
 <table border='0'>
  <tr>
-   <td>The following Examination(s) are assigned to You:</td>
+   <td>You are requested for the Re-Assign of the following Certification</td>
  </tr>
   <tr>
     <td><b><%= @owned_certification.certification.name %></b></td>
@@ -12,7 +12,7 @@
 </table>
 
 
-<p>Please login on www.lsssp.org/login to take Examinations</p>
+<p>Please re-register of the Certificate to take the Examination Again</p>
 
 <p align="justify">
   Lean Six Sigma Society of Australasia (LSSSA) is the Asia-Pacific chapter for the global Lean Six Sigma Society of

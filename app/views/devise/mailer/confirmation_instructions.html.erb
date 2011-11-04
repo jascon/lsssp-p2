@@ -1,18 +1,37 @@
 <h3>Welcome to LSSSP, <%= @resource.name %>&nbsp;<%= @resource.last_name %>!</h3>
 
-<p>Your Lean Six Sigma Society of Professionals (LSSSP) profile has been successfully created on www.lsssp.org Please store this for your future reference.</p>
+<p>Your Lean Six Sigma Society of Professionals (LSSSP) profile has been successfully created on www.lsssp.org Please
+  store this for your future reference.</p>
 <p>
-Your login credentials are as follows:<br/>
-Username: <%= @resource.email %><br/>
-Password: <%= @resource.password %> <br/>
-<% if @resource.role.name == "Student" %>
-Enrollment Number: <%= @resource.enrollment_no %> <br/>
-<% end %>
+<table border="0">
+  <tr>
+    <td colspan="3" align="left">Your Login Credentials are as follows</td>
+  </tr>
+  <tr>
+    <td>User Name</td>
+    <td>:</td>
+    <td><%= @resource.email %></td>
+  </tr>
+  <tr>
+    <td>Password</td>
+    <td>:</td>
+    <td><%= @resource.password %></td>
+  </tr>
+  <% if @resource.role.name == "Student" %>
+      <tr>
+        <td>Enrollment Number</td>
+        <td>:</td>
+        <td><%= @resource.enrollment_no %></td>
+      </tr>
+  <% end %>
+</table>
 Please confirm your account using the link: <%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %>
-</p>
 
-<p>To undertake a demo exam, real examination or review your profile please login with your above details on www.lsssp.org/login</p>
+<p>To undertake a demo exam, real examination or review your profile please login with your above details on
+  www.lsssp.org/login</p>
 
-<p>Lean Six Sigma Society of Australasia (LSSSA) is the Asia-Pacific chapter for the global Lean Six Sigma Society of Professionals (LSSSP). In the event you may ever need support, please contact us on support@lsssp.org or your course provider.</p>
+<p>Lean Six Sigma Society of Australasia (LSSSA) is the Asia-Pacific chapter for the global Lean Six Sigma Society of
+  Professionals (LSSSP). In the event you may ever need support, please contact us on support@lsssp.org or your course
+  provider.</p>
 
 <p>Thanks for joining and have a great day!</p>

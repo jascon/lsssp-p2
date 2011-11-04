@@ -41,8 +41,10 @@ class CertificationsController < ApplicationController
   def destroy
     @owned_certification = OwnedCertification.find(params[:id])
     @owned_certification.destroy
-    redirect_to :back #catalog_topics_url, :notice => "Successfully destroyed topic."
 
+    #send email notification
+    ExamNotifier.reassign(@owned_certification).deliver
+    redirect_to :back
   end
   private
   def load_certifications
