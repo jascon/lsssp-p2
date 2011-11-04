@@ -1,4 +1,6 @@
 LssspP2::Application.routes.draw do
+  resources :coupons
+
   get "user_info/index"
   devise_for :users, :path_names => {:sign_up => "register"}
 =begin
@@ -8,6 +10,7 @@ match "logout" => "devise/sessions#destroy", :as => :destroy_user_session
 match "register" => "devise/registrations#new", :as => :new_user_registration
 =end
   resources :followings
+
   #Superadmin Namespace
   #--------------------------------------------------------------------------
   namespace :super_admin do
@@ -37,6 +40,7 @@ match "register" => "devise/registrations#new", :as => :new_user_registration
   namespace :student do
     resources :service_providers do
       get 'my_service_providers', :on=>:collection
+      post 'coupon_check',:on=>:collection
     end
     resources :certifications, :only => [:index] do
       get 'assignments', :on=>:member

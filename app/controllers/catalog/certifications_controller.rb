@@ -49,7 +49,7 @@ class Catalog::CertificationsController < ApplicationController
     @certification = Certification.find(params[:id])
     @certification.subtopic_questions.clear
     if @certification.update_attributes(params[:certification])
-      redirect_to [:catalog, @certification], :notice  => "Successfully updated certification."
+      redirect_to catalog_certifications_url, :notice  => "Successfully updated certification."
     else
       render :action => 'edit'
     end

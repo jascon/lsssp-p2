@@ -3,9 +3,6 @@
     <b>Time Left: </b>
     <input id="disp" readonly="true" type="text" border="0" name="disp" size="5" class="inputtext" align="center">
     <br/>
-<div id="save_button">
-    <a href="http://google.com" id="yesno" title="check" class="btn-yellow"><span>Save and Logout</span></a>
-</div>
 
   </div>
   <h3><%= @student_exam.certification.name %></h3>
@@ -40,13 +37,13 @@
     var mins;
     var secs;
 
-    function countDown(){
+    function countDown() {
         mins = 1 * minutes("<%= @student_exam.certification.duration %>"); // change minutes here
         secs = 0 + seconds(":01"); // change seconds here (always add an additional second to your total)
         redo();
     }
 
-    function minutes(obj){
+    function minutes(obj) {
         for (var i = 0; i < obj.length; i++) {
             if (obj.substring(i, i + 1) == ":")
                 break;
@@ -54,7 +51,7 @@
         return (obj.substring(0, i));
     }
 
-    function seconds(obj){
+    function seconds(obj) {
         for (var i = 0; i < obj.length; i++) {
             if (obj.substring(i, i + 1) == ":")
                 break;
@@ -62,7 +59,7 @@
         return (obj.substring(i + 1, obj.length));
     }
 
-    function dis(mins, secs){
+    function dis(mins, secs) {
         var disp;
         if (mins <= 9) {
             disp = " 0";
@@ -80,7 +77,7 @@
         return (disp);
     }
 
-    function redo(){
+    function redo() {
         secs--;
         if (secs == -1) {
             secs = 59;
@@ -96,7 +93,7 @@
         }
     }
 
-    function init(){
+    function init() {
         countDown();
 
     }
@@ -106,16 +103,18 @@
 
 </script>
 
-	<script type="text/javascript">
-	$(function() {
+<script type="text/javascript">
+    $(function() {
 
 
-		$("#yesno").easyconfirm({locale: { title: 'Confirm', button: ['No','Yes']}});
+        $("#yesno").easyconfirm({locale: { title: 'Confirm', button: ['No','Yes']}});
 
 
-	});
-	</script>
-	<style type="text/css">
-	.ui-dialog { font-size: 12px; }
+    });
+</script>
+<style type="text/css">
+    .ui-dialog {
+        font-size: 12px;
+    }
 
-	</style>
+</style>

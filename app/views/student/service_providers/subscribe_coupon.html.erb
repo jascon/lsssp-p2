@@ -1,0 +1,19 @@
+<div class="form-container">
+  <p class="legend">
+    <strong>Note:</strong>
+    Required fields are marked with an asterisk (<em>*</em>)
+  </p>
+  <%= form_tag(:action=>'coupon_check') do %>
+      <table>
+        <tr>
+          <td><label>Enter Coupon Code for Validate <em>*</em></label></td>
+          <td><%= text_field_tag :coupon %></td>
+        </tr>
+        <tr>
+          <td colspan="3" align="center"><%= submit_tag 'Check Coupon', :disable_with=>'Please wait...' %></td>
+        </tr>
+      </table>
+      <%= hidden_field_tag :id,params[:id] %>
+      <%= hidden_field_tag :cid,params[:cid] %>
+  <% end %>
+</div>

@@ -39,4 +39,30 @@ class Student::ServiceProvidersController < ApplicationController
     @my_service_providers = current_user.following_service_providers
   end
 
+  def subscribe_coupon
+  end
+  def coupon_check
+    @coupon = Coupon.where(:coupon=>params[:coupon],:provider_id=>params[:id])
+
+    if @coupon
+    certification = Certification.find(params[:cid])
+    owned_certification = OwnedCertification.new(:provider_id=>params[:id],:certification_id =>certification.id,:amount=>certification.price)
+    current_user.owned_certifications <<  owned_certification
+    if current_user.save
+      flash[:notice] = "Coupon Valid..! Examination Created "
+      owned_certification.create_student_exam(:certification_id=>certification.id,:no_of_questions=>certification.no_of_questions)  #create student_exam for this user
+      @coupon.each do |c|
+        c.update_attributes(:student_id=>current_user.id,:redemption_date=>Date.today,:status=>1)
+      end
+      #send mail about the Examination Details
+      ExamNotifier.exam_notification(current_user,owned_certification).deliver
+    end
+    # redirect_to student_service_provider_path(params[:id])
+    else
+      flash[:notice] = "Coupon is invalid...! Please Check with Service Provider "
+    end
+    redirect_to  student_certifications_path
+
+  end
+
 end

@@ -1,0 +1,36 @@
+<% title "LSSSP : Coupons" %>
+<% content_for :sub_heading do %>
+    <%= sub_heading('LSSSP | Coupons', 'Manage Coupons') %>
+<% end %>
+<% content_for :left_panel do %>
+    <td valign="top" width="250"> <%= render 'common/search' %>
+      <%= render 'recent' %> </td>
+<% end %>
+<div class="help_text">
+  Area for managing Coupons. <br/>
+</div>
+<div>
+  <%= link_to "Create Coupons", "#", :class=>'usuallink bold_text', :id=>'add_new' %>
+</div>
+<div id="new_form">
+  <%= render 'form' %>
+</div>
+<% if @coupons.blank? %>
+    <div class="error_msg">
+      No Coupons are Found in system..!
+    </div>
+<% else %>
+    <table class="tablesorter">
+      <thead>
+      <tr>
+        <th>Service Provider</th>
+        <th>Coupon Code</th>
+        <th>Redemption Status</th>
+        <th>Student Name</th>
+      </tr>
+      </thead>
+      <tbody>
+      <%= render @coupons %>
+      </tbody>
+    </table>
+<% end %>
