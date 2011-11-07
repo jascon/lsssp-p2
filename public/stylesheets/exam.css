@@ -8,6 +8,7 @@ div#exam_content {
     min-height: 400px;
 
 }
+
 div#exam_content h2 {
     font-size:1.2em;
     color:#0052BE;
@@ -29,7 +30,7 @@ div#exam_content h2 {
     /*  overflow:hidden;*/
 }
 ul#questions_pagination {
-    width:100%;
+    width:95%;
     overflow:hidden;
 }
 .pagination {

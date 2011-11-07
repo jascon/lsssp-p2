@@ -1,0 +1,42 @@
+<div id="verification_page">
+
+  <h3>Welcome to LSSSP Certification Verification</h3>
+
+  <p class="legend">
+    <strong>Note:</strong>
+    Required fields are marked with an asterisk (<em>*</em>)
+  </p>
+  <%= form_tag(:action=>'search') do %>
+      <table>
+        <tr>
+          <td align="right"><label>Enter Student Enrollment Number<em>*</em></label></td>
+          <td><%= text_field_tag :enrollment %></td>
+        </tr>
+        <tr>
+          <td align="right"><label>Enter First Name or Last Name <em>*</em></label></td>
+          <td><%= text_field_tag :name %></td>
+        </tr>
+        <tr>
+          <td colspan="3" align="center"><%= submit_tag 'Search', :disable_with=>'Please wait...' %></td>
+        </tr>
+      </table>
+  <% end %>
+</div>
+
+<style type="text/css">
+    #verification_page {
+        background-color: #FFFFFF;
+        border: 4px solid #CDCDCD;
+        left: 45%;
+        margin-left: -182px;
+        padding: 20px 30px;
+        position: relative;
+        top: 25%;
+        width: 450px;
+    }
+    div em {
+        color: red;
+        font-size: 120%;
+        font-style: normal;
+    }
+</style>

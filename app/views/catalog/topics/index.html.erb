@@ -11,7 +11,7 @@
   Along with creating, managing and removing Topics for your LSSSP Certifications.
 </div>
 <div>
-  <%= link_to "Add New Topic", "#", :class=>'usuallink bold_text', :id=>'add_new' %> |
+  <%= link_to "Create New Topic", "#", :class=>'usuallink bold_text', :id=>'add_new' %> |
   <%= link_to "Export", export_catalog_topics_path, :class=>'usuallink bold_text' %>
 </div>
 <div id="new_form">
@@ -19,7 +19,7 @@
 </div>
 <% if @topics.blank? %>
     <div class="error_msg">
-      Sorry No Topics Found..!
+      OOPS!.. No Topics are Found in the System..!
     </div>
 <% else %>
     <table class="tablesorter">

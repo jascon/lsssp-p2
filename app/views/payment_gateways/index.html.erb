@@ -19,12 +19,14 @@
 <%=render 'form' %>
 </div>
 <% if @payment_gateways.blank? %>
-  <div class="error_msg">Sorry No Payment Gateways Found..!</div>
+  <div class="error_msg">
+    OOPS ...! No Payment Gateways are Found in system..!
+  </div>
 <% else %>
 <table class="tablesorter">
 	<thead>
 		<tr>
-			 <th>Api Name</th>
+			 <th>API</th>
              <th>Url</th>
              <th>Username</th>
              <th>Password</th>

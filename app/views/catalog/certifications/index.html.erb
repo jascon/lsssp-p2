@@ -11,7 +11,8 @@
  Along with creating, managing and removing Certificaitons for your LSSSP.
 </div>
 <div>
-  <%= link_to "Add New Certificate", "#",:class=>'usuallink bold_text',:id=>'add_new' %>
+  <%= link_to "Create New Certificate", "#",:class=>'usuallink bold_text',:id=>'add_new' %> |
+  <%= link_to "Export", {:action=>:export},:class=>'usuallink bold_text' %>
 </div>
 <div id="new_form">
   <%=render 'form' %>

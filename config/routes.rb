@@ -1,5 +1,6 @@
 LssspP2::Application.routes.draw do
   resources :coupons
+  resources :verifications
 
   get "user_info/index"
   devise_for :users, :path_names => {:sign_up => "register"}

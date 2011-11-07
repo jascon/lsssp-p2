@@ -46,6 +46,13 @@ class CertificationsController < ApplicationController
     ExamNotifier.reassign(@owned_certification).deliver
     redirect_to :back
   end
+
+  def promote
+    user = User.find(params[:id])
+    user.role_flag=1
+    user.save
+    redirect_to certifications_purchased_url
+  end
   private
   def load_certifications
     @certifications = Certification.active

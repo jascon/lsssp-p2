@@ -65,6 +65,20 @@ class Catalog::CertificationsController < ApplicationController
     super(Certification)
   end
 
+  def export
+    require 'fastercsv'
+    certifications = Certification.search(params[:search]).order("name")
+    outfile = "Certifications-" + Time.now.strftime("%d-%m-%Y-%H-%M-%S") + ".csv"
+    csv_data = FasterCSV.generate do |csv|
+      csv << ["Name", "Topic", "SuTopics","Price","Duration","Total Questions","Created On","Total Students Purchased"]
+      certifications.each do |c|
+        csv << [c.name, c.topic.name,c.subtopic_questions.size,c.price, c.duration,c.no_of_questions, c.created_at.strftime('%m.%b.%y'),c.owned.size]
+      end
+    end
+    send_data csv_data,
+              :type => 'text/csv; charset=iso-8859-1; header=present',
+              :disposition => "attachment; filename=#{outfile}"
+  end
   private
 
   def recent

@@ -13,7 +13,7 @@
     <i>Issue Status:</i>
     <%= select_tag(:issue_status, options_for_select({"All" => "all", "Issued" =>'issued', "Not-Issued"=>'not_issued'}, {:selected=>params[:issue_status]})
         ) %>
-    <%= link_to 'refresh', {:action=>'index'}, :class=>'usuallink' %>
+    <%= link_to 'Refresh', {:action=>'index'}, :class=>'usuallink' %>
   </span>
 
       <%= submit_tag 'Go', :style=>"display:none;" %>
@@ -29,12 +29,12 @@
         <th>Purchased By</th>
         <th>Email</th>
         <th>Purchased From</th>
-        <th>Purchased At</th>
+        <th>Purchased On</th>
         <th>Price</th>
         <th>Exam Status</th>
         <th>Exam Result</th>
         <th>Assignments Results</th>
-        <th>Issue Certification</th>
+        <th>Certification ?</th>
         <th>Others</th>
       </tr>
       </thead>
@@ -54,11 +54,14 @@
               <% if owned_certification.issued? %>
                   <%= image_tag('tick.gif') %>
               <% else %>
-                  <%= link_to 'Issue Certification', {:action=>'issue', :id=>owned_certification.id}, :class=>"not-issued",
+                  <%= link_to 'Issue Certificate', {:action=>'issue', :id=>owned_certification.id}, :class=>"not-issued",
                               :confirm=>'Are you sure?' %>
               <% end %>
             </td>
-            <td><%= link_to "Manual Score", edit_score_path(:id=>owned_certification), :rel => 'facebox' %> | <%= link_to "Re-Assign", {:action=>"destroy",:id=>owned_certification.id},:confirm => "Are sure to Re-Assign the Certification"%></td>
+            <td>
+              <%= link_to "Manual Score", edit_score_path(:id=>owned_certification), :rel => 'facebox' %> |
+              <%= link_to "Promote Assessor", {:action=>:promote,:id=>owned_certification.owned.id},:confirm => "Are sure to Promote as Assessor" %> |
+              <%= link_to "Re-Assign", {:action=>"destroy",:id=>owned_certification.id},:confirm => "Are sure to Re-Assign the Certification"%></td>
           </tr>
 
       <% end %>
