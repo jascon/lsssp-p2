@@ -4,7 +4,7 @@ class Catalog::SubtopicsController < ApplicationController
   layout "application", :except => [:show, :edit]
 
   def index
-    @subtopics = Subtopic.search(params[:search], params[:topic_id], params[:subtopic_status] ||='all')
+    @subtopics = Subtopic.search(params[:search], params[:topic_id], params[:subtopic_status] ||='all').paginate(:page =>params[:page], :per_page=>20)
     @subtopic = Subtopic.new(:topic_id=>params[:id])
   end
 

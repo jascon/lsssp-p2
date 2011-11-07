@@ -1,5 +1,5 @@
 class Assessor::AssignmentsController < ApplicationController
-   before_filter :authenticate_user!,:must_be_super_admin #:must_be_assessor
+   before_filter :authenticate_user! #,:must_be_super_admin #:must_be_assessor
    before_filter :load_certifications,:only=>[:new,:create,:edit,:update]
    before_filter :recent, :only=>[:index]
 

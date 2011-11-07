@@ -11,12 +11,12 @@
   Area for manage Coupons. <br/>
 </div>
 <% if has_role?(:super_admin) %>
-<div>
-  <%= link_to "Create Coupons", "#", :class=>'usuallink bold_text', :id=>'add_new' %>
-</div>
-<div id="new_form">
-  <%= render 'form' %>
-</div>
+    <div>
+      <%= link_to "Create Coupons", "#", :class=>'usuallink bold_text', :id=>'add_new' %>
+    </div>
+    <div id="new_form">
+      <%= render 'form' %>
+    </div>
 <% end %>
 <% if @coupons.blank? %>
     <div class="error_msg">
@@ -36,4 +36,8 @@
       <%= render @coupons %>
       </tbody>
     </table>
+
+    <div class="lsssp_pagination">
+      <%= page_entries_info @coupons, :entry_name => 'Coupons' %> <%= will_paginate @coupons, :container => false %>
+    </div>
 <% end %>

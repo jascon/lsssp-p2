@@ -43,4 +43,8 @@
       <%= render @subtopics %>
       </tbody>
     </table>
+
+    <div class="lsssp_pagination">
+      <%= page_entries_info @subtopics %> <%= will_paginate @subtopics, :container => false %>
+    </div>
 <% end %>

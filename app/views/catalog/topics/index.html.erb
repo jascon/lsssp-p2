@@ -37,4 +37,8 @@
       <%= render @topics %>
       </tbody>
     </table>
+
+    <div class="lsssp_pagination">
+      <%= page_entries_info @topics,:entry_name => 'Topic' %> <%= will_paginate @topics, :container => false %>
+    </div>
 <% end %>

@@ -196,6 +196,7 @@ $(document).bind('reveal.facebox', function() {
  });
  */
 
+/*
 $(function () {
     $('.lsssp_pagination a').live("click", function () {
         $('.lsssp_pagination').html('Page is loading...');
@@ -203,3 +204,4 @@ $(function () {
         return false;
     });
 });
+*/

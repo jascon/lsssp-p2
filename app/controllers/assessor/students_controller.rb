@@ -1,5 +1,5 @@
 class Assessor::StudentsController < ApplicationController
-  before_filter :authenticate_user!,:must_be_assessor
+  before_filter :authenticate_user!#,:must_be_assessor
   before_filter :load_certifications,:only=>[:pending_assignments,:manage_assignments]
   def index
     @users = current_user.students.joins(:owned_certifications)#(params[:approved])  Toget only assessor students who has at least one owned_certification

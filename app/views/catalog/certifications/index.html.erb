@@ -40,4 +40,8 @@
       <%= render @certifications %>
       </tbody>
     </table>
+
+        <div class="lsssp_pagination">
+      <%= page_entries_info @certifications,:entry_name => 'Certificates' %> <%= will_paginate @certifications, :container => false %>
+    </div>
 <% end %>

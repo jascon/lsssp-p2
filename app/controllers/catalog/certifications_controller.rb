@@ -5,8 +5,8 @@ class Catalog::CertificationsController < ApplicationController
   layout "application", :except => [:show, :edit]
 
   def index
-    @certifications =  params[:id].blank? ? Certification.search(params[:search]) :
-        Certification.search(params[:search]).where(:topic_id=>params[:id])
+    @certifications =  params[:id].blank? ? Certification.search(params[:search]).paginate(:page =>params[:page], :per_page=>20) :
+        Certification.search(params[:search]).where(:topic_id=>params[:id]).paginate(:page =>params[:page], :per_page=>20)
     @subtopics = Subtopic.where(:topic_id => params[:id]) if params[:id]
     @certification = Certification.new(:topic_id=>params[:id])
   end
@@ -64,6 +64,7 @@ class Catalog::CertificationsController < ApplicationController
   def active
     super(Certification)
   end
+
   private
 
   def recent

@@ -11,7 +11,7 @@ class Catalog::TopicsController < ApplicationController
   layout "application", :except => [:show, :edit]
 
   def index
-    @topics = Topic.search(params[:search])
+    @topics = Topic.search(params[:search]).paginate(:page =>params[:page], :per_page=>20)
     @topic = Topic.new
   end
 

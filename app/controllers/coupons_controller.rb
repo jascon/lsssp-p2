@@ -6,10 +6,10 @@ class CouponsController < ApplicationController
 
   def index
     if has_role?(:super_admin)
-    @coupons = Coupon.search(params[:search])
+    @coupons = Coupon.search(params[:search]).paginate(:page =>params[:page], :per_page=>20)
     @coupon = Coupon.new
     else
-    @coupons = Coupon.where(:provider_id => current_user.id).search(params[:search])
+    @coupons = Coupon.where(:provider_id => current_user.id).search(params[:search]).paginate(:page =>params[:page], :per_page=>20)
     end
   end
 
