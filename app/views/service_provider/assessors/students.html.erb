@@ -1,6 +1,6 @@
 <% title "LSSSP : Service Provider - #{current_user.name}" %>
 <% content_for :sub_heading do %>
-    <%= sub_heading('Service Provider ',"Students of #{@assessor.name}") %>
+    <%= sub_heading('Service Provider ',"Students of #{@assessor.name + ' ' +@assessor.last_name}") %>
 <% end %>
 <%if @students.blank? %>
     <div class="error_msg">
@@ -10,8 +10,8 @@
     <%= form_tag(service_provider_assessor_path(@assessor),:method=>:delete) do %>
         <%= render :partial=>'student',:object=>@students %>
         <%= submit_tag 'Remove' %>  |
-        Transfer Students from <%=@assessor.name%> to
-        <%=select("user", "assessor_id", @assessors.collect {|p| [ p.name, p.id ] }, { :include_blank =>'--- Select a Assessor----' })%>
+        Transfer Students from <%=@assessor.name + ' '+@assessor.last_name%> to
+        <%=select("user", "assessor_id", @assessors.collect {|p| [ p.name + ' '+p.last_name, p.id ] }, { :include_blank =>'--- Select a Assessor----' })%>
         <%= submit_tag 'Transfer' %>
     <% end %>
 <% end %>

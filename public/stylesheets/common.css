@@ -5,35 +5,38 @@
     text-align: right;
     margin: 2px 10px;
 }
+
 .simple_form div.input {
     margin-bottom: 10px;
 }
+
 .simple_form div.boolean, .simple_form input[type='submit'] {
     margin-left: 266px;
 }
+
 .simple_form div.boolean label {
     float: none;
     margin: 0;
 }
 
-
 .simple_form label abbr {
-    color : red;
+    color: red;
 }
 
 .simple_form label.collection_radio {
     margin-right: 10px;
     margin-left: 2px;
 }
+
 /*
 .simple_form .error {
-  clear: left;
-  margin-left: 120px;
-  font-size: 12px;
-  color: #D00;
-  display: block;
+ clear: left;
+ margin-left: 120px;
+ font-size: 12px;
+ color: #D00;
+ display: block;
 }
- */
+*/
 .simple_form .hint {
     clear: left;
     margin-left: 120px;
@@ -42,6 +45,7 @@
     display: block;
     font-style: italic;
 }
+
 /*END  Simple Form CSS */
 
 /*START      FLASH AND ERROR MESSAGES */
@@ -49,17 +53,21 @@
     padding: 5px 8px;
     margin: 10px 0;
 }
+
 #flash_notice {
     background-color: #CFC;
     border: solid 1px #6C6;
 }
+
 #flash_error, #flash_alert {
     background-color: #FCC;
     border: solid 1px #C66;
 }
+
 .fieldWithErrors {
     display: inline;
 }
+
 .error_messages {
     width: 400px;
     border: 2px solid #CF0000;
@@ -69,6 +77,7 @@
     background-color: #f0f0f0;
     font-size: 12px;
 }
+
 .error_messages h2 {
     text-align: left;
     font-weight: bold;
@@ -78,49 +87,72 @@
     background-color: #c00;
     color: #fff;
 }
+
 .error_messages p {
     margin: 8px 10px;
 }
+
 .error_messages ul {
     margin: 0;
 }
+
 span.error {
     color: #D00;
     padding-left: 5px;
     font-size: 12px;
 }
+
 /*END      FLASH AND ERROR MESSAGES */
 
 /*Start Pagination */
 .lsssp_pagination {
     text-align: center;
-    padding: .3em; }
+    padding: .3em;
+}
+
 .lsssp_pagination a, .lsssp_pagination span {
-    padding: .2em .5em; }
+    padding: .2em .5em;
+}
+
 .lsssp_pagination span.disabled {
-    color: #AAA; }
+    color: #AAA;
+}
+
 .lsssp_pagination span.current {
     font-weight: bold;
-    color: #FF0084; }
+    color: #FF0084;
+}
+
 .lsssp_pagination a {
     border: 1px solid #DDDDDD;
     color: #0063DC;
-    text-decoration: none; }
+    text-decoration: none;
+}
+
 .lsssp_pagination a:hover, .lsssp_pagination a:focus {
     border-color: #003366;
     background: #0063DC;
-    color: white; }
+    color: white;
+}
+
 .lsssp_pagination .page_info {
     color: #aaa;
-    padding-top: .8em; }
-.lsssp_pagination .prev_page, .lsssp_pagination .next_page {
-    border-width: 2px; }
-.lsssp_pagination .prev_page {
-    margin-right: 1em; }
-.lsssp_pagination .next_page {
-    margin-left: 1em; }
-/*END Pagination */
+    padding-top: .8em;
+}
 
+.lsssp_pagination .prev_page, .lsssp_pagination .next_page {
+    border-width: 2px;
+}
+
+.lsssp_pagination .prev_page {
+    margin-right: 1em;
+}
+
+.lsssp_pagination .next_page {
+    margin-left: 1em;
+}
+
+/*END Pagination */
 
 /*START Button Link Css */
 div.link_buttons {
@@ -129,6 +161,7 @@ div.link_buttons {
     margin-top: 10px;
     padding-left: 50px;
 }
+
 .btn-blue, .btn-yellow, .btn-gray, .btn-ltgray, .btn-red {
     cursor: pointer;
     background: transparent url('/images/buttonendsprite.png') no-repeat right 0px;
@@ -140,12 +173,14 @@ div.link_buttons {
     margin: 0 10px 0 0;
     border: 0;
     overflow: hidden;
-    position:relative;
+    position: relative;
 }
+
 .btn-blue:hover, .btn-yellow:hover, .btn-gray:hover, .btn-ltgray:hover, .btn-red:hover {
-    text-decoration:none !important;
-    outline:none;
+    text-decoration: none !important;
+    outline: none;
 }
+
 .btn-blue span, .btn-yellow span, .btn-gray span, .btn-ltgray span, .btn-red span {
     background: transparent url('/images/buttonsprite.png') no-repeat 0 0;
     display: block;
@@ -155,109 +190,134 @@ div.link_buttons {
     font: bold 13px/14px arial, sans-serif;
     color: #fff;
     white-space: nowrap;
-    overflow:visible;
+    overflow: visible;
     border: 0;
     cursor: pointer;
 }
+
 .btn-blue:hover {
     background-position: right -25px;
 }
+
 .btn-blue:hover span {
     background-position: 0 -25px;
 }
+
 .btn-yellow {
     background-position: right -50px;
 }
+
 .btn-yellow span {
     background-position: 0 -50px;
-    color:#000;
+    color: #000;
 }
+
 .btn-yellow:hover {
     background-position: right -75px;
 }
+
 .btn-yellow:hover span {
     background-position: 0 -75px;
 }
+
 .btn-gray {
     background-position: right -100px;
 }
+
 .btn-gray span {
     background-position: 0 -100px;
 }
+
 .btn-gray:hover {
     background-position: right -125px;
 }
+
 .btn-gray:hover span {
     background-position: 0 -125px;
 }
+
 .btn-ltgray {
     background-position: right -150px;
 }
+
 .btn-ltgray span {
     background-position: 0 -150px;
 }
+
 .btn-ltgray:hover {
     background-position: right -175px;
 }
+
 .btn-ltgray:hover span {
     background-position: 0 -175px;
 }
+
 .btn-red {
     background-position: right -200px;
 }
+
 .btn-red span {
     background-position: 0 -200px;
 }
+
 .btn-red:hover {
     background-position: right -225px;
 }
+
 .btn-red:hover span {
     background-position: 0 -225px;
 }
+
 /*END Button Link Css */
-.highlight{
+.highlight {
     color: #FF6600;
 }
 
 table.list {
     border-collapse: collapse;
-    width:100%;
+    width: 100%;
 }
-table.list  tr{
+
+table.list  tr {
     border-bottom: 1px dotted silver;
 }
-table.list td.logo{
-    width:150px;
+
+table.list td.logo {
+    width: 150px;
 }
-table.list td.info{
+
+table.list td.info {
     width: 400px;
 }
-table.list td.links{
-    float:left;
+
+table.list td.links {
+    float: left;
 }
 
-
-.tipTip,.tipTipRight,.tipTipLeft,.tipTipTop{
+.tipTip, .tipTipRight, .tipTipLeft, .tipTipTop {
     font-weight: bold;
     color: #6495ed;
 }
-
 
 div.form-container {
     background-color: #FFFFFF;
     margin: 10px;
     padding: 5px;
 }
+
 div.form-container form p {
     margin: 0;
 }
+
 p.legend {
     margin-bottom: 1em;
 }
+
 p.legend em {
     color: red;
     font-style: normal;
 }
+
 div.form-container label, div.form-container span.label {
     display: block;
 
@@ -276,145 +336,168 @@ div.form-container label em, div.form-container span.label em {
     right: 0;
 }
 
-
-#ajax-loading{
-    display:none;
+#ajax-loading {
+    display: none;
 }
 
-.status_pending,.fail{
-    color: red;
+.status_pending, .fail {
+    color: #0000cc;
     font-weight: bold;
 }
-.status_completed,.pass{
+
+.status_completed, .pass {
     color: green;
     font-weight: bold;
 }
-.processing{
-    color: #24A9B3;
-    font-weight: bold;
-}
-.exam_result_pending{
-    color: #a52a2a;
+
+.processing {
+    color: #0000cc;
     font-weight: bold;
 }
 
+.exam_result_pending {
+    color: #0000cc;
+    font-weight: bold;
+}
 
 /* Accordion
 The CSS rules offered here are just an example. You can style the 'accordion' in any way you like.
-			 The styles for the Page Structure are needed just for the purpose of this demo page.
-			 If you decide to use the CSS rules in 'Accordion' (see below) as a base,
+            The styles for the Page Structure are needed just for the purpose of this demo page.
+            If you decide to use the CSS rules in 'Accordion' (see below) as a base,
 be sure to rename the selectors as to satisfy the elements in your site.
 --------- */
 
 /* --- Page Structure  --- */
 #lsssp_wrapper {
-    margin-bottom:30px;
-    padding:10px 2.5%;
-    border-top:0.1em solid #ccc;
-    background:#fff;
-    text-align:left;
-    overflow:hidden
+    margin-bottom: 30px;
+    padding: 10px 2.5%;
+    border-top: 0.1em solid #ccc;
+    background: #fff;
+    text-align: left;
+    overflow: hidden
 }
+
 #lsssp_container {
-    float:left;
-    width:100%;
-    margin-right:-19em;
-    padding:0 0 1em;
-    position:relative;
-    min-height:0
+    float: left;
+    width: 100%;
+    margin-right: -19em;
+    padding: 0 0 1em;
+    position: relative;
+    min-height: 0
 }
+
 #lsssp_main {
 
-    position:relative;
-    min-height:0
+    position: relative;
+    min-height: 0
 }
+
 p {
     margin: 0 10px 1em
 }
+
 .strong {
-    font-weight:700
+    font-weight: 700
 }
+
 .clear {
-    clear:both
+    clear: both
 }
 
 h4 a, h5 a {
-    padding:3px 10px
+    padding: 3px 10px
 }
+
 h4, h5 {
-    font-size:1em
+    font-size: 1em
 }
+
 #lsssp_main h2 {
-    background-color:#f0f0f0
+    background-color: #f0f0f0
 }
+
 /* --- Links --- */
 h4, h5 a {
-    padding:1px;
-    border:1px solid #e0e0e0;
-    color:#05b
+    padding: 1px;
+    border: 1px solid #e0e0e0;
+    color: #05b
 }
+
 h4, h5 a:hover, h4, h5 a:focus, h4, h5 a:active {
-    border-color:#bcd;
-    text-decoration:none;
-    outline:0 none
+    border-color: #bcd;
+    text-decoration: none;
+    outline: 0 none
 }
+
 /* --- Accordion --- */
 .js #lsssp_main .site_accordion {
-    visibility:hidden
+    visibility: hidden
 }
-.lsssp_accordion {
-    margin:0;
-    padding:0 0px;
-}
-.lsssp_accordion .outer {
 
+.lsssp_accordion {
+    margin: 0;
+    padding: 0 0px;
+}
+
+.lsssp_accordion .outer {
 
     background: #fff
 }
+
 .lsssp_accordion .inner {
-    margin-bottom:0;
-    padding:.5em 20px 1em;
-    position:relative;
-    overflow:hidden
+    margin-bottom: 0;
+    padding: .5em 20px 1em;
+    position: relative;
+    overflow: hidden
 }
+
 .lsssp_accordion .inner .inner {
-    padding-bottom:0
+    padding-bottom: 0
 }
+
 .lsssp_accordion .h {
     /*  padding-top:.3em */
-} /* vertical padding instead of vertical margin (ie8) */
-.lsssp_accordion p {
-    margin-top:.5em
 }
+
+/* vertical padding instead of vertical margin (ie8) */
+.lsssp_accordion p {
+    margin-top: .5em
+}
+
 /*
 Add styles for all links in the 'accordion':
 .site_accordion a {...}
 */
 
 a.trigger {
-    padding-left:20px;
+    padding-left: 20px;
     background-image: url(/images/plus.gif);
     background-repeat: no-repeat;
     background-position: 1px 50%;
-    font-weight:700
+    font-weight: 700
 }
+
 a.trigger.open {
     background-image: url(/images/minus.gif)
 }
+
 .last-child a.trigger {
-    padding-left:1px;
-    background-image:none;
-    font-weight:normal
+    padding-left: 1px;
+    background-image: none;
+    font-weight: normal
 }
+
 #lssspe_main a.trigger {
-    background-color:#f0f0f0
+    background-color: #f0f0f0
 }
+
 #lsssp_main a.trigger.open {
-    border-color:#dadada;
-    background-color:#e7e7e7
+    border-color: #dadada;
+    background-color: #e7e7e7
 }
+
 #lsssp_main a:hover.trigger.open, #main a:focus.trigger.open, #main a:active.trigger.open {
-    border-color:#bcd
+    border-color: #bcd
 }
 
 /* END of Accordion */

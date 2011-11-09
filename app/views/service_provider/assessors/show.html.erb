@@ -1,6 +1,6 @@
 <% title "LSSSP : Service Provider - #{current_user.name}" %>
 <% content_for :sub_heading do %>
-    <%= sub_heading('Service Provider ',"Assign Students to #{@assessor.name}") %>
+    <%= sub_heading('Service Provider ',"Assign Students to #{@assessor.name + ' ' + @assessor.last_name}") %>
 <% end %>
 
 <%if @students.blank? %>

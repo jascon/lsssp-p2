@@ -37,14 +37,21 @@
             </td>
             <td><%= owned_certification.created_at.strftime('%d-%b-%Y') %></td>
             <td><%= exam_status(owned_certification.student_exam) %></td>
-            <td><%= owned_certification.student_exam.complete_status? ? owned_certification.student_exam.updated_at.strftime('%d-%b-%Y') : 'Yet to Complete' %></td>
+            <td>
+              <!--<%= owned_certification.student_exam.complete_status? ? owned_certification.student_exam.updated_at.strftime('%d-%b-%Y') : 'Pending' %>-->
+              <% if owned_certification.student_exam.complete_status == true %>
+                  <%= owned_certification.student_exam.updated_at.strftime('%d-%b-%Y') %>
+              <% else %>
+                  <span class='status_pending'>Pending</span>
+              <% end %>
+            </td>
             <td><%= exam_result(owned_certification) %></td>
             <td>
               <% if owned_certification.student_assignments_count == 0 %>
                   No Assignments Allotted
               <% else %>
                   <%= link_to "Assignments  #{owned_certification.student_assignments_count}", {:action=>'assignments', :id=>owned_certification.id}, :class=>'tipTipRight',
-                              :title=>(owned_certification.student_assignments.collect { |sa| "#{sa.assignment.name} - #{sa.status}<br/>" }) %>
+                              :title=>(owned_certification.student_assignments.collect { |sa| "#{sa.assignment.name} - #{sa.status.capitalize}<br/>" }) %>
               <% end %>
             </td>
             <td>
@@ -59,8 +66,11 @@
               <% end %>
             </td>
             <td>
-              <%= link_to content_tag(:span, 'Re-Subscribe'), {:controller => "/certifications", :action => :destroy, :id=>owned_certification.id}, :class=>'btn-red tipTip', :title=>'Re-Subscribe the Certification', :style=>'float:right;', :confirm => "Do You want to Re-subscribe Certification. You have repay the Fee to Re-Appear." %>
-
+              <% if owned_certification.student_exam.complete_status==true & owned_certification.student_assignments_status? %>
+                  <%= link_to content_tag(:span, 'Re-Subscribe'), {:controller => "/certifications", :action => :destroy, :id=>owned_certification.id}, :class=>'btn-red tipTip', :title=>'Re-Subscribe the Certification', :style=>'float:right;', :confirm => "Do You want to Re-subscribe Certification. You have repay the Fee to Re-Appear." %>
+              <% else %>
+                  ---
+              <% end %>
             </td>
           </tr>
       <% end %>

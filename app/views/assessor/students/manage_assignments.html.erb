@@ -44,7 +44,7 @@
             <!--<td><%#= exam_result(owned_certification) %></td> -->
             <td>
               <%= link_to "Assignments  #{owned_certification.student_assignments_count}", {:action=>'assignments', :id=>owned_certification.id}, :class=>'tipTipRight',
-                          :title=>(owned_certification.student_assignments.collect { |sa| "#{sa.assignment.name} - #{sa.status}<br/>" }) %>
+                          :title=>(owned_certification.student_assignments.collect { |sa| "#{sa.assignment.name} - #{sa.status.capitalize}<br/>" }) %>
             </td>
             <td>
               <%= assignment_status(owned_certification) %>

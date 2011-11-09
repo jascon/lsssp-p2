@@ -11,7 +11,8 @@ module ApplicationHelper
     content << "<div class='menu-r'>&nbsp;</div></a>"
     content.html_safe
   end
-  def sub_heading(main,sub)
+
+  def sub_heading(main, sub)
     "<h3>#{main}<span>&nbsp;|&nbsp;#{sub}</span></h3>".html_safe
   end
 
@@ -25,6 +26,7 @@ module ApplicationHelper
     end
     content.html_safe
   end
+
   def associated_names1(records)
     return 'No records found' if records.blank?
     content = ''
@@ -35,6 +37,7 @@ module ApplicationHelper
     end
     content.html_safe
   end
+
   def users_list(users)
     return 'No Users found' if users.blank?
     content = ''
@@ -89,11 +92,11 @@ module ApplicationHelper
   def exam_status(student_exam)
     content = ''
     if student_exam.status == false
-      content << "<font color='orange'>No Yet Attempted</font>"
+      content << "<span class='status_pending'>Not Yet Attempted</span>"
     elsif student_exam.status == true and student_exam.complete_status == false
-      content << "<font color='red'>Pending</font>"
+      content << "<span class='status_pending'>Pending</span>"
     elsif student_exam.status == true and student_exam.complete_status == true
-      content << "<font color='green'>Completed</font>"
+      content << "<span class='status_completed'>Completed</span>"
     end
     content.html_safe
   end
@@ -107,7 +110,7 @@ module ApplicationHelper
   end
 
   def assignment_result(owned_certification)
-    case  owned_certification.student_assignments_result
+    case owned_certification.student_assignments_result
       when 'processing'
         "<span class='processing'>Pending</span>".html_safe
       when 'pass'

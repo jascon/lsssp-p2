@@ -29,19 +29,19 @@ module CustomeLinksHelper
   end
 
   def link_for_edit(path)
-    link_to image_tag('/images/icons/edit.png'), path, :title =>'Edit', :class=>'tipTip'
+    link_to image_tag('/images/icons/edit.png'), path, :title =>'Edit', :class=>'tipTip',:border=>0
   end
 
   def link_for_edit_pop(path)
-    link_to image_tag('/images/icons/edit.png'), path, :title =>'Edit', :class=>'tipTip', :rel=>"facebox"
+    link_to image_tag('/images/icons/edit.png'), path, :title =>'Edit', :class=>'tipTip', :rel=>"facebox" ,:border=>0
   end
 
   def link_for_show(path)
-    link_to image_tag('/images/icons/show.png'), path, :title =>'View', :class=>'tipTipTop'
+    link_to image_tag('/images/icons/show.png'), path, :title =>'View', :class=>'tipTipTop' ,:border=>0
   end
 
   def link_for_show_pop(path)
-    link_to image_tag('/images/icons/show.png'), path, :title =>'View', :class=>'tipTipTop', :rel=>"facebox"
+    link_to image_tag('/images/icons/show.png'), path, :title =>'View', :class=>'tipTipTop', :rel=>"facebox" ,:border=>0
   end
 
   def link_for_destroy(path)
@@ -62,7 +62,7 @@ module CustomeLinksHelper
   end
 
   def link_to_avatar(user)
-    link_to image_tag('avatar.gif'), '#'
+    link_to image_tag('avatar.gif'), '#' ,:border=>0
   end
 
 end

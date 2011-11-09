@@ -34,10 +34,10 @@
                   <tr class="<%=cycle('even', 'odd')%>">
                     <td><%= check_box_tag "owned_certification_ids[]", owned_certification.id, false,{:id=>"data_#{owned_certification.id}"}%></td>
                     <td><%= owned_certification.certification.name %></td>
-                    <td><%=link_to owned_certification.owned.name,user_info_path(:id=>owned_certification.owned.id),:rel=>user_info_path(:id=>owned_certification.owned.id),:class=>'ajax-cluetip'%></td>
+                    <td><%=link_to owned_certification.owned.name+ ' '+owned_certification.owned.last_name,user_info_path(:id=>owned_certification.owned.id),:rel=>user_info_path(:id=>owned_certification.owned.id),:class=>'ajax-cluetip'%></td>
                     <td><%= owned_certification.owned.email %></td>
-                    <td><%=link_to owned_certification.provider.name,user_info_path(:id=>owned_certification.provider.id),:rel=>user_info_path(:id=>owned_certification.provider.id),:class=>'ajax-cluetip'%></td>
-                    <td><%= date_time_stamp(owned_certification.created_at) %> </td>
+                    <td><%=link_to owned_certification.provider.name+ ' '+owned_certification.owned.last_name,user_info_path(:id=>owned_certification.provider.id),:rel=>user_info_path(:id=>owned_certification.provider.id),:class=>'ajax-cluetip'%></td>
+                    <td><%= owned_certification.created_at.strftime('%d-%b-%Y') %> </td>
                     <td><%= owned_certification.amount %></td>
                     <td><%= exam_status(owned_certification.student_exam) %></td>
                   </tr>
