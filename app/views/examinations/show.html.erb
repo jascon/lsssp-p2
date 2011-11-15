@@ -1,0 +1,10 @@
+<% title "LSSSP | Certification :  #{@examination.name}" %>
+
+<div class="formbox">
+  <div class="desc"><b>Name</b> :  <%= @examination.name %></div>
+  <div class="divider"></div>
+  <div class="desc"><b>Description</b> : <%= @examination.description %> </div>
+  <div class="divider"></div>
+  <div class="desc"><b>Status</b> :  <%= @examination.active ? 'Active' : 'Pending' %>
+  </div>
+</div>

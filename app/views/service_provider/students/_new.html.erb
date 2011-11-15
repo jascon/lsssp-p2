@@ -1,0 +1,18 @@
+<% @enroll = rand(10_000_000_000-1_000_000_000)+1_000_000_000 %>
+<%= simple_form_for([:super_admin,@user], :validate => true) do |f| %>
+
+  <%= f.error_messages %>
+  <%#= render :partial => 'user_fields', :locals => { :f => f } %>
+  <%= f.input :name,:label=>'First Name' %>
+  <%= f.input :last_name%>
+  <%= f.input :email,:placeholder => 'user@domain.com' %>
+  <%= f.input :primary_number,:label=>"Primary Contact Number",:placeholder=>'(Mobile / Telephone. ex: 04412345678)' %>
+  <%= f.input :secondary_number,:label=>"Secondary Contact number",:placeholder=>'(Mobile / Telephone. ex: 04412345678)' %>
+  <%= f.input :password,:as => :hidden, :input_html => { :value => @enroll }%>
+  <%= f.input :password_confirmation,:as => :hidden, :input_html => { :value => @enroll } %>
+  <!--<%= f.association :role,:input_html => { :id => 'user_group' },:prompt=>"Select Role" %>-->
+   <%= f.input :role_id,:input_html => { :value => 4 },:as=>:hidden %>
+   <%= f.input :approved,:input_html => { :value => 1 },:as=>:hidden %>
+   <%= f.input :provider_id,:as=>:hidden,:input_html=>{:value=>current_user.id} %>
+  <p><%= f.submit "Create",:disable_with=>'Please wait...' %></p>
+<% end %>

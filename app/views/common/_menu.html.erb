@@ -7,42 +7,51 @@
         </ul>
 	</li>
 	-->
-  <li><%= tab_heading 'User Management' %>
+  <li><%= tab_heading 'Users' %>
     <ul>
       <li><%= link_to 'Manage Groups', super_admin_roles_path %></li>
       <li><%= link_to 'Manage Users', super_admin_users_path %></li>
     </ul>
   </li>
-  <li><%= tab_heading 'Catalog Management' %>
+  <li><%= tab_heading 'Catalogs' %>
     <ul>
       <li><%= link_to 'Manage Topics', catalog_topics_path %></li>
       <li><%= link_to 'Manage Sub Topics', catalog_subtopics_path %></li>
       <li><%= link_to 'Manage Questions', catalog_questions_path %></li>
     </ul>
   </li>
-
-
-  <li><%= tab_heading 'Certification Management' %>
+  <li><%= tab_heading 'Certifications' %>
     <ul>
-      <li><%= link_to 'Manage Certifications', catalog_certifications_path %></li>
-
+      <li><%= link_to 'Mange Certifications', examinations_path %></li>
       <li><%= link_to 'Purchased Certifications', certifications_purchased_path %></li>
+
+    </ul>
+  </li>
+  <li><%= tab_heading 'Examinations' %>
+    <ul>
+      <li><%= link_to 'Manage Examinations', catalog_certifications_path %></li>
+
       <%#= link_to('Manage Exams' ,:controller=>'/certifications',:action=>'exams',:status=>'all') %>
     </ul>
   </li>
-   <li><%= tab_heading 'Payment Gateway Management' %>
+   <li><%= tab_heading 'Payment Gateways' %>
     <ul>
       <li><%= link_to 'Manage Payment Gateways', payment_gateways_path %></li>
     </ul>
   </li>
-  <li><%= tab_heading 'Assignment Management' %>
+  <li><%= tab_heading 'Assignments' %>
    <ul>
      <li><%= link_to 'Manage Assignment', assessor_assignments_path %></li>
    </ul>
  </li>
-  <li><%= tab_heading 'Coupon Management' %>
+  <li><%= tab_heading 'Coupons' %>
    <ul>
      <li><%= link_to 'Manage Coupon', coupons_path%></li>
+   </ul>
+ </li>
+  <li><%= tab_heading 'Credits' %>
+   <ul>
+     <li><%= link_to 'Manage Credits', credits_path%></li>
    </ul>
  </li>
 

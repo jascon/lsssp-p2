@@ -1,6 +1,6 @@
 class Student::ServiceProvidersController < ApplicationController
   before_filter :authenticate_user!,:must_be_student
-  layout "application", :except => [:subscribe_coupon]
+  layout "application" #, :except => [:subscribe_coupon]
 
   def index
     #getting service providers who have at least one certification
@@ -33,7 +33,7 @@ class Student::ServiceProvidersController < ApplicationController
   def destroy
     following = Following.find_by_user_id_and_follower_id(current_user.id,params[:id])
     following.delete  ? flash[:notice] = "Removed Service Provider Successfully.." : flash[:error] = "Unable to remove this service provider."
-    #TODO remove all student_certifications provided by this servicve provider to this user
+    #TODO remove all student_certifications provided by this service provider to this user
     redirect_to my_service_providers_student_service_providers_path
   end
 
@@ -41,6 +41,7 @@ class Student::ServiceProvidersController < ApplicationController
     @my_service_providers = current_user.following_service_providers
   end
 
+=begin
   def subscribe_coupon
   end
   def coupon_check
@@ -68,5 +69,6 @@ class Student::ServiceProvidersController < ApplicationController
     end
 
   end
+=end
 
 end

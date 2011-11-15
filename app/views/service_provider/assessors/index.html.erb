@@ -1,4 +1,4 @@
-<% title "LSSSP : Service Provider - #{current_user.name}" %>
+<% title "LSSSP : Service Provider" %>
 <% content_for :sub_heading do %>
     <%= sub_heading('Service Provider ','Assessors') %>
 <% end %>
@@ -6,16 +6,21 @@
     <td valign="top" width="279"> <%= render 'common/search' %>
     </td>
 <% end %>
-<div id="container">
-  <%=link_to "Export",export_service_provider_assessors_path(:approved=>params[:approved]),:class=>'usuallink bold_text' %> |
-  <%= link_to "PDF", '#' ,:class=>'usuallink bold_text' %>
-  <%= select_tag( :sp_assessors_approved, options_for_select({"All" => "all", "Approved" => 'yes',"Non-Approved"=>'no'},{:selected=>params[:approved]}),
-                  :class=>"width_auto position_right") %>
-</div>
-<br/>
 <div class="help_text">
  Area for managing Assessors. <br/>
  Service Provider Assign/Un-Assign/Transfer the Users allocated for the Assessors.
+</div>
+<div id="container">
+  <%= link_to "Add New Assessor", '#' ,:class=>'usuallink bold_text',:id=>'add_new'%> |
+  <%= link_to "Import Assessors", '#' ,:class=>'usuallink bold_text',:id=>'imp_new'%> |
+  <%=link_to "Export",export_service_provider_assessors_path(:approved=>params[:approved]),:class=>'usuallink bold_text' %>
+</div>
+<br/>
+<div id="new_form">
+  <%=render 'new' %>
+</div>
+<div id="import_form">
+  <%=render 'upload' %>
 </div>
 <%if @users.blank? %>
     <div class="error_msg">
@@ -37,4 +42,7 @@
       <%= render :partial=>'assessor',:collection=>@users %>
       </tbody>
     </table>
+            <div class="lsssp_pagination">
+      <%= page_entries_info @users %> <%= will_paginate @users, :container => false %>
+    </div>
 <% end %>

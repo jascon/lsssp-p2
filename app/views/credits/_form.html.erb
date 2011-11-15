@@ -1,0 +1,24 @@
+<div class="form-container">
+  <%= form_tag(:action=>'create') do %>
+      <table>
+        <tr>
+          <td><label>Enter Credit <em>*</em></label></td>
+          <td><%= text_field_tag :amount %></td>
+        </tr>
+        <tr>
+        <tr>
+          <td><label>Select Mode <em>*</em></label></td>
+          <td><%= radio_button_tag 'mode', 'credit', true %> Credit
+    <%= radio_button_tag 'mode', 'debit' %> Debit</td>
+        </tr>
+        <tr>
+          <td><label>Remarks <em>*</em></label></td>
+          <td><%= text_area_tag :description %></td>
+          <%= hidden_field_tag 'user_id',params[:id] %>
+        </tr>
+        <tr>
+          <td colspan="3" align="center"><%= submit_tag 'Save', :disable_with=>'Please wait...' %></td>
+        </tr>
+      </table>
+  <% end %>
+</div>

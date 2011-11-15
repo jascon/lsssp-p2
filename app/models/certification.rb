@@ -4,7 +4,7 @@ class Certification < ActiveRecord::Base
 # Associations
 #-------------------------------------------------------------------------------------------------------
   belongs_to :topic, :conditions =>{:active => true }
-
+  belongs_to :examination, :conditions => {:status=>true}
 
 #certification.providers will return all the service_providers who registered with this certification
 #------------------------------------------------------------------------------------------------------
@@ -14,7 +14,6 @@ class Certification < ActiveRecord::Base
 #------------------------------------------------------------------------------------------------------
   has_many :owned_certifications
   has_many :owned, :through => :owned_certifications
-
   has_many :subtopic_questions ,:dependent=>:destroy
 
 

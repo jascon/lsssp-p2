@@ -1,0 +1,29 @@
+<div class="recent_items">
+	<div class="margin">
+		<h3>Recent Certifications</h3>
+        <% if @recent.blank? %>
+          No Certifications Added Yet...
+        <% else %>
+         <% for certification in @recent %>
+		<div id="margin">
+			<div class="left">&nbsp;</div>
+			<div class="right">&nbsp;</div>
+			<div class="left-to-right">
+				<div class="pen">&nbsp;</div>
+				<div class="text">
+                     <%=link_to certification.name ,examination_path(certification),:class=>'usuallink',:rel=>"facebox"%>
+					<div style="margin: 8px 0px;">&nbsp;</div>
+				</div>
+
+			</div>
+		</div>
+         <% end %>
+       <% end %>
+		<div class="see_all">
+			<a href="/examinations">
+			 View all Certifications
+			<img hspace="2" border="0" alt="" src="/images/blue^.gif">
+			</a>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,10 @@
+<%#= content_tag_for(:h3,heading) unless defined?(heading).nil? %>
+<%= simple_form_for [@examination],:validate=>true do |f| %>
+  <%= f.error_messages %>
+  <%= f.input :name,:label=>'Certification Name' %>
+  <%= f.input :price,:label=>'Price' %>
+  <%= f.input :discount_price,:label=>'Price for Service Providers' %>
+  <%= f.input :description ,:as => :text, :input_html => {:rows=>3,:cols=>30} %>
+  <%= f.input :active,:input_html=>{:checked=>true},:label=>'Active' %>
+  <%= f.submit 'Submit',:disable_with=>'Please wait...' %>
+<% end %>

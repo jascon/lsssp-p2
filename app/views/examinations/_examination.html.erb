@@ -1,0 +1,16 @@
+<%= content_tag_for(:tr,examination,:class=>cycle('even', 'odd')) do -%>
+      <td><%= highlight(examination.name,params[:search])%></td>
+      <td><%= examination.description %></td>
+      <td><%= examination.price%></td>
+      <td>
+          <%= examination.discount_price%>
+      </td>
+      <td>
+           <%= link_to_active(examination,active_examination_path(examination)) %>
+      </td>
+      <td>
+        <%= link_for_show_pop(examination) %>
+        <%= link_for_edit_pop(edit_examination_path(examination)) %>
+        <%= link_for_destroy(examination) %>
+     </td>
+<% end %>

@@ -1,0 +1,25 @@
+<% if @credits.blank? %>
+    <div class="error_msg">
+      OOPS!.. No Credits History Found in the System..!
+    </div>
+<% else %>
+    <table class="tablesorter">
+      <thead>
+      <tr>
+        <th>Date</th>
+        <th>Remarks</th>
+        <th>Amount</th>
+        <th>Debit</th>
+        <th>Credit</th>
+        <th>Balance</th>
+      </tr>
+      </thead>
+      <tbody>
+      <%= render @credits %>
+      </tbody>
+    </table>
+    <div class="lsssp_pagination">
+      <%= page_entries_info @credits %> <%= will_paginate @credits, :container => false %>
+    </div>
+
+<% end %>

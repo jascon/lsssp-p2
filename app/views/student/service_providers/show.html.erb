@@ -21,7 +21,7 @@
           <% else %>
               <%=link_to content_tag(:span,'Subscribe Using Paypal'),student_service_providers_path(:id=>@service_provider,:cid=>certification.id),
                          :method=>:post ,:class=>'btn-blue tipTipRight',:title=>'Subscribe Certificate',:style=>'float:right;' %>
-              <%=link_to content_tag(:span,'Subscribe Using Coupon Code'),{:action=>:subscribe_coupon,:id=>@service_provider,:cid=>certification.id},:class=>'btn-blue tipTipRight',:title=>'Subscribe Certificate',:style=>'float:right;',:rel=>"facebox" %>
+              <!--<%=link_to content_tag(:span,'Subscribe Using Coupon Code'),{:action=>:subscribe_coupon,:id=>@service_provider,:cid=>certification.id},:class=>'btn-blue tipTipRight',:title=>'Subscribe Certificate',:style=>'float:right;',:rel=>"facebox" %>-->
 
           <% end %>
         </td>

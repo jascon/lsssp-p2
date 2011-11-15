@@ -2,8 +2,9 @@ class CreateCertifications < ActiveRecord::Migration
   def self.up
     create_table :certifications do |t|
        t.string :topic_id,:null=>false
+       t.string :examination_id,:null=>false
        t.string :name,:null=>false,:limit=>50
-       t.decimal :price ,:null=>false ,:precision => 10, :scale => 2
+       t.decimal :price ,:precision => 10, :scale => 2
        t.string :description,:limit=>1000
        t.boolean :active,:default=>0
        t.integer :duration ,:null=>false

@@ -1,0 +1,19 @@
+<% form_tag csv_import_super_admin_users_path, :multipart => true do  -%>
+<table>
+<tr>
+    <td>
+        <label for="vle_user">
+            Select a CSV File :
+        </label>
+    </td>
+    <td>
+        <%= file_field_tag :file -%>
+        <%= hidden_field_tag 'provider_id',current_user.id %>
+        <%= hidden_field_tag 'role_id','3' %>
+    </td>
+      <td colspan='2'>
+        <%= submit_tag 'Submit' -%>
+    </td>
+</tr>
+</table>
+<% end -%>

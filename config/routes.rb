@@ -1,4 +1,12 @@
 LssspP2::Application.routes.draw do
+  resources :credits
+
+  resources :examinations do
+    get 'active', :on=>:member
+    get 'export', :on=>:collection
+
+  end
+
   resources :coupons
   resources :verifications
 

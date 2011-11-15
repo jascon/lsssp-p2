@@ -1,0 +1,17 @@
+<%= content_tag_for(:tr,user,:class=>cycle('even', 'odd')) do -%>
+      <td>
+        <%= link_to user.name + " " + user.last_name, user_info_path(:id=>user.id), :rel=>user_info_path(:id=>user.id), :class=>'ajax-cluetip' %>
+      </td>
+      <td>
+        <% if user.credits > 0 %>
+        <font color="green"><b><%= user.credits %></b></font>
+        <% else %>
+            <font color="red"><b><%= user.credits %></b></font>
+
+        <% end %>
+      </td>
+      <td>
+        <%= link_to "Add Credits",new_credit_path(:id=>user.id),:rel=>"facebox" %> |
+        <%= link_to "View Transaction History",{:action=>:history,:id=>user.id},:rel=>"facebox" %>
+      </td>
+<% end %>

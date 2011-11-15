@@ -1,0 +1,20 @@
+<% title "LSSSP | Edit Certification" %>
+<% content_for :sub_heading do %>
+    <%= sub_heading('Certification',"Edit #{@examination.name}") %>
+<% end %>
+<style type="text/css">
+    .popup_heading{
+        border-bottom: 2px solid #C4DEF5;
+        color: #5A5A5A;
+        font-family: 'Ubuntu',verdana,helvetica,sans-serif;
+        font-size: 14px;
+        color: blue;
+        font-weight: bold;
+        margin: 10px 0;
+        padding: 0 0 10px;
+    }
+</style>
+
+<div class="popup_heading">Edit <%= @examination.name %></div>
+<%= render 'form' %>
+

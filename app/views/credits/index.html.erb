@@ -1,0 +1,33 @@
+<% title "LSSSP : Credits" %>
+<% content_for :sub_heading do %>
+    <%= sub_heading('LSSSP | Credits', 'Manage Credits') %>
+<% end %>
+<% content_for :left_panel do %>
+    <td valign="top" width="250"> <%= render 'common/search' %>
+<% end %>
+<div class="help_text">
+  Area for managing Credits. <br/>
+</div>
+
+<% if @users.blank? %>
+    <div class="error_msg">
+      OOPS!.. No Credits are Found in the System..!
+    </div>
+<% else %>
+    <table class="tablesorter">
+      <thead>
+      <tr>
+        <th>Service Provider</th>
+        <th>Credits</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <%= render :partial=>'user',:collection=>@users %>
+      </tbody>
+    </table>
+
+    <div class="lsssp_pagination">
+      <%= page_entries_info @users %> <%= will_paginate @users, :container => false %>
+    </div>
+<% end %>

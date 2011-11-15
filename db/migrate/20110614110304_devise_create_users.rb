@@ -7,6 +7,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :enrollment_no
       t.string :primary_number
       t.string :secondary_number
+      t.integer :credits,:default=>0
       t.database_authenticatable :null => false
       t.recoverable
       t.rememberable
