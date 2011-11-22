@@ -13,7 +13,7 @@
   <% end %>
 </ul>
 -->
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:method => :put}) do |f| %>
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:method => :put,:multipart => true}) do |f| %>
     <%= f.error_messages %>
 
     <% if resource.role.name == "Student" %>
@@ -35,6 +35,9 @@
 
     <p><%= f.label :secondary_number, "Secondary Contact Number (Mobile / Telephone. ex: 04412345678)" %><br/>
       <%= f.text_field :secondary_number %></p>
+
+    <p><%= f.label :avatar_file_name, "Profile Pricture" %><br/>
+      <%= f.file_field :avatar %></p>
 
     <hr/>
     <p><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br/>

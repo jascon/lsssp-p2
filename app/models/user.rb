@@ -8,7 +8,9 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name,:email, :password, :password_confirmation, :remember_me,:role_id,:follower_ids ,:last_name
   attr_accessible :enrollment_no,:approved,:primary_number,:secondary_number
+  attr_accessible :avatar
 
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>",:small => "25x25>" }
 #  accepts_nested_attributes_for :user_profile
   has_one :user_profile
 # Students can register with service providers & service provider get his students(using inverse)
@@ -116,7 +118,6 @@ class User < ActiveRecord::Base
 
   end
 #------------------------------------------------------------------------------------------------------   
-
   def recent
     order('created_at DESC').limit(4)
   end
