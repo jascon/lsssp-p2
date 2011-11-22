@@ -82,11 +82,11 @@ module ApplicationHelper
 
   def examination_info(certification)
     content = ''
-    content << "Total Questions : #{certification.no_of_questions} <br/>"
-    content << "Duration : #{certification.duration.to_i} min <br/>"
-    content << "Positive Marks : #{certification.positive_marks} <br/>"
-    content << "Negative Marks : #{certification.negative_marks} <br/>"
-    content << "Un Attempted Marks : #{certification.unattempted_marks} <br/>"
+#    content << "Total Questions : #{certification.no_of_questions} <br/>"
+#    content << "Duration : #{certification.duration.to_i} min <br/>"
+#    content << "Positive Marks : #{certification.positive_marks} <br/>"
+#    content << "Negative Marks : #{certification.negative_marks} <br/>"
+#    content << "Un Attempted Marks : #{certification.unattempted_marks} <br/>"
   end
 
   def exam_status(student_exam)

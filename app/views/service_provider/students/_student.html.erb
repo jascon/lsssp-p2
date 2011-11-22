@@ -1,5 +1,7 @@
 <%= content_tag_for(:tr, student, :class=>cycle('even', 'odd')) do -%>
     <!--<td><%= student.following_assessors.size %></td>-->
+    <td><%= check_box_tag "student_ids[]", student.id,false,{:id=>"data_#{student.id}"} %></td>
+
     <td align="left"><%= student.enrollment_no%></td>
     <td align="left">
       <%= link_to highlight(student.name + " " + student.last_name,params[:search]), user_info_path(:id=>student.id), :rel=>user_info_path(:id=>student.id), :class=>'ajax-cluetip' %>

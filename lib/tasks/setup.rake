@@ -13,16 +13,16 @@ namespace :lsssp do
 end
 
 def make_roles
-  Role.create(:name=>'Super Admin')
-  Role.create(:name=>'Service Provider')
-  Role.create(:name=>'Assessor')
-  Role.create(:name=>'Student')
+  Role.create(:name=>'Super Admin',:active=>1)
+  Role.create(:name=>'Service Provider',:active=>1)
+  Role.create(:name=>'Assessor',:active=>1)
+  Role.create(:name=>'Student',:active=>1)
 
 end
 
 def make_users
   ############## Super Admin
-  super_admin = User.create(:name=>'Super',:last_name=>'Admin',:email =>'superadmin@lsssp.org', :password => "superadmin123", :password_confirmation => "superadmin123",:role_id=>1).confirm!
+  super_admin = User.create(:name=>'Super',:last_name=>'Admin',:email =>'superadmin@lsssp.org', :password => "superadmin123", :password_confirmation => "superadmin123",:role_id=>1,:primary_number=>9885976490).confirm!
   User.find(1).update_attribute('approved',true)
   ######### Service Providers ##############
   40.times do |n|

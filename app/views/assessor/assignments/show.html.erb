@@ -2,7 +2,7 @@
 <div class="formbox">
   <div class="desc"><b>Name</b> :  <%= @assignment.name %></div>
   <div class="divider"></div>
-  <div class="desc"><b>Description</b> : <%= @assignment.description %> </div>
+  <div class="desc"><b>Description</b> : <%= @assignment.description.html_safe %> </div>
   <div class="divider"></div>
   <div class="desc"><b>Attachments</b> : <%= @assignment.attachments.size %></div>
 </div>

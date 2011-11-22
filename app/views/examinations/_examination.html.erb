@@ -1,14 +1,17 @@
-<%= content_tag_for(:tr,examination,:class=>cycle('even', 'odd')) do -%>
-      <td><%= highlight(examination.name,params[:search])%></td>
-      <td><%= examination.description %></td>
-      <td>
-           <%= link_to_active(examination,active_examination_path(examination)) %>
-      </td>
-      <td>
-        <%= link_for_show_pop(examination) %>
-        <%= link_for_edit_pop(edit_examination_path(examination)) %>
-        <%= link_for_destroy(examination) %>
-     </td>
+<%= content_tag_for(:tr, examination, :class=>cycle('even', 'odd')) do -%>
+    <td><%= highlight(examination.name, params[:search]) %></td>
+    <td><%= examination.topic.name %></td>
+    <td><%= link_to examination.subtopic_questions.size, '#', :class=>'tipTipRight', :title=>certification_subtopics(examination.subtopic_questions) %></td>
+    <td><%= examination.duration %></td>
+    <td><%= examination.no_of_questions %></td>
+    <td>
+      <%= link_to_active(examination, active_examination_path(examination)) %>
+    </td>
+    <td>
+      <%= link_for_show_pop(examination) %>
+      <%= link_for_edit_pop(edit_examination_path(examination)) %>
+      <%= link_for_destroy(examination) %>
+    </td>
 <% end %>
 
 

@@ -5,7 +5,10 @@ class ExaminationsController < ApplicationController
   layout "application", :except => [:show, :edit]
 
   def index
-     @examinations = Examination.search(params[:search]).paginate(:page =>params[:page], :per_page=>20)
+#     @examinations = Examination.search(params[:search]).paginate(:page =>params[:page], :per_page=>20)
+    @examinations =  params[:id].blank? ? Examination.search(params[:search]).paginate(:page =>params[:page], :per_page=>20) :
+    Examination.search(params[:search]).where(:topic_id=>params[:id]).paginate(:page =>params[:page], :per_page=>20)
+
     @subtopics = Subtopic.where(:topic_id => params[:id]) if params[:id]
     @examination = Examination.new(:topic_id=>params[:id])
   end
@@ -15,38 +18,35 @@ class ExaminationsController < ApplicationController
   end
 
   def new
-    @certification = Certification.new(:topic_id=>params[:id])
+    @examination = Examination.new(:topic_id=>params[:id])
   end
 
   def edit
     @examination = Examination.find(params[:id])
+    @subtopics = Subtopic.where(:topic_id => @examinaiton.topic_id)
+
   end
 
   def create
     @examination = Examination.new(params[:examination])
 
-    respond_to do |format|
       if @examination.save
-        format.html { redirect_to(examinations_url, :notice => 'Certification was successfully created.') }
-        format.xml  { render :xml => @examination, :status => :created, :location => @examination }
+        redirect_to examinations_path, :notice => "Successfully created Examination."
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @examination.errors, :status => :unprocessable_entity }
+        @subtopics = Subtopic.where(:topic_id => params[:certification][:topic_id]) if params[:certification][:topic_id]
+        render :action => 'new'
       end
-    end
+
   end
 
   def update
     @examination = Examination.find(params[:id])
 
-    respond_to do |format|
-      if @examination.update_attributes(params[:examination])
-        format.html { redirect_to(examinations_url, :notice => 'Certification was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @examination.errors, :status => :unprocessable_entity }
-      end
+    @examination.subtopic_questions.clear
+    if @examination.update_attributes(params[:examination])
+      redirect_to examinations_path, :notice  => "Successfully updated certification."
+    else
+      render :action => 'edit'
     end
   end
 
@@ -76,6 +76,7 @@ class ExaminationsController < ApplicationController
               :type => 'text/csv; charset=iso-8859-1; header=present',
               :disposition => "attachment; filename=#{outfile}"
     end
+
     def load_subtopics
     @subtopics = Subtopic.where(:topic_id => params[:id])
     respond_to do |format|

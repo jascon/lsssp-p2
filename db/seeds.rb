@@ -19,5 +19,5 @@ Certification.create(:topic_id=>2,:name=>'Six Sigma Green Belt',:price=>300,:act
 SubtopicQuestion.create(:certification_id=>1,:subtopic_id=>1,:total_questions=>5)
 SubtopicQuestion.create(:certification_id=>1,:subtopic_id=>2,:total_questions=>5)
 SubtopicQuestion.create(:certification_id=>2,:subtopic_id=>1,:total_questions=>5)
-SubtopicQuestion.create(:certification_id=>2,:subtopic_id=>2,:total_questions=>5
-)=end
+SubtopicQuestion.create(:certification_id=>2,:subtopic_id=>2,:total_questions=>5)
+=end

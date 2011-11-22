@@ -31,6 +31,49 @@ class CreditsController < ApplicationController
   def create
     @credit = Credit.new(params[:credit])
 
+    @credits = Credit.where(:provider_id => params[:user_id])
+    @user = User.find(params[:user_id])
+
+    if @credits.count == 0  ## Check record count for First Time
+      if params[:mode] == "credit"
+        credit = Credit.new(:provider_id=>params[:user_id],:credit=>params[:amount],:description=>params[:description],:balance=>params[:amount],:amount=>params[:amount])
+        credit.save
+        @user.credits = params[:amount].to_i + @user.credits
+        @user.save
+
+        redirect_to(credits_url, :notice => "Credits Created Successfully")
+      else
+        redirect_to(credits_url, :alert => "Transaction is not Valid")
+      end
+    else
+      user = @credits.last
+      if params[:mode] == "credit"
+         new_balance = user.balance.to_i + params[:amount].to_i
+         credit = Credit.new(:provider_id=>params[:user_id],:credit=>params[:amount],:description=>params[:description],:balance=>new_balance,:amount=>params[:amount])
+         credit.save
+         @user.credits = params[:amount].to_i + @user.credits
+         @user.save
+
+         redirect_to(credits_url, :notice => "Credits Created Successfully")
+      else
+        new_balance = user.balance.to_i - params[:amount].to_i
+        if new_balance < 0
+          redirect_to(credits_url, :alert => "Transaction is Invalid")
+
+        else
+          credit = Credit.new(:provider_id=>params[:user_id],:debit=>params[:amount],:description=>params[:description],:balance=>new_balance,:amount=>params[:amount])
+          credit.save
+          @user.credits = @user.credits  - params[:amount].to_i
+          @user.save
+
+          redirect_to(credits_url, :notice => "Credits Debited Successfully")
+
+        end
+
+      end
+    end
+
+=begin
     @user = User.find(params[:user_id])
 
     if params[:mode] == "credit"
@@ -53,6 +96,7 @@ class CreditsController < ApplicationController
     @user.credits = balance
     @user.save
     redirect_to(credits_url, :notice => "Credits Created Successfully")
+=end
   end
 
   def update
@@ -81,7 +125,6 @@ class CreditsController < ApplicationController
 
   def history
    @credits = Credit.where(:provider_id=>params[:id]).paginate(:page =>params[:page], :per_page=>20)
-
   end
 
 end
