@@ -98,9 +98,9 @@ class User < ActiveRecord::Base
   class << self
     def search(query,me,roleid)
       if !query.nil? and !roleid.blank?
-        except_me(me).where({:name.matches => "%#{query}%"} | {:email.matches => "%#{query}"} | {:last_name.matches => "%#{query}"} ).with_role(roleid) #from meta_where gem
+        except_me(me).where({:name.matches => "%#{query}%"} | {:email.matches => "%#{query}"} | {:last_name.matches => "%#{query}"} | {:enrollment_no.matches => "%#{query}"}| {:primary_number.matches => "%#{query}"}| {:secondary_number.matches => "%#{query}"}).with_role(roleid) #from meta_where gem
       elsif !query.nil?
-        except_me(me).where({:name.matches => "%#{query}%"} | {:email.matches => "%#{query}"} | {:last_name.matches =>"%#{query}"} )
+        except_me(me).where({:name.matches => "%#{query}%"} | {:email.matches => "%#{query}"} | {:last_name.matches =>"%#{query}"}| {:enrollment_no.matches => "%#{query}"}| {:primary_number.matches => "%#{query}"}| {:secondary_number.matches => "%#{query}"} )
       elsif !roleid.nil?
         except_me(me).with_role(roleid)
       else

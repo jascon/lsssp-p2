@@ -11,7 +11,7 @@
  Along with creating, managing and removing Certificaitons for your LSSSP.
 </div>
 <div>
-  <%= link_to "Create New Certificate", "#",:class=>'usuallink bold_text',:id=>'add_new' %> |
+  <%= link_to "Create New Certification", "#",:class=>'usuallink bold_text',:id=>'add_new' %> |
   <%= link_to "Export", {:action=>:export},:class=>'usuallink bold_text' %>
 </div>
 <div id="new_form">
@@ -25,13 +25,22 @@
     <table class="tablesorter">
       <thead>
       <tr>
-        <th>Name</th>
+<!--
+        <th>Examination</th>
         <th>Topic</th>
         <th>Sub Topics</th>
-        <th>Price</th>
+        &lt;!&ndash;<th>Price</th>&ndash;&gt;
         <th>Duration (min)</th>
         <th>Total Questions</th>
         <th>Created On</th>
+        &lt;!&ndash;<th>Purchased</th>&ndash;&gt;
+        <th>Status</th>
+        <th>Actions</th>
+-->
+        <th>Certification</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Discount Price</th>
         <th>Purchased</th>
         <th>Status</th>
         <th>Actions</th>

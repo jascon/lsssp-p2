@@ -5,10 +5,9 @@ class ExaminationsController < ApplicationController
   layout "application", :except => [:show, :edit]
 
   def index
-    @examinations = Examination.all
-
-    @examinations = Examination.search(params[:search]).paginate(:page =>params[:page], :per_page=>20)
-    @examination = Examination.new
+     @examinations = Examination.search(params[:search]).paginate(:page =>params[:page], :per_page=>20)
+    @subtopics = Subtopic.where(:topic_id => params[:id]) if params[:id]
+    @examination = Examination.new(:topic_id=>params[:id])
   end
 
   def show
@@ -16,12 +15,7 @@ class ExaminationsController < ApplicationController
   end
 
   def new
-    @examination = Examination.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @examination }
-    end
+    @certification = Certification.new(:topic_id=>params[:id])
   end
 
   def edit
@@ -81,6 +75,12 @@ class ExaminationsController < ApplicationController
     send_data csv_data,
               :type => 'text/csv; charset=iso-8859-1; header=present',
               :disposition => "attachment; filename=#{outfile}"
+    end
+    def load_subtopics
+    @subtopics = Subtopic.where(:topic_id => params[:id])
+    respond_to do |format|
+      format.js
+    end
   end
   private
   def recent

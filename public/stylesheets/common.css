@@ -341,7 +341,7 @@ div.form-container label em, div.form-container span.label em {
 }
 
 .status_pending, .fail {
-    color: #0000cc;
+    color: #cc0000;
     font-weight: bold;
 }
 

@@ -5,15 +5,21 @@
       <!--<li><%=link_to 'Registered Certifications' ,my_certifications_service_provider_certifications_path %></li>-->
     </ul>
   </li>
-  <li><%= tab_heading 'Users' %>
+  <li><%= tab_heading 'Students' %>
     <ul>
-      <li><%=link_to 'Manage Assessors' ,service_provider_assessors_path %></li>
       <li><%=link_to 'Manage Students' ,service_provider_students_path %></li>
     </ul>
   </li>
-  <li><%= tab_heading 'Coupons' %>
+  <li><%= tab_heading 'Assessors' %>
     <ul>
-      <li><%=link_to 'Manage Coupons' ,coupons_path %></li>
+      <li><%=link_to 'Manage Assessors' ,service_provider_assessors_path %></li>
+    </ul>
+  </li>
+  <li><%= tab_heading 'Accounts' %>
+    <ul>
+      <li><%=link_to 'Manage Credits' ,credits_path %></li>
+      <li><%=link_to 'Manage Certifications' ,service_provider_certifications_path %></li>
+      <!--<li><%=link_to 'Manage Coupons' ,coupons_path %></li>-->
     </ul>
   </li>
 </ul>

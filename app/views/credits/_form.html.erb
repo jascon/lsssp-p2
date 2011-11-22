@@ -12,8 +12,8 @@
     <%= radio_button_tag 'mode', 'debit' %> Debit</td>
         </tr>
         <tr>
-          <td><label>Remarks <em>*</em></label></td>
-          <td><%= text_area_tag :description %></td>
+          <td><label>Remarks <em>*</em><br/>(Example: Reference No, Invoice No, etc..)</label></td>
+          <td><%= text_area_tag :description%></td>
           <%= hidden_field_tag 'user_id',params[:id] %>
         </tr>
         <tr>

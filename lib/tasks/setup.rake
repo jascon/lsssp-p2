@@ -76,7 +76,7 @@ def make_service_provider_accessors
   service_providers.each { |service_provider| Following.create(:user_id=>accessor.id,:follower_id=>service_provider.id) }
 
   ## Creating Many accessors for single user(Service Provider)
-  accessors = User.where(:role_id=>34).order('created_at DESC').limit(20)
+  accessors = User.where(:role_id=>3).order('created_at DESC').limit(20)
   service_provider = User.where(:role_id=>2).first
   accessors.each { |accessors| Following.create(:user_id=>accessors.id,:follower_id=>service_provider.id) }
 end

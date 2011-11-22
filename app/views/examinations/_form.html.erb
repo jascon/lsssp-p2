@@ -1,10 +1,71 @@
-<%#= content_tag_for(:h3,heading) unless defined?(heading).nil? %>
-<%= simple_form_for [@examination],:validate=>true do |f| %>
-  <%= f.error_messages %>
-  <%= f.input :name,:label=>'Certification Name' %>
-  <%= f.input :price,:label=>'Price' %>
-  <%= f.input :discount_price,:label=>'Price for Service Providers' %>
-  <%= f.input :description ,:as => :text, :input_html => {:rows=>3,:cols=>30} %>
-  <%= f.input :active,:input_html=>{:checked=>true},:label=>'Active' %>
-  <%= f.submit 'Submit',:disable_with=>'Please wait...' %>
-<% end %>
+<div class="form-container">
+  <p class="legend">
+    <strong>Note:</strong>
+    Required fields are marked with an asterisk (<em>*</em>)
+  </p>
+  <%= form_for [@examination] do |f| %>
+      <%= f.error_messages %>
+      <table>
+        <tr>
+          <td><label>Examination Name <em>*</em></label></td>
+          <td><%= f.text_field :name %></td>
+        </tr>        <tr>
+          <td><label>Select Certification <em>*</em></label></td>
+          <td><%= collection_select(:examination, :certification_id, Certification.active, :id, :name, :prompt => true) %></td>
+        </tr>
+        <tr id="topics">
+          <td><label>Select Topic <em>*</em></label></td>
+          <td><%= collection_select(:examination, :topic_id, Topic.active, :id, :name, :prompt => true) %>
+            <span id="ajax-loading"><%= image_tag('/images/icons/ajax-loader.gif') %></span>
+          </td>
+        </tr>
+        <% if @examination.topic_id.nil? %>
+            <tr>
+              <td colspan="3" id="subtopics"></td>
+            </tr>
+        <% else %>
+            <tr>
+              <td colspan="3" id="subtopics"><%= render 'load_subtopics' %></td>
+            </tr>
+        <% end %>
+
+        <tr>
+          <td><label>Total Questions <em>*</em></label></td>
+          <td><%= f.text_field :no_of_questions %></td>
+        </tr>
+        <tr>
+          <td><label>Duration (Min) <em>*</em></label></td>
+          <td><%= f.text_field :duration %></td>
+        </tr>
+        <tr>
+          <td><label>Positive marks <em>*</em></label></td>
+          <td><%= f.text_field :positive_marks %></td>
+        </tr>
+        <tr>
+          <td><label>Negative marks <em>*</em></label></td>
+          <td><%= f.text_field :negative_marks %></td>
+        </tr>
+        <tr>
+          <td><label>Unattempted Marks <em>*</em></label></td>
+          <td><%= f.text_field :unattempted_marks %></td>
+        </tr>
+        <tr>
+          <td><label>Pass marks(%) <em>*</em></label></td>
+          <td><%= f.text_field :pass_marks_percentage %></td>
+        </tr>
+
+        <tr>
+          <td><label>Active?</label></td>
+          <td><%= f.check_box :active %></td>
+        </tr>
+        <tr>
+          <td><label>Description</label></td>
+          <td><%= f.text_field :description %></td>
+        </tr>
+        <tr>
+          <td colspan="3" align="center"> <%= f.submit 'Submit', :disable_with=>'Please wait...' %></td>
+        </tr>
+      </table>
+  <% end %>
+</div>
+

@@ -4,7 +4,7 @@
 </div>
 <div>
   <%= form_tag({:action=>'index'}, :id=>'purchased_certification') do %>
-  <span><i>Sort by</i> :
+  <span>Sort by :
       Certification Name:
     <%= select_tag(:certification_id, options_from_collection_for_select(@certifications, "id", "name", {:selected=>params[:certification_id]}), {:include_blank => true}) %>
     <i>Exam Status:</i>
@@ -26,11 +26,11 @@
       <thead>
       <tr>
         <th>Certification</th>
-        <th>Purchased By</th>
-        <th>Email</th>
-        <th>Purchased From</th>
+        <th>Student</th>
+        <!--<th>Email</th>-->
+        <th>Service Provider</th>
+        <th>Assessor</th>
         <th>Purchased On</th>
-        <th>Price</th>
         <th>Exam Status</th>
         <th>Exam Result</th>
         <th>Assignments Results</th>
@@ -41,19 +41,21 @@
       <tbody>
       <% for owned_certification in @owned_certifications %>
           <tr class="<%= cycle('even', 'odd') %>">
-            <td><%= owned_certification.certification.name %></td>
-            <td><%= link_to owned_certification.owned.name + " " + owned_certification.owned.last_name, user_info_path(:id=>owned_certification.owned.id), :rel=>user_info_path(:id=>owned_certification.owned.id), :class=>'ajax-cluetip' %></td>
-            <td><%= owned_certification.owned.email %></td>
-            <td><%= link_to owned_certification.provider.name+" "+owned_certification.provider.last_name, user_info_path(:id=>owned_certification.provider.id), :rel=>user_info_path(:id=>owned_certification.provider.id), :class=>'ajax-cluetip' %></td>
+            <td align="left"><%= owned_certification.certification.name %></td>
+            <td align="left"><%= link_to owned_certification.owned.name + " " + owned_certification.owned.last_name, user_info_path(:id=>owned_certification.owned.id), :rel=>user_info_path(:id=>owned_certification.owned.id), :class=>'ajax-cluetip' %></td>
+            <!--<td><%= owned_certification.owned.email %></td>-->
+            <td align="left"><%= link_to owned_certification.provider.name+" "+owned_certification.provider.last_name, user_info_path(:id=>owned_certification.provider.id), :rel=>user_info_path(:id=>owned_certification.provider.id), :class=>'ajax-cluetip' %></td>
+            <td align="left"></td>
+
             <td><%= owned_certification.created_at.strftime("%d-%m-%y") %> </td>
-            <td><%= owned_certification.amount %></td>
-            <td><%= exam_status(owned_certification.student_exam) %></td>
+            <td align="left"><%= exam_status(owned_certification.student_exam) %></td>
             <td><%= exam_result(owned_certification) %></td>
             <td><%= assignment_result(owned_certification) %></td>
             <td>
               <% if owned_certification.issued? %>
                   <%= image_tag('tick.gif') %>
               <% else %>
+
                   <%= link_to 'Issue Certificate', {:action=>'issue', :id=>owned_certification.id}, :class=>"not-issued",
                               :confirm=>'Are you sure?' %>
               <% end %>

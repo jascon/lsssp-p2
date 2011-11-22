@@ -114,9 +114,9 @@ module ApplicationHelper
       when 'processing'
         "<span class='processing'>Pending</span>".html_safe
       when 'pass'
-        "<span class='pass'>Passed</span>".html_safe
+        "<span class='pass'>Pass</span>".html_safe
       when 'fail'
-        "<span class='fail'>Failed</span>".html_safe
+        "<span class='fail'>Fail</span>".html_safe
     end
   end
 

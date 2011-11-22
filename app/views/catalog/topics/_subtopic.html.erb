@@ -1,0 +1,8 @@
+<%= simple_form_for [:catalog, @subtopic],:validate=>true do |f| %>
+  <%= f.error_messages %>
+  <%= f.association :topic ,:label=>'Select Topic',:prompt=>"Select Topic"%>
+  <%= f.input :name,:label=>'Sub Topic Name' %>
+
+  <%= f.input :active %>
+  <%= f.submit 'Submit',:disable_with=>'Please wait...' %>
+<% end %>

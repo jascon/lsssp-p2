@@ -1,10 +1,6 @@
 <%= content_tag_for(:tr,examination,:class=>cycle('even', 'odd')) do -%>
       <td><%= highlight(examination.name,params[:search])%></td>
       <td><%= examination.description %></td>
-      <td><%= examination.price%></td>
-      <td>
-          <%= examination.discount_price%>
-      </td>
       <td>
            <%= link_to_active(examination,active_examination_path(examination)) %>
       </td>
@@ -14,3 +10,15 @@
         <%= link_for_destroy(examination) %>
      </td>
 <% end %>
+
+
+<!--
+      <td><%# examination.price%></td>
+      <td>
+          <%# examination.discount_price%>
+      </td>
+      <td><%# link_to examination.certifications.size,catalog_certifications_path(:id=>examination.id),:class=>'tipTipRight',:title => associated_names(examination.certifications)%></td>
+
+
+
+-->

@@ -5,10 +5,12 @@ class Catalog::CertificationsController < ApplicationController
   layout "application", :except => [:show, :edit]
 
   def index
-    @certifications =  params[:id].blank? ? Certification.search(params[:search]).paginate(:page =>params[:page], :per_page=>20) :
-        Certification.search(params[:search]).where(:topic_id=>params[:id]).paginate(:page =>params[:page], :per_page=>20)
-    @subtopics = Subtopic.where(:topic_id => params[:id]) if params[:id]
-    @certification = Certification.new(:topic_id=>params[:id])
+    @certifications =  Certification.search(params[:search]).paginate(:page =>params[:page], :per_page=>20)
+#    @certifications =  params[:id].blank? ? Certification.search(params[:search]).paginate(:page =>params[:page], :per_page=>20) :
+#    Certification.search(params[:search]).where(:topic_id=>params[:id]).paginate(:page =>params[:page], :per_page=>20)
+#    @subtopics = Subtopic.where(:topic_id => params[:id]) if params[:id]
+#    @certification = Certification.new(:topic_id=>params[:id])
+    @certification = Certification.new #(:topic_id=>params[:id])
   end
 
   def show
@@ -21,7 +23,6 @@ class Catalog::CertificationsController < ApplicationController
   end
 
   def load_subtopics
-
     @subtopics = Subtopic.where(:topic_id => params[:id])
     respond_to do |format|
       format.js
@@ -42,12 +43,12 @@ class Catalog::CertificationsController < ApplicationController
 
   def edit
     @certification = Certification.find(params[:id])
-    @subtopics = Subtopic.where(:topic_id => @certification.topic_id)
+#    @subtopics = Subtopic.where(:topic_id => @certification.topic_id)
   end
 
   def update
     @certification = Certification.find(params[:id])
-    @certification.subtopic_questions.clear
+#    @certification.subtopic_questions.clear
     if @certification.update_attributes(params[:certification])
       redirect_to catalog_certifications_url, :notice  => "Successfully updated certification."
     else
@@ -70,9 +71,9 @@ class Catalog::CertificationsController < ApplicationController
     certifications = Certification.search(params[:search]).order("name")
     outfile = "Certifications-" + Time.now.strftime("%d-%m-%Y-%H-%M-%S") + ".csv"
     csv_data = FasterCSV.generate do |csv|
-      csv << ["Name", "Topic", "SuTopics","Price","Duration","Total Questions","Created On","Total Students Purchased"]
+      csv << ["Name", "Price","Discount Price","Created On"]
       certifications.each do |c|
-        csv << [c.name, c.topic.name,c.subtopic_questions.size,c.price, c.duration,c.no_of_questions, c.created_at.strftime('%m.%b.%y'),c.owned.size]
+        csv << [c.name, c.price, c.discount_price, c.created_at.strftime('%m.%b.%y')]
       end
     end
     send_data csv_data,

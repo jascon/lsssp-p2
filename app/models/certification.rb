@@ -3,8 +3,7 @@ class Certification < ActiveRecord::Base
 
 # Associations
 #-------------------------------------------------------------------------------------------------------
-  belongs_to :topic, :conditions =>{:active => true }
-  belongs_to :examination, :conditions => {:status=>true}
+#  belongs_to :topic, :conditions =>{:active => true }                                                           #
 
 #certification.providers will return all the service_providers who registered with this certification
 #------------------------------------------------------------------------------------------------------
@@ -14,23 +13,23 @@ class Certification < ActiveRecord::Base
 #------------------------------------------------------------------------------------------------------
   has_many :owned_certifications
   has_many :owned, :through => :owned_certifications
-  has_many :subtopic_questions ,:dependent=>:destroy
+#  has_many :subtopic_questions ,:dependent=>:destroy
 
 
 #-------------------------------------------------------------------------------------------------------
 
   has_many :assignments
 
- accepts_nested_attributes_for :subtopic_questions, :allow_destroy => true,:reject_if => proc { |att| att['subtopic_id'] == nil or att['total_questions'] == '' }
+# accepts_nested_attributes_for :subtopic_questions, :allow_destroy => true,:reject_if => proc { |att| att['subtopic_id'] == nil or att['total_questions'] == '' }
 
 
 # START --> Validations
   #------------------------------------------------------------------------------------------------------
-  validates :topic_id,:price,:duration,:no_of_questions,:positive_marks,:negative_marks,
-            :unattempted_marks,:pass_marks_percentage,:presence => true
-  validates :duration,:no_of_questions,:positive_marks,:negative_marks,
-            :unattempted_marks,:pass_marks_percentage,:numericality=>true
-  validates :name,:presence=>true, :uniqueness => true, :length => { :maximum => 25}
+#  validates :topic_id,:duration,:no_of_questions,:positive_marks,:negative_marks,
+#            :unattempted_marks,:pass_marks_percentage,:presence => true
+#  validates :duration,:no_of_questions,:positive_marks,:negative_marks,
+#            :unattempted_marks,:pass_marks_percentage,:numericality=>true
+  validates :name,:presence=>true, :uniqueness => true, :length => { :maximum => 50}
   validates_length_of :description, :maximum => 1000, :allow_blank => true
   #------------------------------------------------------------------------------------------------------
   # Class Methods
@@ -40,15 +39,17 @@ class Certification < ActiveRecord::Base
   class << self
     def search(query)
       if query
-        includes({:topic=>:subtopics}).where(:name.matches => "%#{query}%") #from meta_where gem
+       # includes({:topic=>:subtopics}).where(:name.matches => "%#{query}%") #from meta_where gem
+        where(:name.matches => "%#{query}%") #from meta_where gem
       else
         #scoped
-       includes({:topic=>:subtopics}).scoped
+       #includes({:topic=>:subtopics}).scoped
+       scoped
       end
     end
-
     def active
-      includes({:topic=>:subtopics}).where(:active=>true).order('name')
+#      includes({:topic=>:subtopics}).where(:active=>true).order('name')
+      where(:active=>true).order('name')
     end
 
     def recent

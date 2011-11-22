@@ -13,6 +13,7 @@ class Catalog::TopicsController < ApplicationController
   def index
     @topics = Topic.search(params[:search]).paginate(:page =>params[:page], :per_page=>20)
     @topic = Topic.new
+    @subtopic = Subtopic.new(:topic_id=>params[:id])
   end
 
   def show

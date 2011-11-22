@@ -1,9 +1,9 @@
 <%= content_tag_for(:tr,user,:class=>cycle('even', 'odd')) do -%>
-    <td align="left"><%= user.enrollment_no%></td>
+    <td align="left"><%=highlight(user.enrollment_no,params[:search])%></td>
     <td align="left"><%= highlight(user.name,params[:search]) %></td>
     <td align="left"><%= highlight(user.last_name,params[:search])%></td>
     <td align="left"><%= highlight(user.email,params[:search]) %></td>
-    <td align="left"><%= user.primary_number %></td>
+    <td align="left"><%= highlight(user.primary_number,params[:search]) %></td>
     <td align="left">
       <!--<%= link_to user.role.name,[:super_admin,user.role],:class=>'usuallink' %>-->
       <%= user.role.name %>

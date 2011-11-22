@@ -1,0 +1,27 @@
+<table>
+  <% if @subtopics.blank? %>
+      <tr>
+        <td colspan="2" class="error">Sorry No Subtopics found</td>
+        <td>&nbsp;</td>
+      </tr>
+  <% else %>
+      <% i =0 %>
+      <% @subtopics.each do |subtopic| %>
+          <tr>
+            <td>
+              <label><%= subtopic.name %>
+                <%= check_box_tag "examination[subtopic_questions_attributes][][subtopic_id]", subtopic.id,
+                                  @examination.nil? ? false : @examination.subtopic_questions.exists?(:examination_id=>@examinaiton.id, :subtopic_id=>subtopic.id) %>
+              </label>
+            </td>
+            <td>
+              <% @subtopic_question = SubtopicQuestion.find_by_examination_id_and_subtopic_id(@examinaiton.id, subtopic.id) if @examination %>
+              <%= text_field_tag "examination[subtopic_questions_attributes][][total_questions]", @subtopic_question.nil? ? '' : @subtopic_question.total_questions %>
+              (<%= subtopic.questions.size %>)
+            </td>
+            <td>&nbsp;</td>
+          </tr>
+          <% i += 1 %>
+      <% end %>
+  <% end %>
+</table>

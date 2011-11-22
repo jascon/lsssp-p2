@@ -1,16 +1,16 @@
 <% title "LSSSP : Certifications" %>
 <% content_for :sub_heading do %>
-    <%= sub_heading('LSSSP | Certifications', 'Manage Certifications') %>
+    <%= sub_heading('LSSSP | Examinations', 'Manage Examinations') %>
 <% end %>
 <% content_for :left_panel do %>
     <td valign="top" width="250"> <%= render 'common/search' %>
       <%= render 'recent' %> </td>
 <% end %>
 <div class="help_text">
-  Area for managing Certifications. <br/>
+  Area for managing Examinations. <br/>
 </div>
 <div>
-  <%= link_to "Create New Certificate", "#", :class=>'usuallink bold_text', :id=>'add_new' %> |
+  <%= link_to "Create New Examination", "#", :class=>'usuallink bold_text', :id=>'add_new' %> |
   <%= link_to "Export",export_examinations_path, :class=>'usuallink bold_text' %>
 </div>
 <div id="new_form">
@@ -18,7 +18,7 @@
 </div>
 <% if @examinations.blank? %>
     <div class="error_msg">
-      OOPS!.. No Certifications are Found in the System..!
+      OOPS!.. No Examinations are Found in the System..!
     </div>
 <% else %>
     <table class="tablesorter">
@@ -26,8 +26,6 @@
       <tr>
         <th>Name</th>
         <th>Description</th>
-        <th>Price</th>
-        <th>Discount Price</th>
         <th>Active?</th>
         <th>Actions</th>
       </tr>

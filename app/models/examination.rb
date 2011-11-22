@@ -1,10 +1,17 @@
 #Author: Chaitanya
 #===============================================
 class Examination < ActiveRecord::Base
-  has_many :certifications,:dependent => :destroy
+# Associations
+#-------------------------------------------------------------------------------------------------------
+  belongs_to :topic, :conditions =>{:active => true }
+  belongs_to :certification,:conditions => {:active=>true}
+
+  has_many :subtopic_questions ,:dependent=>:destroy
+
+ accepts_nested_attributes_for :subtopic_questions, :allow_destroy => true,:reject_if => proc { |att| att['subtopic_id'] == nil or att['total_questions'] == '' }
 
   #validations
-  validates :name,:price,:discount_price,:presence=>true
+  validates :name,:presence=>true
   validates_length_of :description, :maximum => 1000, :allow_blank => true
 
   #others

@@ -2,7 +2,8 @@ class CreditsController < ApplicationController
   layout "application", :except => [:new, :history]
 
   def index
-    @users = User.where(:role_id => 2).paginate(:page =>params[:page], :per_page=>20)
+    @users = User.where(:role_id => 2).paginate(:page =>params[:page], :per_page=>20) if has_role?(:super_admin)
+    @credits = Credit.where(:provider_id=>current_user).paginate(:page =>params[:page], :per_page=>20)
   end
 
   def show
@@ -31,6 +32,7 @@ class CreditsController < ApplicationController
     @credit = Credit.new(params[:credit])
 
     @user = User.find(params[:user_id])
+
     if params[:mode] == "credit"
       if Credit.where(:provider_id=>params[:user_id]).count== 0
         balance = params[:amount]
@@ -79,6 +81,7 @@ class CreditsController < ApplicationController
 
   def history
    @credits = Credit.where(:provider_id=>params[:id]).paginate(:page =>params[:page], :per_page=>20)
+
   end
 
 end

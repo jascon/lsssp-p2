@@ -8,6 +8,11 @@ class CreateQuestions < ActiveRecord::Migration
       t.boolean :multiple,:default=>0
       t.string :correct_answer  ,:null =>false,:limit=>100
       t.boolean :active,:default=>0
+      t.string :question_file_name
+      t.string :question_content_type
+      t.integer :question_file_size
+
+
       t.timestamps
     end
     add_index :questions,:topic_id

@@ -5,19 +5,25 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :name,:null=>false,:limit=>100
       t.string :last_name, :limit=>100
       t.string :enrollment_no
-      t.string :primary_number
+      t.string :primary_number,:null=>false
       t.string :secondary_number
       t.integer :credits,:default=>0
       t.database_authenticatable :null => false
       t.recoverable
       t.rememberable
       t.trackable
-      # t.encryptable
-       t.confirmable
+      t.confirmable
+      t.boolean :approved ,:default=>false
+
+      t.string  :avatar_file_name
+      t.string  :avatar_content_type
+      t.integer :avatar_file_size
+
+      # t.datetime :avatar_updated_at
       # t.lockable :lock_strategy => :failed_attempts, :unlock_strategy => :both
       # t.token_authenticatable
-      t.boolean :approved ,:default=>false
-#      t.boolean :rol_flag,:default=>false
+      # t.boolean :role_flag,:default=>false
+      # t.encryptable
 
       t.timestamps
     end

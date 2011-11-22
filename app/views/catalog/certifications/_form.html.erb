@@ -7,7 +7,7 @@
       <%= f.error_messages %>
       <table>
         <tr>
-          <td><label>Certificate Name <em>*</em></label></td>
+          <td><label>Certification Name <em>*</em></label></td>
           <td><%= f.text_field :name %></td>
         </tr>
         <tr>
@@ -15,47 +15,12 @@
           <td><%= f.text_field :price %></td>
         </tr>
         <tr>
+          <td><label>Discount Price <em>*</em></label></td>
+          <td><%= f.text_field :discount_price %></td>
+        </tr>
+        <tr>
           <td><label>Active?</label></td>
           <td><%= f.check_box :active %></td>
-        </tr>
-        <tr id="topics">
-          <td><label>Select Topic <em>*</em></label></td>
-          <td><%= collection_select(:certification, :topic_id, Topic.active, :id, :name, :prompt => true) %>
-            <span id="ajax-loading"><%= image_tag('/images/icons/ajax-loader.gif') %></span>
-          </td>
-        </tr>
-        <% if @certification.topic_id.nil? %>
-            <tr>
-              <td colspan="3" id="subtopics"></td>
-            </tr>
-        <% else %>
-            <tr>
-              <td colspan="3" id="subtopics"><%= render 'load_subtopics' %></td>
-            </tr>
-        <% end %>
-        <tr>
-          <td><label>Total Questions <em>*</em></label></td>
-          <td><%= f.text_field :no_of_questions %></td>
-        </tr>
-        <tr>
-          <td><label>Duration (Min) <em>*</em></label></td>
-          <td><%= f.text_field :duration %></td>
-        </tr>
-        <tr>
-          <td><label>Positive marks <em>*</em></label></td>
-          <td><%= f.text_field :positive_marks %></td>
-        </tr>
-        <tr>
-          <td><label>Negative marks <em>*</em></label></td>
-          <td><%= f.text_field :negative_marks %></td>
-        </tr>
-        <tr>
-          <td><label>Unattempted Marks <em>*</em></label></td>
-          <td><%= f.text_field :unattempted_marks %></td>
-        </tr>
-        <tr>
-          <td><label>Pass marks(%) <em>*</em></label></td>
-          <td><%= f.text_field :pass_marks_percentage %></td>
         </tr>
         <tr>
           <td><label>Description</label></td>
@@ -69,18 +34,45 @@
 </div>
 
 <!--
-<%= simple_form_for [:catalog, @certification], :validate=>true do |f| %>
-    <%= f.error_messages %>
-    <%= f.association :topic %>
-    <%= f.input :name %>
-    <%= f.input :price %>
-    <%= f.input :active %>
-    <%= f.input :duration %>
-    <%= f.input :positive_marks %>
-    <%= f.input :negative_marks %>
-    <%= f.input :unattempted_marks %>
-    <%= f.input :pass_marks_percentage %>
-    <%= f.input :description %>
-    <%= f.submit 'Submit', :disable_with=>'Please wait...' %>
-<% end %>
+
+        <tr id="topics">
+          <td><label>Select Topic <em>*</em></label></td>
+          <td><%# collection_select(:certification, :topic_id, Topic.active, :id, :name, :prompt => true) %>
+            <span id="ajax-loading"><%# image_tag('/images/icons/ajax-loader.gif') %></span>
+          </td>
+        </tr>
+        <%# if @certification.topic_id.nil? %>
+            <tr>
+              <td colspan="3" id="subtopics"></td>
+            </tr>
+        <%# else %>
+            <tr>
+              <td colspan="3" id="subtopics"><%# render 'load_subtopics' %></td>
+            </tr>
+        <%# end %>
+
+        <tr>
+          <td><label>Total Questions <em>*</em></label></td>
+          <td><%# f.text_field :no_of_questions %></td>
+        </tr>
+        <tr>
+          <td><label>Duration (Min) <em>*</em></label></td>
+          <td><%# f.text_field :duration %></td>
+        </tr>
+        <tr>
+          <td><label>Positive marks <em>*</em></label></td>
+          <td><%# f.text_field :positive_marks %></td>
+        </tr>
+        <tr>
+          <td><label>Negative marks <em>*</em></label></td>
+          <td><%# f.text_field :negative_marks %></td>
+        </tr>
+        <tr>
+          <td><label>Unattempted Marks <em>*</em></label></td>
+          <td><%# f.text_field :unattempted_marks %></td>
+        </tr>
+        <tr>
+          <td><label>Pass marks(%) <em>*</em></label></td>
+          <td><%# f.text_field :pass_marks_percentage %></td>
+        </tr>
 -->

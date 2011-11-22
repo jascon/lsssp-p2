@@ -147,7 +147,7 @@ class SuperAdmin::UsersController < ApplicationController
           u.primary_number = row[3]
           u.approved = '1'
           role = Role.find_by_name(row[5].strip)
-          ran_num = rand(1000000000-9999999999)
+          ran_num = rand(10_000_000_000-1_000_000_000)+1_000_000_000
           u.password = u.password_confirmation = ran_num
           if role.name == "Student"
             u.enrollment_no = ran_num
@@ -168,7 +168,7 @@ class SuperAdmin::UsersController < ApplicationController
           u.secondary_number = row[4]
           u.primary_number = row[3]
           u.approved = '1'
-          ran_num = rand(1000000000-9999999999)
+          ran_num = rand(10_000_000_000-1_000_000_000)+1_000_000_000
           u.password = u.password_confirmation = ran_num
           u.enrollment_no = ran_num
           u.role_id=params[:role_id]

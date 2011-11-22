@@ -14,13 +14,48 @@
     <tr valign="bottom">
       <td>
         <div style="padding-left: 10px;">
-
-          <% if @user.role.name == "Student" %>
-              Enrollment NO: <%= @user.enrollment_no %>
-              <br/>
-          <% end %>
-          Primary Number: <%= @user.primary_number %> <br/>
-          Secondary Number: <%= @user.secondary_number %> <br/>
+          <table>
+            <% if @user.role_id == 4 %>
+                <tr>
+                  <td>Enrollment No</td>
+                  <td>:</td>
+                  <td><%= @user.enrollment_no %></td>
+                </tr>
+            <% end %>
+            <tr>
+              <td>
+                Email
+              </td>
+              <td>
+                :
+              </td>
+              <td>
+                <%= @user.email %>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Primary Number
+              </td>
+              <td>
+                :
+              </td>
+              <td>
+                <%= @user.primary_number %>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Secondary Number
+              </td>
+              <td>
+                :
+              </td>
+              <td>
+                <%= @user.secondary_number %>
+              </td>
+            </tr>
+          </table>
         </div>
       </td>
     </tr>

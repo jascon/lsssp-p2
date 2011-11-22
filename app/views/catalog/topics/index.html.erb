@@ -12,11 +12,16 @@
 </div>
 <div>
   <%= link_to "Create New Topic", "#", :class=>'usuallink bold_text', :id=>'add_new' %> |
+  <%= link_to "Create New Subtopic", "#", :class=>'usuallink bold_text', :id=>'imp_new' %> |
   <%= link_to "Export", export_catalog_topics_path, :class=>'usuallink bold_text' %>
 </div>
 <div id="new_form">
   <%= render 'form' %>
 </div>
+<div id="import_form">
+  <%= render 'subtopic' %>
+</div>
+
 <% if @topics.blank? %>
     <div class="error_msg">
       OOPS!.. No Topics are Found in the System..!
@@ -25,11 +30,11 @@
     <table class="tablesorter">
       <thead>
       <tr>
-        <th>Name</th>
+        <th>Topic</th>
         <th>Description</th>
         <th>Status</th>
         <th>Sub Topics</th>
-        <th>Certifications</th>
+        <!--<th>Certifications</th>-->
         <th>Actions</th>
       </tr>
       </thead>

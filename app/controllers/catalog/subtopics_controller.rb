@@ -19,7 +19,7 @@ class Catalog::SubtopicsController < ApplicationController
   def create
     @subtopic = Subtopic.new(params[:subtopic])
     if @subtopic.save
-      redirect_to catalog_subtopics_path, :notice => "Successfully created subtopic."
+      redirect_to catalog_topics_path, :notice => "Successfully created subtopic."
     else
       render :action => 'new'
     end
@@ -32,7 +32,7 @@ class Catalog::SubtopicsController < ApplicationController
   def update
     @subtopic = Subtopic.find(params[:id])
     if @subtopic.update_attributes(params[:subtopic])
-      redirect_to catalog_subtopics_path, :notice => "Successfully updated subtopic."
+      redirect_to catalog_topics_path, :notice => "Successfully updated subtopic."
     else
       render :action => 'edit'
     end
