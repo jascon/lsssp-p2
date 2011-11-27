@@ -8,6 +8,21 @@
 <div class="help_text">
   Area for managing Credits. <br/>
 </div>
+<% if has_role?(:service_provider) %>
+  <div class="inline">
+  <div align="right" style="float: right;" class="inline">
+    Available Credits:
+    <% user_credits = User.find(:first, :conditions=>{:id=>current_user.id}).credits %>
+
+    <% if user_credits <= 0 %>
+        <font color="#ff0000;"><b><%= user_credits %></b></font>
+    <% else %>
+        <font color="#005800;"><b><%= user_credits %></b></font>
+    <% end %>
+
+  </div>
+  </div>
+<% end %>
 <% if has_role?(:super_admin) %>
 <% if @users.blank? %>
     <div class="error_msg">

@@ -13,7 +13,13 @@
     <table class="list" cellpadding="13" cellspacing="10px;">
       <% for service_provider in @service_providers %>
           <tr>
-            <td class="logo"><%= image_tag('avatar.gif') %></td>
+            <td class="logo">
+                  <% if service_provider.avatar.file? %>
+                  <%= image_tag service_provider.avatar.url(:thumb), :size=> "50x50" %>
+                  <% else %>
+                      <%= image_tag "avatar.gif",:size => "25x25" %>
+                  <% end %>
+            </td>
             <td class="info">
               <strong><%= service_provider.name + " "+service_provider.last_name %></strong> <br/>
               <%= link_to pluralize(service_provider.provided_certifications.size, 'certification'), '#',

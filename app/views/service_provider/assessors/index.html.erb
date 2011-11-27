@@ -14,6 +14,19 @@
   <%= link_to "Add New Assessor", '#' ,:class=>'usuallink bold_text',:id=>'add_new'%> |
   <%= link_to "Import Assessors", '#' ,:class=>'usuallink bold_text',:id=>'imp_new'%> |
   <%=link_to "Export",export_service_provider_assessors_path(:approved=>params[:approved]),:class=>'usuallink bold_text' %>
+    <div class="inline">
+  <div align="right" style="float: right;" class="inline">
+    Available Credits:
+    <% user_credits = User.find(:first, :conditions=>{:id=>current_user.id}).credits %>
+
+    <% if user_credits <= 0 %>
+        <font color="#ff0000;"><b><%= user_credits %></b></font>
+    <% else %>
+        <font color="#005800;"><b><%= user_credits %></b></font>
+    <% end %>
+
+  </div>
+  </div>
 </div>
 <br/>
 <div id="new_form">
