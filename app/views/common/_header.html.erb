@@ -4,8 +4,12 @@
 		<div id="top_m">
 			<ul class="top_menu">
 				<% if user_signed_in? %>
-
+                  <% if current_user.avatar.file? %>
                   <li><%= image_tag current_user.avatar.url(:small) %></li>
+                  <% else %>
+                      <li><%= image_tag "avatar.gif",:size => "25x25" %></li>
+
+                  <% end %>
                  <li>Welcome <%= current_user.email %></li>
 <!--                  <% if can? :manage,Role %>
                  <li><%=(link_to 'Manage Groups',super_admin_roles_path) %></li>

@@ -7,12 +7,14 @@
 <table class="list" cellpadding="13" cellspacing="10px;">
   <% for certification in @provided_certifications %>
       <tr>
-        <td class="logo">Logo</td>
+        <td class="logo">
+         <%= image_tag('avatar.gif') %>
+        </td>
         <td class="info">
           <strong>
             <%=link_to certification.name ,'#',:class=>'tipTipRight',:title=> examination_info(certification) %>
           </strong>   <br/>
-          Price : A$ <%= certification.price %>
+          Price : $ <%= certification.price %>
         </td>
         <td class="links">
           <% if current_user.owned.exists?(certification) %>
